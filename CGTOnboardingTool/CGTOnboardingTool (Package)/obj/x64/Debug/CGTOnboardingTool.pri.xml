@@ -13,6 +13,28 @@
 					<Value>MainWindow.xbf</Value>
 				</Candidate>
 			</NamedResource>
+			<ResourceMapSubtree name="UISections">
+				<NamedResource name="Build.xbf" uri="ms-resource://CGTOnboardingTool/Files/UISections/Build.xbf">
+					<Candidate type="Path">
+						<Value>UISections\Build.xbf</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="Dashboard.xbf" uri="ms-resource://CGTOnboardingTool/Files/UISections/Dashboard.xbf">
+					<Candidate type="Path">
+						<Value>UISections\Dashboard.xbf</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="Rebuild.xbf" uri="ms-resource://CGTOnboardingTool/Files/UISections/Rebuild.xbf">
+					<Candidate type="Path">
+						<Value>UISections\Rebuild.xbf</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="Reduce.xbf" uri="ms-resource://CGTOnboardingTool/Files/UISections/Reduce.xbf">
+					<Candidate type="Path">
+						<Value>UISections\Reduce.xbf</Value>
+					</Candidate>
+				</NamedResource>
+			</ResourceMapSubtree>
 		</ResourceMapSubtree>
 	</ResourceMap>
 </PriInfo>

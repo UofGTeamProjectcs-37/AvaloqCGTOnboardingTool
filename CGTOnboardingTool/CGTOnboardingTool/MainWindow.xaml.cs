@@ -26,11 +26,27 @@ namespace CGTOnboardingTool
         public MainWindow()
         {
             this.InitializeComponent();
+            mainFrame.Navigate(typeof(UISections.Dashboard));
         }
 
-        private void myButton_Click(object sender, RoutedEventArgs e)
+        private void button_Dashboard_Click(object sender, RoutedEventArgs e)
         {
-            myButton.Content = "Clicked";
+            this.mainFrame.Navigate(typeof(UISections.Dashboard));
+        }
+
+        private void button_Build_Click(object sender, RoutedEventArgs e)
+        {
+            mainFrame.Navigate(typeof(UISections.Build));
+        }
+
+        private void button_Reduce_Click(object sender, RoutedEventArgs e)
+        {
+            mainFrame.Navigate(typeof(UISections.Reduce));
+        }
+
+        private void button_Rebuild_Click(object sender, RoutedEventArgs e)
+        {
+            mainFrame.Navigate(typeof(UISections.Rebuild));
         }
     }
 }

@@ -43,3 +43,11 @@ C:\Users\aidan\CGTOnboardingTool\cs37-main\CGTOnboardingTool\CGTOnboardingTool (
 C:\Users\aidan\CGTOnboardingTool\cs37-main\CGTOnboardingTool\CGTOnboardingTool (Package)\obj\x64\Debug\MultipleQualifiersPerDimensionFound.txt
 C:\Users\aidan\CGTOnboardingTool\cs37-main\CGTOnboardingTool\CGTOnboardingTool (Package)\obj\x64\Debug\ProjectArchitectures.txt
 C:\Users\aidan\CGTOnboardingTool\cs37-main\CGTOnboardingTool\CGTOnboardingTool (Package)\obj\x64\Debug\CGTOnboardingTool (Package).wapproj.LastBuild.txt
+C:\Users\aidan\CGTOnboardingTool\cs37-main\CGTOnboardingTool\CGTOnboardingTool (Package)\bin\x64\Debug\UISections\Build.xbf
+C:\Users\aidan\CGTOnboardingTool\cs37-main\CGTOnboardingTool\CGTOnboardingTool (Package)\bin\x64\Debug\UISections\Dashboard.xbf
+C:\Users\aidan\CGTOnboardingTool\cs37-main\CGTOnboardingTool\CGTOnboardingTool (Package)\bin\x64\Debug\CGTOnboardingTool\UISections\Build.xbf
+C:\Users\aidan\CGTOnboardingTool\cs37-main\CGTOnboardingTool\CGTOnboardingTool (Package)\bin\x64\Debug\CGTOnboardingTool\UISections\Dashboard.xbf
+C:\Users\aidan\CGTOnboardingTool\cs37-main\CGTOnboardingTool\CGTOnboardingTool (Package)\bin\x64\Debug\UISections\Rebuild.xbf
+C:\Users\aidan\CGTOnboardingTool\cs37-main\CGTOnboardingTool\CGTOnboardingTool (Package)\bin\x64\Debug\UISections\Reduce.xbf
+C:\Users\aidan\CGTOnboardingTool\cs37-main\CGTOnboardingTool\CGTOnboardingTool (Package)\bin\x64\Debug\CGTOnboardingTool\UISections\Rebuild.xbf
+C:\Users\aidan\CGTOnboardingTool\cs37-main\CGTOnboardingTool\CGTOnboardingTool (Package)\bin\x64\Debug\CGTOnboardingTool\UISections\Reduce.xbf

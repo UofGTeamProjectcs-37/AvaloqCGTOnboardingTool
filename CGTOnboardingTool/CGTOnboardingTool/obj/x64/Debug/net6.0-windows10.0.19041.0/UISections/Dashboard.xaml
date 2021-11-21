@@ -1,0 +1,17 @@
+﻿<Page
+    x:Class="CGTOnboardingTool.UISections.Dashboard"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CGTOnboardingTool.UISections"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <TextBlock x:ConnectionId='2' Text="Dashboard" x:Name="DashHeader" Margin="60,12,0,0" Style="{StaticResource BaseTextBlockStyle}" Grid.Row="0"/>
+        <TextBlock x:ConnectionId='3' Text="Enter a data grid here" x:Name="PaneHeader" Margin="60,120,0,0" Style="{StaticResource BaseTextBlockStyle}" Grid.Row="1"/>
+
+    </Grid>
+</Page>
+

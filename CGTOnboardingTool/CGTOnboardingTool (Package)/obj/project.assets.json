@@ -2,7 +2,16 @@
   "version": 3,
   "targets": {
     "UAP,Version=v10.0.17763": {
-      "Microsoft.Windows.SDK.BuildTools/10.0.22000.194": {
+      "CommunityToolkit.WinUI.UI.Controls.DataGrid/7.1.2": {
+        "type": "package",
+        "compile": {
+          "lib/net5.0-windows10.0.18362/CommunityToolkit.WinUI.UI.Controls.DataGrid.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0-windows10.0.18362/CommunityToolkit.WinUI.UI.Controls.DataGrid.dll": {}
+        }
+      },
+      "Microsoft.Windows.SDK.BuildTools/10.0.22000.196": {
         "type": "package",
         "build": {
           "build/Microsoft.Windows.SDK.BuildTools.props": {},
@@ -43,7 +52,16 @@
       }
     },
     "UAP,Version=v10.0.17763/win10-arm": {
-      "Microsoft.Windows.SDK.BuildTools/10.0.22000.194": {
+      "CommunityToolkit.WinUI.UI.Controls.DataGrid/7.1.2": {
+        "type": "package",
+        "compile": {
+          "lib/net5.0-windows10.0.18362/CommunityToolkit.WinUI.UI.Controls.DataGrid.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0-windows10.0.18362/CommunityToolkit.WinUI.UI.Controls.DataGrid.dll": {}
+        }
+      },
+      "Microsoft.Windows.SDK.BuildTools/10.0.22000.196": {
         "type": "package",
         "build": {
           "build/Microsoft.Windows.SDK.BuildTools.props": {},
@@ -78,7 +96,16 @@
       }
     },
     "UAP,Version=v10.0.17763/win10-arm-aot": {
-      "Microsoft.Windows.SDK.BuildTools/10.0.22000.194": {
+      "CommunityToolkit.WinUI.UI.Controls.DataGrid/7.1.2": {
+        "type": "package",
+        "compile": {
+          "lib/net5.0-windows10.0.18362/CommunityToolkit.WinUI.UI.Controls.DataGrid.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0-windows10.0.18362/CommunityToolkit.WinUI.UI.Controls.DataGrid.dll": {}
+        }
+      },
+      "Microsoft.Windows.SDK.BuildTools/10.0.22000.196": {
         "type": "package",
         "build": {
           "build/Microsoft.Windows.SDK.BuildTools.props": {},
@@ -113,7 +140,16 @@
       }
     },
     "UAP,Version=v10.0.17763/win10-arm64-aot": {
-      "Microsoft.Windows.SDK.BuildTools/10.0.22000.194": {
+      "CommunityToolkit.WinUI.UI.Controls.DataGrid/7.1.2": {
+        "type": "package",
+        "compile": {
+          "lib/net5.0-windows10.0.18362/CommunityToolkit.WinUI.UI.Controls.DataGrid.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0-windows10.0.18362/CommunityToolkit.WinUI.UI.Controls.DataGrid.dll": {}
+        }
+      },
+      "Microsoft.Windows.SDK.BuildTools/10.0.22000.196": {
         "type": "package",
         "build": {
           "build/Microsoft.Windows.SDK.BuildTools.props": {},
@@ -151,7 +187,16 @@
       }
     },
     "UAP,Version=v10.0.17763/win10-x64": {
-      "Microsoft.Windows.SDK.BuildTools/10.0.22000.194": {
+      "CommunityToolkit.WinUI.UI.Controls.DataGrid/7.1.2": {
+        "type": "package",
+        "compile": {
+          "lib/net5.0-windows10.0.18362/CommunityToolkit.WinUI.UI.Controls.DataGrid.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0-windows10.0.18362/CommunityToolkit.WinUI.UI.Controls.DataGrid.dll": {}
+        }
+      },
+      "Microsoft.Windows.SDK.BuildTools/10.0.22000.196": {
         "type": "package",
         "build": {
           "build/Microsoft.Windows.SDK.BuildTools.props": {},
@@ -189,7 +234,16 @@
       }
     },
     "UAP,Version=v10.0.17763/win10-x64-aot": {
-      "Microsoft.Windows.SDK.BuildTools/10.0.22000.194": {
+      "CommunityToolkit.WinUI.UI.Controls.DataGrid/7.1.2": {
+        "type": "package",
+        "compile": {
+          "lib/net5.0-windows10.0.18362/CommunityToolkit.WinUI.UI.Controls.DataGrid.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0-windows10.0.18362/CommunityToolkit.WinUI.UI.Controls.DataGrid.dll": {}
+        }
+      },
+      "Microsoft.Windows.SDK.BuildTools/10.0.22000.196": {
         "type": "package",
         "build": {
           "build/Microsoft.Windows.SDK.BuildTools.props": {},
@@ -227,7 +281,16 @@
       }
     },
     "UAP,Version=v10.0.17763/win10-x86": {
-      "Microsoft.Windows.SDK.BuildTools/10.0.22000.194": {
+      "CommunityToolkit.WinUI.UI.Controls.DataGrid/7.1.2": {
+        "type": "package",
+        "compile": {
+          "lib/net5.0-windows10.0.18362/CommunityToolkit.WinUI.UI.Controls.DataGrid.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0-windows10.0.18362/CommunityToolkit.WinUI.UI.Controls.DataGrid.dll": {}
+        }
+      },
+      "Microsoft.Windows.SDK.BuildTools/10.0.22000.196": {
         "type": "package",
         "build": {
           "build/Microsoft.Windows.SDK.BuildTools.props": {},
@@ -265,7 +328,16 @@
       }
     },
     "UAP,Version=v10.0.17763/win10-x86-aot": {
-      "Microsoft.Windows.SDK.BuildTools/10.0.22000.194": {
+      "CommunityToolkit.WinUI.UI.Controls.DataGrid/7.1.2": {
+        "type": "package",
+        "compile": {
+          "lib/net5.0-windows10.0.18362/CommunityToolkit.WinUI.UI.Controls.DataGrid.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0-windows10.0.18362/CommunityToolkit.WinUI.UI.Controls.DataGrid.dll": {}
+        }
+      },
+      "Microsoft.Windows.SDK.BuildTools/10.0.22000.196": {
         "type": "package",
         "build": {
           "build/Microsoft.Windows.SDK.BuildTools.props": {},
@@ -304,10 +376,32 @@
     }
   },
   "libraries": {
-    "Microsoft.Windows.SDK.BuildTools/10.0.22000.194": {
-      "sha512": "4L0P3zqut466SIqT3VBeLTNUQTxCBDOrTRymRuROCRJKazcK7ibLz9yAO1nKWRt50ttCj39oAa2Iuz9ZTDmLlg==",
+    "CommunityToolkit.WinUI.UI.Controls.DataGrid/7.1.2": {
+      "sha512": "F73oYdYza8zhDwGHdXCZJJMeiDJ6nR97WPe180o7jOX3U90ZIqvU/GtYZdN3/x8DOS48t5GQG70LqxfyIGeaxw==",
       "type": "package",
-      "path": "microsoft.windows.sdk.buildtools/10.0.22000.194",
+      "path": "communitytoolkit.winui.ui.controls.datagrid/7.1.2",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "License.md",
+        "ThirdPartyNotices.txt",
+        "communitytoolkit.winui.ui.controls.datagrid.7.1.2.nupkg.sha512",
+        "communitytoolkit.winui.ui.controls.datagrid.nuspec",
+        "lib/net5.0-windows10.0.18362/CommunityToolkit.WinUI.UI.Controls.DataGrid.dll",
+        "lib/net5.0-windows10.0.18362/CommunityToolkit.WinUI.UI.Controls.DataGrid.pdb",
+        "lib/net5.0-windows10.0.18362/CommunityToolkit.WinUI.UI.Controls.DataGrid.pri",
+        "lib/net5.0-windows10.0.18362/CommunityToolkit.WinUI.UI.Controls.DataGrid.xml",
+        "lib/net5.0-windows10.0.18362/Design/CommunityToolkit.WinUI.UI.Controls.DataGrid.DesignTools.dll",
+        "lib/net5.0-windows10.0.18362/Design/CommunityToolkit.WinUI.UI.Controls.DataGrid.DesignTools.pdb",
+        "tools/VisualStudioToolsManifest.xml"
+      ]
+    },
+    "Microsoft.Windows.SDK.BuildTools/10.0.22000.196": {
+      "sha512": "fYQ55Rqnt0Wlq9Lig/fvsCbEg0vAHJv/pOtdHhgjGJxzKIMgm14xJyxc9Unq2MoG+i3vE01ATEeKHkUrgiFgLQ==",
+      "type": "package",
+      "path": "microsoft.windows.sdk.buildtools/10.0.22000.196",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -363,6 +457,7 @@
         "bin/10.0.22000.0/x64/signtool.exe",
         "bin/10.0.22000.0/x64/signtool.exe.manifest",
         "bin/10.0.22000.0/x64/tracewpp.exe",
+        "bin/10.0.22000.0/x64/uuidgen.exe",
         "bin/10.0.22000.0/x64/winmdidl.exe",
         "bin/10.0.22000.0/x64/wintrust.dll",
         "bin/10.0.22000.0/x64/wintrust.dll.ini",
@@ -414,12 +509,13 @@
         "bin/10.0.22000.0/x86/signtool.exe",
         "bin/10.0.22000.0/x86/signtool.exe.manifest",
         "bin/10.0.22000.0/x86/tracewpp.exe",
+        "bin/10.0.22000.0/x86/uuidgen.exe",
         "bin/10.0.22000.0/x86/winmdidl.exe",
         "bin/10.0.22000.0/x86/wintrust.dll",
         "bin/10.0.22000.0/x86/wintrust.dll.ini",
         "build/Microsoft.Windows.SDK.BuildTools.props",
         "build/Microsoft.Windows.SDK.BuildTools.targets",
-        "microsoft.windows.sdk.buildtools.10.0.22000.194.nupkg.sha512",
+        "microsoft.windows.sdk.buildtools.10.0.22000.196.nupkg.sha512",
         "microsoft.windows.sdk.buildtools.nuspec",
         "schemas/10.0.22000.0/winrt/AppxManifestSchema.xsd",
         "schemas/10.0.22000.0/winrt/AppxManifestSchema2010_v2.xsd",
@@ -808,7 +904,8 @@
   "projectFileDependencyGroups": {
     "UAP,Version=v10.0.17763": [
       "CGTOnboardingTool >= 1.0.0",
-      "Microsoft.Windows.SDK.BuildTools >= 10.0.22000.194 <= 10.0.22000.194",
+      "CommunityToolkit.WinUI.UI.Controls.DataGrid >= 7.1.2",
+      "Microsoft.Windows.SDK.BuildTools >= 10.0.22000.196",
       "Microsoft.WindowsAppSDK >= 1.0.0 <= 1.0.0"
     ]
   },
@@ -855,10 +952,14 @@
       "uap10.0.17763": {
         "targetAlias": "net451",
         "dependencies": {
+          "CommunityToolkit.WinUI.UI.Controls.DataGrid": {
+            "target": "Package",
+            "version": "[7.1.2, )"
+          },
           "Microsoft.Windows.SDK.BuildTools": {
             "include": "Build",
             "target": "Package",
-            "version": "[10.0.22000.194, 10.0.22000.194]"
+            "version": "[10.0.22000.196, )"
           },
           "Microsoft.WindowsAppSDK": {
             "include": "Build",
@@ -907,5 +1008,17 @@
         "#import": []
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'CommunityToolkit.WinUI.UI.Controls.DataGrid 7.1.2' was restored using 'net6.0-windows10.0.22000, .NETCoreApp,Version=v3.1, .NETCoreApp,Version=v3.0, .NETCoreApp,Version=v2.0, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, net6.0-windows10.0.22000, .NETFramework,Version=v4.6.1' instead of the project target framework 'UAP,Version=v10.0.17763'. This package may not be fully compatible with your project.",
+      "libraryId": "CommunityToolkit.WinUI.UI.Controls.DataGrid",
+      "targetGraphs": [
+        "UAP,Version=v10.0.17763"
+      ]
+    }
+  ]
 }

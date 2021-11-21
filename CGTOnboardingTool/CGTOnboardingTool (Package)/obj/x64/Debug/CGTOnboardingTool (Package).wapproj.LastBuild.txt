@@ -1,5 +1,9 @@
 C:\Users\aidan\CGTOnboardingTool\cs37-main\CGTOnboardingTool\CGTOnboardingTool\bin\x64\Debug\net6.0-windows10.0.19041.0\App.xbf
 C:\Users\aidan\CGTOnboardingTool\cs37-main\CGTOnboardingTool\CGTOnboardingTool\bin\x64\Debug\net6.0-windows10.0.19041.0\MainWindow.xbf
+C:\Users\aidan\CGTOnboardingTool\cs37-main\CGTOnboardingTool\CGTOnboardingTool\bin\x64\Debug\net6.0-windows10.0.19041.0\UISections\Build.xbf
+C:\Users\aidan\CGTOnboardingTool\cs37-main\CGTOnboardingTool\CGTOnboardingTool\bin\x64\Debug\net6.0-windows10.0.19041.0\UISections\Dashboard.xbf
+C:\Users\aidan\CGTOnboardingTool\cs37-main\CGTOnboardingTool\CGTOnboardingTool\bin\x64\Debug\net6.0-windows10.0.19041.0\UISections\Rebuild.xbf
+C:\Users\aidan\CGTOnboardingTool\cs37-main\CGTOnboardingTool\CGTOnboardingTool\bin\x64\Debug\net6.0-windows10.0.19041.0\UISections\Reduce.xbf
 C:\Program Files (x86)\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.UniversalCRT.Debug\10.0.22000.0\Redist\Debug\x64\ucrtbased.dll
 C:\Users\aidan\CGTOnboardingTool\cs37-main\CGTOnboardingTool\CGTOnboardingTool (Package)\Images\SplashScreen.scale-200.png
 C:\Users\aidan\CGTOnboardingTool\cs37-main\CGTOnboardingTool\CGTOnboardingTool (Package)\Images\LockScreenLogo.scale-200.png
@@ -25,6 +29,10 @@ C:\Users\aidan\.nuget\packages\microsoft.windows.sdk.net.ref\10.0.19041.21\lib\W
 C:\Users\aidan\CGTOnboardingTool\cs37-main\CGTOnboardingTool\CGTOnboardingTool\bin\x64\Debug\net6.0-windows10.0.19041.0\CGTOnboardingTool.deps.json
 C:\Users\aidan\CGTOnboardingTool\cs37-main\CGTOnboardingTool\CGTOnboardingTool\obj\x64\Debug\net6.0-windows10.0.19041.0\App.xbf
 C:\Users\aidan\CGTOnboardingTool\cs37-main\CGTOnboardingTool\CGTOnboardingTool\obj\x64\Debug\net6.0-windows10.0.19041.0\MainWindow.xbf
+C:\Users\aidan\CGTOnboardingTool\cs37-main\CGTOnboardingTool\CGTOnboardingTool\obj\x64\Debug\net6.0-windows10.0.19041.0\UISections\Build.xbf
+C:\Users\aidan\CGTOnboardingTool\cs37-main\CGTOnboardingTool\CGTOnboardingTool\obj\x64\Debug\net6.0-windows10.0.19041.0\UISections\Dashboard.xbf
+C:\Users\aidan\CGTOnboardingTool\cs37-main\CGTOnboardingTool\CGTOnboardingTool\obj\x64\Debug\net6.0-windows10.0.19041.0\UISections\Rebuild.xbf
+C:\Users\aidan\CGTOnboardingTool\cs37-main\CGTOnboardingTool\CGTOnboardingTool\obj\x64\Debug\net6.0-windows10.0.19041.0\UISections\Reduce.xbf
 C:\Users\aidan\CGTOnboardingTool\cs37-main\CGTOnboardingTool\CGTOnboardingTool\obj\x64\Debug\net6.0-windows10.0.19041.0\apphost.exe
 C:\Users\aidan\CGTOnboardingTool\cs37-main\CGTOnboardingTool\CGTOnboardingTool\bin\x64\Debug\net6.0-windows10.0.19041.0\CGTOnboardingTool.runtimeconfig.json
 C:\Users\aidan\CGTOnboardingTool\cs37-main\CGTOnboardingTool\CGTOnboardingTool\bin\x64\Debug\net6.0-windows10.0.19041.0\CGTOnboardingTool.dll

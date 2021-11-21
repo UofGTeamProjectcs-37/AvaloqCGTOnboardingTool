@@ -1,0 +1,40 @@
+﻿<Window
+    x:Class="CGTOnboardingTool.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CGTOnboardingTool"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <SplitView x:ConnectionId='2' x:Name="splitView" PaneBackground="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}"
+           IsPaneOpen="True" OpenPaneLength="280" CompactPaneLength="64" DisplayMode="Inline">
+        <SplitView.Pane>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                
+                <TextBlock x:ConnectionId='3' Text="CGT Onboarding Tool" x:Name="Header" Margin="60,12,0,0" Style="{StaticResource BaseTextBlockStyle}" Grid.Row="0"/>
+                <StackPanel Orientation="Vertical" Grid.Row="1" Margin="60,60,0,0">
+                    <Button x:ConnectionId='4' x:Name="button_Build"                           >Build</Button>
+                    <Button x:ConnectionId='5' x:Name="button_Reduce"                            >Reduce</Button>
+                    <Button x:ConnectionId='6' x:Name="button_Rebuild"                             >Rebuild</Button>
+                </StackPanel>
+            </Grid>
+
+        </SplitView.Pane>
+        <Frame x:ConnectionId='7' x:Name="mainFrame"/>
+    </SplitView>
+
+
+
+    <!--StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <TextBlock Text="CGT Onboarding Tool"/>
+        <Button x:Name="myButton" Click="myButton_Click">Click Me</Button>
+    </StackPanel-->
+</Window>
+

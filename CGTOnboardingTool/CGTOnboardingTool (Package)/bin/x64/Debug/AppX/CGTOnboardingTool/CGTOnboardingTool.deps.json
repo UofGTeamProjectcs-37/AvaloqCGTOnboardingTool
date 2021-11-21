@@ -8,7 +8,7 @@
     ".NETCoreApp,Version=v6.0": {
       "CGTOnboardingTool/1.0.0": {
         "dependencies": {
-          "Microsoft.Windows.SDK.BuildTools": "10.0.22000.194",
+          "Microsoft.Windows.SDK.BuildTools": "10.0.22000.196",
           "Microsoft.WindowsAppSDK": "1.0.0",
           "runtimepack.Microsoft.Windows.SDK.NET.Ref": "10.0.19041.21"
         },
@@ -28,10 +28,10 @@
           }
         }
       },
-      "Microsoft.Windows.SDK.BuildTools/10.0.22000.194": {},
+      "Microsoft.Windows.SDK.BuildTools/10.0.22000.196": {},
       "Microsoft.WindowsAppSDK/1.0.0": {
         "dependencies": {
-          "Microsoft.Windows.SDK.BuildTools": "10.0.22000.194"
+          "Microsoft.Windows.SDK.BuildTools": "10.0.22000.196"
         },
         "runtime": {
           "lib/net5.0-windows10.0.18362.0/Microsoft.InteractiveExperiences.Projection.dll": {
@@ -98,12 +98,12 @@
       "serviceable": false,
       "sha512": ""
     },
-    "Microsoft.Windows.SDK.BuildTools/10.0.22000.194": {
+    "Microsoft.Windows.SDK.BuildTools/10.0.22000.196": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-4L0P3zqut466SIqT3VBeLTNUQTxCBDOrTRymRuROCRJKazcK7ibLz9yAO1nKWRt50ttCj39oAa2Iuz9ZTDmLlg==",
-      "path": "microsoft.windows.sdk.buildtools/10.0.22000.194",
-      "hashPath": "microsoft.windows.sdk.buildtools.10.0.22000.194.nupkg.sha512"
+      "sha512": "sha512-fYQ55Rqnt0Wlq9Lig/fvsCbEg0vAHJv/pOtdHhgjGJxzKIMgm14xJyxc9Unq2MoG+i3vE01ATEeKHkUrgiFgLQ==",
+      "path": "microsoft.windows.sdk.buildtools/10.0.22000.196",
+      "hashPath": "microsoft.windows.sdk.buildtools.10.0.22000.196.nupkg.sha512"
     },
     "Microsoft.WindowsAppSDK/1.0.0": {
       "type": "package",

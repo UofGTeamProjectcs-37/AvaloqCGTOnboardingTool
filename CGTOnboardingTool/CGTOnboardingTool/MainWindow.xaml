@@ -7,8 +7,33 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+    <SplitView x:Name="splitView" PaneBackground="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}"
+           IsPaneOpen="True" OpenPaneLength="280" CompactPaneLength="64" DisplayMode="Inline">
+        <SplitView.Pane>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                
+                <TextBlock Text="CGT Onboarding Tool" x:Name="Header" Margin="60,12,0,0" Style="{StaticResource BaseTextBlockStyle}" Grid.Row="0"/>
+                <StackPanel Orientation="Vertical" Grid.Row="1" Margin="60,60,0,0">
+                    <Button x:Name="button_Build" Click="button_Build_Click">Build</Button>
+                    <Button x:Name="button_Reduce" Click="button_Reduce_Click">Reduce</Button>
+                    <Button x:Name="button_Rebuild" Click="button_Rebuild_Click">Rebuild</Button>
+                </StackPanel>
+            </Grid>
+
+        </SplitView.Pane>
+        <Frame x:Name="mainFrame"/>
+    </SplitView>
+
+
+
+    <!--StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
         <TextBlock Text="CGT Onboarding Tool"/>
         <Button x:Name="myButton" Click="myButton_Click">Click Me</Button>
-    </StackPanel>
+    </StackPanel-->
 </Window>

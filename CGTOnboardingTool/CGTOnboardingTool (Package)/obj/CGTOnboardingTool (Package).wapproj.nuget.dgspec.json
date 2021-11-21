@@ -43,10 +43,14 @@
         "uap10.0.17763": {
           "targetAlias": "net451",
           "dependencies": {
+            "CommunityToolkit.WinUI.UI.Controls.DataGrid": {
+              "target": "Package",
+              "version": "[7.1.2, )"
+            },
             "Microsoft.Windows.SDK.BuildTools": {
               "include": "Build",
               "target": "Package",
-              "version": "[10.0.22000.194, 10.0.22000.194]"
+              "version": "[10.0.22000.196, )"
             },
             "Microsoft.WindowsAppSDK": {
               "include": "Build",
@@ -138,7 +142,7 @@
           "dependencies": {
             "Microsoft.Windows.SDK.BuildTools": {
               "target": "Package",
-              "version": "[10.0.22000.194, )"
+              "version": "[10.0.22000.196, )"
             },
             "Microsoft.WindowsAppSDK": {
               "target": "Package",

@@ -20,9 +20,29 @@ namespace CGTOnboardingTool
     /// </summary>
     public partial class MainWindow : Window
     {
+
+
         public MainWindow()
         {
             InitializeComponent();
+            mainFrame.Navigate(new UISections.Dashboard());
+        }
+
+        private void btnBuild_Click(object sender, RoutedEventArgs e)
+        {
+            mainFrame.Navigate(new UISections.Build());
+        }
+
+        private void btnReduce_Click(object sender, RoutedEventArgs e)
+        {
+            mainFrame.Navigate(new UISections.Reduce());
+
+        }
+
+        private void btnRebuild_Click(object sender, RoutedEventArgs e)
+        {
+            mainFrame.Navigate(new UISections.Rebuild());
+
         }
     }
 }

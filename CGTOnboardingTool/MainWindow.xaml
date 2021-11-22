@@ -7,13 +7,6 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Frame Content="Frame" Margin="140,0,0,0" Foreground="#FF303247"/>
-        <StackPanel Margin="0,0,660,0">
-            <TextBlock TextWrapping="Wrap" Height="159" Text="CGT Onboarding Tool"></TextBlock>
-            <Button Content="Button"/>
-            <Button Content="Button"/>
-            <Button Content="Button"/>
-        </StackPanel>
 
     </Grid>
 </Window>

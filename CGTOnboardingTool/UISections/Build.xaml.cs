@@ -31,5 +31,10 @@ namespace CGTOnboardingTool.UISections
             this.NavigationService.GoBack();
 
         }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }

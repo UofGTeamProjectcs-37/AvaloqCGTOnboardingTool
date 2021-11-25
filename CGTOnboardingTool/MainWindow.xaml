@@ -5,15 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CGTOnboardingTool"
         mc:Ignorable="d"
-        Title="CGT Onboarding Tool" Height="1080" Width="1920">
+        Title="CGT Onboarding Tool" Height="720" Width="1280">
     <Grid>
-        <StackPanel Margin="0,0,1440,0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="256"/>
+            <ColumnDefinition Width="1024"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="0">
             <Label Content="CGT Onboarding Tool"/>
             <Button x:Name="btnBuild" Content="Build" Click="btnBuild_Click"/>
             <Button x:Name="btnReduce" Content="Reduce" Click="btnReduce_Click"/>
             <Button x:Name="btnRebuild" Content="Rebuild" Click="btnRebuild_Click"/>
         </StackPanel>
-        <Frame x:Name="mainFrame" Content="Frame" Margin="480,0,0,0" NavigationUIVisibility="Hidden"/>
+        <Frame x:Name="mainFrame" Content="Frame" NavigationUIVisibility="Hidden" Grid.Column="1"/>
 
     </Grid>
 </Window>

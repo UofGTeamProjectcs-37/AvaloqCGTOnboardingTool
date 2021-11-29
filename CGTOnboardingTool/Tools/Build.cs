@@ -26,16 +26,17 @@ namespace CGTOnboardingTool.Tools
         int no_shares = 18;
         //double pps = 217;
         //double cost = 10;
-        double gross;
+        //double gross;
 
 
-        public Build(Security security, int quantity, decimal pps, decimal cost, DateOnly date)
+        public Build(Security security, int quantity, decimal pps, decimal cost, decimal gross, DateOnly date)
         {
             this.security = security;
             this.quantity = quantity;
             this.pps = pps;
             this.cost = cost;
-            this.date = date
+            this.gross = gross;
+            this.date = date;
         }
 
         public override Report.ReportEntry perform(ref Report report)

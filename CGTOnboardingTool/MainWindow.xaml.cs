@@ -20,28 +20,29 @@ namespace CGTOnboardingTool
     /// </summary>
     public partial class MainWindow : Window
     {
-
+        public Report report;
 
         public MainWindow()
         {
             InitializeComponent();
-            mainFrame.Navigate(new UISections.Dashboard());
+            report = new Report();
+            mainFrame.Navigate(new UISections.Dashboard(ref report));
         }
 
         private void btnBuild_Click(object sender, RoutedEventArgs e)
         {
-            mainFrame.Navigate(new UISections.Build());
+            mainFrame.Navigate(new UISections.Build(ref report));
         }
 
         private void btnReduce_Click(object sender, RoutedEventArgs e)
         {
-            mainFrame.Navigate(new UISections.Reduce());
+            mainFrame.Navigate(new UISections.Reduce(ref report));
 
         }
 
         private void btnRebuild_Click(object sender, RoutedEventArgs e)
         {
-            mainFrame.Navigate(new UISections.Rebuild());
+            mainFrame.Navigate(new UISections.Rebuild(ref report));
 
         }
     }

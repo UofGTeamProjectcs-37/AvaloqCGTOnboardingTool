@@ -20,9 +20,11 @@ namespace CGTOnboardingTool.UISections
     /// </summary>
     public partial class Rebuild : Page
     {
-        public Rebuild()
+        public Report report;
+        public Rebuild(ref Report report)
         {
             InitializeComponent();
+            this.report = report;
         }
 
         private void btnRebuildOk_Click(object sender, RoutedEventArgs e)

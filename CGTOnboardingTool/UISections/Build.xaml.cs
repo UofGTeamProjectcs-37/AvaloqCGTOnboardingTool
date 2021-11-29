@@ -20,9 +20,12 @@ namespace CGTOnboardingTool.UISections
     /// </summary>
     public partial class Build : Page
     {
-        public Build()
+        public Report report;
+
+        public Build(ref Report report)
         {
             InitializeComponent();
+            this.report = report;
         }
 
         private void btnBuildOk_Click(object sender, RoutedEventArgs e)

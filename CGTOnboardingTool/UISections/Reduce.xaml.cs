@@ -21,9 +21,12 @@ namespace CGTOnboardingTool.UISections
     /// </summary>
     public partial class Reduce : Page
     {
-        public Reduce()
+        public Report report;
+
+        public Reduce(ref Report report)
         {
             InitializeComponent();
+            this.report = report;
         }
 
         private void btnReduceOk_Click(object sender, RoutedEventArgs e)

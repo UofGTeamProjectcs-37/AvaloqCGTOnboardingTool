@@ -8,5 +8,6 @@ namespace CGTOnboardingTool.Tools
 {
     public abstract class CGTFunction
     {
+        public abstract Report.ReportEntry perform(ref Report report);
     }
 }

@@ -1,4 +1,4 @@
-﻿using CGTOnboardingTool.Securities;
+using CGTOnboardingTool.Securities;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -39,8 +39,7 @@ namespace CGTOnboardingTool.Tools
             this.gross = gross;
             this.date = date;
 
-            Trace.WriteLine(String.Format("Security {0}, Quantity {1}, PPS {2}, Cost {3}, Gross {4}, Date {5}", this.security.Name, this.quantity, this.pps, this.cost, this.gross, this.date));
-
+            
         }
 
         public override Report.ReportEntry perform(ref Report report)

@@ -10,7 +10,7 @@
 
     <Grid>
         <Label Content="Reduce" />
-        <Button x:Name="btnReduceOk" Content="Okay"  Width="72" Height="32" Margin="0,30,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Click="btnReduceOk_Click" />
+        <Button x:Name="BtnReduceOk" Content="Okay"  Width="72" Height="32" Margin="0,30,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Click="BtnReduceOk_Click" />
 
     </Grid>
 </Page>

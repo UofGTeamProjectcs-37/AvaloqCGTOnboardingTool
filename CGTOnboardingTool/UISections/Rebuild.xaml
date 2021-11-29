@@ -10,7 +10,7 @@
 
     <Grid>
         <Label Content="Rebuild"/>
-        <Button x:Name="btnRebuildOk" Content="Okay"  Width="72" Height="32" Margin="0,30,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Click="btnRebuildOk_Click" />
+        <Button x:Name="BtnRebuildOk" Content="Okay"  Width="72" Height="32" Margin="0,30,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Click="BtnRebuildOk_Click" />
 
     </Grid>
 </Page>

@@ -27,9 +27,9 @@ namespace CGTOnboardingTool.UISections
             this.report = report;
         }
 
-        private void btnRebuildOk_Click(object sender, RoutedEventArgs e)
+        private void BtnRebuildOk_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.GoBack();
+            this.NavigationService.Navigate(new Dashboard(ref report));
         }
     }
 }

@@ -14,7 +14,7 @@ namespace CGTOnboardingTool.UISections
         {
             InitializeComponent();
             this.report = report;
-        
+        }
 
         private void BtnBuildCancel_Click(object sender, RoutedEventArgs e)
         {

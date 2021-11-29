@@ -1,5 +1,4 @@
 ﻿using System;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -29,9 +28,9 @@ namespace CGTOnboardingTool.UISections
             this.report = report;
         }
 
-        private void btnReduceOk_Click(object sender, RoutedEventArgs e)
+        private void BtnReduceOk_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.GoBack();
+            this.NavigationService.Navigate(new Dashboard(ref report));
         }
     }
 }

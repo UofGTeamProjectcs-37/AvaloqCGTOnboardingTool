@@ -1,4 +1,6 @@
-﻿using System.Windows;
+using CGTOnboardingTool.Securities;
+using System;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace CGTOnboardingTool.UISections
@@ -20,5 +22,11 @@ namespace CGTOnboardingTool.UISections
         {
             this.NavigationService.Navigate(new Dashboard(ref report));
         }
+
+        private void BtnBuildComplete_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
     }
 }

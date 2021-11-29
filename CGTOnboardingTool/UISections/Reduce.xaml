@@ -6,11 +6,25 @@
       xmlns:local="clr-namespace:CGTOnboardingTool.UISections"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="Reduce">
+      Title="Reduce"
+      Background="White">
 
-    <Grid>
-        <Label Content="Reduce" />
-        <Button x:Name="BtnReduceOk" Content="Okay"  Width="72" Height="32" Margin="0,30,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Click="BtnReduceOk_Click" />
+    <Grid x:Name="ReduceGrid">
+        <Label x:Name="LblReduceHeader" Content="Reduce" HorizontalAlignment="Left" Height="39" Margin="689,10,0,0" VerticalAlignment="Top" Width="101" FontSize="30" FontFamily="Agency FB" />
+        <Button x:Name="BtnReduce" Content="Reduce" HorizontalAlignment="Left" Margin="258,379,0,0" VerticalAlignment="Top" FontFamily="Agency FB" Height="35" Width="90" FontSize="22"/>
+        <Button x:Name="BtnCancel" Content="Cancel" HorizontalAlignment="Left" Margin="510,378,0,0" VerticalAlignment="Top" FontFamily="Agency FB" Height="36" Width="78" FontSize="22"/>
+        <TextBox x:Name="TxtReduceSecurity" HorizontalAlignment="Left" Height="26" Margin="158,70,0,0" TextWrapping="Wrap" Text="Enter The New Security Here" VerticalAlignment="Top" Width="352" TextChanged="TextBox_TextChanged"/>
+        <TextBox x:Name="TxtReduceCost" HorizontalAlignment="Left" Height="26" Margin="158,270,0,0" TextWrapping="Wrap" Text="Enter The Allowable Costs Here" VerticalAlignment="Top" Width="352" TextChanged="TextBox_TextChanged"/>
+        <TextBox x:Name="TxtReducePrice" HorizontalAlignment="Left" Height="26" Margin="158,220,0,0" TextWrapping="Wrap" Text="Enter The Price per Quantity Here" VerticalAlignment="Top" Width="352" TextChanged="TextBox_TextChanged"/>
+        <TextBox x:Name="TxtReduceQuantity" HorizontalAlignment="Left" Height="26" Margin="158,170,0,0" TextWrapping="Wrap" Text="Enter The Quantity of Shares Here" VerticalAlignment="Top" Width="352" TextChanged="TextBox_TextChanged"/>
+        <TextBox x:Name="TxtReduceDate" HorizontalAlignment="Left" Height="26" Margin="158,120,0,0" TextWrapping="Wrap" Text="Enter The Date Here" VerticalAlignment="Top" Width="352" TextChanged="TextBox_TextChanged"/>
+        <TextBox x:Name="TxtReduceGross" HorizontalAlignment="Left" Height="26" Margin="158,320,0,0" TextWrapping="Wrap" Text="Enter The Gross Here" VerticalAlignment="Top" Width="352" TextChanged="TextBox_TextChanged"/>
+        <Label x:Name="LblReduceSecurity" Content="Security" HorizontalAlignment="Left" Margin="57,65,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="LblReduceDate" Content="Date" HorizontalAlignment="Left" Margin="67,115,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="LblReduceQuantity" Content="Quantity" HorizontalAlignment="Left" Margin="55,165,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="LblReducePrice" Content="Price" HorizontalAlignment="Left" Margin="67,214,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="LblReduceCost" Content="Cost" HorizontalAlignment="Left" Margin="66,265,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="LblReduceGross" Content="Gross" HorizontalAlignment="Left" Margin="63,315,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Page>

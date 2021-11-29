@@ -32,5 +32,10 @@ namespace CGTOnboardingTool.UISections
         {
             this.NavigationService.Navigate(new Dashboard(ref report));
         }
+
+        private void BtnReduceCancel_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new Dashboard(ref report));
+        }
     }
 }

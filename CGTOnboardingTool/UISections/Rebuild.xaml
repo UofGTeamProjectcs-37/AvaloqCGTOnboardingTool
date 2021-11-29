@@ -12,7 +12,7 @@
     <Grid x:Name="RebuildGrid">
         <Label x:Name="LblRebuildHeader" Content="Rebuild" HorizontalAlignment="Left" Height="39" Margin="689,10,0,0" VerticalAlignment="Top" Width="101" FontSize="30" FontFamily="Agency FB" />
         <Button x:Name="BtnRebuild" Content="Rebuild" HorizontalAlignment="Left" Margin="258,379,0,0" VerticalAlignment="Top" FontFamily="Agency FB" Height="35" Width="90" FontSize="22"/>
-        <Button x:Name="BtnCancel" Content="Cancel" HorizontalAlignment="Left" Margin="510,378,0,0" VerticalAlignment="Top" FontFamily="Agency FB" Height="36" Width="78" FontSize="22"/>
+        <Button x:Name="BtnRebuildCancel" Content="Cancel" HorizontalAlignment="Left" Margin="510,378,0,0" VerticalAlignment="Top" FontFamily="Agency FB" Height="36" Width="78" FontSize="22" Click="BtnRebuildCancel_Click"/>
         <TextBox x:Name="TxtRebuildDate" HorizontalAlignment="Left" Height="26" Margin="158,70,0,0" TextWrapping="Wrap" Text="Enter The Date Here" VerticalAlignment="Top" Width="352"/>
         <TextBox x:Name="TxtRebuildNewSecurity" HorizontalAlignment="Left" Height="26" Margin="158,220,0,0" TextWrapping="Wrap" Text="Enter The New Security Here" VerticalAlignment="Top" Width="352" />
         <TextBox x:Name="TxtRebuildOldSecurity" HorizontalAlignment="Left" Height="26" Margin="158,170,0,0" TextWrapping="Wrap" Text="Enter The Old Security Here" VerticalAlignment="Top" Width="352" />

@@ -29,6 +29,11 @@ namespace CGTOnboardingTool.UISections
 
         private void BtnRebuildOk_Click(object sender, RoutedEventArgs e)
         {
+            
+        }
+
+        private void BtnRebuildCancel_Click(object sender, RoutedEventArgs e)
+        {
             this.NavigationService.Navigate(new Dashboard(ref report));
         }
     }

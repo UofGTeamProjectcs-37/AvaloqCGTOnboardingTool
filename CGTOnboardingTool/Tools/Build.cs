@@ -1,6 +1,7 @@
 ﻿using CGTOnboardingTool.Securities;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -37,6 +38,9 @@ namespace CGTOnboardingTool.Tools
             this.cost = cost;
             this.gross = gross;
             this.date = date;
+
+            Trace.WriteLine(String.Format("Security {0}, Quantity {1}, PPS {2}, Cost {3}, Gross {4}, Date {5}", this.security.Name, this.quantity, this.pps, this.cost, this.gross, this.date));
+
         }
 
         public override Report.ReportEntry perform(ref Report report)
@@ -50,9 +54,9 @@ namespace CGTOnboardingTool.Tools
 
         public void performBuild(string name, string short_name, int no_shares, int pps, double cost)
         {
-            Securities.Security new_security = new Securities.Security(name, short_name);
+            //Securities.Security new_security = new Securities.Security(name, short_name);
 
-            new_security.Section104 = (no_shares * pps) + cost;
+            //new_security.Section104 = (no_shares * pps) + cost;
         }
     }
 }

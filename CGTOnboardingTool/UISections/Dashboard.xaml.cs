@@ -22,7 +22,7 @@ namespace CGTOnboardingTool.UISections
     {
         public Report report;
 
-        public Dashboard(ref Report report {
+        public Dashboard(ref Report report) {
             InitializeComponent();
             this.report = report;
         }

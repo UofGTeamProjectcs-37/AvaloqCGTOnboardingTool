@@ -1,4 +1,4 @@
-﻿using CGTOnboardingTool.Securities;
+using CGTOnboardingTool.Securities;
 using System;
 using System.Windows;
 using System.Windows.Controls;
@@ -25,19 +25,7 @@ namespace CGTOnboardingTool.UISections
 
         private void BtnBuildComplete_Click(object sender, RoutedEventArgs e)
         {
-            var securityName = "GlaxoSmithKlein";
-            var securityShortName = "GSK";
-
-            Security security = new Security(securityName, securityShortName);
-
-
-            var quantity = 1000;
-            decimal price = (decimal)16.35;
-            decimal cost = (decimal)23.80;
-            DateOnly date = new DateOnly(2021, 11, 29);
-
-            Tools.Build build = new Tools.Build(security, quantity, price, cost, 0, date);
-            Console.WriteLine(build.ToString);
+            
         }
 
     }

@@ -203,6 +203,16 @@ namespace CGTOnboardingTool
             }
         }
 
+        public decimal GetSection104OrDefault(Security security, decimal suppliedDefault)
+        {
+            var s104 = this.GetSection104(security);
+            if (s104 == null)
+            {
+                return suppliedDefault;
+            }
+            return (decimal)s104;
+        }
+
         public List<Section104Log> GetSection104History(Security security)
         {
             List<Section104Log> list = new();

@@ -20,9 +20,11 @@ namespace CGTOnboardingTool.UISections
     /// </summary>
     public partial class Dashboard : Page
     {
-        public Dashboard()
-        {
+        public Report report;
+
+        public Dashboard(ref Report report {
             InitializeComponent();
+            this.report = report;
         }
     }
 }

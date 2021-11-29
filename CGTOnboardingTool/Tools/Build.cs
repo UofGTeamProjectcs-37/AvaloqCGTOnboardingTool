@@ -8,20 +8,24 @@ namespace CGTOnboardingTool.Tools
 {
     public class Build
     {
-        //security saved as string until securities class made
-        string security = "apple";
+        
+        string security_name = "Apple";
+        string short_name = "AAPL";
         int no_shares = 18;
-        int pps = 2;
-        float cost = 10;
-        float gross;
+        double pps = 217;
+        double cost = 10;
+        
+        double gross;
 
 
 
-        public float performBuild(string security, int no_shares, int pps, float cost, float gross) {
+        public void performBuild(string name, string short_name, int no_shares, int pps, double cost) {
 
-            float s104p = (no_shares * pps) + cost;
+            Securities.Security new_security = new Securities.Security(name, short_name);  
 
-            return s104p;
+            new_security.Section104 = (no_shares * pps) + cost;
+
+
         }
     }
 }

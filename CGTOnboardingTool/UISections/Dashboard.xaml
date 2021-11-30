@@ -8,25 +8,16 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Dashboard">
 
-    <Canvas>
-        <Canvas.Background>
-            <LinearGradientBrush StartPoint=".5,0" EndPoint=".5,1">
-                <GradientStop Color="#596573" Offset="0"/>
-                <GradientStop Color="#36414C" Offset="1"/>
-            </LinearGradientBrush>
-        </Canvas.Background>
-
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition Height="14*"/>
-            </Grid.RowDefinitions>
-            <Label Content="Dashboard" Grid.RowSpan="2"/>
-            <DataGrid x:Name="reportView" Grid.Row="1" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,0,223,271">
-
-            </DataGrid>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="14*"/>
+        </Grid.RowDefinitions>
+        <Label Content="Dashboard" Grid.RowSpan="2"/>
+        <DataGrid x:Name="reportView" Grid.Row="1" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,0,223,271">
+            
+        </DataGrid>
 
 
-        </Grid>
-    </Canvas>
+    </Grid>
 </Page>

@@ -29,5 +29,7 @@
             <Frame x:Name="mainFrame" Content="Frame" NavigationUIVisibility="Hidden" Grid.Column="1"/>
 
         </Grid>
+
     </Canvas>
 </Window>
+    

@@ -4,6 +4,25 @@
              xmlns:local="clr-namespace:CGTOnboardingTool"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <Style TargetType="{x:Type Window}">
+            <Setter Property="FontFamily"
+            Value="Leelawadee UI Semilight" />
+        </Style>
+        <Style TargetType="{x:Type Page}">
+            <Setter Property="FontFamily"
+            Value="Leelawadee UI Semilight" />
+        </Style>
+        <Style TargetType="{x:Type Label}">
+            <Setter Property="FontFamily"
+            Value="Leelawadee UI Semilight" />
+        </Style>
+        <Style TargetType="{x:Type TextBox}">
+            <Setter Property="FontFamily"
+            Value="Leelawadee UI Semilight" />
+        </Style>
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="FontFamily"
+            Value="Leelawadee UI Semilight" />
+        </Style>
     </Application.Resources>
 </Application>

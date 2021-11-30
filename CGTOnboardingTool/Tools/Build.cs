@@ -10,25 +10,12 @@ namespace CGTOnboardingTool.Tools
 {
     public class Build : CGTFunction
     {
-
-        // Use these instead
         Security security;
         int quantity;
         decimal pps;
         decimal cost;
         decimal gross;
         DateOnly date;
-
-
-
-        // Old stub variables
-        string security_name = "Apple";
-        string short_name = "AAPL";
-        int no_shares = 18;
-        //double pps = 217;
-        //double cost = 10;
-        //double gross;
-
 
         public Build(Security security, int quantity, decimal pps, decimal cost, decimal gross, DateOnly date)
         {
@@ -38,24 +25,50 @@ namespace CGTOnboardingTool.Tools
             this.cost = cost;
             this.gross = gross;
             this.date = date;
-
-            
         }
 
         public override Report.ReportEntry perform(ref Report report)
         {
-            // implement the Build Funciton here using appropriate Report methods (Such as UpdateSection104)
-            // return the report entry given when the Build is added to the report using report.Add()
+            decimal currentS104 = 0;
+            decimal currentHoldings = 0;
+            if (!report.HasSecurity(security))
+            {
+                report.AddSecurity(security);
+            }
+            else
+            {
+                var retrievedS104 = report.GetSection104(security);
+                if (retrievedS104 != null)
+                {
+                    currentS104 = (decimal)retrievedS104;
+                }
+                var retrievedHoldings = report.GetHoldings(security);
+                if (retrievedHoldings != null)
+                {
+                    currentHoldings = (decimal)retrievedHoldings;
+                }
+            }
 
+            var newS104 = currentS104 + ((quantity * pps) + cost);
+            var newHoldings = currentHoldings + quantity;
 
-            return new Report.ReportEntry();
+            Security[] securityAffected = new Security[1] { security };
+            Dictionary<Security, decimal> priceAffected = new Dictionary<Security, decimal>();
+            priceAffected.Add(security, pps);
+            Dictionary<Security, decimal> quantityAffected = new Dictionary<Security, decimal>();
+            quantityAffected.Add(security, quantity);
+            decimal[] costs = new decimal[1] { (decimal)cost };
+            Dictionary<Security, decimal> s104 = new Dictionary<Security, decimal>();
+            s104.Add(security, newS104);
+
+            var associatedEntry = report.Add(this, securityAffected, priceAffected, quantityAffected, costs, s104, date);
+
+            report.UpdateHoldings(associatedEntry, security, newHoldings);
+            report.UpdatePrice(associatedEntry, security, pps);
+            report.UpdateSection104(associatedEntry, security, newS104);
+
+            return associatedEntry;
         }
 
-        public void performBuild(string name, string short_name, int no_shares, int pps, double cost)
-        {
-            //Securities.Security new_security = new Securities.Security(name, short_name);
-
-            //new_security.Section104 = (no_shares * pps) + cost;
-        }
     }
 }

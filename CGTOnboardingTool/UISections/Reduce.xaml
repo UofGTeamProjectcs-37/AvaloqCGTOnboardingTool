@@ -28,12 +28,12 @@
         <TextBox x:Name="TxtReduceQuantity" HorizontalAlignment="Left" Height="26" Margin="158,170,0,0" TextWrapping="Wrap" Text="Enter The Quantity of Shares Here" VerticalAlignment="Top" Width="352" />
         <TextBox x:Name="TxtReduceDate" HorizontalAlignment="Left" Height="26" Margin="158,120,0,0" TextWrapping="Wrap" Text="Enter The Date Here" VerticalAlignment="Top" Width="352" />
         <TextBox x:Name="TxtReduceGross" HorizontalAlignment="Left" Height="26" Margin="158,320,0,0" TextWrapping="Wrap" Text="Enter The Gross Here" VerticalAlignment="Top" Width="352" />
-        <Label x:Name="LblReduceSecurity" Content="Security" HorizontalAlignment="Left" Margin="57,65,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="LblReduceDate" Content="Date" HorizontalAlignment="Left" Margin="67,115,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="LblReduceQuantity" Content="Quantity" HorizontalAlignment="Left" Margin="55,165,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="LblReducePrice" Content="Price" HorizontalAlignment="Left" Margin="67,214,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="LblReduceCost" Content="Cost" HorizontalAlignment="Left" Margin="66,265,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="LblReduceGross" Content="Gross" HorizontalAlignment="Left" Margin="63,315,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="LblReduceSecurity" Content="Security" HorizontalAlignment="Left" Margin="57,65,0,0" VerticalAlignment="Top" Foreground="#FF00CDF9"/>
+        <Label x:Name="LblReduceDate" Content="Date" HorizontalAlignment="Left" Margin="67,115,0,0" VerticalAlignment="Top" Foreground="#FF00CDF9"/>
+        <Label x:Name="LblReduceQuantity" Content="Quantity" HorizontalAlignment="Left" Margin="55,165,0,0" VerticalAlignment="Top" Foreground="#FF00CDF9"/>
+        <Label x:Name="LblReducePrice" Content="Price" HorizontalAlignment="Left" Margin="67,214,0,0" VerticalAlignment="Top" Foreground="#FF00CDF9"/>
+        <Label x:Name="LblReduceCost" Content="Cost" HorizontalAlignment="Left" Margin="66,265,0,0" VerticalAlignment="Top" Foreground="#FF00CDF9"/>
+        <Label x:Name="LblReduceGross" Content="Gross" HorizontalAlignment="Left" Margin="63,315,0,0" VerticalAlignment="Top" Foreground="#FF00CDF9"/>
 
     </Grid>
 </Page>

@@ -25,9 +25,9 @@
         <TextBox x:Name="TxtRebuildNewSecurity" HorizontalAlignment="Left" Height="26" Margin="158,220,0,0" TextWrapping="Wrap" Text="Enter The New Security Here" VerticalAlignment="Top" Width="352" />
         <TextBox x:Name="TxtRebuildOldSecurity" HorizontalAlignment="Left" Height="26" Margin="158,170,0,0" TextWrapping="Wrap" Text="Enter The Old Security Here" VerticalAlignment="Top" Width="352" />
         <TextBox x:Name="LblRebuildNewQuantity1" HorizontalAlignment="Left" Height="26" Margin="158,320,0,0" TextWrapping="Wrap" Text="Enter The New Quantity Here" VerticalAlignment="Top" Width="352" />
-        <Label x:Name="LblRebuildDate" Content="Date" HorizontalAlignment="Left" Margin="57,65,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="LblRebuildOldSecurity" Content="Old Security" HorizontalAlignment="Left" Margin="55,165,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="LblRebuildNewSecurity" Content="New Security" HorizontalAlignment="Left" Margin="67,214,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="LblRebuildDate" Content="Date" HorizontalAlignment="Left" Margin="57,65,0,0" VerticalAlignment="Top" Foreground="#FF00CDF9"/>
+        <Label x:Name="LblRebuildOldSecurity" Content="Old Security" HorizontalAlignment="Left" Margin="55,165,0,0" VerticalAlignment="Top" Foreground="#FF00CDF9"/>
+        <Label x:Name="LblRebuildNewSecurity" Content="New Security" HorizontalAlignment="Left" Margin="67,214,0,0" VerticalAlignment="Top" Foreground="#FF00CDF9"/>
         <Label x:Name="LblRebuildNewQuantity" Content="New Quantity" HorizontalAlignment="Left" Margin="63,315,0,0" VerticalAlignment="Top"/>
 
     </Grid>

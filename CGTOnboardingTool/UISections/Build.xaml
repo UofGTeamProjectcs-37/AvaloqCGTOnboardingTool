@@ -37,12 +37,12 @@
         <TextBox x:Name="TxtBuildGross" HorizontalAlignment="Left" Height="26" Margin="158,320,0,0" TextWrapping="Wrap" Text="Enter The Gross Here" VerticalAlignment="Top" Width="352" />
 
 
-        <Label x:Name="LblBuildSecurity" Content="Security" HorizontalAlignment="Left" Margin="57,65,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="LblBuildDate" Content="Date" HorizontalAlignment="Left" Margin="67,115,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="LblBuildQuantity" Content="Quantity" HorizontalAlignment="Left" Margin="55,165,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="LblBuildPrice" Content="Price" HorizontalAlignment="Left" Margin="67,214,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="LblBuildCost" Content="Cost" HorizontalAlignment="Left" Margin="66,265,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="LblBuildGross" Content="Gross" HorizontalAlignment="Left" Margin="63,315,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="LblBuildSecurity" Content="Security" HorizontalAlignment="Left" Margin="57,65,0,0" VerticalAlignment="Top" Foreground="#FF00CDF9"/>
+        <Label x:Name="LblBuildDate" Content="Date" HorizontalAlignment="Left" Margin="67,115,0,0" VerticalAlignment="Top" Foreground="#FF00CDF9"/>
+        <Label x:Name="LblBuildQuantity" Content="Quantity" HorizontalAlignment="Left" Margin="55,165,0,0" VerticalAlignment="Top" Foreground="#FF00CDF9"/>
+        <Label x:Name="LblBuildPrice" Content="Price" HorizontalAlignment="Left" Margin="67,214,0,0" VerticalAlignment="Top" Foreground="#FF00CDF9"/>
+        <Label x:Name="LblBuildCost" Content="Cost" HorizontalAlignment="Left" Margin="66,265,0,0" VerticalAlignment="Top" Foreground="#FF00CDF9"/>
+        <Label x:Name="LblBuildGross" Content="Gross" HorizontalAlignment="Left" Margin="63,315,0,0" VerticalAlignment="Top" Foreground="#FF00CDF9"/>
 
     </Grid>
 </Page>

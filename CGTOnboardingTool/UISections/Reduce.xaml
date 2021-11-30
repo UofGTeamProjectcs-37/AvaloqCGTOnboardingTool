@@ -5,35 +5,36 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:CGTOnboardingTool.UISections"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="720" d:DesignWidth="1024"
       Title="Reduce">
 
     <Grid x:Name="ReduceGrid">
-        <Label x:Name="LblReduceHeader" Content="Reduce" HorizontalAlignment="Left" Height="39" Margin="689,10,0,0" VerticalAlignment="Top" Width="101" FontSize="22" Foreground="#00CDF9"/>
-        <Button x:Name="BtnReduce" Content="Reduce" HorizontalAlignment="Left" Margin="258,379,0,0" VerticalAlignment="Top" Width="90" Height="50" FontSize="22" BorderBrush="{x:Null}" Foreground="#00CDF9">
+        <Label x:Name="LblReduceHeader" Content="Reduce" HorizontalAlignment="Left" Margin="887,10,0,0" VerticalAlignment="Top" Width="158" Height="86" FontSize="36" Foreground="#00CDF9"/>
+        <Button x:Name="BtnReduce" Content="Reduce" HorizontalAlignment="Left" Margin="263,548,0,0" VerticalAlignment="Top" Width="158" Height="86" FontSize="36" BorderBrush="{x:Null}" Foreground="#00CDF9">
             <Button.Background>
                 <SolidColorBrush Opacity="0"/>
             </Button.Background>
         </Button>
 
-        <Button x:Name="BtnReduceCancel" Content="Cancel" HorizontalAlignment="Left" Margin="510,378,0,0" VerticalAlignment="Top" Click="BtnReduceCancel_Click" Width="90" Height="50" FontSize="22" BorderBrush="{x:Null}" Foreground="#00CDF9">
+        <Button x:Name="BtnReduceCancel" Content="Cancel" HorizontalAlignment="Left" Margin="569,548,0,0" VerticalAlignment="Top" Click="BtnReduceCancel_Click" Width="158" Height="86" FontSize="36" BorderBrush="{x:Null}" Foreground="#00CDF9">
             <Button.Background>
                 <SolidColorBrush Opacity="0"/>
             </Button.Background>
         </Button>
-        
-        <TextBox x:Name="TxtReduceSecurity" HorizontalAlignment="Left" Height="26" Margin="158,70,0,0" TextWrapping="Wrap" Text="Enter The New Security Here" VerticalAlignment="Top" Width="352"/>
-        <TextBox x:Name="TxtReduceCost" HorizontalAlignment="Left" Height="26" Margin="158,270,0,0" TextWrapping="Wrap" Text="Enter The Allowable Costs Here" VerticalAlignment="Top" Width="352"/>
-        <TextBox x:Name="TxtReducePrice" HorizontalAlignment="Left" Height="26" Margin="158,220,0,0" TextWrapping="Wrap" Text="Enter The Price per Quantity Here" VerticalAlignment="Top" Width="352" />
-        <TextBox x:Name="TxtReduceQuantity" HorizontalAlignment="Left" Height="26" Margin="158,170,0,0" TextWrapping="Wrap" Text="Enter The Quantity of Shares Here" VerticalAlignment="Top" Width="352" />
-        <TextBox x:Name="TxtReduceDate" HorizontalAlignment="Left" Height="26" Margin="158,120,0,0" TextWrapping="Wrap" Text="Enter The Date Here" VerticalAlignment="Top" Width="352" />
-        <TextBox x:Name="TxtReduceGross" HorizontalAlignment="Left" Height="26" Margin="158,320,0,0" TextWrapping="Wrap" Text="Enter The Gross Here" VerticalAlignment="Top" Width="352" />
-        <Label x:Name="LblReduceSecurity" Content="Security" HorizontalAlignment="Left" Margin="57,65,0,0" VerticalAlignment="Top" Foreground="#FF00CDF9"/>
-        <Label x:Name="LblReduceDate" Content="Date" HorizontalAlignment="Left" Margin="67,115,0,0" VerticalAlignment="Top" Foreground="#FF00CDF9"/>
-        <Label x:Name="LblReduceQuantity" Content="Quantity" HorizontalAlignment="Left" Margin="55,165,0,0" VerticalAlignment="Top" Foreground="#FF00CDF9"/>
-        <Label x:Name="LblReducePrice" Content="Price" HorizontalAlignment="Left" Margin="67,214,0,0" VerticalAlignment="Top" Foreground="#FF00CDF9"/>
-        <Label x:Name="LblReduceCost" Content="Cost" HorizontalAlignment="Left" Margin="66,265,0,0" VerticalAlignment="Top" Foreground="#FF00CDF9"/>
-        <Label x:Name="LblReduceGross" Content="Gross" HorizontalAlignment="Left" Margin="63,315,0,0" VerticalAlignment="Top" Foreground="#FF00CDF9"/>
+
+        <TextBox x:Name="TxtReduceSecurity" HorizontalAlignment="Left" Height="34" Margin="190,89,0,0" TextWrapping="Wrap" Text="Enter The New Security Here" VerticalAlignment="Top" Width="462"/>
+        <TextBox x:Name="TxtReduceCost" HorizontalAlignment="Left" Height="34" Margin="190,351,0,0" TextWrapping="Wrap" Text="Enter The Allowable Costs Here" VerticalAlignment="Top" Width="462"/>
+        <TextBox x:Name="TxtReducePrice" HorizontalAlignment="Left" Height="34" Margin="190,286,0,0" TextWrapping="Wrap" Text="Enter The Price per Quantity Here" VerticalAlignment="Top" Width="462" />
+        <TextBox x:Name="TxtReduceQuantity" HorizontalAlignment="Left" Height="34" Margin="190,220,0,0" TextWrapping="Wrap" Text="Enter The Quantity of Shares Here" VerticalAlignment="Top" Width="462" />
+        <TextBox x:Name="TxtReduceDate" HorizontalAlignment="Left" Height="34" Margin="190,154,0,0" TextWrapping="Wrap" Text="Enter The Date Here" VerticalAlignment="Top" Width="462" />
+        <TextBox x:Name="TxtReduceGross" HorizontalAlignment="Left" Height="34" Margin="190,417,0,0" TextWrapping="Wrap" Text="Enter The Gross Here" VerticalAlignment="Top" Width="462" />
+
+        <Label x:Name="LblReduceSecurity" Content="Security" HorizontalAlignment="Left" Margin="58,82,0,0" VerticalAlignment="Top" Foreground="#FF00CDF9" Height="41" Width="85" FontSize="22"/>
+        <Label x:Name="LblReduceDate" Content="Date" HorizontalAlignment="Left" Margin="71,148,0,0" VerticalAlignment="Top" Foreground="#FF00CDF9" Height="34" Width="55" FontSize="22"/>
+        <Label x:Name="LblReduceQuantity" Content="Quantity" HorizontalAlignment="Left" Margin="55,213,0,0" VerticalAlignment="Top" Foreground="#FF00CDF9" Height="41" Width="107" FontSize="22"/>
+        <Label x:Name="LblReducePrice" Content="Price" HorizontalAlignment="Left" Margin="71,278,0,0" VerticalAlignment="Top" Foreground="#FF00CDF9" Height="34" Width="72" FontSize="22"/>
+        <Label x:Name="LblReduceCost" Content="Cost" HorizontalAlignment="Left" Margin="69,345,0,0" VerticalAlignment="Top" Foreground="#FF00CDF9" Height="34" Width="57" FontSize="22"/>
+        <Label x:Name="LblReduceGross" Content="Gross" HorizontalAlignment="Left" Margin="66,410,0,0" VerticalAlignment="Top" Foreground="#FF00CDF9" Height="34" Width="77" FontSize="22"/>
 
     </Grid>
 </Page>

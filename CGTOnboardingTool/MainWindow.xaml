@@ -21,7 +21,7 @@
                 <ColumnDefinition Width="1024"/>
             </Grid.ColumnDefinitions>
             <StackPanel Grid.Column="0">
-                <Label Content="CGT Onboarding Tool"/>
+                <Label Content="CGT Onboarding Tool" Foreground="#00CDF9" Height="50" FontSize="25"/>
                 <Button x:Name="btnBuild" Content="Build" Click="btnBuild_Click" Height="50" FontSize="35" BorderBrush="{x:Null}" Foreground="#00CDF9">
                     <Button.Background>
                         <SolidColorBrush Opacity="0"/>
@@ -38,9 +38,10 @@
                     </Button.Background>
                 </Button>
             </StackPanel>
-            <Frame x:Name="mainFrame" Content="Frame" NavigationUIVisibility="Hidden" Grid.Column="1"/>
+            <Frame x:Name="mainFrame" Content="Frame" NavigationUIVisibility="Hidden" Grid.Column="1" Margin="0,0,0,-528"/>
 
         </Grid>
+        <Border BorderBrush="#36414C" BorderThickness="1" Height="704" Canvas.Left="254" Width="1"/>
 
     </Canvas>
 </Window>

@@ -13,10 +13,15 @@
             <RowDefinition/>
             <RowDefinition Height="14*"/>
         </Grid.RowDefinitions>
-        <Label Content="Dashboard" Grid.RowSpan="2"/>
-        <DataGrid x:Name="reportView" Grid.Row="1" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,0,223,271">
-            
-        </DataGrid>
+        <Label Grid.Row="1">
+            <ListView x:Name="DashboardReportView" Height="343" Width="790">
+                <ListView.View>
+                    <GridView x:Name="DashboardReportViewGrid">
+                        <GridViewColumn/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </Label>
 
 
     </Grid>

@@ -25,7 +25,7 @@ namespace CGTOnboardingTool.UISections
 
         private void BtnBuildComplete_Click(object sender, RoutedEventArgs e)
         {
-            
+
         }
 
     }

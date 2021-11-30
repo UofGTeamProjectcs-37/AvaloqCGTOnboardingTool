@@ -22,9 +22,21 @@
             </Grid.ColumnDefinitions>
             <StackPanel Grid.Column="0">
                 <Label Content="CGT Onboarding Tool"/>
-                <Button x:Name="btnBuild" Content="Build" Click="btnBuild_Click"/>
-                <Button x:Name="btnReduce" Content="Reduce" Click="btnReduce_Click"/>
-                <Button x:Name="btnRebuild" Content="Rebuild" Click="btnRebuild_Click"/>
+                <Button x:Name="btnBuild" Content="Build" Click="btnBuild_Click" Height="50" FontSize="35" BorderBrush="{x:Null}" Foreground="#00CDF9">
+                    <Button.Background>
+                        <SolidColorBrush Opacity="0"/>
+                    </Button.Background>
+                </Button>
+                <Button x:Name="btnReduce" Content="Reduce" Click="btnReduce_Click" Height="50" FontSize="35" BorderBrush="{x:Null}" Foreground="#00CDF9">
+                    <Button.Background>
+                        <SolidColorBrush Opacity="0"/>
+                    </Button.Background>
+                </Button>
+                <Button x:Name="btnRebuild" Content="Rebuild" Click="btnRebuild_Click" Height="50" FontSize="35" BorderBrush="{x:Null}" Foreground="#00CDF9">
+                    <Button.Background>
+                        <SolidColorBrush Opacity="0"/>
+                    </Button.Background>
+                </Button>
             </StackPanel>
             <Frame x:Name="mainFrame" Content="Frame" NavigationUIVisibility="Hidden" Grid.Column="1"/>
 

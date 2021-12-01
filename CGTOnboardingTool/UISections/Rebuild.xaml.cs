@@ -55,11 +55,6 @@ namespace CGTOnboardingTool.UISections
             return new DateOnly(year, month, day);
         }
 
-        private void BtnRebuildOk_Click(object sender, RoutedEventArgs e)
-        {
-            
-        }
-
         private void BtnRebuildCancel_Click(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Navigate(new Dashboard(ref report));
@@ -82,12 +77,11 @@ namespace CGTOnboardingTool.UISections
 
         private void BtnRebuild_Click(object sender, RoutedEventArgs e)
         {
-
             var userInputDate = ParseDate(TxtRebuildDate.Text);
 
             var userInputOldSecurity = DropRebuildOldSecurity.SelectedItem as Security;
             var userInputNewSecurity = DropRebuildNewSecurity.SelectedItem as Security;
-            
+
             var userInputOldSecuirtyReduce = Convert.ToDecimal(TxtRebuildOldQuantityReduce.Text);
             var userInputNewSecuirtyQuantity = Convert.ToDecimal(TxtRebuildNewQuantity.Text);
 

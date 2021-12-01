@@ -23,7 +23,6 @@ namespace CGTOnboardingTool.UISections
             return new DateOnly(year, month, day);
         }
 
-
         public Build(ref Report report)
         {
             InitializeComponent();
@@ -53,8 +52,6 @@ namespace CGTOnboardingTool.UISections
 
         private void BtnBuildComplete_Click(object sender, RoutedEventArgs e)
         {
-
-            
             var userInputSecurity = DropBuildSecurities.SelectedItem as Security;
             var userInputDate = ParseDate(TxtBuildDate.Text);
             var userInputQuantity = Convert.ToDecimal(TxtBuildQuantity.Text);
@@ -67,6 +64,5 @@ namespace CGTOnboardingTool.UISections
 
             this.NavigationService.Navigate(new Dashboard(ref report));
         }
-
     }
 }

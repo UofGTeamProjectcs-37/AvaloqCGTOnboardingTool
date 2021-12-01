@@ -21,8 +21,6 @@
                 <SolidColorBrush Opacity="0"/>
             </Button.Background>
         </Button>
-
-        <TextBox x:Name="TxtReduceSecurity" HorizontalAlignment="Left" Height="34" Margin="190,89,0,0" TextWrapping="Wrap" Text="Enter The New Security Here" VerticalAlignment="Top" Width="462"/>
         <TextBox x:Name="TxtReduceCost" HorizontalAlignment="Left" Height="34" Margin="190,351,0,0" TextWrapping="Wrap" Text="Enter The Allowable Costs Here" VerticalAlignment="Top" Width="462"/>
         <TextBox x:Name="TxtReducePrice" HorizontalAlignment="Left" Height="34" Margin="190,286,0,0" TextWrapping="Wrap" Text="Enter The Price per Quantity Here" VerticalAlignment="Top" Width="462" />
         <TextBox x:Name="TxtReduceQuantity" HorizontalAlignment="Left" Height="34" Margin="190,220,0,0" TextWrapping="Wrap" Text="Enter The Quantity of Shares Here" VerticalAlignment="Top" Width="462" />
@@ -35,6 +33,7 @@
         <Label x:Name="LblReducePrice" Content="Price" HorizontalAlignment="Left" Margin="71,278,0,0" VerticalAlignment="Top" Foreground="#FF00CDF9" Height="34" Width="72" FontSize="22"/>
         <Label x:Name="LblReduceCost" Content="Cost" HorizontalAlignment="Left" Margin="69,345,0,0" VerticalAlignment="Top" Foreground="#FF00CDF9" Height="34" Width="57" FontSize="22"/>
         <Label x:Name="LblReduceGross" Content="Gross" HorizontalAlignment="Left" Margin="66,410,0,0" VerticalAlignment="Top" Foreground="#FF00CDF9" Height="34" Width="77" FontSize="22"/>
+        <ComboBox x:Name="DropReduceSecurities" HorizontalAlignment="Left" Margin="190,92,0,0" VerticalAlignment="Top" Width="120"/>
 
     </Grid>
 </Page>

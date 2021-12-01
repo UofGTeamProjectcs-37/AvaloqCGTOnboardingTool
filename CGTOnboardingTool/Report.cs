@@ -59,7 +59,7 @@ namespace CGTOnboardingTool
                 s104.Append("{");
                 foreach (var e in Section104sAfter)
                 {
-                    s104.Append(String.Format("{0} : {1},", e.Key.ShortName, e.Value));
+                    s104.Append(String.Format("{0} : {1},", e.Key.ShortName, e.Value.ToString("F")));
                 }
                 s104.Remove(s104.Length - 1, 1);
                 s104.Append("}");

@@ -26,6 +26,8 @@ namespace CGTOnboardingTool.UISections
         {
             InitializeComponent();
             this.report = report;
+
+            DropReduceSecurities.ItemsSource = this.report.GetSecurities();
         }
 
         private void BtnReduceOk_Click(object sender, RoutedEventArgs e)

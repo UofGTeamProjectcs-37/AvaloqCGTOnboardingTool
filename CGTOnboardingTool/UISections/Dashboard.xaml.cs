@@ -29,21 +29,34 @@ namespace CGTOnboardingTool.UISections
             this.Report = report;
             
             Security security = new Security("GlaxoSmithKlien","GSK");
-            int qty = 1000;
+            int qty = 500;
             decimal price = (decimal)16.35;
             decimal cost = (decimal)23.80;
             DateOnly date = new DateOnly(2021, 11, 30);
 
-            Tools.Build b = new Tools.Build(security,qty,price,cost,0,date);
+            Tools.Build b = new Tools.Build(security,qty,price,cost,date);
             b.perform(ref report);
 
-           
             int qty2 = 500;
             decimal price2 = (decimal)1.85;
             decimal cost2 = (decimal)5;
 
-            Tools.Build b2 = new Tools.Build(security, qty2,price2,cost2,0,date);
+            Tools.Build b2 = new Tools.Build(security, qty2,price2,cost2,date);
             b2.perform(ref report);
+
+            int qty3 = 500;
+            decimal price3 = (decimal)18.24;
+            decimal cost3 = (decimal)24.50;
+           
+            Tools.Reduce r = new Tools.Reduce(security,qty3,price3,cost3,date);
+            r.perform(ref report);
+
+            Security security2 = new Security("Tesla", "TSLA");
+            int rQ = 250;
+            int bQ = 50;
+
+            Tools.Rebuild rb = new Tools.Rebuild(security,rQ,security2,bQ,date);
+            rb.perform(ref report);
 
             this.DashboardReportView.ItemsSource = Report.Rows();
            

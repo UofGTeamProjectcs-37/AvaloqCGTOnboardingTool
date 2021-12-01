@@ -17,5 +17,22 @@ namespace CGTOnboardingTool.Securities
             this.Name = Name;
             this.ShortName = ShortName;
         }
+
+        public override string ToString()
+        {
+            return String.Format("\"{0}\" - {1}", this.ShortName, this.Name);
+        }
+
+        public override bool Equals(object? obj)
+        {
+            return obj is Security security &&
+                   Name == security.Name &&
+                   ShortName == security.ShortName;
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Name, ShortName);
+        }
     }
 }

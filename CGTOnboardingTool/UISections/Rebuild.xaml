@@ -21,7 +21,7 @@
                 <SolidColorBrush Opacity="0"/>
             </Button.Background>
         </Button>
-        <TextBox x:Name="TxtRebuildDate" HorizontalAlignment="Left" Height="34" Margin="342,151,0,0" TextWrapping="Wrap" Text="Enter The Date Here" VerticalAlignment="Top" Width="352"/>
+        <TextBox x:Name="TxtRebuildDate" HorizontalAlignment="Left" Height="34" Margin="342,151,0,0" TextWrapping="Wrap" Text="Enter The Date Here (yy/mm/dd)" VerticalAlignment="Top" Width="352"/>
         <TextBox x:Name="TxtRebuildNewQuantity" HorizontalAlignment="Left" Height="34" Margin="342,420,0,0" TextWrapping="Wrap" Text="Enter The New Quantity Here" VerticalAlignment="Top" Width="352" />
         <Label x:Name="LblRebuildDate" Content="Date" HorizontalAlignment="Left" Margin="32,148,0,0" VerticalAlignment="Top" Foreground="#FF00CDF9" Height="40" Width="86" FontSize="22"/>
         <Label x:Name="LblRebuildOldSecurity" Content="Existing Security" HorizontalAlignment="Left" Margin="32,213,0,0" VerticalAlignment="Top" Foreground="#FF00CDF9" Height="41" Width="171" FontSize="22"/>

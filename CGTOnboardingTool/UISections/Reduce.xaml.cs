@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CGTOnboardingTool.Securities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -40,14 +41,23 @@ namespace CGTOnboardingTool.UISections
             return new DateOnly(year, month, day);
         }
 
-
-        private void BtnReduceOk_Click(object sender, RoutedEventArgs e)
+        private void BtnReduceCancel_Click(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Navigate(new Dashboard(ref report));
         }
 
-        private void BtnReduceCancel_Click(object sender, RoutedEventArgs e)
+        private void BtnReduce_Click(object sender, RoutedEventArgs e)
         {
+            var userInputSecurity = DropReduceSecurities.SelectedItem as Security;
+            var userInputDate = ParseDate(TxtReduceDate.Text);
+            var userInputQuantity = Convert.ToDecimal(TxtReduceQuantity.Text);
+            var userInputPrice = Convert.ToDecimal(TxtReducePrice.Text);
+            var userInputCost = Convert.ToDecimal(TxtReduceCost.Text);
+
+            Tools.Reduce r = new Tools.Reduce(security: userInputSecurity, quantity: userInputQuantity, pps: userInputPrice, cost: userInputCost, date: userInputDate);
+
+            r.perform(ref report);
+
             this.NavigationService.Navigate(new Dashboard(ref report));
         }
     }

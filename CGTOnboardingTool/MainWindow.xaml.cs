@@ -25,6 +25,7 @@ namespace CGTOnboardingTool
         public MainWindow()
         {
             InitializeComponent();
+            Style = (Style)FindResource(typeof(Window));
             report = new Report();
             mainFrame.Navigate(new UISections.Dashboard(ref report));
         }

@@ -13,6 +13,16 @@ namespace CGTOnboardingTool.UISections
     {
         public Report report;
 
+        private static DateOnly ParseDate(string dateStr)
+        {
+            var yymmdd = dateStr.Split('/');
+            int year = int.Parse(yymmdd[0]);
+            int month = int.Parse(yymmdd[1]);
+            int day = int.Parse(yymmdd[2]);
+
+            return new DateOnly(year, month, day);
+        }
+
         public Build(ref Report report)
         {
             InitializeComponent();
@@ -42,21 +52,17 @@ namespace CGTOnboardingTool.UISections
 
         private void BtnBuildComplete_Click(object sender, RoutedEventArgs e)
         {
-            var userInputDate = TxtBuildDate.Text;
-            var userInputQuantity = TxtBuildQuantity.Text;
-            var userInputPrice = TxtBuildPrice.Text;
-            var userInputCost = TxtBuildCost.Text;
+            var userInputSecurity = DropBuildSecurities.SelectedItem as Security;
+            var userInputDate = ParseDate(TxtBuildDate.Text);
+            var userInputQuantity = Convert.ToDecimal(TxtBuildQuantity.Text);
+            var userInputPrice = Convert.ToDecimal(TxtBuildPrice.Text);
+            var userInputCost = Convert.ToDecimal(TxtBuildCost.Text);
 
-            //Tools.Build b = new Tools.Build(security: ____ , 
-            //    quantity: (decimal)userInputQuantity, 
-            //    pps: (decimal)userInputPrice, 
-            //    cost: (decimal)userInputCost),
-            //    date: (DateOnly) userInputDate);
+            Tools.Build b = new Tools.Build(security: userInputSecurity, quantity: userInputQuantity, pps: userInputPrice, cost: userInputCost, date: userInputDate);
 
-            //b.perform(ref report);
+            b.perform(ref report);
 
             this.NavigationService.Navigate(new Dashboard(ref report));
         }
-
     }
 }

@@ -11,7 +11,7 @@
 
     <Grid x:Name="RebuildGrid">
         <Label x:Name="LblRebuildHeader" Content="Rebuild" HorizontalAlignment="Left" Margin="887,10,0,0" VerticalAlignment="Top" Width="158" Height="86" FontSize="36" Foreground="#00CDF9"/>
-        <Button x:Name="BtnRebuild" Content="Rebuild" HorizontalAlignment="Left" Margin="263,548,0,0" VerticalAlignment="Top" Width="158" Height="86" FontSize="36" BorderBrush="{x:Null}" Foreground="#00CDF9">
+        <Button x:Name="BtnRebuild" Content="Rebuild" HorizontalAlignment="Left" Margin="263,548,0,0" VerticalAlignment="Top" Width="158" Height="86" FontSize="36" BorderBrush="{x:Null}" Foreground="#00CDF9" Click="BtnRebuild_Click">
             <Button.Background>
                 <SolidColorBrush Opacity="0"/>
             </Button.Background>
@@ -21,14 +21,16 @@
                 <SolidColorBrush Opacity="0"/>
             </Button.Background>
         </Button>
-        <TextBox x:Name="TxtRebuildDate" HorizontalAlignment="Left" Height="34" Margin="190,89,0,0" TextWrapping="Wrap" Text="Enter The Date Here" VerticalAlignment="Top" Width="352"/>
-        <TextBox x:Name="LblRebuildNewQuantity1" HorizontalAlignment="Left" Height="34" Margin="190,417,0,0" TextWrapping="Wrap" Text="Enter The New Quantity Here" VerticalAlignment="Top" Width="352" />
-        <Label x:Name="LblRebuildDate" Content="Date" HorizontalAlignment="Left" Margin="58,82,0,0" VerticalAlignment="Top" Foreground="#FF00CDF9" Height="41" Width="85" FontSize="22"/>
-        <Label x:Name="LblRebuildOldSecurity" Content="Old Security" HorizontalAlignment="Left" Margin="32,213,0,0" VerticalAlignment="Top" Foreground="#FF00CDF9" Height="41" Width="136" FontSize="22"/>
+        <TextBox x:Name="TxtRebuildDate" HorizontalAlignment="Left" Height="34" Margin="342,151,0,0" TextWrapping="Wrap" Text="Enter The Date Here" VerticalAlignment="Top" Width="352"/>
+        <TextBox x:Name="TxtRebuildNewQuantity" HorizontalAlignment="Left" Height="34" Margin="342,420,0,0" TextWrapping="Wrap" Text="Enter The New Quantity Here" VerticalAlignment="Top" Width="352" />
+        <Label x:Name="LblRebuildDate" Content="Date" HorizontalAlignment="Left" Margin="32,148,0,0" VerticalAlignment="Top" Foreground="#FF00CDF9" Height="40" Width="86" FontSize="22"/>
+        <Label x:Name="LblRebuildOldSecurity" Content="Existing Security" HorizontalAlignment="Left" Margin="32,213,0,0" VerticalAlignment="Top" Foreground="#FF00CDF9" Height="41" Width="171" FontSize="22"/>
         <Label x:Name="LblRebuildNewSecurity" Content="New Security" HorizontalAlignment="Left" Margin="30,282,0,0" VerticalAlignment="Top" Foreground="#FF00CDF9" Height="42" Width="140" FontSize="22"/>
-        <Label x:Name="LblRebuildNewQuantity" Content="New Quantity" HorizontalAlignment="Left" Margin="24,414,0,0" VerticalAlignment="Top" Foreground="#FF00CDF9" Height="40" Width="144" FontSize="22"/>
-        <ComboBox x:Name="DropRebuildOldSecurity" HorizontalAlignment="Left" Margin="190,223,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="DropRebuildOldSecurity_SelectionChanged"/>
-        <ComboBox x:Name="DropRebuildNewSecurity" HorizontalAlignment="Left" Margin="190,292,0,0" VerticalAlignment="Top" Width="120"/>
+        <Label x:Name="LblRebuildNewQuantity" Content="New Security Quantity" HorizontalAlignment="Left" Margin="32,414,0,0" VerticalAlignment="Top" Foreground="#FF00CDF9" Height="40" Width="226" FontSize="22"/>
+        <ComboBox x:Name="DropRebuildOldSecurity" HorizontalAlignment="Left" Margin="342,226,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="DropRebuildOldSecurity_SelectionChanged"/>
+        <ComboBox x:Name="DropRebuildNewSecurity" HorizontalAlignment="Left" Margin="342,292,0,0" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="TxtRebuildOldQuantityReduce" HorizontalAlignment="Left" Height="34" Margin="342,355,0,0" TextWrapping="Wrap" Text="Enter The New Quantity Here" VerticalAlignment="Top" Width="352" />
+        <Label x:Name="LblRebuildOldQuantityReduce" Content="Reduce Existing Security By" HorizontalAlignment="Left" Margin="32,352,0,0" VerticalAlignment="Top" Foreground="#FF00CDF9" Height="40" Width="277" FontSize="22"/>
 
     </Grid>
 </Page>

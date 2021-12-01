@@ -10,7 +10,7 @@
 
     <Grid x:Name="ReduceGrid">
         <Label x:Name="LblReduceHeader" Content="Reduce" HorizontalAlignment="Left" Margin="887,10,0,0" VerticalAlignment="Top" Width="158" Height="86" FontSize="36" Foreground="#00CDF9"/>
-        <Button x:Name="BtnReduce" Content="Reduce" HorizontalAlignment="Left" Margin="263,548,0,0" VerticalAlignment="Top" Width="158" Height="86" FontSize="36" BorderBrush="{x:Null}" Foreground="#00CDF9">
+        <Button x:Name="BtnReduce" Content="Reduce" HorizontalAlignment="Left" Margin="263,548,0,0" VerticalAlignment="Top" Width="158" Height="86" FontSize="36" BorderBrush="{x:Null}" Foreground="#00CDF9" Click="BtnReduce_Click">
             <Button.Background>
                 <SolidColorBrush Opacity="0"/>
             </Button.Background>

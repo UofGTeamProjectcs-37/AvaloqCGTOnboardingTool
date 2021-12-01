@@ -30,7 +30,7 @@
             <TextBox x:Name="TxtBuildQuantity" HorizontalAlignment="Left" Height="34" Margin="190,220,0,0" TextWrapping="Wrap" Text="Enter The Quantity of Shares Here" VerticalAlignment="Top" Width="462" />
 
 
-            <TextBox x:Name="TxtBuildDate" HorizontalAlignment="Left" Height="35" Margin="190,154,0,0" TextWrapping="Wrap" Text="Enter The Date Here" VerticalAlignment="Top" Width="462" />
+            <TextBox x:Name="TxtBuildDate" HorizontalAlignment="Left" Height="35" Margin="190,154,0,0" TextWrapping="Wrap" Text="Enter The Date Here (yy/mm/dd)" VerticalAlignment="Top" Width="462" />
 
 
             <TextBox x:Name="TxtBuildGross" HorizontalAlignment="Left" Height="34" Margin="190,417,0,0" TextWrapping="Wrap" Text="Enter The Gross Here" VerticalAlignment="Top" Width="462" />

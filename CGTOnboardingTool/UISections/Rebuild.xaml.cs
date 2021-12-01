@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CGTOnboardingTool.Securities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,10 +22,27 @@ namespace CGTOnboardingTool.UISections
     public partial class Rebuild : Page
     {
         public Report report;
+        private List<Security> securities;
+
         public Rebuild(ref Report report)
         {
             InitializeComponent();
             this.report = report;
+
+            Security gsk = new Security("GlaxoSmithKline", "GSK");
+            Security fgp = new Security("FGP Systems", "FGP");
+            Security ibe = new Security("Iberdrola", "IBE");
+            Security tsla = new Security("Tesla", "TSLA");
+            Security aapl = new Security("Apple", "AAPL");
+
+            securities = new List<Security>();
+            securities.Add(gsk);
+            securities.Add(fgp);
+            securities.Add(ibe);
+            securities.Add(tsla);
+            securities.Add(aapl);
+
+            DropRebuildOldSecurity.ItemsSource = this.report.GetSecurities();
         }
 
         private void BtnRebuildOk_Click(object sender, RoutedEventArgs e)
@@ -35,6 +53,21 @@ namespace CGTOnboardingTool.UISections
         private void BtnRebuildCancel_Click(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Navigate(new Dashboard(ref report));
+        }
+
+        private void DropRebuildOldSecurity_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            DropRebuildNewSecurity.Items.Clear();
+
+            var selected = DropRebuildOldSecurity.SelectedItem;
+
+            foreach (var sec in securities)
+            {
+                if (!sec.Equals(selected))
+                {
+                    DropRebuildNewSecurity.Items.Add(sec);
+                }
+            }
         }
     }
 }

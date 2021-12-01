@@ -24,7 +24,7 @@
         <TextBox x:Name="TxtReduceCost" HorizontalAlignment="Left" Height="34" Margin="190,351,0,0" TextWrapping="Wrap" Text="Enter The Allowable Costs Here" VerticalAlignment="Top" Width="462"/>
         <TextBox x:Name="TxtReducePrice" HorizontalAlignment="Left" Height="34" Margin="190,286,0,0" TextWrapping="Wrap" Text="Enter The Price per Quantity Here" VerticalAlignment="Top" Width="462" />
         <TextBox x:Name="TxtReduceQuantity" HorizontalAlignment="Left" Height="34" Margin="190,220,0,0" TextWrapping="Wrap" Text="Enter The Quantity of Shares Here" VerticalAlignment="Top" Width="462" />
-        <TextBox x:Name="TxtReduceDate" HorizontalAlignment="Left" Height="34" Margin="190,154,0,0" TextWrapping="Wrap" Text="Enter The Date Here" VerticalAlignment="Top" Width="462" />
+        <TextBox x:Name="TxtReduceDate" HorizontalAlignment="Left" Height="34" Margin="190,154,0,0" TextWrapping="Wrap" Text="Enter The Date Here (yy/mm/dd)" VerticalAlignment="Top" Width="462" />
         <TextBox x:Name="TxtReduceGross" HorizontalAlignment="Left" Height="34" Margin="190,417,0,0" TextWrapping="Wrap" Text="Enter The Gross Here" VerticalAlignment="Top" Width="462" />
 
         <Label x:Name="LblReduceSecurity" Content="Security" HorizontalAlignment="Left" Margin="58,82,0,0" VerticalAlignment="Top" Foreground="#FF00CDF9" Height="41" Width="85" FontSize="22"/>

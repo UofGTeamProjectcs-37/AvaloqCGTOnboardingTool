@@ -17,9 +17,63 @@ namespace CGTOnboardingTool
             public CGTFunction FunctionPerformed { get; init; }
             public Security[] SecuritiesAffected { get; init; }
             public Dictionary<Security, decimal> PricesAffected { get; init; }
-            public Dictionary<Security, int> QuantitiesAffected { get; init; }
+            public Dictionary<Security, decimal> QuantitiesAffected { get; init; }
             public decimal[] AssociatedCosts { get; init; }
             public Dictionary<Security, decimal> Section104sAfter { get; init; }
+
+            public override string ToString()
+            {
+                var sec = new StringBuilder();
+                foreach(var e in SecuritiesAffected)
+                {
+                    sec.Append(e.ShortName + ",");
+                }
+                sec.Remove(sec.Length - 1, 1);
+
+                var p = new StringBuilder();
+                p.Append("{");
+                foreach(var e in PricesAffected)
+                {
+                    p.Append(String.Format("{0} : {1},",e.Key.ShortName,e.Value));
+                }
+                p.Remove(p.Length - 1, 1);
+                p.Append("}");
+
+                var q = new StringBuilder();
+                q.Append("{");
+                foreach (var e in QuantitiesAffected)
+                {
+                    q.Append(String.Format("{0} : {1},", e.Key.ShortName, e.Value));
+                }
+                q.Remove(q.Length - 1, 1);
+                q.Append("}");
+
+                var c = new StringBuilder();
+                foreach (var e in AssociatedCosts)
+                {
+                    c.Append(e + ",");
+                }
+                c.Remove(c.Length - 1, 1);
+
+                var s104 = new StringBuilder();
+                s104.Append("{");
+                foreach (var e in Section104sAfter)
+                {
+                    s104.Append(String.Format("{0} : {1},", e.Key.ShortName, e.Value.ToString("F")));
+                }
+                s104.Remove(s104.Length - 1, 1);
+                s104.Append("}");
+
+                return String.Format("Entry ID: {0}, Date: {1}, CGTFunction: {2}, Securities: {3}, Prices: {4}, Quantities: {5}, AssociatedCosts: {6}, Section104s: {7}", 
+                    this.EntryID, 
+                    this.DatePerformed,
+                    this.FunctionPerformed.GetType().Name.ToString(),
+                    sec,
+                    p,
+                    q,
+                    c,
+                    s104);
+            }
         }
 
         public record Section104Log
@@ -33,7 +87,7 @@ namespace CGTOnboardingTool
         {
             public int AssociatedReportEntryID { get; init; }
             public Security Security { get; init; }
-            public int Quantitiy { get; init; }
+            public decimal Quantitiy { get; init; }
         }
 
         public record SecurityPriceLog
@@ -50,33 +104,24 @@ namespace CGTOnboardingTool
             public decimal AllowableCost { get; init; }
         }
 
-        private List<ReportEntry> _reportList;
+        private List<ReportEntry> _reportList = new();
 
-        private List<Security> _securities;
+        private List<Security> _securities = new();
 
-        private Dictionary<Security, decimal> _securityPrices;
-        private List<SecurityPriceLog> _securityPriceHistory;
+        private Dictionary<Security, decimal> _securityPrices = new();
+        private List<SecurityPriceLog> _securityPriceHistory = new();
 
-        private Dictionary<Security, int> _holdings;
-        private List<SecurityHoldingLog> _holdingsHistory;
+        private Dictionary<Security, decimal> _holdings = new();
+        private List<SecurityHoldingLog> _holdingsHistory = new();
 
-        private Dictionary<Security, decimal> _section104;
-        private List<Section104Log> _section104History;
+        private Dictionary<Security, decimal> _section104 = new();
+        private List<Section104Log> _section104History = new();
 
-        private Dictionary<Security, decimal> _securityAllowableCosts;
-        private List<SecurityAllowableCostsLog> _securityAllowableCostsHistory;
+        private Dictionary<Security, decimal> _securityAllowableCosts = new();
+        private List<SecurityAllowableCostsLog> _securityAllowableCostsHistory = new();
 
-        private Dictionary<Security, Security> _relatedSecurities;
-        private int _rowCount;
-
-        public Report()
-        {
-            _reportList = new List<ReportEntry>();
-            _securities = new List<Security>();
-            _section104 = new Dictionary<Security, decimal>();
-            _section104History = new List<Section104Log>();
-            _rowCount = 0;
-        }
+        private Dictionary<Security, Security> _relatedSecurities = new();
+        private int _rowCount = 0;
 
         public List<ReportEntry> Rows()
         {
@@ -138,7 +183,7 @@ namespace CGTOnboardingTool
         }
 
 
-        public Nullable<int> GetHoldings(Security security)
+        public Nullable<decimal> GetHoldings(Security security)
         {
             if (this.HasSecurity(security))
             {
@@ -162,6 +207,16 @@ namespace CGTOnboardingTool
                 }
             }
             return list;
+        }
+
+        public decimal GetHoldingsOrDefault(Security security, decimal suppliedDefault)
+        {
+            var holdings = this.GetHoldings(security);
+            if (holdings == null)
+            {
+                return suppliedDefault;
+            }
+            return (decimal)holdings;
         }
 
         public Nullable<decimal> GetAllowableCost(Security security)
@@ -240,9 +295,16 @@ namespace CGTOnboardingTool
             this._section104History.Add(log);
         }
 
-        public void UpdateHoldings(ReportEntry associatedEntry, Security security, int newValue)
+        public void UpdateHoldings(ReportEntry associatedEntry, Security security, decimal newValue)
         {
-            this._holdings[security] = newValue;
+            if (this._holdings.ContainsKey(security))
+            {
+                this._holdings[security] = newValue;
+            }
+            else
+            {
+                this._holdings.Add(security, newValue);
+            }
             var log = new SecurityHoldingLog
             {
                 AssociatedReportEntryID = associatedEntry.EntryID,
@@ -274,7 +336,7 @@ namespace CGTOnboardingTool
             };
         }
 
-        public ReportEntry Add(CGTFunction FunctionPerformed, Security[] SecuritiesAffected, Dictionary<Security, decimal> PricesAffected, Dictionary<Security,int> QuantitiesAffected, decimal[] AssociatedCosts, Dictionary<Security, decimal> Section104sAfter, DateOnly DatePerformed)
+        public ReportEntry Add(CGTFunction FunctionPerformed, Security[] SecuritiesAffected, Dictionary<Security, decimal> PricesAffected, Dictionary<Security,decimal> QuantitiesAffected, decimal[] AssociatedCosts, Dictionary<Security, decimal> Section104sAfter, DateOnly DatePerformed)
         {
             var entry = new ReportEntry
             {

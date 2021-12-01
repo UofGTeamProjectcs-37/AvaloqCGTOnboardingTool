@@ -28,7 +28,7 @@ namespace CGTOnboardingTool.UISections
             InitializeComponent();
             this.Report = report;
             
-            Security security = new Security("GlaxoSmithKlien","GSK");
+            Security security = new Security("GlaxoSmithKline","GSK");
             int qty = 500;
             decimal price = (decimal)16.35;
             decimal cost = (decimal)23.80;

@@ -156,6 +156,16 @@ namespace CGTOnboardingTool
             }
         }
 
+        public List<Security> GetSecurities()
+        {
+            List<Security> secList = new List<Security>();
+            foreach (var sec in this._securities)
+            {
+                secList.Add(sec);
+            }
+            return secList;
+        }
+
         public Nullable<decimal> GetLastSecurityPrice(Security security)
         {
             if(this.HasSecurity(security))

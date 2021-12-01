@@ -30,6 +30,17 @@ namespace CGTOnboardingTool.UISections
             DropReduceSecurities.ItemsSource = this.report.GetSecurities();
         }
 
+        private static DateOnly ParseDate(string dateStr)
+        {
+            var yymmdd = dateStr.Split('/');
+            int year = int.Parse(yymmdd[0]);
+            int month = int.Parse(yymmdd[1]);
+            int day = int.Parse(yymmdd[2]);
+
+            return new DateOnly(year, month, day);
+        }
+
+
         private void BtnReduceOk_Click(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Navigate(new Dashboard(ref report));

@@ -45,6 +45,16 @@ namespace CGTOnboardingTool.UISections
             DropRebuildOldSecurity.ItemsSource = this.report.GetSecurities();
         }
 
+        private static DateOnly ParseDate(string dateStr)
+        {
+            var yymmdd = dateStr.Split('/');
+            int year = int.Parse(yymmdd[0]);
+            int month = int.Parse(yymmdd[1]);
+            int day = int.Parse(yymmdd[2]);
+
+            return new DateOnly(year, month, day);
+        }
+
         private void BtnRebuildOk_Click(object sender, RoutedEventArgs e)
         {
             
@@ -68,6 +78,24 @@ namespace CGTOnboardingTool.UISections
                     DropRebuildNewSecurity.Items.Add(sec);
                 }
             }
+        }
+
+        private void BtnRebuild_Click(object sender, RoutedEventArgs e)
+        {
+
+            var userInputDate = ParseDate(TxtRebuildDate.Text);
+
+            var userInputOldSecurity = DropRebuildOldSecurity.SelectedItem as Security;
+            var userInputNewSecurity = DropRebuildNewSecurity.SelectedItem as Security;
+            
+            var userInputOldSecuirtyReduce = Convert.ToDecimal(TxtRebuildOldQuantityReduce.Text);
+            var userInputNewSecuirtyQuantity = Convert.ToDecimal(TxtRebuildNewQuantity.Text);
+
+            Tools.Rebuild rb = new Tools.Rebuild(oldSecurity: userInputOldSecurity, quantityToReduce: userInputOldSecuirtyReduce, newSecurity: userInputNewSecurity, quantityToBuild: userInputNewSecuirtyQuantity, date: userInputDate);
+
+            rb.perform(ref report);
+
+            this.NavigationService.Navigate(new Dashboard(ref report));
         }
     }
 }

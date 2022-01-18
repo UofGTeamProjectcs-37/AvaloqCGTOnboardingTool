@@ -37,6 +37,12 @@
                         <SolidColorBrush Opacity="0"/>
                     </Button.Background>
                 </Button>
+               
+                <Button x:Name="btnSave" Content="Save" Click="btnSave_Click" Height="50" FontSize="35" BorderBrush="{x:Null}" Foreground="#00CDF9">
+                    <Button.Background>
+                        <SolidColorBrush Opacity="0"/>
+                    </Button.Background>
+                </Button>
             </StackPanel>
             <Frame x:Name="mainFrame" Content="Frame" NavigationUIVisibility="Hidden" Grid.Column="1" Margin="0,0,0,-528"/>
 

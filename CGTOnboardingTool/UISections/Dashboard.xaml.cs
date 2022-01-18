@@ -21,14 +21,27 @@ namespace CGTOnboardingTool.UISections
     /// </summary>
     public partial class Dashboard : Page
     {
-        public Report Report;
+        public Report report;
 
         public Dashboard(ref Report report)
         {
             InitializeComponent();
-            this.Report = report;
+            this.report = report;
 
-            this.DashboardReportView.ItemsSource = Report.Rows();
+            var rows = report.Rows();
+            if (rows.Count() > 0)
+            {
+                var row = rows[0];
+
+
+                MessageBox.Show(row.Security.ToString());
+            }
+
+            
+            
+
+
+            this.DashboardReportView.ItemsSource = rows;
         }
     }
 }

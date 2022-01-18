@@ -48,7 +48,7 @@
                     </Button.Background>
                 </Button>
             </StackPanel>
-            <Frame x:Name="mainFrame" Content="Frame" NavigationUIVisibility="Hidden" Grid.Column="1" Margin="0,0,0,-528"/>
+            <Frame x:Name="mainFrame" Content="Frame" NavigationUIVisibility="Hidden" Grid.Column="1" Margin="0,0,0,-401"/>
 
         </Grid>
         <Border BorderBrush="#36414C" BorderThickness="1" Height="704" Canvas.Left="254" Width="1"/>

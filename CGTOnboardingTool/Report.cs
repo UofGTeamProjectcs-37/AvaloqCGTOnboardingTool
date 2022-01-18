@@ -1,80 +1,16 @@
 ﻿using CGTOnboardingTool.Securities;
 using CGTOnboardingTool.Tools;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CGTOnboardingTool
+namespace CGTOnboardingTool.Old
 {
     public class Report
     {
-        public record ReportEntry
-        {
-            public int EntryID { get; init; }
-            public DateOnly DatePerformed { get; init; }
-            public CGTFunction FunctionPerformed { get; init; }
-            public Security[] SecuritiesAffected { get; init; }
-            public Dictionary<Security, decimal> PricesAffected { get; init; }
-            public Dictionary<Security, decimal> QuantitiesAffected { get; init; }
-            public decimal[] AssociatedCosts { get; init; }
-            public Dictionary<Security, decimal> Section104sAfter { get; init; }
-
-            public override string ToString()
-            {
-                var sec = new StringBuilder();
-                foreach(var e in SecuritiesAffected)
-                {
-                    sec.Append(e.ShortName + ",");
-                }
-                sec.Remove(sec.Length - 1, 1);
-
-                var p = new StringBuilder();
-                p.Append("{");
-                foreach(var e in PricesAffected)
-                {
-                    p.Append(String.Format("{0} : {1},",e.Key.ShortName,e.Value));
-                }
-                p.Remove(p.Length - 1, 1);
-                p.Append("}");
-
-                var q = new StringBuilder();
-                q.Append("{");
-                foreach (var e in QuantitiesAffected)
-                {
-                    q.Append(String.Format("{0} : {1},", e.Key.ShortName, e.Value));
-                }
-                q.Remove(q.Length - 1, 1);
-                q.Append("}");
-
-                var c = new StringBuilder();
-                foreach (var e in AssociatedCosts)
-                {
-                    c.Append(e + ",");
-                }
-                c.Remove(c.Length - 1, 1);
-
-                var s104 = new StringBuilder();
-                s104.Append("{");
-                foreach (var e in Section104sAfter)
-                {
-                    s104.Append(String.Format("{0} : {1},", e.Key.ShortName, e.Value.ToString("F")));
-                }
-                s104.Remove(s104.Length - 1, 1);
-                s104.Append("}");
-
-                return String.Format("Entry ID: {0}, Date: {1}, CGTFunction: {2}, Securities: {3}, Prices: {4}, Quantities: {5}, AssociatedCosts: {6}, Section104s: {7}", 
-                    this.EntryID, 
-                    this.DatePerformed,
-                    this.FunctionPerformed.GetType().Name.ToString(),
-                    sec,
-                    p,
-                    q,
-                    c,
-                    s104);
-            }
-        }
 
         public record Section104Log
         {
@@ -168,7 +104,7 @@ namespace CGTOnboardingTool
 
         public Nullable<decimal> GetLastSecurityPrice(Security security)
         {
-            if(this.HasSecurity(security))
+            if (this.HasSecurity(security))
             {
                 return (this._securityPrices[security]);
             }
@@ -346,7 +282,7 @@ namespace CGTOnboardingTool
             };
         }
 
-        public ReportEntry Add(CGTFunction FunctionPerformed, Security[] SecuritiesAffected, Dictionary<Security, decimal> PricesAffected, Dictionary<Security,decimal> QuantitiesAffected, decimal[] AssociatedCosts, Dictionary<Security, decimal> Section104sAfter, DateOnly DatePerformed)
+        public ReportEntry Add(CGTFunction FunctionPerformed, Security[] SecuritiesAffected, Dictionary<Security, decimal> PricesAffected, Dictionary<Security, decimal> QuantitiesAffected, decimal[] AssociatedCosts, Dictionary<Security, decimal> Section104sAfter, DateOnly DatePerformed)
         {
             var entry = new ReportEntry
             {
@@ -364,5 +300,74 @@ namespace CGTOnboardingTool
             return entry;
         }
 
+
     }
+
+    public record ReportEntry
+    {
+        public int EntryID { get; init; }
+        public DateOnly DatePerformed { get; init; }
+        public CGTFunction FunctionPerformed { get; init; }
+        public Security[] SecuritiesAffected { get; init; }
+        public Dictionary<Security, decimal> PricesAffected { get; init; }
+        public Dictionary<Security, decimal> QuantitiesAffected { get; init; }
+        public decimal[] AssociatedCosts { get; init; }
+        public Dictionary<Security, decimal> Section104sAfter { get; init; }
+
+        public override string ToString()
+        {
+            var sec = new StringBuilder();
+            foreach (var e in SecuritiesAffected)
+            {
+                sec.Append(e.ShortName + ",");
+            }
+            sec.Remove(sec.Length - 1, 1);
+
+            var p = new StringBuilder();
+            p.Append("{");
+            foreach (var e in PricesAffected)
+            {
+                p.Append(String.Format("{0} : {1},", e.Key.ShortName, e.Value));
+            }
+            p.Remove(p.Length - 1, 1);
+            p.Append("}");
+
+            var q = new StringBuilder();
+            q.Append("{");
+            foreach (var e in QuantitiesAffected)
+            {
+                q.Append(String.Format("{0} : {1},", e.Key.ShortName, e.Value));
+            }
+            q.Remove(q.Length - 1, 1);
+            q.Append("}");
+
+            var c = new StringBuilder();
+            foreach (var e in AssociatedCosts)
+            {
+                c.Append(e + ",");
+            }
+            c.Remove(c.Length - 1, 1);
+
+            var s104 = new StringBuilder();
+            s104.Append("{");
+            foreach (var e in Section104sAfter)
+            {
+                s104.Append(String.Format("{0} : {1},", e.Key.ShortName, e.Value.ToString("F")));
+            }
+            s104.Remove(s104.Length - 1, 1);
+            s104.Append("}");
+
+            return String.Format("Entry ID: {0}, Date: {1}, CGTFunction: {2}, Securities: {3}, Prices: {4}, Quantities: {5}, AssociatedCosts: {6}, Section104s: {7}",
+                this.EntryID,
+                this.DatePerformed,
+                this.FunctionPerformed.GetType().Name.ToString(),
+                sec,
+                p,
+                q,
+                c,
+                s104);
+        }
+    }
+
+    
 }

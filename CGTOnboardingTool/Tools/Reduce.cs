@@ -34,7 +34,7 @@ namespace CGTOnboardingTool.Tools
         }
 
 
-        public override Report.ReportEntry perform(ref Report report)
+        public override ReportEntry perform(ref Report report)
         {
             if (gross != null)
             {
@@ -50,61 +50,63 @@ namespace CGTOnboardingTool.Tools
             }
         }
 
-        private Report.ReportEntry performUsingGross(ref Report report)
+        private ReportEntry performUsingGross(ref Report report)
         {
             // implement reduce using gross
 
-
-            return new Report.ReportEntry();
+            throw new NotImplementedException();
         }
 
-        private Report.ReportEntry performUsingQuantityPriceCost(ref Report report)
+        private ReportEntry performUsingQuantityPriceCost(ref Report report)
         {
-            decimal pps = (decimal)this.pps;
-            decimal cost = (decimal)this.cost;
-
-            decimal currentHoldings = 0;
-            decimal currentS104 = 0;
-            if (!report.HasSecurity(security))
-            {
-                throw new ArgumentException("Security not in holdings. Cannot reduce");
-            }
-            else
-            {
-                var retrievedHoldings = report.GetHoldings(security);
-                if (retrievedHoldings != null)
-                {
-                    currentHoldings = (decimal)retrievedHoldings;
-                }
-                var retrievedS104 = report.GetSection104(security);
-                if (retrievedS104 != null)
-                {
-                    currentS104 = (decimal)retrievedS104;
-                }
-            }
-
-            var newHoldings = currentHoldings - quantity;
-
-            var reductionRatio = quantity / currentHoldings;
-            var newS104 = (1 - reductionRatio) * currentS104;
-
-            Security[] securityAffected = new Security[1] { security };
-            Dictionary<Security, decimal> priceAffected = new Dictionary<Security, decimal>();
-            priceAffected.Add(security, pps);
-            Dictionary<Security, decimal> quantityAffected = new Dictionary<Security, decimal>();
-            quantityAffected.Add(security, -(quantity));
-            decimal[] costs = new decimal[1] { (decimal)cost };
-            Dictionary<Security, decimal> s104 = new Dictionary<Security, decimal>();
-            s104.Add(security, newS104);
-
-            var associatedEntry = report.Add(this, securityAffected, priceAffected, quantityAffected, costs, s104, date);
-
-            report.UpdateHoldings(associatedEntry, security, newHoldings);
-            report.UpdatePrice(associatedEntry, security, pps);
-            report.UpdateSection104(associatedEntry, security, newS104);
+            throw new NotImplementedException();
 
 
-            return associatedEntry;
+            //decimal pps = (decimal)this.pps;
+            //decimal cost = (decimal)this.cost;
+
+            //decimal currentHoldings = 0;
+            //decimal currentS104 = 0;
+            //if (!report.HasSecurity(security))
+            //{
+            //    throw new ArgumentException("Security not in holdings. Cannot reduce");
+            //}
+            //else
+            //{
+            //    var retrievedHoldings = report.GetHoldings(security);
+            //    if (retrievedHoldings != null)
+            //    {
+            //        currentHoldings = (decimal)retrievedHoldings;
+            //    }
+            //    var retrievedS104 = report.GetSection104(security);
+            //    if (retrievedS104 != null)
+            //    {
+            //        currentS104 = (decimal)retrievedS104;
+            //    }
+            //}
+
+            //var newHoldings = currentHoldings - quantity;
+
+            //var reductionRatio = quantity / currentHoldings;
+            //var newS104 = (1 - reductionRatio) * currentS104;
+
+            //Security[] securityAffected = new Security[1] { security };
+            //Dictionary<Security, decimal> priceAffected = new Dictionary<Security, decimal>();
+            //priceAffected.Add(security, pps);
+            //Dictionary<Security, decimal> quantityAffected = new Dictionary<Security, decimal>();
+            //quantityAffected.Add(security, -(quantity));
+            //decimal[] costs = new decimal[1] { (decimal)cost };
+            //Dictionary<Security, decimal> s104 = new Dictionary<Security, decimal>();
+            //s104.Add(security, newS104);
+
+            //var associatedEntry = report.Add(this, securityAffected, priceAffected, quantityAffected, costs, s104, date);
+
+            //report.UpdateHoldings(associatedEntry, security, newHoldings);
+            //report.UpdatePrice(associatedEntry, security, pps);
+            //report.UpdateSection104(associatedEntry, security, newS104);
+
+
+            //return associatedEntry;
 
         }
     }

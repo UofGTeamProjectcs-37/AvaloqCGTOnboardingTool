@@ -24,5 +24,62 @@
                 <DataGridTextColumn Header="Section 104" Binding="{Binding Path=Section104}" IsReadOnly="True" Width="auto"/>
             </DataGrid.Columns>
         </DataGrid>
+
+        <Label x:Name="LblReportFilterHeader" Content="Filter by:" Margin="10,0,147,410" FontSize="20" Foreground="#00CDF9" Grid.RowSpan="2"/>
+
+        <ComboBox x:Name="cbFilter" IsEditable = "True" Width = "252" HorizontalAlignment = "Left" Margin = "106,10,0,405" SelectionChanged="cbFilter_SelectionChanged" Text="Date">
+            <ComboBoxItem Content = "Date"/>
+            <ComboBoxItem Content = "Security"/>
+            <ComboBoxItem Content = "Function"/>
+        </ComboBox>
+
+        <ComboBox x:Name="cbFilterFunction" IsEditable = "True" Width = "252" HorizontalAlignment = "Left" Margin = "373,10,0,410" SelectionChanged="cbFilter_SelectionChanged" Visibility="Hidden" Text="--Select Function--">
+
+            <ComboBoxItem Content = "Build"/>
+            <ComboBoxItem Content = "Reduce"/>
+            <ComboBoxItem Content = "Rebuild"/>
+        </ComboBox>
+
+        <ComboBox x:Name="cbFilterSecurity" IsEditable = "True" Width = "252" HorizontalAlignment = "Left" Margin = "373,10,0,410" SelectionChanged="cbFilter_SelectionChanged" Visibility="Hidden" Text="--Select Security--">
+
+            <ComboBoxItem Content = "GSK"/>
+            <ComboBoxItem Content = "TSLA"/>
+            <ComboBoxItem Content = "FGE"/>
+        </ComboBox>
+
+        <Button x:Name="btnSave" Content="Save" Height="52" Width="121" FontSize="35" Margin="210,484,468,-86" BorderBrush="{x:Null}" Foreground="#00CDF9">
+            <Button.Background>
+                <SolidColorBrush Opacity="0"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="btnCancel" Content="Cancel" Height="52" Width="121" FontSize="35" Margin="639,458,40,-60" BorderBrush="{x:Null}" Foreground="#00CDF9">
+            <Button.Background>
+                <SolidColorBrush Opacity="0"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="btnOpen" Content="Open" Height="52" Width="120"  FontSize="35" Margin="40,484,640,-86" BorderBrush="{x:Null}" Foreground="#00CDF9">
+            <Button.Background>
+                <SolidColorBrush Opacity="0"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="btnExport" Content="Export" Height="52" Width="120"  FontSize="35" Margin="426,484,254,-86" BorderBrush="{x:Null}" Foreground="#00CDF9" RenderTransformOrigin="-1.68,0.629">
+            <Button.Background>
+                <SolidColorBrush Opacity="0"/>
+            </Button.Background>
+        </Button>
+
+        <Label x:Name="LblReportFilterDateFrom" Content="From:" Margin="358,5,40,405" FontSize="20" Foreground="#00CDF9" Visibility="Visible"/>
+        <ComboBox x:Name="cbFilterDateFrom" IsEditable = "True" Width = "146" HorizontalAlignment = "Left" Margin = "426,10,0,410" SelectionChanged="cbFilter_SelectionChanged" Visibility="Visible" Text="--Select Start Date--">
+            <ComboBoxItem Content = "2019/01"/>
+            <ComboBoxItem Content = "2019/05"/>
+            <ComboBoxItem Content = "2020/05"/>
+        </ComboBox>
+        <Label x:Name="LblReportFilterDateTo" Content="To:" Margin="598,0,-224,410" FontSize="20" Foreground="#00CDF9" Visibility="Visible"/>
+        <ComboBox x:Name="cbFilterDateTo" IsEditable = "True" Width = "135" HorizontalAlignment = "Left" Margin = "641,10,0,410" SelectionChanged="cbFilter_SelectionChanged" Visibility="Visible" Text="--Select End Date--">
+            <ComboBoxItem Content = "2020/05"/>
+            <ComboBoxItem Content = "2021/01"/>
+            <ComboBoxItem Content = "2021/11"/>
+        </ComboBox>
+
     </Grid>
 </Page>

@@ -12,7 +12,7 @@
             <ColumnDefinition Width="41*"/>
             <ColumnDefinition Width="39*"/>
         </Grid.ColumnDefinitions>
-        <DataGrid Name="DashboardReportView" Margin="40,80,40,100" AutoGenerateColumns="False" Grid.ColumnSpan="2">
+        <DataGrid Name="DashboardReportView" Margin="40,80,40,100" AutoGenerateColumns="False" Grid.ColumnSpan="2" HorizontalGridLinesBrush="Black" VerticalGridLinesBrush="Black">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="EntryID" Binding="{Binding Path=Id}" IsReadOnly="True" Width="auto" Visibility="Hidden"/>
                 <DataGridTextColumn Header="Function" Binding="{Binding Path=Function}" IsReadOnly="True" Width="auto"/>

@@ -9,45 +9,32 @@
 
     <Canvas Width="1280" Height="705" Background="#A1A7CB">
 
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="256"/>
-                <ColumnDefinition Width="1024"/>
-            </Grid.ColumnDefinitions>
-            <StackPanel Grid.Column="0">
-                <Label Content="CGT Onboarding Tool" Foreground="#00CDF9" Height="50" FontSize="25"/>
-                <Button x:Name="btnBuild" Content="Build" Click="btnBuild_Click" Height="50" FontSize="35" BorderBrush="{x:Null}" Foreground="#00CDF9">
-                    <Button.Background>
-                        <SolidColorBrush Opacity="0"/>
-                    </Button.Background>
-                </Button>
-                <Button x:Name="btnReduce" Content="Reduce" Click="btnReduce_Click" Height="50" FontSize="35" BorderBrush="{x:Null}" Foreground="#00CDF9">
-                    <Button.Background>
-                        <SolidColorBrush Opacity="0"/>
-                    </Button.Background>
-                </Button>
-                <Button x:Name="btnRebuild" Content="Rebuild" Click="btnRebuild_Click" Height="50" FontSize="35" BorderBrush="{x:Null}" Foreground="#00CDF9">
-                    <Button.Background>
-                        <SolidColorBrush Opacity="0"/>
-                    </Button.Background>
-                </Button>
-                <Button x:Name="btnSave" Content="Save" Click="btnSave_Click" Height="50" FontSize="35" BorderBrush="{x:Null}" Foreground="#00CDF9">
-                    <Button.Background>
-                        <SolidColorBrush Opacity="0"/>
-                    </Button.Background>
-                </Button>
-                <Button x:Name="btnOpen" Content="Open" Click="btnOpen_Click" Height="50" FontSize="35" BorderBrush="{x:Null}" Foreground="#00CDF9">
-                    <Button.Background>
-                        <SolidColorBrush Opacity="0"/>
-                    </Button.Background>
-                </Button>
-            </StackPanel>
 
+        <Label Content="CGT Onboarding Tool" Foreground="#5A5A5A" Height="50" FontSize="25" Canvas.Left="6" Canvas.Top="28"/>
+
+
+        <Grid Style="{DynamicResource RoundGridLayer1}" Width="234" Height="584" Margin="15,91,0,0">
+            <Border>
+
+            <StackPanel Grid.Column="0" Grid.RowSpan="2">
+
+                <Button x:Name="btnBuild" Content="Build" Click="btnBuild_Click" Style="{DynamicResource RoundButtonMainWindow}"/>
+
+                <Button x:Name="btnReduce" Content="Reduce" Click="btnReduce_Click" Style="{DynamicResource RoundButtonMainWindow}"/>
+
+                <Button x:Name="btnRebuild" Content="Rebuild" Click="btnRebuild_Click" Style="{DynamicResource RoundButtonMainWindow}"/>
+
+                <Button x:Name="btnSave" Content="Save" Click="btnSave_Click" Style="{DynamicResource RoundButtonMainWindow}"/>
+
+                <Button x:Name="btnOpen" Content="Open" Click="btnOpen_Click" Style="{DynamicResource RoundButtonMainWindow}"/>
+
+            </StackPanel>
+            </Border>
         </Grid>
+
         <Frame x:Name="mainFrame" Content="Frame" NavigationUIVisibility="Hidden" Grid.Column="1" Margin="0,0,0,-401" Height="705" Width="1024" Canvas.Left="256"/>
 
-        <Border BorderBrush="#36414C" BorderThickness="1" Height="704" Canvas.Left="254" Width="1"/>
-
     </Canvas>
+    
 </Window>
     

@@ -20,9 +20,32 @@
             <Setter Property="FontFamily"
             Value="Leelawadee UI Semilight" />
         </Style>
-        <Style TargetType="{x:Type Button}">
-            <Setter Property="FontFamily"
-            Value="Leelawadee UI Semilight" />
+        <Style TargetType="{x:Type Button}" x:Key="RoundButtonMainWindow">
+            <Setter Property="FontFamily" Value="Leelawadee UI Semilight" />
+            <Setter Property="BorderBrush" Value="#A1A7CB"/>
+            <Setter Property="Background" Value="#A1A7CB"/>
+            <Setter Property="Foreground" Value="#24F9F9"/>
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="Width" Value="176"/>
+            <Setter Property="FontSize" Value="32"/>
+
+            <Style.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="25" />
+                </Style>
+            </Style.Resources>
         </Style>
+        
+        <Style TargetType="{x:Type Grid}" x:Key="RoundGridLayer1">
+            
+            <Style.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="15" />
+                    <Setter Property="Background" Value="#C7CADC"/>
+                </Style>
+            </Style.Resources>
+            
+        </Style>
+
     </Application.Resources>
 </Application>

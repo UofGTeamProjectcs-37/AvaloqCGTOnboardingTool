@@ -13,10 +13,10 @@
         <Label Content="CGT Onboarding Tool" Foreground="#5A5A5A" Height="50" FontSize="25" Canvas.Left="6" Canvas.Top="28"/>
 
 
-        <Grid Style="{DynamicResource RoundGridLayer1}" Width="234" Height="584" Margin="15,91,0,0">
-            <Border>
+        <Grid Style="{DynamicResource RoundGrid}" Width="234" Height="584" Margin="15,106,0,0">
+            <Border Background="#C7CADC">
 
-            <StackPanel Grid.Column="0" Grid.RowSpan="2">
+            <StackPanel>
 
                 <Button x:Name="btnBuild" Content="Build" Click="btnBuild_Click" Style="{DynamicResource RoundButtonMainWindow}"/>
 

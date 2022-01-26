@@ -16,9 +16,26 @@
             <Setter Property="FontFamily"
             Value="Leelawadee UI Semilight" />
         </Style>
-        <Style TargetType="{x:Type TextBox}">
-            <Setter Property="FontFamily"
-            Value="Leelawadee UI Semilight" />
+        <Style TargetType="{x:Type Label}" x:Key="FunctionParameterLabel">
+            <Setter Property="FontFamily" Value="Leelawadee UI Semilight" />
+            <Setter Property="Height" Value="41" />
+            <Setter Property="FontSize" Value="22" />
+            <Setter Property="Foreground" Value="#5A5A5A" />
+        </Style>
+        <Style TargetType="{x:Type TextBox}" x:Key="FunctionInputBoxes">
+            <Setter Property="FontFamily" Value="Leelawadee UI Semilight" />
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Width" Value="462"/>
+            <Setter Property="Height" Value="34"/>
+            <Setter Property="TextAlignment" Value="Justify"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Background" Value="#C7CADC"/>
+
+            <Style.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="15" />
+                </Style>
+            </Style.Resources>
         </Style>
         <Style TargetType="{x:Type Button}" x:Key="RoundButtonMainWindow">
             <Setter Property="FontFamily" Value="Leelawadee UI Semilight" />
@@ -36,12 +53,11 @@
             </Style.Resources>
         </Style>
         
-        <Style TargetType="{x:Type Grid}" x:Key="RoundGridLayer1">
+        <Style TargetType="{x:Type Grid}" x:Key="RoundGrid">
             
             <Style.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="15" />
-                    <Setter Property="Background" Value="#C7CADC"/>
                 </Style>
             </Style.Resources>
             

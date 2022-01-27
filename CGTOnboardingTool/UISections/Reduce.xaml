@@ -11,7 +11,7 @@
     <Grid x:Name="ReduceGrid" Style="{DynamicResource RoundGrid}" Height="690" Width="1001.5">
         <Border Margin="7.5,0,15,0" Background="#C7CADC"/>
 
-        <Label x:Name="LblReduceHeader" Content="Reduce" Margin="843,10,36,0" VerticalAlignment="Top" Height="86" FontSize="36" Foreground="#24F9F9"/>
+        <Label x:Name="LblReduceHeader" Content="Reduce" Margin="843,10,36,0" Style="{DynamicResource FunctionHeaderLabel}"/>
 
         <Button x:Name="BtnReduce" Content="Reduce" Click="BtnReduce_Click" Margin="187,617,638,23" Style="{DynamicResource RoundButtonMainWindow}"/>
         <Button x:Name="BtnReduceCancel" Content="Cancel" Click="BtnReduceCancel_Click" Margin="569,617,0,23" Style="{DynamicResource RoundButtonMainWindow}"/>

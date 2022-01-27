@@ -22,6 +22,14 @@
             <Setter Property="FontSize" Value="22" />
             <Setter Property="Foreground" Value="#5A5A5A" />
         </Style>
+        <Style TargetType="{x:Type Label}" x:Key="FunctionHeaderLabel">
+            <Setter Property="FontFamily" Value="Leelawadee UI Semilight" />
+            <Setter Property="Height" Value="86" />
+            <Setter Property="FontSize" Value="36" />
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="Foreground" Value="#5A5A5A" />
+        </Style>
+ 
         <Style TargetType="{x:Type TextBox}" x:Key="FunctionInputBoxes">
             <Setter Property="FontFamily" Value="Leelawadee UI Semilight" />
             <Setter Property="BorderThickness" Value="0"/>

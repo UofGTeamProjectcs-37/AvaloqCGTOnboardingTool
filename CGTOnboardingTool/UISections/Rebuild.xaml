@@ -9,28 +9,29 @@
       Title="Rebuild">
 
 
-    <Grid x:Name="RebuildGrid">
-        <Label x:Name="LblRebuildHeader" Content="Rebuild" HorizontalAlignment="Left" Margin="887,10,0,0" VerticalAlignment="Top" Width="158" Height="86" FontSize="36" Foreground="#00CDF9"/>
-        <Button x:Name="BtnRebuild" Content="Rebuild" HorizontalAlignment="Left" Margin="263,548,0,0" VerticalAlignment="Top" Width="158" Height="86" FontSize="36" BorderBrush="{x:Null}" Foreground="#00CDF9" Click="BtnRebuild_Click">
-            <Button.Background>
-                <SolidColorBrush Opacity="0"/>
-            </Button.Background>
-        </Button>
-        <Button x:Name="BtnRebuildCancel" Content="Cancel" HorizontalAlignment="Left" Margin="569,548,0,0" VerticalAlignment="Top" Click="BtnRebuildCancel_Click" Width="158" Height="86" FontSize="36" BorderBrush="{x:Null}" Foreground="#00CDF9">
-            <Button.Background>
-                <SolidColorBrush Opacity="0"/>
-            </Button.Background>
-        </Button>
-        <TextBox x:Name="TxtRebuildDate" HorizontalAlignment="Left" Height="34" Margin="342,151,0,0" TextWrapping="Wrap" Text="Enter The Date Here (yy/mm/dd)" VerticalAlignment="Top" Width="352"/>
-        <TextBox x:Name="TxtRebuildNewQuantity" HorizontalAlignment="Left" Height="34" Margin="342,420,0,0" TextWrapping="Wrap" Text="Enter The New Quantity Here" VerticalAlignment="Top" Width="352" />
-        <Label x:Name="LblRebuildDate" Content="Date" HorizontalAlignment="Left" Margin="32,148,0,0" VerticalAlignment="Top" Foreground="#FF00CDF9" Height="40" Width="86" FontSize="22"/>
-        <Label x:Name="LblRebuildOldSecurity" Content="Existing Security" HorizontalAlignment="Left" Margin="32,213,0,0" VerticalAlignment="Top" Foreground="#FF00CDF9" Height="41" Width="171" FontSize="22"/>
-        <Label x:Name="LblRebuildNewSecurity" Content="New Security" HorizontalAlignment="Left" Margin="30,282,0,0" VerticalAlignment="Top" Foreground="#FF00CDF9" Height="42" Width="140" FontSize="22"/>
-        <Label x:Name="LblRebuildNewQuantity" Content="New Security Quantity" HorizontalAlignment="Left" Margin="32,414,0,0" VerticalAlignment="Top" Foreground="#FF00CDF9" Height="40" Width="226" FontSize="22"/>
-        <ComboBox x:Name="DropRebuildOldSecurity" HorizontalAlignment="Left" Margin="342,226,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="DropRebuildOldSecurity_SelectionChanged"/>
-        <ComboBox x:Name="DropRebuildNewSecurity" HorizontalAlignment="Left" Margin="342,292,0,0" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="TxtRebuildOldQuantityReduce" HorizontalAlignment="Left" Height="34" Margin="342,355,0,0" TextWrapping="Wrap" Text="Enter The New Quantity Here" VerticalAlignment="Top" Width="352" />
-        <Label x:Name="LblRebuildOldQuantityReduce" Content="Reduce Existing Security By" HorizontalAlignment="Left" Margin="32,352,0,0" VerticalAlignment="Top" Foreground="#FF00CDF9" Height="40" Width="277" FontSize="22"/>
+    <Grid x:Name="RebuildGrid" Style="{DynamicResource RoundGrid}" Height="690" Width="1001.5">
+        <Border Margin="7.5,0,15,0" Background="#C7CADC"/>
+        <Label x:Name="LblRebuildHeader" Content="Rebuild" Margin="842,10,36,0" Style="{DynamicResource FunctionHeaderLabel}"/>
 
+        <Button x:Name="BtnRebuild" Content="Rebuild" Click="BtnRebuild_Click" Margin="187,617,638,23" Style="{DynamicResource RoundButtonMainWindow}"/>
+        <Button x:Name="BtnRebuildCancel" Content="Cancel" Click="BtnRebuildCancel_Click" Margin="569,617,0,23" Style="{DynamicResource RoundButtonMainWindow}"/>
+
+        <Grid x:Name="BuildGridInterior"  Style="{DynamicResource RoundGrid}">
+            <Border Margin="36,96,36,96" Background="#FFFFFF" Opacity="0.5"/>
+
+            <TextBox x:Name="TxtRebuildDate" Text="Enter The Date Here (yy/mm/dd)" Margin="375,126,164,530" Style="{DynamicResource FunctionInputBoxes}"/>
+            <TextBox x:Name="TxtRebuildOldQuantityReduce" Margin="375,434.25,164,208" Text="Enter The New Quantity Here" Style="{DynamicResource FunctionInputBoxes}"/>
+            <TextBox x:Name="TxtRebuildNewQuantity" Text="Enter The New Quantity Here" Margin="375,538,164,118" Style="{DynamicResource FunctionInputBoxes}"/>
+
+            <ComboBox x:Name="DropRebuildOldSecurity" HorizontalAlignment="Left" Margin="375,228.75,0,0" VerticalAlignment="Top" Width="462" Height="34" SelectionChanged="DropRebuildOldSecurity_SelectionChanged"/>
+            <ComboBox x:Name="DropRebuildNewSecurity" HorizontalAlignment="Left" Margin="375,331.5,0,0" VerticalAlignment="Top" Width="462" Height="34"/>
+
+            <Label x:Name="LblRebuildDate" Content="Date" HorizontalAlignment="Left" Margin="172,122.8,0,526" Style="{DynamicResource FunctionParameterLabel}"/>
+            <Label x:Name="LblRebuildOldSecurity" Content="Existing Security" HorizontalAlignment="Left" Margin="118,225.55,0,420" Style="{DynamicResource FunctionParameterLabel}"/>
+            <Label x:Name="LblRebuildNewSecurity" Content="New Security" HorizontalAlignment="Left" Margin="133,328.3,0,318" Style="{DynamicResource FunctionParameterLabel}"/>
+            <Label x:Name="LblRebuildOldQuantityReduce" Content="Reduce Existing Security By" HorizontalAlignment="Left" Margin="66,431.05,0,208" Style="{DynamicResource FunctionParameterLabel}"/>
+            <Label x:Name="LblRebuildNewQuantity" Content="Build New Security By" HorizontalAlignment="Left" Margin="92,533.8,0,114" Style="{DynamicResource FunctionParameterLabel}"/>
+
+        </Grid>
     </Grid>
 </Page>

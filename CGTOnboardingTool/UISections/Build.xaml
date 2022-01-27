@@ -14,7 +14,6 @@
         <Label x:Name="LblBuildHeader" Content="Build" Margin="879,10,36,0" VerticalAlignment="Top" Height="86" FontSize="36" Foreground="#24F9F9"/>
 
         <Button x:Name="BtnBuildComplete" Content="Build" Click="BtnBuildComplete_Click" Margin="187,617,638,23" Style="{DynamicResource RoundButtonMainWindow}"/>
-
         <Button x:Name="BtnBuildCancel" Content="Cancel" Margin="569,617,0,23" Click="BtnBuildCancel_Click" Style="{DynamicResource RoundButtonMainWindow}"/>
 
         <Grid x:Name="BuildGridInterior"  Style="{DynamicResource RoundGrid}">
@@ -24,18 +23,17 @@
             <TextBox x:Name="TxtBuildPrice" Margin="190,372.6,350,287" Text="Enter The Price per Quantity Here" Style="{DynamicResource FunctionInputBoxes}"/>
             <TextBox x:Name="TxtBuildQuantity" Margin="190,290.4,350,366" Text="Enter The Quantity of Shares Here" Style="{DynamicResource FunctionInputBoxes}"/>
             <TextBox x:Name="TxtBuildDate" Margin="190,208.8,350,448" Text="Enter The Date Here (yy/mm/dd)" Style="{DynamicResource FunctionInputBoxes}"/>
-            <TextBox x:Name="TxtBuildGross" Margin="190,537,350,122" Text="Enter The Gross Here" Style="{DynamicResource FunctionInputBoxes}" TextChanged="TxtBuildGross_TextChanged"/>
+            <TextBox x:Name="TxtBuildGross" Margin="190,537,350,122" Text="Enter The Gross Here" Style="{DynamicResource FunctionInputBoxes}"/>
 
 
-            <Label x:Name="LblBuildSecurity" Content="Security" HorizontalAlignment="Left" Margin="58,116,0,533" Style="{DynamicResource FunctionParameterLabel}"/>
+            <Label x:Name="LblBuildSecurity" Content="Security" HorizontalAlignment="Left" Margin="57,122,0,526" Style="{DynamicResource FunctionParameterLabel}"/>
             <Label x:Name="LblBuildDate" Content="Date" Margin="72,205,874,444" Style="{DynamicResource FunctionParameterLabel}"/>
             <Label x:Name="LblBuildQuantity" Content="Quantity" HorizontalAlignment="Left" Margin="55,286.2,0,362" Style="{DynamicResource FunctionParameterLabel}"/>
             <Label x:Name="LblBuildPrice" Content="Price" HorizontalAlignment="Left" Margin="72,369.4,0,288" Style="{DynamicResource FunctionParameterLabel}"/>
             <Label x:Name="LblBuildCost" Content="Cost" HorizontalAlignment="Left" Margin="74,451.6,0,198" Style="{DynamicResource FunctionParameterLabel}"/>
             <Label x:Name="LblBuildGross" Content="Gross" HorizontalAlignment="Left" Margin="68,533.8,0,119" Style="{DynamicResource FunctionParameterLabel}"/>
 
-            <ComboBox x:Name="DropBuildSecurities" Text="Enter a Security to Build" HorizontalAlignment="Left" Margin="190,126,0,0" VerticalAlignment="Top" Width="120"/>
-
+            <ComboBox x:Name="DropBuildSecurities" Text="Enter a Security to Build" HorizontalAlignment="Left" Margin="190,126,0,0" VerticalAlignment="Top" Width="462" Height="34"/>
         </Grid>
     </Grid>
 </Page>

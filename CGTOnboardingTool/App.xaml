@@ -52,16 +52,16 @@
                 </Style>
             </Style.Resources>
         </Style>
-        
+
         <Style TargetType="{x:Type Grid}" x:Key="RoundGrid">
-            
+
             <Style.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="15" />
                 </Style>
             </Style.Resources>
-            
-        </Style>
 
+        </Style>
+        
     </Application.Resources>
 </Application>

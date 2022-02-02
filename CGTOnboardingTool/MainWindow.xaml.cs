@@ -33,7 +33,7 @@ namespace CGTOnboardingTool
         }
 
         private void btnBuild_Click(object sender, RoutedEventArgs e)
-        {
+        { 
             mainFrame.Navigate(new UISections.Build(ref report));
         }
 
@@ -49,11 +49,14 @@ namespace CGTOnboardingTool
 
         }
 
-        private static void btnSave_Click(object sender, RoutedEventArgs e)
+        private void btnSave_Click(object sender, RoutedEventArgs e)
         {
             System.Diagnostics.Debug.WriteLine("testing hello there");
             List<ReportEntry> t = Report.Rows();
-            Console.WriteLine(t);
+            System.Diagnostics.Debug.WriteLine(t[0]);
+           
+            System.Diagnostics.Debug.WriteLine(Report.Count());
+      
 
 
         }

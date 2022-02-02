@@ -121,16 +121,16 @@ namespace CGTOnboardingTool
         private List<SecurityAllowableCostsLog> _securityAllowableCostsHistory = new();
 
         private Dictionary<Security, Security> _relatedSecurities = new();
-        private int _rowCount = 0;
+        private static int _rowCount = 0;
 
         public static List<ReportEntry> Rows()
         {
             return Report._reportList;
         }
 
-        public int Count()
+        public static int Count()
         {
-            return this._rowCount;
+            return Report._rowCount;
         }
 
 

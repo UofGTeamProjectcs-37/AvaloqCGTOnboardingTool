@@ -104,7 +104,7 @@ namespace CGTOnboardingTool
             public decimal AllowableCost { get; init; }
         }
 
-        private List<ReportEntry> _reportList = new();
+        private static List<ReportEntry> _reportList = new();
 
         private List<Security> _securities = new();
 
@@ -123,15 +123,16 @@ namespace CGTOnboardingTool
         private Dictionary<Security, Security> _relatedSecurities = new();
         private int _rowCount = 0;
 
-        public List<ReportEntry> Rows()
+        public static List<ReportEntry> Rows()
         {
-            return this._reportList;
+            return Report._reportList;
         }
 
         public int Count()
         {
             return this._rowCount;
         }
+=
 
         public List<ReportEntry> Copy()
         {

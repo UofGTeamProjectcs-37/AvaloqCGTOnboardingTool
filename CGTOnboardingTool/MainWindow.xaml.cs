@@ -13,8 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
-
+using static CGTOnboardingTool.Report;
 
 namespace CGTOnboardingTool
 {
@@ -50,34 +49,38 @@ namespace CGTOnboardingTool
 
         }
 
-        private void btnSave_Click(object sender, RoutedEventArgs e)
+        private static void btnSave_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                string strFilePath = @"C:\testfile.csv";
-                StringBuilder sbOutput = new StringBuilder();
+            System.Diagnostics.Debug.WriteLine("testing hello there");
+            List<ReportEntry> t = Report.Rows();
+            Console.WriteLine(t);
 
-                string seperator = ",";
+            //try
+            //{
+            //   string strFilePath = @"C:\.csv";
+            //  StringBuilder sbOutput = new StringBuilder();
+            //
+            //  string seperator = ",";
 
                 //connect report to output variable
-                string[][] output = new string[][]
-                {
-                    new string[]{ }
-                };
+              //  string[][] output = new string[][]
+              //  {
+              //      new string[]{ }
+              //  };
                 
-                for (int i=0; i<output.GetLength(0); i++)
-                {
-                    sbOutput.AppendLine(string.Join(seperator, output[i]));
-                }
+                //for (int i=0; i<output.GetLength(0); i++)
+               // {
+               //     sbOutput.AppendLine(string.Join(seperator, output[i]));
+                //}
 
-                File.WriteAllText(strFilePath, sbOutput.ToString());
+                //File.WriteAllText(strFilePath, sbOutput.ToString());
 
-                File.AppendAllText(strFilePath, sbOutput.ToString());
+//                File.AppendAllText(strFilePath, sbOutput.ToString());
 
-            } catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
+  //          } catch (Exception ex)
+    //        {
+      //          MessageBox.Show(ex.ToString());
+            //}
             
 
         }

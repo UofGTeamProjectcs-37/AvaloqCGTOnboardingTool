@@ -53,9 +53,14 @@ namespace CGTOnboardingTool
         {
             System.Diagnostics.Debug.WriteLine("testing hello there");
             List<ReportEntry> t = Report.Rows();
-            System.Diagnostics.Debug.WriteLine(t[0]);
+            for (int i=0; i<Report.Count();i++)
+            {
+                System.Diagnostics.Debug.WriteLine(t[0].DatePerformed);
+                System.Diagnostics.Debug.WriteLine(t[0].SecuritiesAffected);
+            }
+            
            
-            System.Diagnostics.Debug.WriteLine(Report.Count());
+            
       
 
 

@@ -55,33 +55,6 @@ namespace CGTOnboardingTool
             List<ReportEntry> t = Report.Rows();
             Console.WriteLine(t);
 
-            //try
-            //{
-            //   string strFilePath = @"C:\.csv";
-            //  StringBuilder sbOutput = new StringBuilder();
-            //
-            //  string seperator = ",";
-
-                //connect report to output variable
-              //  string[][] output = new string[][]
-              //  {
-              //      new string[]{ }
-              //  };
-                
-                //for (int i=0; i<output.GetLength(0); i++)
-               // {
-               //     sbOutput.AppendLine(string.Join(seperator, output[i]));
-                //}
-
-                //File.WriteAllText(strFilePath, sbOutput.ToString());
-
-//                File.AppendAllText(strFilePath, sbOutput.ToString());
-
-  //          } catch (Exception ex)
-    //        {
-      //          MessageBox.Show(ex.ToString());
-            //}
-            
 
         }
     }

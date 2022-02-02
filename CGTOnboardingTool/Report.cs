@@ -132,7 +132,7 @@ namespace CGTOnboardingTool
         {
             return this._rowCount;
         }
-=
+
 
         public List<ReportEntry> Copy()
         {

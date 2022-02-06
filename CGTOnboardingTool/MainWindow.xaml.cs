@@ -51,17 +51,28 @@ namespace CGTOnboardingTool
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
-            System.Diagnostics.Debug.WriteLine("testing hello there");
+            string path = @"c:file.csv";
+            var csv = new StringBuilder();
+           
             List<ReportEntry> t = Report.Rows();
             for (int i=0; i<Report.Count();i++)
             {
-                System.Diagnostics.Debug.WriteLine(t[0].DatePerformed);
-                System.Diagnostics.Debug.WriteLine(t[0].SecuritiesAffected);
+                System.Diagnostics.Debug.WriteLine(t[i].EntryID);
+                System.Diagnostics.Debug.WriteLine(t[i].DatePerformed);
+                System.Diagnostics.Debug.WriteLine(t[i].FunctionPerformed);
+                System.Diagnostics.Debug.WriteLine(t[i].SecuritiesAffected);
+                System.Diagnostics.Debug.WriteLine(t[i].PricesAffected);
+                System.Diagnostics.Debug.WriteLine(t[i].QuantitiesAffected);
+                System.Diagnostics.Debug.WriteLine(t[i].AssociatedCosts);
+                System.Diagnostics.Debug.WriteLine(t[i].Section104sAfter);
+
+                var new_line = string.Format("{0},{1}", t[i].EntryID, t[i].DatePerformed);
+                csv.AppendLine(new_line);
             }
-            
-           
-            
-      
+
+            File.AppendAllText(path, csv.ToString());
+
+
 
 
         }

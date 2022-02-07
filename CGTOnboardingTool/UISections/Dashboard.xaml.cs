@@ -29,19 +29,26 @@ namespace CGTOnboardingTool.UISections
             this.report = report;
 
             var rows = report.Rows();
-            if (rows.Count() > 0)
+
+            /*   if (rows.Count() > 0)
+               {
+                   var row = rows[0];
+
+
+                   MessageBox.Show(row.Security.ToString());
+               }*/
+
+            foreach(var row in rows)
             {
-                var row = rows[0];
+                string function = row.Function.ToString();
+                //do for all
 
 
-                MessageBox.Show(row.Security.ToString());
+
+
+                string[] list_row = {function, ......};
+                this.DashboardReportView.Items.Add(list_row);
             }
-
-            
-            
-
-
-            this.DashboardReportView.ItemsSource = rows;
         }
 
         private void cbFilter_SelectionChanged(object sender, SelectionChangedEventArgs e)

@@ -40,7 +40,7 @@ namespace CGTOnboardingTool.Old
             public decimal AllowableCost { get; init; }
         }
 
-        private List<ReportEntry> _reportList = new();
+        private static List<ReportEntry> _reportList = new();
 
         private List<Security> _securities = new();
 
@@ -57,17 +57,18 @@ namespace CGTOnboardingTool.Old
         private List<SecurityAllowableCostsLog> _securityAllowableCostsHistory = new();
 
         private Dictionary<Security, Security> _relatedSecurities = new();
-        private int _rowCount = 0;
+        private static int _rowCount = 0;
 
-        public List<ReportEntry> Rows()
+        public static List<ReportEntry> Rows()
         {
-            return this._reportList;
+            return Report._reportList;
         }
 
-        public int Count()
+        public static int Count()
         {
-            return this._rowCount;
+            return Report._rowCount;
         }
+
 
         public List<ReportEntry> Copy()
         {

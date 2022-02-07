@@ -54,10 +54,11 @@ namespace CGTOnboardingTool
         {
 
             List<ReportEntry> t = Report.Rows();
+           
 
             Stream myStream;
             SaveFileDialog saveFile = new SaveFileDialog();
-            saveFile.Filter = "txt files (*.txt) | *.* | csv files (*.csv)" ;
+            saveFile.Filter = "txt files (*.txt) | *.*" ;
             saveFile.FilterIndex = 2;
             saveFile.RestoreDirectory = true;
             UnicodeEncoding uniEncoding = new UnicodeEncoding();
@@ -67,17 +68,14 @@ namespace CGTOnboardingTool
 
                     for (int  i=0; i<Report.Count(); i++)
                     {
-                        byte[] text = uniEncoding.GetBytes((string)t[i].DatePerformed);
-                        myStream.Write(text);
+                        char[] row = { Convert.ToChar(t[i].EntryID), Convert.ToChar(t[i].FunctionPerformed) };
+                    
+                        myStream.Write(uniEncoding.GetBytes(row));
                     }
                     myStream.Close();
                 }
             }
-           // Console.WriteLine("Insert path to save file: ");
-
-           // string path = Console.ReadLine();
-
-          //  var csv = new StringBuilder();
+          
            
             
             for (int i=0; i<Report.Count();i++)
@@ -90,8 +88,6 @@ namespace CGTOnboardingTool
                 System.Diagnostics.Debug.WriteLine(t[i].QuantitiesAffected);
                 System.Diagnostics.Debug.WriteLine(t[i].AssociatedCosts);
                 System.Diagnostics.Debug.WriteLine(t[i].Section104sAfter);
-
-   
             }
 
          

@@ -21,14 +21,62 @@ namespace CGTOnboardingTool.UISections
     /// </summary>
     public partial class Dashboard : Page
     {
-        public Report Report;
+        public Report report;
 
         public Dashboard(ref Report report)
         {
             InitializeComponent();
-            this.Report = report;
+            this.report = report;
 
-            this.DashboardReportView.ItemsSource = Report.Rows();
+            var rows = report.Rows();
+            if (rows.Count() > 0)
+            {
+                var row = rows[0];
+
+
+                MessageBox.Show(row.Security.ToString());
+            }
+
+            
+            
+
+
+            this.DashboardReportView.ItemsSource = rows;
+        }
+
+        private void cbFilter_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (cbFilter.SelectedIndex.ToString() == "2")
+            {
+                cbFilterFunction.Visibility = Visibility.Visible;
+                cbFilterSecurity.Visibility = Visibility.Hidden;
+
+                cbFilterDateFrom.Visibility = Visibility.Hidden;
+                cbFilterDateTo.Visibility = Visibility.Hidden;
+                LblReportFilterDateFrom.Visibility = Visibility.Hidden;
+                LblReportFilterDateTo.Visibility = Visibility.Hidden;
+            }
+            else if (cbFilter.SelectedIndex.ToString() == "1")
+            {
+                cbFilterFunction.Visibility = Visibility.Hidden;
+                cbFilterSecurity.Visibility = Visibility.Visible;
+
+                cbFilterDateFrom.Visibility = Visibility.Hidden;
+                cbFilterDateTo.Visibility = Visibility.Hidden;
+                LblReportFilterDateFrom.Visibility = Visibility.Hidden;
+                LblReportFilterDateTo.Visibility = Visibility.Hidden;
+            }
+            else if (cbFilter.SelectedIndex.ToString() == "0")
+            {
+                cbFilterFunction.Visibility = Visibility.Hidden;
+                cbFilterSecurity.Visibility = Visibility.Hidden;
+
+                cbFilterDateFrom.Visibility = Visibility.Visible;
+                cbFilterDateTo.Visibility = Visibility.Visible;
+                LblReportFilterDateFrom.Visibility = Visibility.Visible;
+                LblReportFilterDateTo.Visibility = Visibility.Visible;
+            }
         }
     }
+
 }

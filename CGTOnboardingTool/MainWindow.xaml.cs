@@ -96,5 +96,12 @@ namespace CGTOnboardingTool
 
 
         }
+
+        private void btnOpen_Click(object sender, RoutedEventArgs e)
+        {
+            
+
+        }
+
     }
 }

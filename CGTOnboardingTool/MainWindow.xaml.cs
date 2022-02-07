@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -51,10 +52,34 @@ namespace CGTOnboardingTool
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
-            string path = @"c:file.csv";
-            var csv = new StringBuilder();
-           
+
             List<ReportEntry> t = Report.Rows();
+
+            Stream myStream;
+            SaveFileDialog saveFile = new SaveFileDialog();
+            saveFile.Filter = "txt files (*.txt) | *.* | csv files (*.csv)" ;
+            saveFile.FilterIndex = 2;
+            saveFile.RestoreDirectory = true;
+            UnicodeEncoding uniEncoding = new UnicodeEncoding();
+            if (saveFile.ShowDialog() == true)
+            {
+                if ((myStream = saveFile.OpenFile())!=null) {
+
+                    for (int  i=0; i<Report.Count(); i++)
+                    {
+                        byte[] text = uniEncoding.GetBytes((string)t[i].DatePerformed);
+                        myStream.Write(text);
+                    }
+                    myStream.Close();
+                }
+            }
+           // Console.WriteLine("Insert path to save file: ");
+
+           // string path = Console.ReadLine();
+
+          //  var csv = new StringBuilder();
+           
+            
             for (int i=0; i<Report.Count();i++)
             {
                 System.Diagnostics.Debug.WriteLine(t[i].EntryID);
@@ -66,11 +91,10 @@ namespace CGTOnboardingTool
                 System.Diagnostics.Debug.WriteLine(t[i].AssociatedCosts);
                 System.Diagnostics.Debug.WriteLine(t[i].Section104sAfter);
 
-                var new_line = string.Format("{0},{1}", t[i].EntryID, t[i].DatePerformed);
-                csv.AppendLine(new_line);
+   
             }
 
-            File.AppendAllText(path, csv.ToString());
+         
 
 
 

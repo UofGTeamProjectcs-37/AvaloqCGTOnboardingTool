@@ -132,6 +132,38 @@ namespace CGTOnboardingTool
             return newEntry;
         }
 
+        public ReportEntry Add(CGTFunction function, DateOnly date, Security[] securities, decimal[] quantities, decimal[] gainLosses, decimal[] section104s)
+        {
+            decimal[] holdingsCurrent = new decimal[securities.Length];
+            decimal[] holdings = new decimal[securities.Length];
+
+            for (int i = 0; i < securities.Length; i++)
+            {
+                this.AddSecurityActionDate(security: securities[i], date: date);
+                holdingsCurrent[i] = this.GetHoldings(security: securities[i], date: date);
+                holdings[i] = holdingsCurrent[i] + quantities[i];
+            }
+
+            var newEntry = new ReportEntry(
+                id: count++,
+                function: function,
+                date: date,
+                securities: securities,
+                prices: null,
+                quantities: quantities,
+                associatedCosts: null,
+                gainLoss: gainLosses,
+                holdings: holdings,
+                section104s: section104s
+                ); 
+
+            entriesUnordered.Add(newEntry);
+
+
+            return newEntry;
+        }
+
+
         public ReportEntry Add(CGTFunction function, DateOnly date, Security[] securities, decimal[] prices, decimal[] quantities, decimal associatedCost, decimal[] gainLoss, decimal[] section104s)
         {
             decimal[] currentHoldings = new decimal[securities.Length];
@@ -168,6 +200,8 @@ namespace CGTOnboardingTool
             return newEntry;
         }
 
+
+
         public decimal GetSection104(Security security, DateOnly date)
         {
             // 1. Get last action date index
@@ -178,7 +212,7 @@ namespace CGTOnboardingTool
             var securityActionDates = this.securityDates[security];
             var index = securityActionDates.Count - 1;
             var dateCounter = securityActionDates[index];
-            while (securityActionDates[index] >= date && index > -1)
+            while (dateCounter >= date && index > -1)
             {
                 index = index - 1;
                 if (index >= 0)

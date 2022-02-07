@@ -1,9 +1,5 @@
 ﻿using CGTOnboardingTool.Securities;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CGTOnboardingTool.Tools
 {
@@ -33,7 +29,6 @@ namespace CGTOnboardingTool.Tools
             this.date = date;
         }
 
-
         public override ReportEntry perform(ref Report report)
         {
             if (gross != null)
@@ -59,55 +54,34 @@ namespace CGTOnboardingTool.Tools
 
         private ReportEntry performUsingQuantityPriceCost(ref Report report)
         {
-            throw new NotImplementedException();
+            decimal pps = (decimal)this.pps;
+            decimal cost = (decimal)this.cost;
+
+            // Get current values for S104 and security holdings
+            var S104Current = report.GetSection104(this.security, this.date);
+            var holdingsCurrent = report.GetHoldings(this.security, this.date);
+
+            // Calculate new holdings and the reduction 
+            var reductionRatio = quantity / holdingsCurrent;
+
+            // Calculate new S104 and Gain/Loss
+            decimal S104Updated = (1 - reductionRatio) * S104Current;
+            var gainLoss = S104Current - S104Updated;
 
 
-            //decimal pps = (decimal)this.pps;
-            //decimal cost = (decimal)this.cost;
+            // Add to report
+            var associatedEntry = report.Add(
+              function: this,
+              date: date,
+              security: security,
+              price: pps,
+              quantity: quantity,
+              associatedCosts: cost,
+              gainLoss: gainLoss,
+              section104: S104Updated
+              );
 
-            //decimal currentHoldings = 0;
-            //decimal currentS104 = 0;
-            //if (!report.HasSecurity(security))
-            //{
-            //    throw new ArgumentException("Security not in holdings. Cannot reduce");
-            //}
-            //else
-            //{
-            //    var retrievedHoldings = report.GetHoldings(security);
-            //    if (retrievedHoldings != null)
-            //    {
-            //        currentHoldings = (decimal)retrievedHoldings;
-            //    }
-            //    var retrievedS104 = report.GetSection104(security);
-            //    if (retrievedS104 != null)
-            //    {
-            //        currentS104 = (decimal)retrievedS104;
-            //    }
-            //}
-
-            //var newHoldings = currentHoldings - quantity;
-
-            //var reductionRatio = quantity / currentHoldings;
-            //var newS104 = (1 - reductionRatio) * currentS104;
-
-            //Security[] securityAffected = new Security[1] { security };
-            //Dictionary<Security, decimal> priceAffected = new Dictionary<Security, decimal>();
-            //priceAffected.Add(security, pps);
-            //Dictionary<Security, decimal> quantityAffected = new Dictionary<Security, decimal>();
-            //quantityAffected.Add(security, -(quantity));
-            //decimal[] costs = new decimal[1] { (decimal)cost };
-            //Dictionary<Security, decimal> s104 = new Dictionary<Security, decimal>();
-            //s104.Add(security, newS104);
-
-            //var associatedEntry = report.Add(this, securityAffected, priceAffected, quantityAffected, costs, s104, date);
-
-            //report.UpdateHoldings(associatedEntry, security, newHoldings);
-            //report.UpdatePrice(associatedEntry, security, pps);
-            //report.UpdateSection104(associatedEntry, security, newS104);
-
-
-            //return associatedEntry;
-
+            return associatedEntry;
         }
     }
 }

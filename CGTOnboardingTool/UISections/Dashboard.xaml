@@ -12,21 +12,23 @@
             <ColumnDefinition Width="41*"/>
             <ColumnDefinition Width="39*"/>
         </Grid.ColumnDefinitions>
-        <DataGrid Name="DashboardReportView" Margin="40,80,40,100" AutoGenerateColumns="False" Grid.ColumnSpan="2">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="EntryID" Binding="{Binding Path=Id}" IsReadOnly="True" Width="auto" Visibility="Hidden"/>
-                <DataGridTextColumn Header="Function" Binding="{Binding Path=Function}" IsReadOnly="True" Width="auto"/>
-                <DataGridTextColumn Header="Date" Binding="{Binding Path=Date}" IsReadOnly="True" Width="auto"/>
-                <DataGridTextColumn Header="Security" Binding="{Binding Path=Security}" IsReadOnly="True" Width="auto"/>
-                <DataGridTextColumn Header="Quantity" Binding="{Binding Path=Quantity}" IsReadOnly="True" Width="auto"/>
-                <DataGridTextColumn Header="Price" Binding="{Binding Path=Price}" IsReadOnly="True" Width="auto"/>
-                <DataGridTextColumn Header="Cost" Binding="{Binding Path=AssociatedCosts}" IsReadOnly="True" Width="auto"/>
-                <DataGridTextColumn Header="Gross" Binding="{Binding Path=Gross}" IsReadOnly="True" Width="auto"/>
-                <DataGridTextColumn Header="+/- Gain Loss" Binding="{Binding Path=GainLoss}" IsReadOnly="True" Width="auto"/>
-                <DataGridTextColumn Header="Holdings" Binding="{Binding Path=Holdings}" IsReadOnly="True" Width="auto"/>
-                <DataGridTextColumn Header="Section 104" Binding="{Binding Path=Section104}" IsReadOnly="True" Width="auto"/>
-            </DataGrid.Columns>
-        </DataGrid>
+
+        <ListView Name="DashboardReportView" Grid.ColumnSpan="2" Margin="40,80,40,100">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Function" Width="auto" DisplayMemberBinding="{Binding Function}"/>
+                    <GridViewColumn Header="Date" Width="auto" DisplayMemberBinding="{Binding Date}"/>
+                    <GridViewColumn Header="Securities" Width="auto" DisplayMemberBinding="{Binding Securities}"/>
+                    <GridViewColumn Header="Quantity" Width="auto" DisplayMemberBinding="{Binding Quantity}"/>
+                    <GridViewColumn Header="Price" Width="auto" DisplayMemberBinding="{Binding Price}"/>
+                    <GridViewColumn Header="Cost" Width="auto" DisplayMemberBinding="{Binding Cost}"/>
+                    <GridViewColumn Header="Gross" Width="auto" DisplayMemberBinding="{Binding Gross}"/>
+                    <GridViewColumn Header="Gains" Width="auto" DisplayMemberBinding="{Binding Gains}"/>
+                    <GridViewColumn Header="Holdings" Width="auto" DisplayMemberBinding="{Binding Holdings}"/>
+                    <GridViewColumn Header="S104" Width="auto" DisplayMemberBinding="{Binding S104}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
 
         <Label x:Name="LblReportFilterHeader" Content="Filter by:" Margin="40,16,395,649" FontSize="20" Foreground="#00CDF9" Width="90" Height="40"/>
 
@@ -83,6 +85,7 @@
             <ComboBoxItem Content = "2021/01"/>
             <ComboBoxItem Content = "2021/11"/>
         </ComboBox>
+
 
     </Grid>
 </Page>

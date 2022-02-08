@@ -52,11 +52,11 @@ namespace CGTOnboardingTool.UISections
 
         private void BtnBuildComplete_Click(object sender, RoutedEventArgs e)
         {
-            var userInputSecurity = DropBuildSecurities.SelectedItem as Security;
-            var userInputDate = ParseDate(TxtBuildDate.Text);
-            var userInputQuantity = Convert.ToDecimal(TxtBuildQuantity.Text);
-            var userInputPrice = Convert.ToDecimal(TxtBuildPrice.Text);
-            var userInputCost = Convert.ToDecimal(TxtBuildCost.Text);
+            Security userInputSecurity = (Security)DropBuildSecurities.SelectedItem;
+            DateOnly userInputDate = ParseDate(TxtBuildDate.Text);
+            Decimal userInputQuantity = Convert.ToDecimal(TxtBuildQuantity.Text);
+            Decimal userInputPrice = Convert.ToDecimal(TxtBuildPrice.Text);
+            Decimal userInputCost = Convert.ToDecimal(TxtBuildCost.Text);
 
             Tools.Build b = new Tools.Build(security: userInputSecurity, quantity: userInputQuantity, pps: userInputPrice, cost: userInputCost, date: userInputDate);
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -13,8 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
-
+using static CGTOnboardingTool.Report;
 
 namespace CGTOnboardingTool
 {
@@ -34,7 +34,7 @@ namespace CGTOnboardingTool
         }
 
         private void btnBuild_Click(object sender, RoutedEventArgs e)
-        {
+        { 
             mainFrame.Navigate(new UISections.Build(ref report));
         }
 
@@ -52,33 +52,48 @@ namespace CGTOnboardingTool
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
-            try
+
+            List<ReportEntry> t = Report.Rows();
+           
+
+            Stream myStream;
+            SaveFileDialog saveFile = new SaveFileDialog();
+            saveFile.Filter = "txt files (*.txt) | *.*" ;
+            saveFile.FilterIndex = 2;
+            saveFile.RestoreDirectory = true;
+            UnicodeEncoding uniEncoding = new UnicodeEncoding();
+            if (saveFile.ShowDialog() == true)
             {
-                string strFilePath = @"C:\testfile.csv";
-                StringBuilder sbOutput = new StringBuilder();
+                if ((myStream = saveFile.OpenFile())!=null) {
 
-                string seperator = ",";
-
-                //connect report to output variable
-                string[][] output = new string[][]
-                {
-                    new string[]{ }
-                };
-                
-                for (int i=0; i<output.GetLength(0); i++)
-                {
-                    sbOutput.AppendLine(string.Join(seperator, output[i]));
+                    for (int  i=0; i<Report.Count(); i++)
+                    {
+                        char[] row = { Convert.ToChar(t[i].EntryID), Convert.ToChar(t[i].FunctionPerformed) };
+                    
+                        myStream.Write(uniEncoding.GetBytes(row));
+                    }
+                    myStream.Close();
                 }
-
-                File.WriteAllText(strFilePath, sbOutput.ToString());
-
-                File.AppendAllText(strFilePath, sbOutput.ToString());
-
-            } catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
             }
+          
+           
             
+            for (int i=0; i<Report.Count();i++)
+            {
+                System.Diagnostics.Debug.WriteLine(t[i].EntryID);
+                System.Diagnostics.Debug.WriteLine(t[i].DatePerformed);
+                System.Diagnostics.Debug.WriteLine(t[i].FunctionPerformed);
+                System.Diagnostics.Debug.WriteLine(t[i].SecuritiesAffected);
+                System.Diagnostics.Debug.WriteLine(t[i].PricesAffected);
+                System.Diagnostics.Debug.WriteLine(t[i].QuantitiesAffected);
+                System.Diagnostics.Debug.WriteLine(t[i].AssociatedCosts);
+                System.Diagnostics.Debug.WriteLine(t[i].Section104sAfter);
+            }
+
+         
+
+
+
 
         }
 

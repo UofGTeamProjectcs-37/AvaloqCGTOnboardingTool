@@ -45,39 +45,38 @@ namespace CGTOnboardingTool.UISections
 
             foreach(var row in rows)
             {
-                string Function = row.Function.ToString();
+                string Function = row.Function.GetType().Name;
                 string Date = row.Date.ToString();
 
-                var securities = row.Security;
-                Security[] secList = new Security[securities.Count()];
-                if (securities.Count() > 0)
+                string SecurityCol = "";
+                foreach (var sec in row.Security)
                 {
-                    foreach (var sec in securities)
+                    SecurityCol += sec.ShortName;
+                }
+
+                string Quantity = "Null";
+                if (row.Quantity != null)
+                {
+                    foreach (KeyValuePair<Security, decimal> pair in row.Quantity)
                     {
-                        secList.Append(sec);
+                        Quantity = pair.Value.ToString();
                     }
                 }
-                string SecurityCol = secList.ToString();
 
-                string Quantity;
-                if (row.Quantity is null)
-                {
-                    Quantity = "Null";
-                } else
-                {
-                    Quantity = row.Quantity.ToString();
+                string Price = "Null";
+                if (row.Price != null)
+                { 
+                    foreach(KeyValuePair<Security, decimal> pair in row.Price)
+                    {
+                        Price = "£" + pair.Value;
+                    }
                 }
 
-                string Price;
-                if (row.Price is null)
+                string Cost = "Null";
+                if (row.AssociatedCosts != null)
                 {
-                    Price = "Null";
-                } else
-                {
-                    Price = row.Price.ToString();
+                    Cost = "£" + row.AssociatedCosts[0].ToString();
                 }
-                
-                string Cost = row.AssociatedCosts.ToString();
 
                 string Gross;
                 if (row.Gross is null)
@@ -85,12 +84,35 @@ namespace CGTOnboardingTool.UISections
                     Gross = "Null";
                 } else
                 {
-                    Gross = row.Gross.ToString();
+                    Gross = row.Gross.GetType().Name;
                 }
-                
-                string Gain_loss = row.GainLoss.ToString();
-                string Holdings = row.Holdings.ToString();
-                string S104 = row.Section104.ToString();
+
+                string Gain_loss = "Null";
+                if (row.GainLoss != null)
+                {
+                    foreach (KeyValuePair<Security, decimal> pair in row.GainLoss)
+                    {
+                        Gain_loss = pair.Value.ToString();
+                    }
+                }
+
+                string Holdings = "Null";
+                if (row.Holdings != null)
+                {
+                    foreach (KeyValuePair<Security, decimal> pair in row.Holdings)
+                    {
+                        Holdings = pair.Value.ToString();
+                    }
+                }
+
+                string S104 = "Null";
+                if (row.Section104 != null)
+                {
+                    foreach (KeyValuePair<Security, decimal> pair in row.Section104)
+                    {
+                        S104 = pair.Value.ToString();
+                    }
+                }
 
                 list_row.Add(new Entry { Function = Function, Date = Date, Securities = SecurityCol, Quantity = Quantity, Price = Price, Cost = Cost, Gross = Gross, Gain_loss = Gain_loss, Holdings = Holdings, S104 = S104 });
                

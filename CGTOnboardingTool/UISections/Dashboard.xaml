@@ -13,13 +13,12 @@
             <ColumnDefinition Width="39*"/>
         </Grid.ColumnDefinitions>
 
-        <ListView Name="DashboardReportView" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.ColumnSpan="2" Margin="40,80,40,100">
+        <ListView Name="DashboardReportView" Grid.ColumnSpan="2" Margin="40,80,40,100">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="EntryID" Width="auto" DisplayMemberBinding="{Binding EntryID}"/>
                     <GridViewColumn Header="Function" Width="auto" DisplayMemberBinding="{Binding Function}"/>
                     <GridViewColumn Header="Date" Width="auto" DisplayMemberBinding="{Binding Date}"/>
-                    <GridViewColumn Header="Securities" Width="auto" DisplayMemberBinding="{Binding Security}"/>
+                    <GridViewColumn Header="Securities" Width="auto" DisplayMemberBinding="{Binding Securities}"/>
                     <GridViewColumn Header="Quantity" Width="auto" DisplayMemberBinding="{Binding Quantity}"/>
                     <GridViewColumn Header="Price" Width="auto" DisplayMemberBinding="{Binding Price}"/>
                     <GridViewColumn Header="Cost" Width="auto" DisplayMemberBinding="{Binding Cost}"/>

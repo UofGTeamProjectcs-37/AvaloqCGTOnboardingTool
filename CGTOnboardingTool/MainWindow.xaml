@@ -18,17 +18,11 @@
 
             <StackPanel>
 
-                <Button x:Name="btnBuild" Content="Build" Click="btnBuild_Click" Style="{DynamicResource RoundButtonMainWindow}"/>
+                    <Button x:Name="btnBuild" Content="Build" Click="btnBuild_Click" Style="{DynamicResource RoundButton}"/>
+                    <Button x:Name="btnReduce" Content="Reduce" Click="btnReduce_Click" Style="{DynamicResource RoundButton}"/>
+                    <Button x:Name="btnRebuild" Content="Rebuild" Click="btnRebuild_Click" Style="{DynamicResource RoundButton}"/>
 
-                <Button x:Name="btnReduce" Content="Reduce" Click="btnReduce_Click" Style="{DynamicResource RoundButtonMainWindow}"/>
-
-                <Button x:Name="btnRebuild" Content="Rebuild" Click="btnRebuild_Click" Style="{DynamicResource RoundButtonMainWindow}"/>
-
-                <Button x:Name="btnSave" Content="Save" Click="btnSave_Click" Style="{DynamicResource RoundButtonMainWindow}"/>
-
-                <Button x:Name="btnOpen" Content="Open" Click="btnOpen_Click" Style="{DynamicResource RoundButtonMainWindow}"/>
-
-            </StackPanel>
+                </StackPanel>
             </Border>
         </Grid>
 

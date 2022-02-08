@@ -13,8 +13,8 @@
         <Border Margin="7.5,0,15,0" Background="#C7CADC"/>
         <Label x:Name="LblRebuildHeader" Content="Rebuild" Margin="842,10,36,0" Style="{DynamicResource FunctionHeaderLabel}"/>
 
-        <Button x:Name="BtnRebuild" Content="Rebuild" Click="BtnRebuild_Click" Margin="187,617,638,23" Style="{DynamicResource RoundButtonMainWindow}"/>
-        <Button x:Name="BtnRebuildCancel" Content="Cancel" Click="BtnRebuildCancel_Click" Margin="569,617,0,23" Style="{DynamicResource RoundButtonMainWindow}"/>
+        <Button x:Name="BtnRebuild" Content="Rebuild" Click="BtnRebuild_Click" Margin="187,617,638,23" Style="{DynamicResource RoundButton}"/>
+        <Button x:Name="BtnRebuildCancel" Content="Cancel" Click="BtnRebuildCancel_Click" Margin="569,617,0,23" Style="{DynamicResource RoundButton}"/>
 
         <Grid x:Name="BuildGridInterior"  Style="{DynamicResource RoundGrid}">
             <Border Margin="36,96,36,96" Background="#FFFFFF" Opacity="0.5"/>

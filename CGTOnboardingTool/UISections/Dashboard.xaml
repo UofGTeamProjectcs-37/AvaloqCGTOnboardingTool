@@ -16,17 +16,17 @@
         <ListView Name="DashboardReportView" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.ColumnSpan="2" Margin="40,80,40,100">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="EntryID" Width="auto"/>
-                    <GridViewColumn Header="Function" Width="auto"/>
-                    <GridViewColumn Header="Date" Width="auto"/>
-                    <GridViewColumn Header="Security" Width="auto"/>
-                    <GridViewColumn Header="Quantity" Width="auto"/>
-                    <GridViewColumn Header="Price" Width="auto"/>
-                    <GridViewColumn Header="Cost" Width="auto"/>
-                    <GridViewColumn Header="Gross" Width="auto"/>
-                    <GridViewColumn Header="+/- Gain Loss" Width="auto"/>
-                    <GridViewColumn Header="Holdings" Width="auto"/>
-                    <GridViewColumn Header="Section 104" Width="auto"/>
+                    <GridViewColumn Header="EntryID" Width="auto" DisplayMemberBinding="{Binding EntryID}"/>
+                    <GridViewColumn Header="Function" Width="auto" DisplayMemberBinding="{Binding Function}"/>
+                    <GridViewColumn Header="Date" Width="auto" DisplayMemberBinding="{Binding Date}"/>
+                    <GridViewColumn Header="Securities" Width="auto" DisplayMemberBinding="{Binding Security}"/>
+                    <GridViewColumn Header="Quantity" Width="auto" DisplayMemberBinding="{Binding Quantity}"/>
+                    <GridViewColumn Header="Price" Width="auto" DisplayMemberBinding="{Binding Price}"/>
+                    <GridViewColumn Header="Cost" Width="auto" DisplayMemberBinding="{Binding Cost}"/>
+                    <GridViewColumn Header="Gross" Width="auto" DisplayMemberBinding="{Binding Gross}"/>
+                    <GridViewColumn Header="Gains" Width="auto" DisplayMemberBinding="{Binding Gains}"/>
+                    <GridViewColumn Header="Holdings" Width="auto" DisplayMemberBinding="{Binding Holdings}"/>
+                    <GridViewColumn Header="S104" Width="auto" DisplayMemberBinding="{Binding S104}"/>
                 </GridView>
             </ListView.View>
         </ListView>

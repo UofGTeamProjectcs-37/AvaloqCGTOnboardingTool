@@ -1,11 +1,8 @@
 ﻿using CGTOnboardingTool.Securities;
 using CGTOnboardingTool.Tools;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CGTOnboardingTool
 {
@@ -37,6 +34,11 @@ namespace CGTOnboardingTool
         public ReportEntry[] Rows()
         {
             return entries.ToArray();
+        }
+
+        public int Count()
+        {
+            return count;
         }
 
         public bool HasSecurity(Security security)

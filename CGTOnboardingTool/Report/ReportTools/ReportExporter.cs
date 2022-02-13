@@ -49,12 +49,8 @@ namespace CGTOnboardingTool.ReportTools
 
                     for (int i = 0; i < report.Count(); i++)
                     {
-                        string str = t[i].Function.ToString();
-                        str = str.Insert(0, t[i].Id.ToString());
-                        str = str.Insert(1, ", ");
-
-
-                        str += '\n';
+                        string str = t[i].Id.ToString() + ", "+ t[i].Function.ToString() +", "+ t[i].Date + ", " + t[i].Security[i].Name + '\n';
+                       
                         char[] row = str.ToCharArray();
 
                         myStream.Write(uniEncoding.GetBytes(row));

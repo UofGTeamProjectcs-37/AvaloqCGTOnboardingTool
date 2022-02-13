@@ -26,32 +26,29 @@ namespace CGTOnboardingTool.ReportTools
             saveFile.RestoreDirectory = true;
             UnicodeEncoding uniEncoding = new UnicodeEncoding();
 
-            for (int i = 0; i < report.Count(); i++)
-            {
-                System.Diagnostics.Debug.WriteLine(t[i].Id);
-                System.Diagnostics.Debug.WriteLine(t[i].Date);
-
-                System.Diagnostics.Debug.WriteLine(t[i].Function.ToString());
-
-                System.Diagnostics.Debug.WriteLine(t[i].Security);
-                System.Diagnostics.Debug.WriteLine(t[i].Price);
-                System.Diagnostics.Debug.WriteLine(t[i].Quantity);
-                System.Diagnostics.Debug.WriteLine(t[i].AssociatedCosts);
-                System.Diagnostics.Debug.WriteLine(t[i].GainLoss);
-                System.Diagnostics.Debug.WriteLine(t[i].Holdings);
-                System.Diagnostics.Debug.WriteLine(t[i].Section104);
-            }
+           
 
             if (saveFile.ShowDialog() == true)
             {
                 if ((myStream = saveFile.OpenFile()) != null)
                 {
+                    
 
                     for (int i = 0; i < report.Count(); i++)
                     {
-                        string str = t[i].Id.ToString() + ", "+ t[i].Function.ToString() +", "+ t[i].Date + ", " + t[i].Security[i].Name + '\n';
+                        System.Diagnostics.Debug.WriteLine(i);
+                        System.Diagnostics.Debug.WriteLine(t[i].Id.ToString());
+                        string[] _currentRow = { t[i].Id.ToString(), t[i].Function.ToString(), 
+                            t[i].Date.ToString(), t[i].Security[i].Name,t[i].Quantity[t[i].Security[i]].ToString(), 
+                            t[i].Price[t[i].Security[i]].ToString(), t[i].AssociatedCosts[i].ToString(),
+                            t[i].GainLoss[t[i].Security[i]].ToString(), t[i].Holdings[t[i].Security[i]].ToString(),
+                            t[i].Section104[t[i].Security[i]].ToString() };
+
+                        char[] row = string.Join(", ", _currentRow).ToCharArray();
+
                        
-                        char[] row = str.ToCharArray();
+                       
+                        //char[] row = str.ToCharArray();
 
                         myStream.Write(uniEncoding.GetBytes(row));
                     }
@@ -64,7 +61,8 @@ namespace CGTOnboardingTool.ReportTools
 
 
 
+}
+
 
 
     }
-}

@@ -1,3 +1,8 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 ﻿using CGTOnboardingTool.ReportTools;
 using System.Windows;
 
@@ -34,18 +39,5 @@ namespace CGTOnboardingTool
             mainFrame.Navigate(new UISections.Rebuild(ref report));
 
         }
-
-        private void btnSave_Click(object sender, RoutedEventArgs e)
-        {
-            ReportExporter exporter = new ReportExporter(ref report);
-            exporter.ExportToText();
-        }
-
-        private void btnOpen_Click(object sender, RoutedEventArgs e)
-        {
-            
-
-        }
-
     }
 }

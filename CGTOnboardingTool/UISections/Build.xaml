@@ -8,42 +8,35 @@
       d:DesignHeight="720" d:DesignWidth="1024"
       Title="Build">
 
-    <Canvas>
-        <Grid x:Name="BuildGrid">
-            <Label x:Name="LblBuildHeader" Content="Build" HorizontalAlignment="Left" Margin="887,10,0,0" VerticalAlignment="Top" Width="158" Height="86" FontSize="36" Foreground="#00CDF9"/>
 
-            <Button x:Name="BtnBuildComplete" Content="Build" HorizontalAlignment="Left" Margin="263,548,0,0" VerticalAlignment="Top" Click="BtnBuildComplete_Click" Width="158" Height="86" FontSize="36" BorderBrush="{x:Null}" Foreground="#00CDF9">
-                <Button.Background>
-                    <SolidColorBrush Opacity="0"/>
-                </Button.Background>
-            </Button>
-            <Button x:Name="BtnBuildCancel" Content="Cancel" HorizontalAlignment="Left" Margin="569,548,0,0" VerticalAlignment="Top" Click="BtnBuildCancel_Click" Width="158" Height="86" FontSize="36" BorderBrush="{x:Null}" Foreground="#00CDF9">
-                <Button.Background>
-                    <SolidColorBrush Opacity="0"/>
-                </Button.Background>
-            </Button>
+    <Grid x:Name="BuildGrid" Style="{DynamicResource RoundGrid}" Height="690" Width="1001.5">
+        <Border Margin="7.5,0,15,0" Background="#C7CADC"/>
+        <Label x:Name="LblBuildHeader" Content="Build" Margin="879,10,36,0" Style="{DynamicResource FunctionHeaderLabel}"/>
 
-            <TextBox x:Name="TxtBuildCost" HorizontalAlignment="Left" Height="34" Margin="190,351,0,0" TextWrapping="Wrap" Text="Enter The Allowable Costs Here" VerticalAlignment="Top" Width="462" />
+        <Button x:Name="BtnBuildComplete" Content="Build" Click="BtnBuildComplete_Click" Margin="187,617,638,23" Style="{DynamicResource RoundButton}"/>
+        <Button x:Name="BtnBuildCancel" Content="Cancel" Margin="569,617,0,23" Click="BtnBuildCancel_Click" Style="{DynamicResource RoundButton}"/>
 
-            <TextBox x:Name="TxtBuildPrice" HorizontalAlignment="Left" Height="34" Margin="190,286,0,0" TextWrapping="Wrap" Text="Enter The Price per Quantity Here" VerticalAlignment="Top" Width="462" />
+        <Grid x:Name="BuildGridInterior" Style="{DynamicResource RoundGrid}">
+            <Border Margin="36,96,36,96" Background="#FFFFFF" Opacity="0.5"/>
 
-            <TextBox x:Name="TxtBuildQuantity" HorizontalAlignment="Left" Height="34" Margin="190,220,0,0" TextWrapping="Wrap" Text="Enter The Quantity of Shares Here" VerticalAlignment="Top" Width="462" />
+            <TextBox x:Name="TxtBuildCost" Margin="190,454.8,350,201" Text="Enter The Allowable Costs Here" Style="{DynamicResource FunctionInputBoxes}"/>
+            <TextBox x:Name="TxtBuildPrice" Margin="190,372.6,350,287" Text="Enter The Price per Quantity Here" Style="{DynamicResource FunctionInputBoxes}"/>
+            <TextBox x:Name="TxtBuildQuantity" Margin="190,290.4,350,366" Text="Enter The Quantity of Shares Here" Style="{DynamicResource FunctionInputBoxes}"/>
+            <TextBox x:Name="TxtBuildDate" Margin="190,208.8,350,448" Text="Enter The Date Here (yy/mm/dd)" Style="{DynamicResource FunctionInputBoxes}"/>
+            <TextBox x:Name="TxtBuildGross" Margin="190,537,350,122" Text="Enter The Gross Here" Style="{DynamicResource FunctionInputBoxes}"/>
 
 
-            <TextBox x:Name="TxtBuildDate" HorizontalAlignment="Left" Height="35" Margin="190,154,0,0" TextWrapping="Wrap" Text="Enter The Date Here (yy/mm/dd)" VerticalAlignment="Top" Width="462" />
+            <Label x:Name="LblBuildSecurity" Content="Security" HorizontalAlignment="Left" Margin="57,122.8,0,526" Style="{DynamicResource FunctionParameterLabel}"/>
+            <Label x:Name="LblBuildDate" Content="Date" Margin="72,205,874,444" Style="{DynamicResource FunctionParameterLabel}"/>
+            <Label x:Name="LblBuildQuantity" Content="Quantity" HorizontalAlignment="Left" Margin="55,286.2,0,362" Style="{DynamicResource FunctionParameterLabel}"/>
+            <Label x:Name="LblBuildPrice" Content="Price" HorizontalAlignment="Left" Margin="72,369.4,0,288" Style="{DynamicResource FunctionParameterLabel}"/>
+            <Label x:Name="LblBuildCost" Content="Cost" HorizontalAlignment="Left" Margin="74,451.6,0,198" Style="{DynamicResource FunctionParameterLabel}"/>
+            <Label x:Name="LblBuildGross" Content="Gross" HorizontalAlignment="Left" Margin="68,533.8,0,119" Style="{DynamicResource FunctionParameterLabel}"/>
 
-
-            <TextBox x:Name="TxtBuildGross" HorizontalAlignment="Left" Height="34" Margin="190,417,0,0" TextWrapping="Wrap" Text="Enter The Gross Here" VerticalAlignment="Top" Width="462" />
-
-
-            <Label x:Name="LblBuildSecurity" Content="Security" HorizontalAlignment="Left" Margin="58,82,0,0" VerticalAlignment="Top" Foreground="#FF00CDF9" Height="41" Width="85" FontSize="22"/>
-            <Label x:Name="LblBuildDate" Content="Date" HorizontalAlignment="Left" Margin="71,148,0,0" VerticalAlignment="Top" Foreground="#FF00CDF9" Height="34" Width="55" FontSize="22"/>
-            <Label x:Name="LblBuildQuantity" Content="Quantity" HorizontalAlignment="Left" Margin="55,213,0,0" VerticalAlignment="Top" Foreground="#FF00CDF9" Height="41" Width="107" FontSize="22"/>
-            <Label x:Name="LblBuildPrice" Content="Price" HorizontalAlignment="Left" Margin="71,278,0,0" VerticalAlignment="Top" Foreground="#FF00CDF9" Height="34" Width="72" FontSize="22"/>
-            <Label x:Name="LblBuildCost" Content="Cost" HorizontalAlignment="Left" Margin="69,345,0,0" VerticalAlignment="Top" Foreground="#FF00CDF9" Height="34" Width="57" FontSize="22"/>
-            <Label x:Name="LblBuildGross" Content="Gross" HorizontalAlignment="Left" Margin="66,410,0,0" VerticalAlignment="Top" Foreground="#FF00CDF9" Height="34" Width="77" FontSize="22"/>
-            <ComboBox x:Name="DropBuildSecurities" Text="Enter a Security to Build" HorizontalAlignment="Left" Margin="190,92,0,0" VerticalAlignment="Top" Width="120"/>
-
+            <Grid x:Name="BuildComboBoxGrid" Style="{DynamicResource RoundGrid}">
+                <Border Margin="190,126,350,530" Background="#C7CADC" Width="462" Height="34"/>
+                <ComboBox x:Name="DropBuildSecurities" IsEditable ="True" HorizontalAlignment="Left" Margin="190,126,350,530" Width="462" Text="Enter a Security to Build" Style="{DynamicResource ComboBoxStyle}"/>
+            </Grid>
         </Grid>
-    </Canvas>
+    </Grid>
 </Page>

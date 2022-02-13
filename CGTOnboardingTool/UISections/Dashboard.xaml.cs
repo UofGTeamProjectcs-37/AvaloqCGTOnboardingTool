@@ -1,6 +1,8 @@
 ﻿using CGTOnboardingTool.Securities;
+using CGTOnboardingTool.ReportTools;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Microsoft.Win32;
 
 namespace CGTOnboardingTool.UISections
 {
@@ -122,36 +125,41 @@ namespace CGTOnboardingTool.UISections
 
         private void cbFilter_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            hideComboBoxes();
+            //Function
             if (cbFilter.SelectedIndex.ToString() == "2")
             {
                 cbFilterFunction.Visibility = Visibility.Visible;
-                cbFilterSecurity.Visibility = Visibility.Hidden;
-
-                cbFilterDateFrom.Visibility = Visibility.Hidden;
-                cbFilterDateTo.Visibility = Visibility.Hidden;
-                LblReportFilterDateFrom.Visibility = Visibility.Hidden;
-                LblReportFilterDateTo.Visibility = Visibility.Hidden;
             }
+            //Security
             else if (cbFilter.SelectedIndex.ToString() == "1")
             {
-                cbFilterFunction.Visibility = Visibility.Hidden;
                 cbFilterSecurity.Visibility = Visibility.Visible;
-
-                cbFilterDateFrom.Visibility = Visibility.Hidden;
-                cbFilterDateTo.Visibility = Visibility.Hidden;
-                LblReportFilterDateFrom.Visibility = Visibility.Hidden;
-                LblReportFilterDateTo.Visibility = Visibility.Hidden;
             }
+            //Date
             else if (cbFilter.SelectedIndex.ToString() == "0")
             {
-                cbFilterFunction.Visibility = Visibility.Hidden;
-                cbFilterSecurity.Visibility = Visibility.Hidden;
-
                 cbFilterDateFrom.Visibility = Visibility.Visible;
                 cbFilterDateTo.Visibility = Visibility.Visible;
                 LblReportFilterDateFrom.Visibility = Visibility.Visible;
                 LblReportFilterDateTo.Visibility = Visibility.Visible;
             }
+        }
+
+        private void hideComboBoxes()
+        {
+            cbFilterFunction.Visibility = Visibility.Hidden;
+            cbFilterSecurity.Visibility = Visibility.Hidden;
+            cbFilterDateFrom.Visibility = Visibility.Hidden;
+            cbFilterDateTo.Visibility = Visibility.Hidden;
+            LblReportFilterDateFrom.Visibility = Visibility.Hidden;
+            LblReportFilterDateTo.Visibility = Visibility.Hidden;
+        }
+
+        private void btnSave_Click(object sender, RoutedEventArgs e)
+        {
+            ReportExporter exporter = new ReportExporter(ref report);
+            exporter.ExportToText();
         }
     }
     public class Entry

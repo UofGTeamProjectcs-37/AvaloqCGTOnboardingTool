@@ -9,5 +9,11 @@ namespace CGTOnboardingTool.Tools
     public abstract class CGTFunction
     {
         public abstract ReportEntry perform(ref Report report);
+
+        public override string ToString()
+        {
+            string[] function = base.ToString().Split('.');
+            return function[2];
+        }
     }
 }

@@ -25,26 +25,14 @@ namespace CGTOnboardingTool.ReportTools
             saveFile.FilterIndex = 2;
             saveFile.RestoreDirectory = true;
             UnicodeEncoding uniEncoding = new UnicodeEncoding();
-            if (saveFile.ShowDialog() == true)
-            {
-                if ((myStream = saveFile.OpenFile()) != null)
-                {
-
-                    for (int i = 0; i < report.Count(); i++)
-                    {
-                        char[] row = { Convert.ToChar(t[i].Id), Convert.ToChar(t[i].Function) };
-
-                        myStream.Write(uniEncoding.GetBytes(row));
-                    }
-                    myStream.Close();
-                }
-            }
 
             for (int i = 0; i < report.Count(); i++)
             {
                 System.Diagnostics.Debug.WriteLine(t[i].Id);
                 System.Diagnostics.Debug.WriteLine(t[i].Date);
-                System.Diagnostics.Debug.WriteLine(t[i].Function);
+
+                System.Diagnostics.Debug.WriteLine(t[i].Function.ToString());
+
                 System.Diagnostics.Debug.WriteLine(t[i].Security);
                 System.Diagnostics.Debug.WriteLine(t[i].Price);
                 System.Diagnostics.Debug.WriteLine(t[i].Quantity);
@@ -53,6 +41,29 @@ namespace CGTOnboardingTool.ReportTools
                 System.Diagnostics.Debug.WriteLine(t[i].Holdings);
                 System.Diagnostics.Debug.WriteLine(t[i].Section104);
             }
+
+            if (saveFile.ShowDialog() == true)
+            {
+                if ((myStream = saveFile.OpenFile()) != null)
+                {
+
+                    for (int i = 0; i < report.Count(); i++)
+                    {
+                        string str = t[i].Function.ToString();
+                        str = str.Insert(0, t[i].Id.ToString());
+                        str = str.Insert(1, ", ");
+
+
+                        str += '\n';
+                        char[] row = str.ToCharArray();
+
+                        myStream.Write(uniEncoding.GetBytes(row));
+                    }
+                    myStream.Close();
+                }
+            }
+
+            
         }
 
 

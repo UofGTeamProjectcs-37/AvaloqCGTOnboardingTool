@@ -23,6 +23,7 @@ namespace CGTOnboardingTool.Securities
             return String.Format("\"{0}\" - {1}", this.ShortName, this.Name);
         }
 
+
         public override bool Equals(object? obj)
         {
             return obj is Security security &&

@@ -21,7 +21,7 @@ namespace CGTOnboardingTool.ReportTools
 
             Stream myStream;
             SaveFileDialog saveFile = new SaveFileDialog();
-            saveFile.Filter = "txt files (*.txt) | *.*";
+           // saveFile.Filter = "txt files (*.txt) | *.*";
             saveFile.FilterIndex = 2;
             saveFile.RestoreDirectory = true;
             UnicodeEncoding uniEncoding = new UnicodeEncoding();
@@ -32,23 +32,19 @@ namespace CGTOnboardingTool.ReportTools
             {
                 if ((myStream = saveFile.OpenFile()) != null)
                 {
-                    
+
 
                     for (int i = 0; i < report.Count(); i++)
                     {
-                        System.Diagnostics.Debug.WriteLine(i);
-                        System.Diagnostics.Debug.WriteLine(t[i].Id.ToString());
-                        string[] _currentRow = { t[i].Id.ToString(), t[i].Function.ToString(), 
-                            t[i].Date.ToString(), t[i].Security[i].Name,t[i].Quantity[t[i].Security[i]].ToString(), 
-                            t[i].Price[t[i].Security[i]].ToString(), t[i].AssociatedCosts[i].ToString(),
-                            t[i].GainLoss[t[i].Security[i]].ToString(), t[i].Holdings[t[i].Security[i]].ToString(),
-                            t[i].Section104[t[i].Security[i]].ToString() };
+                        string[] _currentRow = { t[i].Id.ToString(), t[i].Function.ToString(),
+                            t[i].Date.ToString(), t[i].Security[0].Name,t[i].Quantity[t[i].Security[0]].ToString(),
+                            t[i].Price[t[i].Security[0]].ToString(), t[i].AssociatedCosts[0].ToString(),
+                            t[i].GainLoss[t[i].Security[0]].ToString(), t[i].Holdings[t[i].Security[0]].ToString(),
+                            t[i].Section104[t[i].Security[0]].ToString(), "\n"};
 
                         char[] row = string.Join(", ", _currentRow).ToCharArray();
 
-                       
-                       
-                        //char[] row = str.ToCharArray();
+                     
 
                         myStream.Write(uniEncoding.GetBytes(row));
                     }

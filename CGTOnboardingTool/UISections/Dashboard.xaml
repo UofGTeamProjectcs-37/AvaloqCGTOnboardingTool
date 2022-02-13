@@ -22,33 +22,33 @@
 
                 <Label x:Name="LblReportFilterHeader" Content="Filter by:" Margin="10,-5,480,-5" Style="{DynamicResource ReportFilterLabel}"/>
 
-                <ComboBox x:Name="cbFilter" IsEditable = "True" Width = "252" HorizontalAlignment = "Left" Margin = "100,0,0,0" SelectionChanged="cbFilter_SelectionChanged" Text="Date" Height="30">
+                <ComboBox x:Name="cbFilter" IsEditable ="True" Width = "252" HorizontalAlignment = "Left" Margin = "100,0,0,0" SelectionChanged="cbFilter_SelectionChanged" Text="Date" Height="30" Style="{DynamicResource ComboBoxStyle}">
                     <ComboBoxItem Content = "Date"/>
                     <ComboBoxItem Content = "Security"/>
                     <ComboBoxItem Content = "Function"/>
                 </ComboBox>
 
-                <ComboBox x:Name="cbFilterFunction" IsEditable = "True" Width = "252" HorizontalAlignment = "Left" Margin = "370,0,0,0" SelectionChanged="cbFilter_SelectionChanged" Visibility="Hidden" Text="--Select Function--" Grid.ColumnSpan="2" Height="30">
+                <ComboBox x:Name="cbFilterFunction" IsEditable = "True" Width = "252" HorizontalAlignment = "Left" Margin = "370,0,0,0" SelectionChanged="cbFilter_SelectionChanged" Visibility="Hidden" Text="--Select Function--" Height="30" Style="{DynamicResource ComboBoxStyle}">
 
                     <ComboBoxItem Content = "Build"/>
                     <ComboBoxItem Content = "Reduce"/>
                     <ComboBoxItem Content = "Rebuild"/>
                 </ComboBox>
 
-                <ComboBox x:Name="cbFilterSecurity" IsEditable = "True" Width = "252" HorizontalAlignment = "Left" Margin = "370,0,0,0" SelectionChanged="cbFilter_SelectionChanged" Visibility="Hidden" Text="--Select Security--" Grid.ColumnSpan="2" Height="30">
+                <ComboBox x:Name="cbFilterSecurity" IsEditable = "True" Width = "252" HorizontalAlignment = "Left" Margin = "370,0,0,0" SelectionChanged="cbFilter_SelectionChanged" Visibility="Hidden" Text="-Select Security-" Height="30" Style="{DynamicResource ComboBoxStyle}">
                     <ComboBoxItem Content = "GSK"/>
                         <ComboBoxItem Content = "TSLA"/>
                         <ComboBoxItem Content = "FGE"/>
                 </ComboBox>
 
                 <Label x:Name="LblReportFilterDateFrom" Content="From:" Margin="370,-5,151,-5" Visibility="Visible" Style="{DynamicResource ReportFilterLabel}"/>
-                <ComboBox x:Name="cbFilterDateFrom" IsEditable = "True" Width = "146" HorizontalAlignment = "Left" Margin = "438,0,0,0" SelectionChanged="cbFilter_SelectionChanged" Visibility="Visible" Text="--Select Start Date--" Height="30">
+                <ComboBox x:Name="cbFilterDateFrom" IsEditable = "True" Width = "146" HorizontalAlignment = "Left" Margin = "438,0,0,0" SelectionChanged="cbFilter_SelectionChanged" Visibility="Visible" Text="--Start Date--" Height="30" Style="{DynamicResource ComboBoxStyle}">
                     <ComboBoxItem Content = "2019/01"/>
                     <ComboBoxItem Content = "2019/05"/>
                     <ComboBoxItem Content = "2020/05"/>
                 </ComboBox>
                 <Label x:Name="LblReportFilterDateTo" Content="To:" Margin="614,-5,155,-5" Visibility="Visible" Style="{DynamicResource ReportFilterLabel}"/>
-                <ComboBox x:Name="cbFilterDateTo" IsEditable = "True" Width = "135" HorizontalAlignment = "Left" Margin = "658,0,0,0" SelectionChanged="cbFilter_SelectionChanged" Visibility="Visible" Text="--Select End Date--" Grid.Column="1" Height="30">
+                <ComboBox x:Name="cbFilterDateTo" IsEditable = "True" Width = "146" HorizontalAlignment = "Left" Margin = "658,0,0,0" SelectionChanged="cbFilter_SelectionChanged" Visibility="Visible" Text="--End Date--" Height="30" Style="{DynamicResource ComboBoxStyle}">
                     <ComboBoxItem Content = "2020/05"/>
                     <ComboBoxItem Content = "2021/01"/>
                     <ComboBoxItem Content = "2021/11"/>

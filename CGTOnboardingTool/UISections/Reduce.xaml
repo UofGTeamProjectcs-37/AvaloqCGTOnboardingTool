@@ -32,7 +32,10 @@
             <Label x:Name="LblReduceCost" Content="Cost" HorizontalAlignment="Left" Margin="74,451.6,0,198" Style="{DynamicResource FunctionParameterLabel}"/>
             <Label x:Name="LblReduceGross" Content="Gross" HorizontalAlignment="Left" Margin="68,533.8,0,119" Style="{DynamicResource FunctionParameterLabel}"/>
 
-            <ComboBox x:Name="DropReduceSecurities" Text="Enter a Security to Reduce" HorizontalAlignment="Left" Margin="190,126,0,0" VerticalAlignment="Top" Width="462" Height="34"/>
+            <Grid x:Name="ReduceComboBoxGrid" Style="{DynamicResource RoundGrid}">
+                <Border Margin="190,126,350,530" Background="#C7CADC" Width="462" Height="34"/>
+                <ComboBox x:Name="DropReduceSecurities" IsEditable ="True" HorizontalAlignment="Left" Margin="190,126,350,530" Width="462" Text="Enter a Security to Reduce" Style="{DynamicResource ComboBoxStyle}"/>
+            </Grid>
         </Grid>
     </Grid>
 </Page>

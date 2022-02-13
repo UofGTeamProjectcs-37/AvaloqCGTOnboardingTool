@@ -23,8 +23,15 @@
             <TextBox x:Name="TxtRebuildOldQuantityReduce" Margin="375,434.25,164,208" Text="Enter The New Quantity Here" Style="{DynamicResource FunctionInputBoxes}"/>
             <TextBox x:Name="TxtRebuildNewQuantity" Text="Enter The New Quantity Here" Margin="375,538,164,118" Style="{DynamicResource FunctionInputBoxes}"/>
 
-            <ComboBox x:Name="DropRebuildOldSecurity" HorizontalAlignment="Left" Margin="375,228.75,0,0" VerticalAlignment="Top" Width="462" Height="34" SelectionChanged="DropRebuildOldSecurity_SelectionChanged"/>
-            <ComboBox x:Name="DropRebuildNewSecurity" HorizontalAlignment="Left" Margin="375,331.5,0,0" VerticalAlignment="Top" Width="462" Height="34"/>
+            <Grid x:Name="RebuildComboBoxGridOld" Style="{DynamicResource RoundGrid}" Margin="0,0,164,422">
+                <Border Background="#C7CADC" Width="462" Height="34" Margin="375,231,0,3"/>
+                <ComboBox x:Name="DropRebuildOldSecurity" IsEditable ="True" HorizontalAlignment="Left" Margin="375,228.75,0,0" Width="462" Height="34" Text="Enter a Security to Reduce" SelectionChanged="DropRebuildOldSecurity_SelectionChanged" Style="{DynamicResource ComboBoxStyle}"/>
+            </Grid>
+
+            <Grid x:Name="RebuildComboBoxGridNew" Style="{DynamicResource RoundGrid}" Margin="375,331.5,0,0">
+                <Border Background="#C7CADC" Width="462" Height="34" Margin="0,0,164,324"/>
+                <ComboBox x:Name="DropRebuildNewSecurity" IsEditable ="True" HorizontalAlignment="Left" Margin="0,0,0,324" Width="462" Height="34" Text="Enter a Security to Build" SelectionChanged="DropRebuildOldSecurity_SelectionChanged" Style="{DynamicResource ComboBoxStyle}"/>
+            </Grid>
 
             <Label x:Name="LblRebuildDate" Content="Date" HorizontalAlignment="Left" Margin="172,122.8,0,526" Style="{DynamicResource FunctionParameterLabel}"/>
             <Label x:Name="LblRebuildOldSecurity" Content="Existing Security" HorizontalAlignment="Left" Margin="118,225.55,0,420" Style="{DynamicResource FunctionParameterLabel}"/>

@@ -16,7 +16,7 @@
         <Button x:Name="BtnBuildComplete" Content="Build" Click="BtnBuildComplete_Click" Margin="187,617,638,23" Style="{DynamicResource RoundButton}"/>
         <Button x:Name="BtnBuildCancel" Content="Cancel" Margin="569,617,0,23" Click="BtnBuildCancel_Click" Style="{DynamicResource RoundButton}"/>
 
-        <Grid x:Name="BuildGridInterior"  Style="{DynamicResource RoundGrid}">
+        <Grid x:Name="BuildGridInterior" Style="{DynamicResource RoundGrid}">
             <Border Margin="36,96,36,96" Background="#FFFFFF" Opacity="0.5"/>
 
             <TextBox x:Name="TxtBuildCost" Margin="190,454.8,350,201" Text="Enter The Allowable Costs Here" Style="{DynamicResource FunctionInputBoxes}"/>
@@ -33,7 +33,10 @@
             <Label x:Name="LblBuildCost" Content="Cost" HorizontalAlignment="Left" Margin="74,451.6,0,198" Style="{DynamicResource FunctionParameterLabel}"/>
             <Label x:Name="LblBuildGross" Content="Gross" HorizontalAlignment="Left" Margin="68,533.8,0,119" Style="{DynamicResource FunctionParameterLabel}"/>
 
-            <ComboBox x:Name="DropBuildSecurities" Text="Enter a Security to Build" HorizontalAlignment="Left" Margin="190,126,0,0" VerticalAlignment="Top" Width="462" Height="34"/>
+            <Grid x:Name="BuildComboBoxGrid" Style="{DynamicResource RoundGrid}">
+                <Border Margin="190,126,350,530" Background="#C7CADC" Width="462" Height="34"/>
+                <ComboBox x:Name="DropBuildSecurities" IsEditable ="True" HorizontalAlignment="Left" Margin="190,126,350,530" Width="462" Text="Enter a Security to Build" Style="{DynamicResource ComboBoxStyle}"/>
+            </Grid>
         </Grid>
     </Grid>
 </Page>

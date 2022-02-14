@@ -309,9 +309,29 @@ namespace CGTOnboardingTool
             }
 
 
+            return filteredRows;
+        }
+
+        public List<ReportEntry> FilterFunction()
+        {
+
+            List<ReportEntry> filteredRows = new List<ReportEntry>();
+            List<ReportEntry> reportRows = new List<ReportEntry>(this.Rows());
+
+            String chosenFunction = "Build"; //change to user input from drop down menu
+
+            for (int i = 0; i < this.Count(); i++)
+            {
+                if (reportRows[i].Function.ToString()==chosenFunction)
+                {
+                    filteredRows.Append(reportRows[i]);
+                }
+            }
+
 
             return filteredRows;
         }
+
 
     }
 

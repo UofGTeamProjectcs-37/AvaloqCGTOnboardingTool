@@ -266,6 +266,15 @@ namespace CGTOnboardingTool
                 return entry.Holdings[security];
             }
         }
+
+        public List<ReportEntry> filterSecurity() {
+            List<ReportEntry> filteredSecurities = new List<ReportEntry>()
+            //get dropdown menu security selection 
+            //from securityEntries put the dropdown menu selection into securityEntries as a key and store those values into filteredSecurity list
+            //display filteredsecuritylist in the report.
+
+            return filteredSecurities;
+        }
         
     }
 

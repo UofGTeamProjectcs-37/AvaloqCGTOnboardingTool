@@ -267,18 +267,18 @@ namespace CGTOnboardingTool
             }
         }
 
-        public List<ReportEntry> filterSecurity() {
+        public List<ReportEntry> FilterSecurity() {
 
-            List<ReportEntry> filteredSecurities = new List<ReportEntry>();
+            List<ReportEntry> filteredRows = new List<ReportEntry>();
             List<ReportEntry> reportRows = new List<ReportEntry>(this.Rows());
 
             string chosenSecurity = "Telsa"; //change to user input from drop down menu
 
             for (int i=0; i<this.Count();i++)
             {
-                if (reportRows[i].Security[0].Name== chosenSecurity)
+                if (reportRows[i].Security[0].Name == chosenSecurity)
                 {
-                    filteredSecurities.Append(reportRows[i]);
+                    filteredRows.Append(reportRows[i]);
                 }
             }
 
@@ -288,9 +288,31 @@ namespace CGTOnboardingTool
 
 
 
-            return filteredSecurities;
+            return filteredRows;
         }
-        
+
+        public List<ReportEntry> FilterDate()
+        {
+
+            List<ReportEntry> filteredRows = new List<ReportEntry>();
+            List<ReportEntry> reportRows = new List<ReportEntry>(this.Rows());
+
+            DateOnly startDate = new DateOnly( 2011, 11, 11 ); //change to user input from drop down menu
+            DateOnly endDate = new DateOnly(2019, 11, 11); //change to user input from drop down menu
+
+            for (int i = 0; i < this.Count(); i++)
+            {
+                if ((reportRows[i].Date<endDate) && (reportRows[i].Date>startDate))
+                {
+                    filteredRows.Append(reportRows[i]);
+                }
+            }
+
+
+
+            return filteredRows;
+        }
+
     }
 
 }

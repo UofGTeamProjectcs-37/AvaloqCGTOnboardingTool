@@ -7,8 +7,8 @@
   IgnorableNamespaces="uap rescap">
 
   <Identity
-    Name="69aae9dc-c8bd-41c7-917d-36d87a68f1cf"
-    Publisher="CN=bella"
+    Name="CGTDemo"
+    Publisher="CN=bella, O=CS37, C=UK"
     Version="1.0.0.0" />
 
   <Properties>

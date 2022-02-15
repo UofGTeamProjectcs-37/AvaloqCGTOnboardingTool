@@ -21,7 +21,10 @@ namespace CGTOnboardingTool.ReportTools
 
             Stream myStream;
             SaveFileDialog saveFile = new SaveFileDialog();
+
             saveFile.Filter = "txt files (*.txt) | *.*";
+            saveFile.Filter = "csv files (*.csv) | *.*";
+            saveFile.DefaultExt = "csv";
             saveFile.FilterIndex = 2;
             saveFile.RestoreDirectory = true;
             UnicodeEncoding uniEncoding = new UnicodeEncoding();
@@ -54,11 +57,5 @@ namespace CGTOnboardingTool.ReportTools
 
             
         }
-
-
-
-}
-
-
-
     }
+}

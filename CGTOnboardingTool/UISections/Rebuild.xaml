@@ -30,7 +30,7 @@
 
             <Grid x:Name="RebuildComboBoxGridNew" Style="{DynamicResource RoundGrid}" Margin="375,331.5,0,0">
                 <Border Background="#C7CADC" Width="462" Height="34" Margin="0,0,164,324"/>
-                <ComboBox x:Name="DropRebuildNewSecurity" IsEditable ="True" HorizontalAlignment="Left" Margin="0,0,0,324" Width="462" Height="34" Text="Enter a Security to Build" SelectionChanged="DropRebuildOldSecurity_SelectionChanged" Style="{DynamicResource ComboBoxStyle}"/>
+                <ComboBox x:Name="DropRebuildNewSecurity" IsEditable ="True" HorizontalAlignment="Left" Margin="0,0,0,324" Width="462" Height="34" Text="Enter a Security to Build" Style="{DynamicResource ComboBoxStyle}"/>
             </Grid>
 
             <Label x:Name="LblRebuildDate" Content="Date" HorizontalAlignment="Left" Margin="172,122.8,0,526" Style="{DynamicResource FunctionParameterLabel}"/>

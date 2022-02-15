@@ -57,16 +57,20 @@ namespace CGTOnboardingTool.UISections
                     SecurityCol += sec.ShortName + ", ";
                 }
 
-                string Quantity = "Null";
+                string Quantity = "";
                 if (row.Quantity != null)
                 {
                     foreach (KeyValuePair<Security, decimal> pair in row.Quantity)
                     {
                         Quantity = pair.Value.ToString();
                     }
+                } 
+                else
+                {
+                    Quantity = "Null";
                 }
 
-                string Price = "Null";
+                string Price = "";
                 if (row.Price != null)
                 { 
                     foreach(KeyValuePair<Security, decimal> pair in row.Price)
@@ -74,11 +78,19 @@ namespace CGTOnboardingTool.UISections
                         Price = "£" + pair.Value;
                     }
                 }
+                else
+                {
+                    Price = "Null";
+                }
 
-                string Cost = "Null";
+                string Cost = "";
                 if (row.AssociatedCosts != null)
                 {
                     Cost = "£" + row.AssociatedCosts[0].ToString();
+                }
+                else
+                {
+                    Cost = "Null";
                 }
 
                 string Gross;
@@ -90,7 +102,7 @@ namespace CGTOnboardingTool.UISections
                     Gross = row.Gross.GetType().Name;
                 }
 
-                string Gain_loss = "Null";
+                string Gain_loss = "";
                 if (row.GainLoss != null)
                 {
                     foreach (KeyValuePair<Security, decimal> pair in row.GainLoss)
@@ -98,8 +110,12 @@ namespace CGTOnboardingTool.UISections
                         Gain_loss = pair.Value.ToString();
                     }
                 }
+                else
+                {
+                    Gain_loss = "Null";
+                }
 
-                string Holdings = "Null";
+                string Holdings = "";
                 if (row.Holdings != null)
                 {
                     foreach (KeyValuePair<Security, decimal> pair in row.Holdings)
@@ -107,14 +123,22 @@ namespace CGTOnboardingTool.UISections
                         Holdings += pair.Value.ToString() + ", ";
                     }
                 }
+                else
+                {
+                    Holdings = "Null";
+                }
 
-                string S104 = "Null";
+                string S104 = "";
                 if (row.Section104 != null)
                 {
                     foreach (KeyValuePair<Security, decimal> pair in row.Section104)
                     {
                         S104 += pair.Value.ToString() + ", "; ;
                     }
+                } 
+                else
+                {
+                    S104 = "Null";
                 }
 
                 list_row.Add(new Entry { Function = Function, Date = Date, Securities = SecurityCol, Quantity = Quantity, Price = Price, Cost = Cost, Gross = Gross, Gain_loss = Gain_loss, Holdings = Holdings, S104 = S104 });

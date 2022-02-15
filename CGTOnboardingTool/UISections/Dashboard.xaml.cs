@@ -54,7 +54,7 @@ namespace CGTOnboardingTool.UISections
                 string SecurityCol = "";
                 foreach (var sec in row.Security)
                 {
-                    SecurityCol += sec.ShortName;
+                    SecurityCol += sec.ShortName + ", ";
                 }
 
                 string Quantity = "Null";
@@ -104,7 +104,7 @@ namespace CGTOnboardingTool.UISections
                 {
                     foreach (KeyValuePair<Security, decimal> pair in row.Holdings)
                     {
-                        Holdings = pair.Value.ToString();
+                        Holdings += pair.Value.ToString() + ", ";
                     }
                 }
 
@@ -113,7 +113,7 @@ namespace CGTOnboardingTool.UISections
                 {
                     foreach (KeyValuePair<Security, decimal> pair in row.Section104)
                     {
-                        S104 = pair.Value.ToString();
+                        S104 += pair.Value.ToString() + ", "; ;
                     }
                 }
 

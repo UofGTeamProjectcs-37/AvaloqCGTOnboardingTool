@@ -75,7 +75,7 @@ namespace CGTOnboardingTool.Tools
               date: date,
               security: security,
               price: pps,
-              quantity: quantity,
+              quantity: -1 * quantity,
               associatedCosts: cost,
               gainLoss: gainLoss,
               section104: S104Updated

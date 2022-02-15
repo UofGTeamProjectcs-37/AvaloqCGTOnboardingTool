@@ -54,7 +54,8 @@ namespace CGTOnboardingTool.UISections
                 string SecurityCol = "";
                 foreach (var sec in row.Security)
                 {
-                    SecurityCol += sec.ShortName;
+
+                    SecurityCol += sec.ShortName + " ";
                 }
 
                 string Quantity = "Null";

@@ -27,7 +27,7 @@ namespace CGTOnboardingTool.Tools
 
         public override ReportEntry perform(ref Report report)
         {
-            var holdingsOldSecurityCurrent = report.GetHoldings(securityNew, date);
+            var holdingsOldSecurityCurrent = report.GetHoldings(securityOld, date);
             var S104OldSecurityCurrent = report.GetSection104(securityOld, date);
             var S104NewSecurityCurrent = report.GetSection104(securityNew, date);
 
@@ -44,7 +44,7 @@ namespace CGTOnboardingTool.Tools
                 function: this,
                 date: date,
                 securities: new Security[] { securityOld, securityNew },
-                quantities: new decimal[] { quantityOldReduce, quantityNewBuild },
+                quantities: new decimal[] { (-1 * quantityOldReduce), quantityNewBuild },
                 gainLosses: new decimal[] { gainLossOldSecurity, gainLossNewSecurity },
                 section104s: new decimal[] { S104OldSecurityUpdated, S104NewSecurityUpdated }
                 );

@@ -62,7 +62,7 @@ namespace CGTOnboardingTool.UISections
                 {
                     foreach (KeyValuePair<Security, decimal> pair in row.Quantity)
                     {
-                        Quantity = pair.Value.ToString();
+                        Quantity += pair.Value.ToString() + ", ";
                     }
                 } 
                 else

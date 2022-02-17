@@ -21,6 +21,8 @@ namespace CGTOnboardingTool.ReportTools
 
             Stream myStream;
             SaveFileDialog saveFile = new SaveFileDialog();
+
+            saveFile.Filter = "txt files (*.txt) | *.*";
             saveFile.Filter = "csv files (*.csv) | *.*";
             saveFile.DefaultExt = "csv";
             saveFile.FilterIndex = 2;
@@ -55,11 +57,5 @@ namespace CGTOnboardingTool.ReportTools
 
             
         }
-
-
-
-}
-
-
-
     }
+}

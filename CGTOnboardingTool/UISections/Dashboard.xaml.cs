@@ -54,7 +54,21 @@ namespace CGTOnboardingTool.UISections
                 string SecurityCol = "";
                 foreach (var sec in row.Security)
                 {
-                    SecurityCol += sec.ShortName + ", ";
+                    /* If a more than one security has been affected by a function
+                     * then a comma will be used to seperate them, otherwise only the 
+                     * security will display
+                     * 
+                     * This holds true for each other parameter in their own respective manners
+                     * 
+                     */
+                    if (SecurityCol == "")
+                    {
+                        SecurityCol += sec.ShortName;
+                    } else
+                    {
+                        SecurityCol += ", " + sec.ShortName;
+                    }
+                    
                 }
 
                 string Quantity = "";
@@ -62,7 +76,14 @@ namespace CGTOnboardingTool.UISections
                 {
                     foreach (KeyValuePair<Security, decimal> pair in row.Quantity)
                     {
-                        Quantity += pair.Value.ToString() + ", ";
+                        if (Quantity == "")
+                        {
+                            Quantity += pair.Value.ToString();
+                        }
+                        else
+                        {
+                            Quantity += ", " + pair.Value.ToString();
+                        }
                     }
                 } 
                 else
@@ -75,7 +96,14 @@ namespace CGTOnboardingTool.UISections
                 { 
                     foreach(KeyValuePair<Security, decimal> pair in row.Price)
                     {
-                        Price = "£" + pair.Value;
+                        if (Price == "")
+                        {
+                            Price += "£" + pair.Value.ToString(); ;
+                        }
+                        else
+                        {
+                            Price += ", " + "£" + pair.Value.ToString(); ;
+                        }
                     }
                 }
                 else
@@ -107,7 +135,14 @@ namespace CGTOnboardingTool.UISections
                 {
                     foreach (KeyValuePair<Security, decimal> pair in row.GainLoss)
                     {
-                        Gain_loss = pair.Value.ToString();
+                        if (Gain_loss == "")
+                        {
+                            Gain_loss += pair.Value.ToString();
+                        }
+                        else
+                        {
+                            Gain_loss += ", " + pair.Value.ToString();
+                        }
                     }
                 }
                 else
@@ -120,7 +155,14 @@ namespace CGTOnboardingTool.UISections
                 {
                     foreach (KeyValuePair<Security, decimal> pair in row.Holdings)
                     {
-                        Holdings += pair.Value.ToString() + ", ";
+                        if (Holdings == "")
+                        {
+                            Holdings += pair.Value.ToString();
+                        }
+                        else
+                        {
+                            Holdings += ", " + pair.Value.ToString();
+                        }
                     }
                 }
                 else
@@ -133,7 +175,14 @@ namespace CGTOnboardingTool.UISections
                 {
                     foreach (KeyValuePair<Security, decimal> pair in row.Section104)
                     {
-                        S104 += pair.Value.ToString() + ", "; ;
+                        if (S104 == "")
+                        {
+                            S104 += pair.Value.ToString();
+                        }
+                        else
+                        {
+                            S104 += ", " + pair.Value.ToString();
+                        }
                     }
                 } 
                 else

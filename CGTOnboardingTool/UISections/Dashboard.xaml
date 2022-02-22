@@ -57,19 +57,19 @@
 
             <Grid Style="{DynamicResource RoundGrid}" Height="412.5">
                 <Border Background="#ffffff" Opacity="0.5" Margin="60,78,60,-60"/>
-                <ListView Name="DashboardReportView" Margin="75,78,75,-60">
+                <ListView Name="DashboardReportView" Margin="58,78,58,-60" d:ItemsSource="{d:SampleData ItemCount=5}">
                     <ListView.View>
                         <GridView>
-                            <GridViewColumn Header="Function" Width="auto" DisplayMemberBinding="{Binding Function}"/>
-                            <GridViewColumn Header="Date" Width="auto" DisplayMemberBinding="{Binding Date}"/>
-                            <GridViewColumn Header="Securities" Width="auto" DisplayMemberBinding="{Binding Securities}"/>
-                            <GridViewColumn Header="Quantity" Width="auto" DisplayMemberBinding="{Binding Quantity}"/>
-                            <GridViewColumn Header="Price" Width="auto" DisplayMemberBinding="{Binding Price}"/>
-                            <GridViewColumn Header="Cost" Width="auto" DisplayMemberBinding="{Binding Cost}"/>
-                            <GridViewColumn Header="Gross" Width="auto" DisplayMemberBinding="{Binding Gross}"/>
-                            <GridViewColumn Header="Gains" Width="auto" DisplayMemberBinding="{Binding Gains}"/>
-                            <GridViewColumn Header="Holdings" Width="auto" DisplayMemberBinding="{Binding Holdings}"/>
-                            <GridViewColumn Header="S104" Width="auto" DisplayMemberBinding="{Binding S104}"/>
+                            <GridViewColumn Header="  Function" Width="auto" DisplayMemberBinding="{Binding Function}"/>
+                            <GridViewColumn Header="Date" Width="auto" DisplayMemberBinding="{Binding Date}" HeaderContainerStyle="{DynamicResource InnerColumns}"/>
+                            <GridViewColumn Header="Securities" Width="auto" DisplayMemberBinding="{Binding Securities}" HeaderContainerStyle="{DynamicResource InnerColumns}"/>
+                            <GridViewColumn Header="Quantity" Width="auto" DisplayMemberBinding="{Binding Quantity}" HeaderContainerStyle="{DynamicResource InnerColumns}"/>
+                            <GridViewColumn Header="Price" Width="auto" DisplayMemberBinding="{Binding Price}" HeaderContainerStyle="{DynamicResource InnerColumns}"/>
+                            <GridViewColumn Header="Cost" Width="auto" DisplayMemberBinding="{Binding Cost}" HeaderContainerStyle="{DynamicResource InnerColumns}"/>
+                            <GridViewColumn Header="Gross" Width="auto" DisplayMemberBinding="{Binding Gross}" HeaderContainerStyle="{DynamicResource InnerColumns}"/>
+                            <GridViewColumn Header="Gains" Width="auto" DisplayMemberBinding="{Binding Gains}" HeaderContainerStyle="{DynamicResource InnerColumns}"/>
+                            <GridViewColumn Header="Holdings" Width="auto" DisplayMemberBinding="{Binding Holdings}" HeaderContainerStyle="{DynamicResource InnerColumns}"/>
+                            <GridViewColumn Header="S104" Width="auto" DisplayMemberBinding="{Binding S104}" HeaderContainerStyle="{DynamicResource InnerColumns}"/>
                         </GridView>
                     </ListView.View>
                 </ListView>

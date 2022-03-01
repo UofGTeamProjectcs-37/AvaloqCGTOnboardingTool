@@ -5,12 +5,12 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:CGTOnboardingTool.UISections"
       mc:Ignorable="d"
-      Title="Dashboard" Width="1024" Height="705">
+      Title="Dashboard" Width="1024" Height="720">
 
     <Grid Width="1024" Height="705">
 
-        <Grid Style="{DynamicResource RoundGrid}" Height="690" Width="1001.5" Margin="0,8,22,7">
-            <Border Margin="7.5,0,15,0" Background="#C7CADC"/>
+        <Grid Style="{DynamicResource RoundGrid}" Height="690" Width="1001.5">
+            <Border Margin="7.5,0,15,15" Background="#C7CADC"/>
 
             <Grid Style="{DynamicResource RoundGrid}" Height="100" Width="881.5" Margin="60,15,60,513">
                 <Border Background="#ffffff" Opacity="0.5"/>

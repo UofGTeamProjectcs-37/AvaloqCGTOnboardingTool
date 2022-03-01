@@ -64,10 +64,5 @@ namespace CGTOnboardingTool.UISections
 
             this.NavigationService.Navigate(new Dashboard(ref report));
         }
-
-        private void TxtBuildGross_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
     }
 }

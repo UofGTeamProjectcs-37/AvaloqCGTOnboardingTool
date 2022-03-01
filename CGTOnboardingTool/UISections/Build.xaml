@@ -9,33 +9,39 @@
       Title="Build">
 
 
-    <Grid x:Name="BuildGrid" Style="{DynamicResource RoundGrid}" Height="690" Width="1001.5">
-        <Border Margin="7.5,0,15,0" Background="#C7CADC"/>
-        <Label x:Name="LblBuildHeader" Content="Build" Margin="879,10,36,0" Style="{DynamicResource FunctionHeaderLabel}"/>
+    <Grid Width="1024" Height="705">
+        <Grid x:Name="BuildGrid" Style="{DynamicResource RoundGrid}" Height="675" Width="1001.5">
+            <Border Margin="7.5,0,15,0" Background="#C7CADC"/>
 
-        <Button x:Name="BtnBuildComplete" Content="Build" Click="BtnBuildComplete_Click" Margin="187,617,638,23" Style="{DynamicResource RoundButton}"/>
-        <Button x:Name="BtnBuildCancel" Content="Cancel" Margin="569,617,0,23" Click="BtnBuildCancel_Click" Style="{DynamicResource RoundButton}"/>
+            <Label x:Name="LblBuildHeader" Content="Build" Margin="879,10,36,0" Style="{DynamicResource FunctionHeaderLabel}"/>
 
-        <Grid x:Name="BuildGridInterior" Style="{DynamicResource RoundGrid}">
-            <Border Margin="36,96,36,96" Background="#FFFFFF" Opacity="0.5"/>
+            <Button x:Name="BtnBuildComplete" Content="Build" Click="BtnBuildComplete_Click" Margin="187,617,638,8" Style="{DynamicResource RoundButton}"/>
+            <Button x:Name="BtnBuildCancel" Content="Cancel" Margin="697,617,128,8" Click="BtnBuildCancel_Click" Style="{DynamicResource RoundButton}"/>
 
-            <TextBox x:Name="TxtBuildCost" Margin="190,454.8,350,201" Text="Enter The Allowable Costs Here" Style="{DynamicResource FunctionInputBoxes}"/>
-            <TextBox x:Name="TxtBuildPrice" Margin="190,372.6,350,287" Text="Enter The Price per Quantity Here" Style="{DynamicResource FunctionInputBoxes}"/>
-            <TextBox x:Name="TxtBuildQuantity" Margin="190,290.4,350,366" Text="Enter The Quantity of Shares Here" Style="{DynamicResource FunctionInputBoxes}"/>
-            <TextBox x:Name="TxtBuildDate" Margin="190,208.8,350,448" Text="Enter The Date Here (yy/mm/dd)" Style="{DynamicResource FunctionInputBoxes}"/>
-            <TextBox x:Name="TxtBuildGross" Margin="190,537,350,122" Text="Enter The Gross Here" Style="{DynamicResource FunctionInputBoxes}"/>
+            <Grid x:Name="BuildGridInterior" Style="{DynamicResource RoundGrid}">
+                <Border Margin="36,96,36,96" Background="#FFFFFF" Opacity="0.5"/>
 
+                <TextBox x:Name="TxtBuildCost" Margin="190,455,350,186" Text="Enter The Allowable Costs Here" Style="{DynamicResource FunctionInputBoxes}"/>
+                <TextBox x:Name="TxtBuildPrice" Margin="190,373,350,268" Text="Enter The Price per Quantity Here" Style="{DynamicResource FunctionInputBoxes}"/>
+                <TextBox x:Name="TxtBuildQuantity" Margin="190,290,350,351" Text="Enter The Quantity of Shares Here" Style="{DynamicResource FunctionInputBoxes}"/>
+                <TextBox x:Name="TxtBuildDate" Margin="190,209,350,432" Text="Enter The Date Here (yy/mm/dd)" Style="{DynamicResource FunctionInputBoxes}"/>
+                <TextBox x:Name="TxtBuildGross" Margin="190,537,350,104" Text="Enter The Gross Here" Style="{DynamicResource FunctionInputBoxes}"/>
 
-            <Label x:Name="LblBuildSecurity" Content="Security" HorizontalAlignment="Left" Margin="57,122.8,0,526" Style="{DynamicResource FunctionParameterLabel}"/>
-            <Label x:Name="LblBuildDate" Content="Date" Margin="72,205,874,444" Style="{DynamicResource FunctionParameterLabel}"/>
-            <Label x:Name="LblBuildQuantity" Content="Quantity" HorizontalAlignment="Left" Margin="55,286.2,0,362" Style="{DynamicResource FunctionParameterLabel}"/>
-            <Label x:Name="LblBuildPrice" Content="Price" HorizontalAlignment="Left" Margin="72,369.4,0,288" Style="{DynamicResource FunctionParameterLabel}"/>
-            <Label x:Name="LblBuildCost" Content="Cost" HorizontalAlignment="Left" Margin="74,451.6,0,198" Style="{DynamicResource FunctionParameterLabel}"/>
-            <Label x:Name="LblBuildGross" Content="Gross" HorizontalAlignment="Left" Margin="68,533.8,0,119" Style="{DynamicResource FunctionParameterLabel}"/>
+                <Label x:Name="LblBuildSecurity" Content="Security" HorizontalAlignment="Left" Margin="57,123,0,511" Style="{DynamicResource FunctionParameterLabel}"/>
+                <Label x:Name="LblBuildDate" Content="Date" Margin="72,205,874,429" Style="{DynamicResource FunctionParameterLabel}"/>
+                <Label x:Name="LblBuildQuantity" Content="Quantity" HorizontalAlignment="Left" Margin="55,286,0,348" Style="{DynamicResource FunctionParameterLabel}"/>
+                <Label x:Name="LblBuildPrice" Content="Price" HorizontalAlignment="Left" Margin="72,369,0,265" Style="{DynamicResource FunctionParameterLabel}"/>
+                <Label x:Name="LblBuildCost" Content="Cost" HorizontalAlignment="Left" Margin="74,452,0,182" Style="{DynamicResource FunctionParameterLabel}"/>
+                <Label x:Name="LblBuildGross" Content="Gross" HorizontalAlignment="Left" Margin="68,534,0,100" Style="{DynamicResource FunctionParameterLabel}"/>
 
-            <Grid x:Name="BuildComboBoxGrid" Style="{DynamicResource RoundGrid}">
-                <Border Margin="190,126,350,530" Background="#C7CADC" Width="462" Height="34"/>
-                <ComboBox x:Name="DropBuildSecurities" IsEditable ="True" HorizontalAlignment="Left" Margin="190,126,350,530" Width="462" Text="Enter a Security to Build" Style="{DynamicResource ComboBoxStyle}"/>
+                <Grid x:Name="BuildComboBoxGrid" Style="{DynamicResource RoundGrid}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="19*"/>
+                        <RowDefinition Height="319*"/>
+                    </Grid.RowDefinitions>
+                    <Border Margin="190,88,350,515" Background="#C7CADC" Width="462" Height="34" Grid.Row="1"/>
+                    <ComboBox x:Name="DropBuildSecurities" IsEditable ="True" HorizontalAlignment="Left" Margin="190,86,0,515" Width="462" Text="Enter a Security to Build" Style="{DynamicResource ComboBoxStyle}" Grid.Row="1"/>
+                </Grid>
             </Grid>
         </Grid>
     </Grid>

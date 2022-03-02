@@ -77,19 +77,95 @@ namespace CGTOnboardingTool.UISections
 
         private void BtnRebuild_Click(object sender, RoutedEventArgs e)
         {
-            var userInputDate = ParseDate(TxtRebuildDate.Text);
+            //returns true if input is not in the correct format
+            bool incorrect = Validate();
 
-            var userInputOldSecurity = DropRebuildOldSecurity.SelectedItem as Security;
-            var userInputNewSecurity = DropRebuildNewSecurity.SelectedItem as Security;
+            if (!incorrect)
+            {
+                var userInputDate = ParseDate(TxtRebuildDate.Text);
 
-            var userInputOldSecuirtyReduce = Convert.ToDecimal(TxtRebuildOldQuantityReduce.Text);
-            var userInputNewSecuirtyQuantity = Convert.ToDecimal(TxtRebuildNewQuantity.Text);
+                var userInputOldSecurity = DropRebuildOldSecurity.SelectedItem as Security;
+                var userInputNewSecurity = DropRebuildNewSecurity.SelectedItem as Security;
 
-            Tools.Rebuild rb = new Tools.Rebuild(oldSecurity: userInputOldSecurity, quantityToReduce: userInputOldSecuirtyReduce, newSecurity: userInputNewSecurity, quantityToBuild: userInputNewSecuirtyQuantity, date: userInputDate);
+                var userInputOldSecuirtyReduce = Convert.ToDecimal(TxtRebuildOldQuantityReduce.Text);
+                var userInputNewSecuirtyQuantity = Convert.ToDecimal(TxtRebuildNewQuantity.Text);
 
-            rb.perform(ref report);
+                Tools.Rebuild rb = new Tools.Rebuild(oldSecurity: userInputOldSecurity, quantityToReduce: userInputOldSecuirtyReduce, newSecurity: userInputNewSecurity, quantityToBuild: userInputNewSecuirtyQuantity, date: userInputDate);
 
-            this.NavigationService.Navigate(new Dashboard(ref report));
+                rb.perform(ref report);
+
+                this.NavigationService.Navigate(new Dashboard(ref report));
+            }
+        }
+
+        //Checks all inputs are in the correct format
+        private bool Validate()
+        {
+            //Resets any previous incorrect validations
+            LblRebuildDateIncorrect.Visibility = Visibility.Hidden;
+            TxtRebuildDate.BorderThickness = new Thickness(0);
+            LblRebuildOldSecurityIncorrect.Visibility = Visibility.Hidden;
+            RebuildComboBoxOldBorder.BorderThickness = new Thickness(0);
+            LblRebuildNewSecurityIncorrect.Visibility = Visibility.Hidden;
+            RebuildComboBoxNewBorder.BorderThickness = new Thickness(0);
+            LblRebuildOldQuantityReduceIncorrect.Visibility = Visibility.Hidden;
+            TxtRebuildOldQuantityReduce.BorderThickness = new Thickness(0);
+            LblRebuildNewQuantityIncorrect.Visibility = Visibility.Hidden;
+            TxtRebuildNewQuantity.BorderThickness = new Thickness(0);
+
+            try
+            {
+                ParseDate(TxtRebuildDate.Text);
+            }
+            catch
+            {
+                LblRebuildDateIncorrect.Visibility = Visibility.Visible;
+                TxtRebuildDate.BorderThickness = new Thickness(5);
+
+                return true;
+            }
+
+            if ((Security)DropRebuildOldSecurity.SelectedItem == null)
+            {
+                LblRebuildOldSecurityIncorrect.Visibility = Visibility.Visible;
+                RebuildComboBoxOldBorder.BorderThickness = new Thickness(5);
+
+                return true;
+            }
+
+            if ((Security)DropRebuildNewSecurity.SelectedItem == null)
+            {
+                LblRebuildNewSecurityIncorrect.Visibility = Visibility.Visible;
+                RebuildComboBoxNewBorder.BorderThickness = new Thickness(5);
+
+                return true;
+            }
+
+            try
+            {
+                Convert.ToDecimal(TxtRebuildOldQuantityReduce.Text);
+            } 
+            catch
+            {
+                LblRebuildOldQuantityReduceIncorrect.Visibility = Visibility.Visible;   
+                TxtRebuildOldQuantityReduce.BorderThickness = new Thickness(5);
+
+                return true;
+            }
+
+            try
+            {
+                Convert.ToDecimal(TxtRebuildNewQuantity.Text);
+            }
+            catch
+            {
+                LblRebuildNewQuantityIncorrect.Visibility = Visibility.Visible;
+                TxtRebuildNewQuantity.BorderThickness = new Thickness(5);
+
+                return true;
+            }
+
+            return false;
         }
     }
 }

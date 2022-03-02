@@ -21,27 +21,31 @@
             <Grid x:Name="BuildGridInterior" Style="{DynamicResource RoundGrid}">
                 <Border Margin="36,96,36,96" Background="#FFFFFF" Opacity="0.5"/>
 
-                <TextBox x:Name="TxtBuildCost" Margin="190,455,350,186" Text="Enter The Allowable Costs Here" Style="{DynamicResource FunctionInputBoxes}"/>
-                <TextBox x:Name="TxtBuildPrice" Margin="190,373,350,268" Text="Enter The Price per Quantity Here" Style="{DynamicResource FunctionInputBoxes}"/>
-                <TextBox x:Name="TxtBuildQuantity" Margin="190,290,350,351" Text="Enter The Quantity of Shares Here" Style="{DynamicResource FunctionInputBoxes}"/>
-                <TextBox x:Name="TxtBuildDate" Margin="190,209,350,432" Text="Enter The Date Here (yy/mm/dd)" Style="{DynamicResource FunctionInputBoxes}"/>
-                <TextBox x:Name="TxtBuildGross" Margin="190,537,350,104" Text="Enter The Gross Here" Style="{DynamicResource FunctionInputBoxes}"/>
-
                 <Label x:Name="LblBuildSecurity" Content="Security" HorizontalAlignment="Left" Margin="57,123,0,511" Style="{DynamicResource FunctionParameterLabel}"/>
-                <Label x:Name="LblBuildDate" Content="Date" Margin="72,205,874,429" Style="{DynamicResource FunctionParameterLabel}"/>
-                <Label x:Name="LblBuildQuantity" Content="Quantity" HorizontalAlignment="Left" Margin="55,286,0,348" Style="{DynamicResource FunctionParameterLabel}"/>
-                <Label x:Name="LblBuildPrice" Content="Price" HorizontalAlignment="Left" Margin="72,369,0,265" Style="{DynamicResource FunctionParameterLabel}"/>
-                <Label x:Name="LblBuildCost" Content="Cost" HorizontalAlignment="Left" Margin="74,452,0,182" Style="{DynamicResource FunctionParameterLabel}"/>
-                <Label x:Name="LblBuildGross" Content="Gross" HorizontalAlignment="Left" Margin="68,534,0,100" Style="{DynamicResource FunctionParameterLabel}"/>
-
                 <Grid x:Name="BuildComboBoxGrid" Style="{DynamicResource RoundGrid}">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="19*"/>
-                        <RowDefinition Height="319*"/>
-                    </Grid.RowDefinitions>
-                    <Border Margin="190,88,350,515" Background="#C7CADC" Width="462" Height="34" Grid.Row="1"/>
-                    <ComboBox x:Name="DropBuildSecurities" IsEditable ="True" HorizontalAlignment="Left" Margin="190,86,0,515" Width="462" Text="Enter a Security to Build" Style="{DynamicResource ComboBoxStyle}" Grid.Row="1"/>
+                    <Border x:Name="BuildComboBoxBorder" Margin="190,128,350,513" Background="#C7CADC" Width="462" Height="34" BorderBrush="Red" BorderThickness="0"/>
+                    <ComboBox x:Name="DropBuildSecurities" IsEditable ="True" HorizontalAlignment="Left" Margin="190,128,0,513" Width="462" Text="Enter a Security to Build" Style="{DynamicResource ComboBoxStyle}"/>
                 </Grid>
+                <Label x:Name="LblBuildComboBoxIncorrect" Margin="190,160,350,481" Content="Please Select a Security" Style="{DynamicResource IncorrectValidationLabel}" Visibility="Hidden"/>
+
+                <Label x:Name="LblBuildDate" Content="Date" Margin="72,205,874,429" Style="{DynamicResource FunctionParameterLabel}"/>
+                <TextBox x:Name="TxtBuildDate" Margin="190,209,350,432" Text="Enter The Date Here (yyyy/mm/dd)" Style="{DynamicResource FunctionInputBoxes}"/>
+                <Label x:Name="LblBuildDateIncorrect" Margin="190,243,350,398" Content="Please ensure Date is in the format yyyy/mm/dd" Style="{DynamicResource IncorrectValidationLabel}" Visibility="Hidden"/>
+
+                <Label x:Name="LblBuildQuantity" Content="Quantity" HorizontalAlignment="Left" Margin="55,286,0,348" Style="{DynamicResource FunctionParameterLabel}"/>
+                <TextBox x:Name="TxtBuildQuantity" Margin="190,290,350,351" Text="Enter The Quantity of Shares Here" Style="{DynamicResource FunctionInputBoxes}"/>
+                <Label x:Name="LblBuildQuantityIncorrect" Margin="190,324,350,317" Content="Please ensure Quantity only Contains Integers and/or is in Decimal Format" Style="{DynamicResource IncorrectValidationLabel}" Visibility="Hidden"/>
+
+                <Label x:Name="LblBuildPrice" Content="Price" HorizontalAlignment="Left" Margin="72,369,0,265" Style="{DynamicResource FunctionParameterLabel}"/>
+                <TextBox x:Name="TxtBuildPrice" Margin="190,373,350,268" Text="Enter The Price per Quantity Here" Style="{DynamicResource FunctionInputBoxes}"/>
+                <Label x:Name="LblBuildPriceIncorrect" Margin="190,407,350,234" Content="Please ensure Price only Contains Integers and/or is in Decimal Format" Style="{DynamicResource IncorrectValidationLabel}" Visibility="Hidden"/>
+
+                <Label x:Name="LblBuildCost" Content="Cost" HorizontalAlignment="Left" Margin="74,452,0,182" Style="{DynamicResource FunctionParameterLabel}"/>
+                <TextBox x:Name="TxtBuildCost" Margin="190,455,350,186" Text="Enter The Allowable Costs Here" Style="{DynamicResource FunctionInputBoxes}"/>
+                <Label x:Name="LblBuildCostIncorrect" Margin="190,489,350,152" Content="Please ensure Cost only Contains Integers and/or is in Decimal Format" Style="{DynamicResource IncorrectValidationLabel}" Visibility="Hidden"/>
+
+                <Label x:Name="LblBuildGross" Content="Gross" HorizontalAlignment="Left" Margin="68,534,0,100" Style="{DynamicResource FunctionParameterLabel}"/>
+                <TextBox x:Name="TxtBuildGross" Margin="190,537,350,104" Text="Enter The Gross Here" Style="{DynamicResource FunctionInputBoxes}"/>
             </Grid>
         </Grid>
     </Grid>

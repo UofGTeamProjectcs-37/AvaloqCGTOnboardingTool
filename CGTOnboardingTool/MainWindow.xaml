@@ -16,10 +16,12 @@
         <Grid Style="{DynamicResource RoundGrid}" Width="234" Height="584" Margin="15,106,0,0">
             <Border Background="#C7CADC"/>
 
-            <Button x:Name="btnBuild" Content="Build" Click="btnBuild_Click" Style="{DynamicResource RoundButton}" Margin="29,29,29,505"/>
-            <Button x:Name="btnReduce" Content="Reduce" Click="btnReduce_Click" Style="{DynamicResource RoundButton}" Margin="29,104,29,430"/>
-            <Button x:Name="btnRebuild" Content="Rebuild" Click="btnRebuild_Click" Style="{DynamicResource RoundButton}" Margin="29,179,29,355"/>
 
+            <Grid x:Name="MainWindowGrid"  Visibility="Hidden">
+                <Button x:Name="btnBuild" Content="Build" Click="btnBuild_Click" Style="{DynamicResource RoundButton}" Margin="29,29,29,505"/>
+                <Button x:Name="btnReduce" Content="Reduce" Click="btnReduce_Click" Style="{DynamicResource RoundButton}" Margin="29,104,29,430"/>
+                <Button x:Name="btnRebuild" Content="Rebuild" Click="btnRebuild_Click" Style="{DynamicResource RoundButton}" Margin="29,179,29,355"/>
+            </Grid>
         </Grid>
 
         <Frame x:Name="mainFrame" Content="Frame" NavigationUIVisibility="Hidden" Grid.Column="1" Margin="0,0,0,-401" Height="705" Width="1024" Canvas.Left="256"/>

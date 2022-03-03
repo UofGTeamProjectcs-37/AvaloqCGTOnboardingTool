@@ -43,7 +43,7 @@ namespace CGTOnboardingTool.UISections
 
 
 
-                //Resets Text Boxes to allow for securities to inuted seequentially 
+                //Resets Text Boxes to allow for securities to inuted sequentially 
                 TxtAddNewName.Text = "Enter Name of the Security Here";
                 TxtAddNewShort.Text = "Enter the ShortHand for the Security Here";
             }
@@ -58,6 +58,7 @@ namespace CGTOnboardingTool.UISections
 
             foreach (char c in TxtAddNewName.Text)
             {
+                //Regex checks that all characters are either a letter or an integer
                 if (!Regex.IsMatch(c.ToString(), @"^[A-Za-z0-9\s@]*$"))
                 {
                     LblAddNewNameIncorrect.Visibility = Visibility.Visible;
@@ -69,6 +70,7 @@ namespace CGTOnboardingTool.UISections
             
             foreach (char c in TxtAddNewShort.Text)
             {
+                //Regex checks that all characters are letters
                 if (!Regex.IsMatch(c.ToString(), @"^[a-zA-Z]+$"))
                 {
                     LblAddNewShortIncorrect.Visibility = Visibility.Visible;

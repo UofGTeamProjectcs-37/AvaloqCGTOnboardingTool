@@ -22,18 +22,18 @@ namespace CGTOnboardingTool.UISections
     {
         public Report report;
         public Grid grid;
-        public StartUp(ref Grid MainWindowGrid)
+        public StartUp(ref Report Report, ref Grid MainWindowGrid)
         {
             
         InitializeComponent();
-
+        report = Report;
         grid = MainWindowGrid;
 
     }
 
         private void btnStartUpNew_Click(object sender, RoutedEventArgs e)
         {
-            report = new Report();
+
             grid.Visibility = Visibility.Visible;
             this.NavigationService.Navigate(new Dashboard(ref report));
         }

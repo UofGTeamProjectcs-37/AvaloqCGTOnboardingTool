@@ -21,6 +21,8 @@
                 <Button x:Name="btnBuild" Content="Build" Click="btnBuild_Click" Style="{DynamicResource RoundButton}" Margin="29,29,29,505"/>
                 <Button x:Name="btnReduce" Content="Reduce" Click="btnReduce_Click" Style="{DynamicResource RoundButton}" Margin="29,104,29,430"/>
                 <Button x:Name="btnRebuild" Content="Rebuild" Click="btnRebuild_Click" Style="{DynamicResource RoundButton}" Margin="29,179,29,355"/>
+
+                <Button x:Name="btnAddNewSec" Content="Add New Security" Click="btnAddNewSec_Click" Style="{DynamicResource RoundButton}" Margin="29,524,29,10" FontSize="20" />
             </Grid>
         </Grid>
 

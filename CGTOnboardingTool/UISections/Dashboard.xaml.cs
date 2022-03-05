@@ -25,8 +25,6 @@ namespace CGTOnboardingTool.UISections
     public partial class Dashboard : Page
     {
 
-
-
         public Report report;
 
         public Dashboard(ref Report report)
@@ -34,6 +32,67 @@ namespace CGTOnboardingTool.UISections
             InitializeComponent();
             this.report = report;
 
+            List<Entry> list_row = initReport();
+
+            DashboardReportView.ItemsSource= list_row;
+        }
+
+        public Dashboard(ref Report report, ref String client, ref String tax)
+        {
+            InitializeComponent();
+
+            LblClientName.Content = client; 
+            LblTaxYear.Content = tax;
+
+            this.report = report;
+
+            List<Entry> list_row = initReport();
+
+            DashboardReportView.ItemsSource = list_row;
+        }
+
+
+        private void cbFilter_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            hideComboBoxes();
+            //Function
+            if (cbFilter.SelectedIndex.ToString() == "2")
+            {
+                cbFilterFunction.Visibility = Visibility.Visible;
+            }
+            //Security
+            else if (cbFilter.SelectedIndex.ToString() == "1")
+            {
+                cbFilterSecurity.Visibility = Visibility.Visible;
+            }
+            //Date
+            else if (cbFilter.SelectedIndex.ToString() == "0")
+            {
+                cbFilterDateFrom.Visibility = Visibility.Visible;
+                cbFilterDateTo.Visibility = Visibility.Visible;
+                LblReportFilterDateFrom.Visibility = Visibility.Visible;
+                LblReportFilterDateTo.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void hideComboBoxes()
+        {
+            cbFilterFunction.Visibility = Visibility.Hidden;
+            cbFilterSecurity.Visibility = Visibility.Hidden;
+            cbFilterDateFrom.Visibility = Visibility.Hidden;
+            cbFilterDateTo.Visibility = Visibility.Hidden;
+            LblReportFilterDateFrom.Visibility = Visibility.Hidden;
+            LblReportFilterDateTo.Visibility = Visibility.Hidden;
+        }
+
+        private void btnSave_Click(object sender, RoutedEventArgs e)
+        {
+            ReportExporter exporter = new ReportExporter(ref report);
+            exporter.ExportToText();
+        }
+
+        private List<Entry> initReport()
+        {
             var rows = report.Rows();
 
             /*   if (rows.Count() > 0)
@@ -46,7 +105,7 @@ namespace CGTOnboardingTool.UISections
 
             List<Entry> list_row = new List<Entry>();
 
-            foreach(var row in rows)
+            foreach (var row in rows)
             {
                 string Function = row.Function.GetType().Name;
                 string Date = row.Date.ToString();
@@ -64,11 +123,12 @@ namespace CGTOnboardingTool.UISections
                     if (SecurityCol == "")
                     {
                         SecurityCol += sec.ShortName;
-                    } else
+                    }
+                    else
                     {
                         SecurityCol += ", " + sec.ShortName;
                     }
-                    
+
                 }
 
                 string Quantity = "";
@@ -85,7 +145,7 @@ namespace CGTOnboardingTool.UISections
                             Quantity += ", " + pair.Value.ToString();
                         }
                     }
-                } 
+                }
                 else
                 {
                     Quantity = "Null";
@@ -93,8 +153,8 @@ namespace CGTOnboardingTool.UISections
 
                 string Price = "";
                 if (row.Price != null)
-                { 
-                    foreach(KeyValuePair<Security, decimal> pair in row.Price)
+                {
+                    foreach (KeyValuePair<Security, decimal> pair in row.Price)
                     {
                         if (Price == "")
                         {
@@ -125,7 +185,8 @@ namespace CGTOnboardingTool.UISections
                 if (row.Gross is null)
                 {
                     Gross = "Null";
-                } else
+                }
+                else
                 {
                     Gross = row.Gross.GetType().Name;
                 }
@@ -184,55 +245,17 @@ namespace CGTOnboardingTool.UISections
                             S104 += ", " + pair.Value.ToString();
                         }
                     }
-                } 
+                }
                 else
                 {
                     S104 = "Null";
                 }
 
                 list_row.Add(new Entry { Function = Function, Date = Date, Securities = SecurityCol, Quantity = Quantity, Price = Price, Cost = Cost, Gross = Gross, Gain_loss = Gain_loss, Holdings = Holdings, S104 = S104 });
-               
-            }
-            DashboardReportView.ItemsSource= list_row;
-        }
 
-        private void cbFilter_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            hideComboBoxes();
-            //Function
-            if (cbFilter.SelectedIndex.ToString() == "2")
-            {
-                cbFilterFunction.Visibility = Visibility.Visible;
             }
-            //Security
-            else if (cbFilter.SelectedIndex.ToString() == "1")
-            {
-                cbFilterSecurity.Visibility = Visibility.Visible;
-            }
-            //Date
-            else if (cbFilter.SelectedIndex.ToString() == "0")
-            {
-                cbFilterDateFrom.Visibility = Visibility.Visible;
-                cbFilterDateTo.Visibility = Visibility.Visible;
-                LblReportFilterDateFrom.Visibility = Visibility.Visible;
-                LblReportFilterDateTo.Visibility = Visibility.Visible;
-            }
-        }
 
-        private void hideComboBoxes()
-        {
-            cbFilterFunction.Visibility = Visibility.Hidden;
-            cbFilterSecurity.Visibility = Visibility.Hidden;
-            cbFilterDateFrom.Visibility = Visibility.Hidden;
-            cbFilterDateTo.Visibility = Visibility.Hidden;
-            LblReportFilterDateFrom.Visibility = Visibility.Hidden;
-            LblReportFilterDateTo.Visibility = Visibility.Hidden;
-        }
-
-        private void btnSave_Click(object sender, RoutedEventArgs e)
-        {
-            ReportExporter exporter = new ReportExporter(ref report);
-            exporter.ExportToText();
+            return list_row;
         }
     }
     public class Entry

@@ -33,9 +33,23 @@ namespace CGTOnboardingTool.UISections
 
         private void btnStartUpNew_Click(object sender, RoutedEventArgs e)
         {
+            StartNewGrid.Visibility = Visibility.Visible;
+            StartButtonsGrid.Visibility = Visibility.Hidden;
+        }
+
+        private void btnStart_Click(object sender, RoutedEventArgs e)
+        {
+            String client = TxtStartUpClient.Text;
+            String tax = TxtStartUpTax.Text;
 
             grid.Visibility = Visibility.Visible;
-            this.NavigationService.Navigate(new Dashboard(ref report));
+            this.NavigationService.Navigate(new Dashboard(ref report, ref client, ref tax));
+        }
+
+        private void btnCancel_Click(object sender, RoutedEventArgs e)
+        {
+            StartButtonsGrid.Visibility = Visibility.Visible;
+            StartNewGrid.Visibility = Visibility.Hidden;
         }
     }
 

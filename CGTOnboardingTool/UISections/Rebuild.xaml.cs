@@ -29,6 +29,7 @@ namespace CGTOnboardingTool.UISections
             InitializeComponent();
             this.report = report;
 
+            // Create securities to show in drop-down menu 
             Security gsk = new Security("GlaxoSmithKline", "GSK");
             Security fgp = new Security("FGP Systems", "FGP");
             Security ibe = new Security("Iberdrola", "IBE");
@@ -45,6 +46,7 @@ namespace CGTOnboardingTool.UISections
             DropRebuildOldSecurity.ItemsSource = this.report.GetSecurities();
         }
 
+        // Function to split user given date
         private static DateOnly ParseDate(string dateStr)
         {
             var yymmdd = dateStr.Split('/');
@@ -55,11 +57,13 @@ namespace CGTOnboardingTool.UISections
             return new DateOnly(year, month, day);
         }
 
+        // Cancel button navigation
         private void BtnRebuildCancel_Click(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Navigate(new Dashboard(ref report));
         }
 
+        // Do not let user rebuild same security
         private void DropRebuildOldSecurity_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             DropRebuildNewSecurity.Items.Clear();
@@ -75,13 +79,15 @@ namespace CGTOnboardingTool.UISections
             }
         }
 
+        // Save button functionality
         private void BtnRebuild_Click(object sender, RoutedEventArgs e)
         {
-            //returns true if input is not in the correct format
+            // Returns true if input is not in the correct format
             bool incorrect = Validate();
 
             if (!incorrect)
             {
+                // Read in all user input
                 var userInputDate = ParseDate(TxtRebuildDate.Text);
 
                 var userInputOldSecurity = DropRebuildOldSecurity.SelectedItem as Security;
@@ -90,18 +96,18 @@ namespace CGTOnboardingTool.UISections
                 var userInputOldSecuirtyReduce = Convert.ToDecimal(TxtRebuildOldQuantityReduce.Text);
                 var userInputNewSecuirtyQuantity = Convert.ToDecimal(TxtRebuildNewQuantity.Text);
 
+                // Perform the rebuild
                 Tools.Rebuild rb = new Tools.Rebuild(oldSecurity: userInputOldSecurity, quantityToReduce: userInputOldSecuirtyReduce, newSecurity: userInputNewSecurity, quantityToBuild: userInputNewSecuirtyQuantity, date: userInputDate);
-
                 rb.perform(ref report);
 
                 this.NavigationService.Navigate(new Dashboard(ref report));
             }
         }
 
-        //Checks all inputs are in the correct format
+        // Checks all inputs are in the correct format
         private bool Validate()
         {
-            //Resets any previous incorrect validations
+            // Resets any previous incorrect validations
             LblRebuildDateIncorrect.Visibility = Visibility.Hidden;
             TxtRebuildDate.BorderThickness = new Thickness(0);
             LblRebuildOldSecurityIncorrect.Visibility = Visibility.Hidden;

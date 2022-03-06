@@ -3,6 +3,7 @@ using System;
 
 namespace CGTOnboardingTool.Tools
 {
+    // Build BUC which subclasses the CGTFunction abstract class
     public class Build : CGTFunction
     {
         Security security;
@@ -12,6 +13,7 @@ namespace CGTOnboardingTool.Tools
         decimal? gross;
         DateOnly date;
 
+        // Overloading of Build constructors 
         public Build(Security security, decimal quantity, decimal pps, decimal cost, DateOnly date)
         {
             this.security = security;
@@ -31,6 +33,7 @@ namespace CGTOnboardingTool.Tools
 
         public override ReportEntry perform(ref Report report)
         {
+            // Call the correct perform method depending on information given
             if (gross != null)
             {
                 return this.performUsingGross(ref report);
@@ -45,17 +48,20 @@ namespace CGTOnboardingTool.Tools
             }
         }
 
+        // If we have gross, pps and a cost 
         private ReportEntry performUsingQuantityPrice(ref Report report)
         {
 
+            
             decimal pps = (decimal)this.pps;
             decimal cost = (decimal)this.cost;
 
+            // Update S104 and calculate Gain/Loss
             var currentS104 = report.GetSection104(this.security, this.date);
             var gainLoss = (quantity * pps) + cost;
             decimal newS104 = currentS104 + gainLoss;
 
-
+            // Add to report 
             var associatedEntry = report.Add(
                 function: this,
                 date: this.date,

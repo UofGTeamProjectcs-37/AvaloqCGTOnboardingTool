@@ -37,6 +37,7 @@ namespace CGTOnboardingTool.UISections
             DashboardReportView.ItemsSource= list_row;
         }
 
+        // Display report on dashboard 
         public Dashboard(ref Report report, ref String client, ref String tax)
         {
             InitializeComponent();
@@ -51,21 +52,21 @@ namespace CGTOnboardingTool.UISections
             DashboardReportView.ItemsSource = list_row;
         }
 
-
+        // Filter rows drop-down menu
         private void cbFilter_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             hideComboBoxes();
-            //Function
+            // Filter by function
             if (cbFilter.SelectedIndex.ToString() == "2")
             {
                 cbFilterFunction.Visibility = Visibility.Visible;
             }
-            //Security
+            //Filter by Security
             else if (cbFilter.SelectedIndex.ToString() == "1")
             {
                 cbFilterSecurity.Visibility = Visibility.Visible;
             }
-            //Date
+            // Filter by date
             else if (cbFilter.SelectedIndex.ToString() == "0")
             {
                 cbFilterDateFrom.Visibility = Visibility.Visible;
@@ -85,12 +86,15 @@ namespace CGTOnboardingTool.UISections
             LblReportFilterDateTo.Visibility = Visibility.Hidden;
         }
 
+        // Save button functionality
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
             ReportExporter exporter = new ReportExporter(ref report);
             exporter.ExportToText();
         }
 
+
+        // Initialise report
         private List<Entry> initReport()
         {
             var rows = report.Rows();
@@ -113,7 +117,7 @@ namespace CGTOnboardingTool.UISections
                 string SecurityCol = "";
                 foreach (var sec in row.Security)
                 {
-                    /* If a more than one security has been affected by a function
+                    /* If more than one security has been affected by a function
                      * then a comma will be used to seperate them, otherwise only the 
                      * security will display
                      * 
@@ -251,6 +255,7 @@ namespace CGTOnboardingTool.UISections
                     S104 = "Null";
                 }
 
+                // Add row to dashboard
                 list_row.Add(new Entry { Function = Function, Date = Date, Securities = SecurityCol, Quantity = Quantity, Price = Price, Cost = Cost, Gross = Gross, Gain_loss = Gain_loss, Holdings = Holdings, S104 = S104 });
 
             }

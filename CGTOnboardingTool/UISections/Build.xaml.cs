@@ -15,6 +15,7 @@ namespace CGTOnboardingTool.UISections
     {
         public Report report;
 
+        // Function to split user given date
         private static DateOnly ParseDate(string dateStr)
         {
             var yymmdd = dateStr.Split('/');
@@ -70,11 +71,10 @@ namespace CGTOnboardingTool.UISections
                 Decimal userInputPrice = Convert.ToDecimal(TxtBuildPrice.Text);
                 Decimal userInputCost = Convert.ToDecimal(TxtBuildCost.Text);
 
-                // Create build 
+                // Perform the build 
                 Tools.Build b = new Tools.Build(security: userInputSecurity, quantity: userInputQuantity, pps: userInputPrice, cost: userInputCost, date: userInputDate);
-                // Add build to report 
                 b.perform(ref report);
-            
+
                 this.NavigationService.Navigate(new Dashboard(ref report));
             }
         }

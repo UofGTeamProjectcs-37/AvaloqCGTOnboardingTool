@@ -31,6 +31,7 @@ namespace CGTOnboardingTool.UISections
             DropReduceSecurities.ItemsSource = this.report.GetSecurities();
         }
 
+        // Function to split user given date
         private static DateOnly ParseDate(string dateStr)
         {
             var yymmdd = dateStr.Split('/');
@@ -41,36 +42,39 @@ namespace CGTOnboardingTool.UISections
             return new DateOnly(year, month, day);
         }
 
+        // Cancel button navigation
         private void BtnReduceCancel_Click(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Navigate(new Dashboard(ref report));
         }
 
+        // Save button functionality
         private void BtnReduce_Click(object sender, RoutedEventArgs e)
         {
-            //returns true if input is not in the correct format
+            // Returns true if input is not in the correct format
             bool incorrect = Validate();
 
             if (!incorrect)
             {
+                // Read in all user input
                 var userInputSecurity = DropReduceSecurities.SelectedItem as Security;
                 var userInputDate = ParseDate(TxtReduceDate.Text);
                 var userInputQuantity = Convert.ToDecimal(TxtReduceQuantity.Text);
                 var userInputPrice = Convert.ToDecimal(TxtReducePrice.Text);
                 var userInputCost = Convert.ToDecimal(TxtReduceCost.Text);
 
+                // Perform the reduce
                 Tools.Reduce r = new Tools.Reduce(security: userInputSecurity, quantity: userInputQuantity, pps: userInputPrice, cost: userInputCost, date: userInputDate);
-
                 r.perform(ref report);
 
                 this.NavigationService.Navigate(new Dashboard(ref report));
             }
         }
 
-        //Checks all inputs are in the correct format
+        // Checks all inputs are in the correct format
         private bool Validate()
         {
-            //Resets any previous incorrect validations
+            // Resets any previous incorrect validations
             LblReduceComboBoxIncorrect.Visibility = Visibility.Hidden;
             ReduceComboBoxBorder.BorderThickness = new Thickness(0);
             LblReduceDateIncorrect.Visibility = Visibility.Hidden;

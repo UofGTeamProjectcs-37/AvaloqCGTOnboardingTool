@@ -24,12 +24,13 @@ namespace CGTOnboardingTool.UISections
         public Grid grid;
         public StartUp(ref Report Report, ref Grid MainWindowGrid)
         {
-            
-        InitializeComponent();
-        report = Report;
-        grid = MainWindowGrid;
+            // Initialise report 
+            InitializeComponent();
+            report = Report;
+            grid = MainWindowGrid;
 
-    }
+        }
+
 
         private void btnStartUpNew_Click(object sender, RoutedEventArgs e)
         {
@@ -37,6 +38,7 @@ namespace CGTOnboardingTool.UISections
             StartButtonsGrid.Visibility = Visibility.Hidden;
         }
 
+        // Start button functionality
         private void btnStart_Click(object sender, RoutedEventArgs e)
         {
             String client = TxtStartUpClient.Text;
@@ -46,6 +48,7 @@ namespace CGTOnboardingTool.UISections
             this.NavigationService.Navigate(new Dashboard(ref report, ref client, ref tax));
         }
 
+        // Cancel button functionality
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
             StartButtonsGrid.Visibility = Visibility.Visible;

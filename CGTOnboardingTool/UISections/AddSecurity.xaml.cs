@@ -28,22 +28,22 @@ namespace CGTOnboardingTool.UISections
             this.report = report;
         }
 
+        // Cancel button
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Navigate(new Dashboard(ref report));
         }
 
+        // Add button functionality
         private void btnAddNew_Click(object sender, RoutedEventArgs e)
-        {
+        {   
+            // Returns true if input is not in the correct format
             bool incorrect = Validate();
 
             if (!incorrect)
             {
-                //Add security into list
-
-
-
-                //Resets Text Boxes to allow for securities to inuted sequentially 
+                // Add security into list
+                // Resets Text Boxes to allow for securities to inuted sequentially 
                 TxtAddNewName.Text = "Enter Name of the Security Here";
                 TxtAddNewShort.Text = "Enter the ShortHand for the Security Here";
             }

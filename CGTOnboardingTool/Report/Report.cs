@@ -1,5 +1,6 @@
 ﻿using CGTOnboardingTool.Securities;
 using CGTOnboardingTool.Tools;
+using CGTOnboardingTool.UISections;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -267,12 +268,12 @@ namespace CGTOnboardingTool
             }
         }
 
-        public List<ReportEntry> FilterSecurity() {
+        public List<ReportEntry> FilterSecurity(ref String filter) {
 
             List<ReportEntry> filteredRows = new List<ReportEntry>();
             List<ReportEntry> reportRows = new List<ReportEntry>(this.Rows());
 
-            string chosenSecurity = "Telsa"; //change to user input from drop down menu
+            string chosenSecurity = filter; //change to user input from drop down menu
 
             for (int i=0; i<this.Count();i++)
             {
@@ -291,14 +292,14 @@ namespace CGTOnboardingTool
             return filteredRows;
         }
 
-        public List<ReportEntry> FilterDate()
+        public List<ReportEntry> FilterDate(DateOnly filterFrom, DateOnly filterTo)
         {
 
             List<ReportEntry> filteredRows = new List<ReportEntry>();
             List<ReportEntry> reportRows = new List<ReportEntry>(this.Rows());
 
-            DateOnly startDate = new DateOnly( 2011, 11, 11 ); //change to user input from drop down menu
-            DateOnly endDate = new DateOnly(2019, 11, 11); //change to user input from drop down menu
+            DateOnly startDate = filterFrom; //change to user input from drop down menu
+            DateOnly endDate = filterTo; //change to user input from drop down menu
 
             for (int i = 0; i < this.Count(); i++)
             {
@@ -312,13 +313,13 @@ namespace CGTOnboardingTool
             return filteredRows;
         }
 
-        public List<ReportEntry> FilterFunction()
+        public List<ReportEntry> FilterFunction(ref String filter)
         {
 
             List<ReportEntry> filteredRows = new List<ReportEntry>();
             List<ReportEntry> reportRows = new List<ReportEntry>(this.Rows());
 
-            String chosenFunction = "Build"; //change to user input from drop down menu
+            String chosenFunction = filter; //change to user input from drop down menu
 
             for (int i = 0; i < this.Count(); i++)
             {

@@ -146,6 +146,41 @@ namespace CGTOnboardingTool.UISections
             }
         }
 
+        private void cbFilterFunction_SelectionChanged(object sender, SelectedCellsChangedEventArgs e)
+        {
+            String selection = cbFilterFunction.SelectedItem.ToString();
+
+           var rows =  report.FilterFunction(ref selection);
+
+        }
+
+        private void cbFilterSecurity_SelectionChanged(object sender, SelectedCellsChangedEventArgs e)
+        {
+            String selection = cbFilterSecurity.SelectedItem.ToString();
+
+           var rows =  report.FilterFunction(ref selection);
+
+        }
+
+        private void cbFilterDateFrom_SelectionChanged(object sender, SelectedCellsChangedEventArgs e)
+        {
+            DateOnly selectionFrom = (DateOnly)cbFilterDateFrom.SelectedItem;
+            DateOnly selectionTo = (DateOnly) cbFilterDateTo.SelectedItem;
+
+            var rows = report.FilterDate(selectionFrom, selectionTo);
+
+        }
+
+        private void cbFilterDateTo_SelectionChanged(object sender, SelectedCellsChangedEventArgs e)
+        {
+            DateOnly selectionFrom = (DateOnly)cbFilterDateFrom.SelectedItem;
+            DateOnly selectionTo = (DateOnly)cbFilterDateTo.SelectedItem;
+
+            var rows = report.FilterDate(selectionFrom, selectionTo);
+
+        }
+
+
         private void hideComboBoxes()
         {
             cbFilterFunction.Visibility = Visibility.Hidden;

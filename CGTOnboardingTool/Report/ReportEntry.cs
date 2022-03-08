@@ -124,5 +124,188 @@ namespace CGTOnboardingTool
             }
         }
 
+        public String PrintFunction()
+        {
+            return Function.GetType().Name;
+        }
+
+        public String PrintDate()
+        {
+            return Date.ToString();
+        }
+
+        public String PrintSecurity()
+        {
+            string strSecurity = "";
+            if (Security.Length > 1)
+            {
+                strSecurity = "[";
+                List<String> shortNames = new List<String>();
+                foreach (var security in Security)
+                {
+                    shortNames.Add(security.ShortName);
+                }
+                strSecurity += String.Join(",", shortNames.ToArray());
+                strSecurity += "]";
+            }
+            else
+            {
+                strSecurity = Security[0].ShortName;
+            }
+            return strSecurity;
+        }
+
+        public String PrintPrice()
+        {
+            string strPrice = "";
+            if (Price.Count > 1)
+            {
+                strPrice = "[";
+                List<String> prices = new List<string>();
+                foreach (var k in Price.Keys)
+                {
+                    prices.Add(k.ShortName + " : £" + Price[k].ToString());
+                    
+                }
+                strPrice += String.Join(",", prices.ToArray());
+                strPrice += "]";
+            }
+            else if (Price.Count == 1)
+            {
+                foreach (var k in Price.Keys)
+                {
+                    strPrice = "£" + Price[k].ToString();
+                }
+            }
+            return strPrice;
+        }
+
+        public String PrintQuantity()
+        {
+            string strQuantity = "";
+            if (Quantity.Count > 1)
+            {
+                strQuantity = "[";
+                List<String> qtys = new List<string>();
+                foreach (var k in Quantity.Keys)
+                {
+                    qtys.Add(k.ShortName + " : " + Quantity[k].ToString());
+                }
+                strQuantity += String.Join(",", qtys.ToArray());
+                strQuantity += "]";
+            }
+            else if (Quantity.Count == 1)
+            {
+                foreach (var k in Quantity.Keys)
+                {
+                    strQuantity = Quantity[k].ToString();
+                }
+            }
+            return strQuantity;
+        }
+
+        public String PrintCosts()
+        {
+            string strCosts = "";
+            if (AssociatedCosts.Length > 1)
+            {
+                strCosts = "[";
+                List<String> costs = new List<String>();
+                foreach (var cost in AssociatedCosts)
+                {
+                    costs.Add("£" + cost.ToString());
+                }
+                strCosts += String.Join(",", costs.ToArray());
+                strCosts += "]";
+            }
+            else if (AssociatedCosts.Length == 1)
+            {
+                strCosts = "£" + AssociatedCosts[0].ToString();
+            }
+            return strCosts;
+        }
+
+        public String PrintGross()
+        {
+            string strGross = "";
+            if (Gross != null)
+            {
+                strGross = "£" + Gross.ToString();
+            }
+            return strGross;
+        }
+
+        public String PrintGainLoss()
+        {
+            string strGainLoss = "";
+            if (GainLoss.Count > 1)
+            {
+                strGainLoss = "[";
+                List<String> gainLosses = new List<string>();
+                foreach (var k in GainLoss.Keys)
+                {
+                    gainLosses.Add(k.ShortName + " : " + GainLoss[k].ToString());
+                   
+                }
+                strGainLoss += String.Join(",", gainLosses.ToArray());
+                strGainLoss += "]";
+            }
+            else
+            {
+                foreach (var k in GainLoss.Keys)
+                {
+                    strGainLoss = GainLoss[k].ToString();
+                }
+            }
+            return strGainLoss;
+        }
+
+        public String PrintHoldings()
+        {
+            string strHoldings = "";
+            if (Holdings.Count > 1)
+            {
+                strHoldings = "[";
+                List<String> holdings = new List<string>();
+                foreach (var k in Holdings.Keys)
+                {
+                    holdings.Add(k.ShortName + " : " + Holdings[k].ToString());
+                }
+                strHoldings += String.Join(",", holdings.ToArray());
+                strHoldings += "]";
+            }
+            else
+            {
+                foreach (var k in Holdings.Keys)
+                {
+                    strHoldings = Holdings[k].ToString();
+                }
+            }
+            return strHoldings;
+        }
+
+        public String PrintSection104()
+        {
+            string strS104 = "";
+            if (Section104.Count > 1)
+            {
+                strS104 = "[";
+                List<String> s104s = new List<String>();
+                foreach (var k in Section104.Keys)
+                {
+                    s104s.Add(k.ShortName + " : £" + Section104[k].ToString());
+                }
+                strS104 += String.Join(",", s104s.ToArray());
+                strS104 += "]";
+            }
+            else
+            {
+                foreach (var k in Section104.Keys)
+                {
+                    strS104 = "£" + Section104[k].ToString();
+                }
+            }
+            return strS104;
+        }
     }
 }

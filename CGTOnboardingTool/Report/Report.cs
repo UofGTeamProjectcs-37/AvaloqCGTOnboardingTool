@@ -1,5 +1,6 @@
-﻿using CGTOnboardingTool.Securities;
+using CGTOnboardingTool.Securities;
 using CGTOnboardingTool.Tools;
+using CGTOnboardingTool.UISections;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,7 @@ namespace CGTOnboardingTool
 
         private int count; // Number of entries in a report
         private List<Security> securities; // All the secuirties that have been referenced within a report
+        private List<CGTFunction> functionsUsed = new List<CGTFunction>();
 
         private Dictionary<DateOnly, List<ReportEntry>> dateEntries; // The entries that have happened on a given date
         private Dictionary<Security, List<DateOnly>> securityDates; // The dates where there has been an action on a security
@@ -83,8 +85,18 @@ namespace CGTOnboardingTool
             }
         }
 
+        public CGTFunction[] GetFunctionsUsed()
+        {
+            return functionsUsed.ToArray();
+        }
+
         public ReportEntry Add(CGTFunction function, DateOnly date, Security security, decimal price, decimal quantity, decimal associatedCosts, decimal gainLoss, decimal section104)
         {
+            if (!functionsUsed.Contains(function))
+            {
+                functionsUsed.Add(function);
+            }
+
             // 1. Add security action
             this.AddSecurityActionDate(security, date);
 
@@ -289,7 +301,66 @@ namespace CGTOnboardingTool
                 return entry.Holdings[security];
             }
         }
-        
+
+
+
+        public ReportEntry[] FilterBySecurity(Security search)
+        {
+            List<ReportEntry> filteredRows = new List<ReportEntry>();
+            List<ReportEntry> reportRows = new List<ReportEntry>(this.Rows());
+
+            for (int i = 0; i < this.Count(); i++)
+            {
+                foreach (Security sec in reportRows[i].Security)
+                {
+                    if (sec.Equals(search))
+                    {
+                        filteredRows.Add(reportRows[i]);
+                    }
+                }
+            }
+
+            return filteredRows.ToArray();
+        }
+   
+
+        public ReportEntry[] FilterByDate(DateOnly filterFrom, DateOnly filterTo)
+        {
+
+            List<ReportEntry> filteredRows = new List<ReportEntry>();
+            List<ReportEntry> reportRows = new List<ReportEntry>(this.Rows());
+
+            DateOnly startDate = filterFrom; //change to user input from drop down menu
+            DateOnly endDate = filterTo; //change to user input from drop down menu
+
+            for (int i = 0; i < this.Count(); i++)
+            {
+                if ((reportRows[i].Date<endDate) && (reportRows[i].Date>startDate))
+                {
+                    filteredRows.Add(reportRows[i]);
+                }
+            }
+
+
+            return filteredRows.ToArray();
+        }
+
+        public ReportEntry[] FilterByFunction(CGTFunction search)
+        {
+            List<ReportEntry> filteredRows = new List<ReportEntry>();
+            List<ReportEntry> reportRows = new List<ReportEntry>(this.Rows());
+
+            for (int i = 0; i < this.Count(); i++)
+            {
+                if (reportRows[i].Function.Equals(search))
+                {
+                    filteredRows.Add(reportRows[i]);
+                }
+            }
+
+            return filteredRows.ToArray();
+        }
+
 
         private void reflectChanges(ReportEntry associatedEntry)
         {
@@ -307,13 +378,7 @@ namespace CGTOnboardingTool
                     sEntries[i].Section104[security] += gainLossChange;
                 }
             }
-           
-            
-
-
-            
-
-
+              
         }
 
     }

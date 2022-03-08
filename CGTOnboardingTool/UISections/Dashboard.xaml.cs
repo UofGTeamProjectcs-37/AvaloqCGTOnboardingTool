@@ -2,20 +2,9 @@
 using CGTOnboardingTool.ReportTools;
 using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using Microsoft.Win32;
+using CGTOnboardingTool.Tools;
 
 namespace CGTOnboardingTool.UISections
 {
@@ -24,6 +13,8 @@ namespace CGTOnboardingTool.UISections
     /// </summary>
     public partial class Dashboard : Page
     {
+        DateOnly? filterDateFrom;
+        DateOnly? filterDateTo;
 
         public Report report;
 
@@ -31,6 +22,21 @@ namespace CGTOnboardingTool.UISections
         {
             InitializeComponent();
             this.report = report;
+            display(report.Rows());
+        }
+
+
+
+
+            //var rows = report.Rows();
+
+            ///*   if (rows.Count() > 0)
+            //   {
+            //       var row = rows[0];
+
+
+            //       MessageBox.Show(row.Security.ToString());
+            //   }*/
 
             List<Entry> list_row = initReport();
 
@@ -99,182 +105,256 @@ namespace CGTOnboardingTool.UISections
         {
             var rows = report.Rows();
 
-            /*   if (rows.Count() > 0)
-               {
-                   var row = rows[0];
+            //foreach(var row in rows)
+            //{
+            //    string Function = row.Function.GetType().Name;
+            //    string Date = row.Date.ToString();
 
+            //    string SecurityCol = "";
+            //    foreach (var sec in row.Security)
+            //    {
+            //        SecurityCol += sec.ShortName;
+            //    }
 
-                   MessageBox.Show(row.Security.ToString());
-               }*/
+            //    string Quantity = "Null";
+            //    if (row.Quantity != null)
+            //    {
+            //        foreach (KeyValuePair<Security, decimal> pair in row.Quantity)
+            //        {
+            //            Quantity = pair.Value.ToString();
+            //        }
+            //    }
 
-            List<Entry> list_row = new List<Entry>();
+            //    string Price = "Null";
+            //    if (row.Price != null)
+            //    { 
+            //        foreach(KeyValuePair<Security, decimal> pair in row.Price)
+            //        {
+            //            Price = "£" + pair.Value;
+            //        }
+            //    }
 
-            foreach (var row in rows)
+            //    string Cost = "Null";
+            //    if (row.AssociatedCosts != null)
+            //    {
+            //        Cost = "£" + row.AssociatedCosts[0].ToString();
+            //    }
+
+            //    string Gross;
+            //    if (row.Gross is null)
+            //    {
+            //        Gross = "Null";
+            //    } else
+            //    {
+            //        Gross = row.Gross.GetType().Name;
+            //    }
+
+            //    string Gain_loss = "Null";
+            //    if (row.GainLoss != null)
+            //    {
+            //        foreach (KeyValuePair<Security, decimal> pair in row.GainLoss)
+            //        {
+            //            Gain_loss = pair.Value.ToString();
+            //        }
+            //    }
+
+            //    string Holdings = "Null";
+            //    if (row.Holdings != null)
+            //    {
+            //        foreach (KeyValuePair<Security, decimal> pair in row.Holdings)
+            //        {
+            //            Holdings = pair.Value.ToString();
+            //        }
+            //    }
+
+            //    string S104 = "Null";
+            //    if (row.Section104 != null)
+            //    {
+            //        foreach (KeyValuePair<Security, decimal> pair in row.Section104)
+            //        {
+            //            S104 = pair.Value.ToString();
+            //        }
+            //    }
+
+            //    list_row.Add(new Entry { Function = Function, Date = Date, Securities = SecurityCol, Quantity = Quantity, Price = Price, Cost = Cost, Gross = Gross, Gain_loss = Gain_loss, Holdings = Holdings, S104 = S104 });
+
+            //}
+            //DashboardReportView.ItemsSource= list_row;
+        //}
+
+        private void display(ReportEntry[] rows)
+        {
+            
+
+            List<DisplayRow> displayRows = new List<DisplayRow>();
+
+            foreach (ReportEntry row in rows)
             {
-                string Function = row.Function.GetType().Name;
-                string Date = row.Date.ToString();
+                string strFunction = row.PrintFunction();
 
-                string SecurityCol = "";
-                foreach (var sec in row.Security)
-                {
-                    /* If more than one security has been affected by a function
-                     * then a comma will be used to seperate them, otherwise only the 
-                     * security will display
-                     * 
-                     * This holds true for each other parameter in their own respective manners
-                     * 
-                     */
-                    if (SecurityCol == "")
-                    {
-                        SecurityCol += sec.ShortName;
-                    }
-                    else
-                    {
-                        SecurityCol += ", " + sec.ShortName;
-                    }
+                string strDate = row.PrintDate();
 
-                }
+                string strSecurity = row.PrintSecurity();
 
-                string Quantity = "";
-                if (row.Quantity != null)
-                {
-                    foreach (KeyValuePair<Security, decimal> pair in row.Quantity)
-                    {
-                        if (Quantity == "")
-                        {
-                            Quantity += pair.Value.ToString();
-                        }
-                        else
-                        {
-                            Quantity += ", " + pair.Value.ToString();
-                        }
-                    }
-                }
-                else
-                {
-                    Quantity = "Null";
-                }
+                string strPrice = row.PrintPrice();
 
-                string Price = "";
-                if (row.Price != null)
-                {
-                    foreach (KeyValuePair<Security, decimal> pair in row.Price)
-                    {
-                        if (Price == "")
-                        {
-                            Price += "£" + pair.Value.ToString(); ;
-                        }
-                        else
-                        {
-                            Price += ", " + "£" + pair.Value.ToString(); ;
-                        }
-                    }
-                }
-                else
-                {
-                    Price = "Null";
-                }
+                string strQuantity = row.PrintQuantity();
 
-                string Cost = "";
-                if (row.AssociatedCosts != null)
-                {
-                    Cost = "£" + row.AssociatedCosts[0].ToString();
-                }
-                else
-                {
-                    Cost = "Null";
-                }
+                string strCosts = row.PrintCosts();
 
-                string Gross;
-                if (row.Gross is null)
-                {
-                    Gross = "Null";
-                }
-                else
-                {
-                    Gross = row.Gross.GetType().Name;
-                }
+                string strGross = row.PrintGross();
 
-                string Gain_loss = "";
-                if (row.GainLoss != null)
-                {
-                    foreach (KeyValuePair<Security, decimal> pair in row.GainLoss)
-                    {
-                        if (Gain_loss == "")
-                        {
-                            Gain_loss += pair.Value.ToString();
-                        }
-                        else
-                        {
-                            Gain_loss += ", " + pair.Value.ToString();
-                        }
-                    }
-                }
-                else
-                {
-                    Gain_loss = "Null";
-                }
+                string strGainLoss = row.PrintGainLoss();
 
-                string Holdings = "";
-                if (row.Holdings != null)
-                {
-                    foreach (KeyValuePair<Security, decimal> pair in row.Holdings)
-                    {
-                        if (Holdings == "")
-                        {
-                            Holdings += pair.Value.ToString();
-                        }
-                        else
-                        {
-                            Holdings += ", " + pair.Value.ToString();
-                        }
-                    }
-                }
-                else
-                {
-                    Holdings = "Null";
-                }
+                string strHoldings = row.PrintHoldings();
 
-                string S104 = "";
-                if (row.Section104 != null)
-                {
-                    foreach (KeyValuePair<Security, decimal> pair in row.Section104)
-                    {
-                        if (S104 == "")
-                        {
-                            S104 += pair.Value.ToString();
-                        }
-                        else
-                        {
-                            S104 += ", " + pair.Value.ToString();
-                        }
-                    }
-                }
-                else
-                {
-                    S104 = "Null";
-                }
+                string strS104 = row.PrintSection104();
 
-                // Add row to dashboard
-                list_row.Add(new Entry { Function = Function, Date = Date, Securities = SecurityCol, Quantity = Quantity, Price = Price, Cost = Cost, Gross = Gross, Gain_loss = Gain_loss, Holdings = Holdings, S104 = S104 });
-
+                displayRows.Add(new DisplayRow { Function = strFunction, Date = strDate, Securities = strSecurity, Quantity = strQuantity, Price = strPrice, Cost = strCosts, Gross = strGross, GainLoss = strGainLoss, Holdings = strHoldings, S104 = strS104 });
             }
+            DashboardReportView.ItemsSource = displayRows;
+        }
+    
+
+        private void cbFilter_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            hideComboBoxes();
+            //Function
+            if (cbFilter.SelectedIndex.ToString() == "2")
+            {
+                CGTFunction[] funcitonsUsed = report.GetFunctionsUsed();
+                List<DropdownItem> selections = new List<DropdownItem>();
+                foreach (CGTFunction funciton in funcitonsUsed)
+                {
+                    selections.Add(new DropdownItem { Text = funciton.GetType().Name, Value = funciton.GetType() });
+                }
+                cbFilterFunction.ItemsSource = selections;
+                cbFilterFunction.Visibility = Visibility.Visible;
+            }
+            //Security
+            else if (cbFilter.SelectedIndex.ToString() == "1")
+            {
+                Security[] securities = report.GetSecurities();
+                List<DropdownItem> selections = new List<DropdownItem>();
+                foreach (Security security in securities)
+                {
+                    selections.Add(new DropdownItem { Text = security.ShortName, Value = security });
+                }
+                cbFilterSecurity.ItemsSource = selections;
+                cbFilterSecurity.Visibility = Visibility.Visible;
+            }
+            //Date
+            else if (cbFilter.SelectedIndex.ToString() == "0")
+            {
+                cbFilterDateFrom.Visibility = Visibility.Visible;
+                cbFilterDateTo.Visibility = Visibility.Visible;
+                LblReportFilterDateFrom.Visibility = Visibility.Visible;
+                LblReportFilterDateTo.Visibility = Visibility.Visible;
+            }
+        }
+
+        
+        //private void cbFilterSecurity_SelectionChanged(object sender, SelectedCellsChangedEventArgs e)
+        //{
+        //    Security selected = (Security)cbFilterSecurity.SelectedItem;
+        //    display(report.FilterBySecurity(selected));
+        //}
+
+        //private void cbFilterDateFrom_SelectionChanged(object sender, SelectedCellsChangedEventArgs e)
+        //{
+        //    filterDateFrom = (DateOnly)cbFilterDateFrom.SelectedItem;
+
+        //    if (filterDateFrom != null && filterDateTo != null)
+        //    {
+        //        display(report.FilterByDate((DateOnly)filterDateFrom, (DateOnly)filterDateTo));
+        //    }
+        //}
+
+        //private void cbFilterDateTo_SelectionChanged(object sender, SelectedCellsChangedEventArgs e)
+        //{
+        //    filterDateTo = (DateOnly)cbFilterDateTo.SelectedItem;
+
+        //    if (filterDateFrom != null && filterDateTo != null)
+        //    {
+        //        display(report.FilterByDate((DateOnly)filterDateFrom, (DateOnly)filterDateTo));
+        //    }
+
+        //}
+
+        private void hideComboBoxes()
+        {
+            cbFilterFunction.Visibility = Visibility.Hidden;
+            cbFilterSecurity.Visibility = Visibility.Hidden;
+            cbFilterDateFrom.Visibility = Visibility.Hidden;
+            cbFilterDateTo.Visibility = Visibility.Hidden;
+            LblReportFilterDateFrom.Visibility = Visibility.Hidden;
+            LblReportFilterDateTo.Visibility = Visibility.Hidden;
+        }
 
             return list_row;
         }
+
+        private class DisplayRow
+        {
+            public string Function { get; set; }
+            public string Date { get; set; }
+            public string Securities { get; set; }
+            public string Quantity { get; set; }
+            public string Price { get; set; }
+            public string Cost { get; set; }
+            public string Gross { get; set; }
+            public string GainLoss { get; set; }
+            public string Holdings { get; set; }
+            public string S104 { get; set; }
+        }
+
+        public class DropdownItem
+        {
+            public string Text { get; set; }
+            public object Value { get; set; }
+
+            public override string ToString()
+            {
+                return Text;
+            }
+        }
+
+        private void cbFilterSecurity_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            DropdownItem selected = (DropdownItem) cbFilterSecurity.SelectedItem;
+            display(report.FilterBySecurity((Security) selected.Value));
+        }
+
+        private void cbFilterDateTo_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            filterDateTo = (DateOnly)cbFilterDateTo.SelectedItem;
+
+            if (filterDateFrom != null && filterDateTo != null)
+            {
+                display(report.FilterByDate((DateOnly)filterDateFrom, (DateOnly)filterDateTo));
+            }
+        }
+
+        private void cbFilterDateFrom_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            filterDateFrom = (DateOnly)cbFilterDateFrom.SelectedItem;
+
+            if (filterDateFrom != null && filterDateTo != null)
+            {
+                display(report.FilterByDate((DateOnly)filterDateFrom, (DateOnly)filterDateTo));
+            }
+        }
+
+        private void cbFilterFunction_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
+        {
+            DropdownItem selected = (DropdownItem)cbFilterFunction.SelectedItem;
+            display(report.FilterByFunction((CGTFunction)selected.Value));
+        }
     }
-    public class Entry
-    {
-        public string Function { get; set; }
-        public string Date { get; set; }
-        public string Securities { get; set; }
-        public string Quantity { get; set; }
-        public string Price { get; set; }
-        public string Cost { get; set; }
-        public string Gross { get; set; }
-        public string Gain_loss { get; set; }
-        public string Holdings { get; set; }
-        public string S104 { get; set; }
-    }
+
+    
+
+    
+    
 
 }

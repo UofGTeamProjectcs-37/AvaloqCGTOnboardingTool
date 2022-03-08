@@ -26,23 +26,6 @@ namespace CGTOnboardingTool.UISections
         }
 
 
-
-
-            //var rows = report.Rows();
-
-            ///*   if (rows.Count() > 0)
-            //   {
-            //       var row = rows[0];
-
-
-            //       MessageBox.Show(row.Security.ToString());
-            //   }*/
-
-            List<Entry> list_row = initReport();
-
-            DashboardReportView.ItemsSource= list_row;
-        }
-
         // Display report on dashboard 
         public Dashboard(ref Report report, ref String client, ref String tax)
         {
@@ -52,35 +35,33 @@ namespace CGTOnboardingTool.UISections
             LblTaxYear.Content = tax;
 
             this.report = report;
+            display(report.Rows());
 
-            List<Entry> list_row = initReport();
+    }
 
-            DashboardReportView.ItemsSource = list_row;
-        }
-
-        // Filter rows drop-down menu
-        private void cbFilter_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            hideComboBoxes();
-            // Filter by function
-            if (cbFilter.SelectedIndex.ToString() == "2")
-            {
-                cbFilterFunction.Visibility = Visibility.Visible;
-            }
-            //Filter by Security
-            else if (cbFilter.SelectedIndex.ToString() == "1")
-            {
-                cbFilterSecurity.Visibility = Visibility.Visible;
-            }
-            // Filter by date
-            else if (cbFilter.SelectedIndex.ToString() == "0")
-            {
-                cbFilterDateFrom.Visibility = Visibility.Visible;
-                cbFilterDateTo.Visibility = Visibility.Visible;
-                LblReportFilterDateFrom.Visibility = Visibility.Visible;
-                LblReportFilterDateTo.Visibility = Visibility.Visible;
-            }
-        }
+        //// Filter rows drop-down menu
+        //private void cbFilter_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        //{
+        //    hideComboBoxes();
+        //    // Filter by function
+        //    if (cbFilter.SelectedIndex.ToString() == "2")
+        //    {
+        //        cbFilterFunction.Visibility = Visibility.Visible;
+        //    }
+        //    //Filter by Security
+        //    else if (cbFilter.SelectedIndex.ToString() == "1")
+        //    {
+        //        cbFilterSecurity.Visibility = Visibility.Visible;
+        //    }
+        //    // Filter by date
+        //    else if (cbFilter.SelectedIndex.ToString() == "0")
+        //    {
+        //        cbFilterDateFrom.Visibility = Visibility.Visible;
+        //        cbFilterDateTo.Visibility = Visibility.Visible;
+        //        LblReportFilterDateFrom.Visibility = Visibility.Visible;
+        //        LblReportFilterDateTo.Visibility = Visibility.Visible;
+        //    }
+        //}
 
         private void hideComboBoxes()
         {
@@ -101,9 +82,9 @@ namespace CGTOnboardingTool.UISections
 
 
         // Initialise report
-        private List<Entry> initReport()
-        {
-            var rows = report.Rows();
+        //private List<Entry> initReport()
+        //{
+        //    var rows = report.Rows();
 
             //foreach(var row in rows)
             //{
@@ -183,9 +164,7 @@ namespace CGTOnboardingTool.UISections
         //}
 
         private void display(ReportEntry[] rows)
-        {
-            
-
+        { 
             List<DisplayRow> displayRows = new List<DisplayRow>();
 
             foreach (ReportEntry row in rows)
@@ -281,19 +260,6 @@ namespace CGTOnboardingTool.UISections
 
         //}
 
-        private void hideComboBoxes()
-        {
-            cbFilterFunction.Visibility = Visibility.Hidden;
-            cbFilterSecurity.Visibility = Visibility.Hidden;
-            cbFilterDateFrom.Visibility = Visibility.Hidden;
-            cbFilterDateTo.Visibility = Visibility.Hidden;
-            LblReportFilterDateFrom.Visibility = Visibility.Hidden;
-            LblReportFilterDateTo.Visibility = Visibility.Hidden;
-        }
-
-            return list_row;
-        }
-
         private class DisplayRow
         {
             public string Function { get; set; }
@@ -351,10 +317,5 @@ namespace CGTOnboardingTool.UISections
             display(report.FilterByFunction((CGTFunction)selected.Value));
         }
     }
-
-    
-
-    
-    
 
 }

@@ -1,10 +1,11 @@
-using CGTOnboardingTool.Securities;
+using CGTOnboardingTool.Models;
+using CGTOnboardingTool.Models.DataModels;
 using System;
 
-namespace CGTOnboardingTool.Tools
+namespace CGTOnboardingTool.ViewModels
 {
-    // Build BUC which subclasses the CGTFunction abstract class
-    public class Build : CGTFunction
+    // BuildView BUC which subclasses the CGTFunctionBaseViewModel abstract class
+    public class BuildViewModel : CGTFunctionBaseViewModel
     {
         Security security;
         decimal quantity;
@@ -13,8 +14,8 @@ namespace CGTOnboardingTool.Tools
         decimal? gross;
         DateOnly date;
 
-        // Overloading of Build constructors 
-        public Build(Security security, decimal quantity, decimal pps, decimal cost, DateOnly date)
+        // Overloading of BuildView constructors 
+        public BuildViewModel(Security security, decimal quantity, decimal pps, decimal cost, DateOnly date)
         {
             this.security = security;
             this.quantity = quantity;
@@ -23,7 +24,7 @@ namespace CGTOnboardingTool.Tools
             this.date = date;
         }
 
-        public Build(Security security, decimal quantity, decimal gross, DateOnly date)
+        public BuildViewModel(Security security, decimal quantity, decimal gross, DateOnly date)
         {
             this.security = security;
             this.quantity = quantity;
@@ -87,7 +88,7 @@ namespace CGTOnboardingTool.Tools
             //decimal currentHoldings = 0;
             //if (!report.HasSecurity(security))
             //{
-            //    report.AddSecurity(security);
+            //    report.AddSecurityView(security);
             //}
             //else
             //{

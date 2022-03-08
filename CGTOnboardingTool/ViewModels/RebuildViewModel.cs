@@ -1,14 +1,10 @@
-﻿using CGTOnboardingTool.Securities;
+﻿using CGTOnboardingTool.Models.DataModels;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace CGTOnboardingTool.Tools
+namespace CGTOnboardingTool.ViewModels
 {
-    // Rebuild BUC which subclasses the CGTFunction abstract class
-    public class Rebuild : CGTFunction
+    // RebuildView BUC which subclasses the CGTFunctionBaseViewModel abstract class
+    public class RebuildViewModel : CGTFunctionBaseViewModel
     {
 
         Security securityOld;
@@ -17,8 +13,8 @@ namespace CGTOnboardingTool.Tools
         decimal quantityNewBuild;
         DateOnly date;
 
-        // Rebuild constructor 
-        public Rebuild(Security oldSecurity, decimal quantityToReduce, Security newSecurity, decimal quantityToBuild, DateOnly date)
+        // RebuildView constructor 
+        public RebuildViewModel(Security oldSecurity, decimal quantityToReduce, Security newSecurity, decimal quantityToBuild, DateOnly date)
         {
             this.securityOld = oldSecurity;
             this.quantityOldReduce = quantityToReduce;

@@ -1,10 +1,11 @@
-﻿using Microsoft.Win32;
+﻿using CGTOnboardingTool.Models.DataModels;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
-namespace CGTOnboardingTool.ReportTools
+namespace CGTOnboardingTool.Models.OutputModels
 {
     public class ReportExporter
     {

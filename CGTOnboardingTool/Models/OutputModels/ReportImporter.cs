@@ -1,4 +1,6 @@
-﻿namespace CGTOnboardingTool.ReportTools
+﻿using CGTOnboardingTool.Models.DataModels;
+
+namespace CGTOnboardingTool.Models.OutputModels
 {
     public class ReportImporter
     {

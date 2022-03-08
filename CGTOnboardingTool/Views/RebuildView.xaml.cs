@@ -1,30 +1,20 @@
-﻿using CGTOnboardingTool.Securities;
+﻿using CGTOnboardingTool.Models.DataModels;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
-namespace CGTOnboardingTool.UISections
+namespace CGTOnboardingTool.Views
 {
     /// <summary>
-    /// Interaction logic for Rebuild.xaml
+    /// Interaction logic for RebuildView.xaml
     /// </summary>
-    public partial class Rebuild : Page
+    public partial class RebuildView : Page
     {
         public Report report;
         private List<Security> securities;
 
-        public Rebuild(ref Report report)
+        public RebuildView(ref Report report)
         {
             InitializeComponent();
             this.report = report;
@@ -60,7 +50,7 @@ namespace CGTOnboardingTool.UISections
         // Cancel button navigation
         private void BtnRebuildCancel_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new Dashboard(ref report));
+            this.NavigationService.Navigate(new DashboardView(ref report));
         }
 
         // Do not let user rebuild same security
@@ -97,10 +87,10 @@ namespace CGTOnboardingTool.UISections
                 var userInputNewSecuirtyQuantity = Convert.ToDecimal(TxtRebuildNewQuantity.Text);
 
                 // Perform the rebuild
-                Tools.Rebuild rb = new Tools.Rebuild(oldSecurity: userInputOldSecurity, quantityToReduce: userInputOldSecuirtyReduce, newSecurity: userInputNewSecurity, quantityToBuild: userInputNewSecuirtyQuantity, date: userInputDate);
+                ViewModels.RebuildViewModel rb = new ViewModels.RebuildViewModel(oldSecurity: userInputOldSecurity, quantityToReduce: userInputOldSecuirtyReduce, newSecurity: userInputNewSecurity, quantityToBuild: userInputNewSecuirtyQuantity, date: userInputDate);
                 rb.perform(ref report);
 
-                this.NavigationService.Navigate(new Dashboard(ref report));
+                this.NavigationService.Navigate(new DashboardView(ref report));
             }
         }
 

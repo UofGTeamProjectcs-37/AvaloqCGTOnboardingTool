@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CGTOnboardingTool.Models.DataModels;
 
-namespace CGTOnboardingTool.Tools
+namespace CGTOnboardingTool.ViewModels
 {
     // Abstract function for BUC's to subclass 
-    public abstract class CGTFunction
+    public abstract class CGTFunctionBaseViewModel
     {
         public abstract ReportEntry perform(ref Report report);
 

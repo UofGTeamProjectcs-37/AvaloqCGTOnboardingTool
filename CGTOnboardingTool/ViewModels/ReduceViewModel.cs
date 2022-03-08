@@ -1,9 +1,9 @@
-﻿using CGTOnboardingTool.Securities;
+﻿using CGTOnboardingTool.Models.DataModels;
 using System;
 
-namespace CGTOnboardingTool.Tools
+namespace CGTOnboardingTool.ViewModels
 {
-    public class Reduce : CGTFunction
+    public class ReduceViewModel : CGTFunctionBaseViewModel
     {
         Security security;
         decimal quantity;
@@ -12,7 +12,7 @@ namespace CGTOnboardingTool.Tools
         decimal? gross;
         DateOnly date;
 
-        public Reduce(Security security, decimal quantity, decimal pps, decimal cost, DateOnly date)
+        public ReduceViewModel(Security security, decimal quantity, decimal pps, decimal cost, DateOnly date)
         {
             this.security = security;
             this.quantity = quantity;
@@ -21,7 +21,7 @@ namespace CGTOnboardingTool.Tools
             this.date = date;
         }
 
-        public Reduce(Security security, decimal quantity, decimal gross, DateOnly date)
+        public ReduceViewModel(Security security, decimal quantity, decimal gross, DateOnly date)
         {
             this.security = security;
             this.quantity = quantity;
@@ -41,7 +41,7 @@ namespace CGTOnboardingTool.Tools
             }
             else
             {
-                throw new Exception("Build not allowed. Reconstruct build and specify either a Price & Cost pair, or a Gross");
+                throw new Exception("BuildView not allowed. Reconstruct build and specify either a Price & Cost pair, or a Gross");
             }
         }
 

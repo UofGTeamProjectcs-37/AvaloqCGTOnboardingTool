@@ -1,17 +1,15 @@
-using CGTOnboardingTool.Securities;
+using CGTOnboardingTool.Models.DataModels;
 using System;
 using System.Collections.Generic;
-using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Media;
 
-namespace CGTOnboardingTool.UISections
+namespace CGTOnboardingTool.Views
 {
     /// <summary>
-    /// Interaction logic for Build.xaml
+    /// Interaction logic for BuildView.xaml
     /// </summary>
-    public partial class Build : Page
+    public partial class BuildView : Page
     {
         public Report report;
 
@@ -26,7 +24,7 @@ namespace CGTOnboardingTool.UISections
             return new DateOnly(year, month, day);
         }
 
-        public Build(ref Report report)
+        public BuildView(ref Report report)
         {
             InitializeComponent();
             this.report = report;
@@ -47,13 +45,13 @@ namespace CGTOnboardingTool.UISections
 
             // Drop-down menu 
             DropBuildSecurities.ItemsSource = securities;
-            DropBuildSecurities.Text = "Select a Security to Build";
+            DropBuildSecurities.Text = "Select a Security to BuildView";
         }
 
         // Cancel button navigation
         private void BtnBuildCancel_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new Dashboard(ref report));
+            this.NavigationService.Navigate(new DashboardView(ref report));
         }
 
         // Save button navigation
@@ -72,10 +70,10 @@ namespace CGTOnboardingTool.UISections
                 Decimal userInputCost = Convert.ToDecimal(TxtBuildCost.Text);
 
                 // Perform the build 
-                Tools.Build b = new Tools.Build(security: userInputSecurity, quantity: userInputQuantity, pps: userInputPrice, cost: userInputCost, date: userInputDate);
+                ViewModels.BuildViewModel b = new ViewModels.BuildViewModel(security: userInputSecurity, quantity: userInputQuantity, pps: userInputPrice, cost: userInputCost, date: userInputDate);
                 b.perform(ref report);
 
-                this.NavigationService.Navigate(new Dashboard(ref report));
+                this.NavigationService.Navigate(new DashboardView(ref report));
             }
         }
 

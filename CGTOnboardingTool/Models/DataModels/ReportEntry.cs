@@ -1,15 +1,14 @@
-﻿using CGTOnboardingTool.Tools;
-using CGTOnboardingTool.Securities;
+﻿using CGTOnboardingTool.ViewModels;
 using System;
 using System.Collections.Generic;
 
-namespace CGTOnboardingTool
+namespace CGTOnboardingTool.Models.DataModels
 {
     // Author Aidan Neil
     public class ReportEntry
     {
         public int Id { get; init; }
-        public CGTFunction Function { get; init; }
+        public CGTFunctionBaseViewModel Function { get; init; }
         public DateOnly Date { get; init; }
         public Security[] Security { get; init; }
         public Dictionary<Security, decimal>? Price { get; init; }
@@ -20,7 +19,7 @@ namespace CGTOnboardingTool
         public Dictionary<Security, decimal> Holdings { get; set; }
         public Dictionary<Security, decimal> Section104 { get; set; }
 
-        public ReportEntry(int id, CGTFunction function, DateOnly date, Security security, decimal price, decimal quantity, decimal associatedCosts, decimal gainLoss, decimal holdings, decimal section104)
+        public ReportEntry(int id, CGTFunctionBaseViewModel function, DateOnly date, Security security, decimal price, decimal quantity, decimal associatedCosts, decimal gainLoss, decimal holdings, decimal section104)
         {
             this.Id = id;
             this.Function = function;
@@ -49,7 +48,7 @@ namespace CGTOnboardingTool
             };
         }
 
-        public ReportEntry(int id, CGTFunction function, DateOnly date, Security security, decimal quantity, decimal gross, decimal gainLoss, decimal holdings, decimal section104)
+        public ReportEntry(int id, CGTFunctionBaseViewModel function, DateOnly date, Security security, decimal quantity, decimal gross, decimal gainLoss, decimal holdings, decimal section104)
         {
             this.Id = id;
             this.Function = function;
@@ -75,7 +74,7 @@ namespace CGTOnboardingTool
             };
         }
 
-        public ReportEntry(int id, CGTFunction function, DateOnly date, Security[] securities, decimal[]? prices, decimal[] quantities, decimal[]? associatedCosts, decimal[] gainLoss, decimal[] holdings, decimal[] section104s)
+        public ReportEntry(int id, CGTFunctionBaseViewModel function, DateOnly date, Security[] securities, decimal[]? prices, decimal[] quantities, decimal[]? associatedCosts, decimal[] gainLoss, decimal[] holdings, decimal[] section104s)
         {
             this.Id = id;
             this.Function = function;

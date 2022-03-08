@@ -1,28 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using CGTOnboardingTool.Models.DataModels;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
-namespace CGTOnboardingTool.UISections
+namespace CGTOnboardingTool.Views
 {
     /// <summary>
-    /// Interaction logic for AddSecurity.xaml
+    /// Interaction logic for AddSecurityView.xaml
     /// </summary>
-    public partial class AddSecurity : Page
+    public partial class AddSecurityView : Page
     {
         public Report report;
-        public AddSecurity(ref Report report)
+        public AddSecurityView(ref Report report)
         {
             InitializeComponent();
             this.report = report;
@@ -31,7 +20,7 @@ namespace CGTOnboardingTool.UISections
         // Cancel button
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new Dashboard(ref report));
+            this.NavigationService.Navigate(new DashboardView(ref report));
         }
 
         // Add button functionality

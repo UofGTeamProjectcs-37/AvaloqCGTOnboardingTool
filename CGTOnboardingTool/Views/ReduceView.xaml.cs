@@ -1,29 +1,18 @@
-﻿using CGTOnboardingTool.Securities;
+﻿using CGTOnboardingTool.Models.DataModels;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
-namespace CGTOnboardingTool.UISections
+namespace CGTOnboardingTool.Views
 {
     /// <summary>
-    /// Interaction logic for Reduce.xaml
+    /// Interaction logic for ReduceView.xaml
     /// </summary>
-    public partial class Reduce : Page
+    public partial class ReduceView : Page
     {
         public Report report;
 
-        public Reduce(ref Report report)
+        public ReduceView(ref Report report)
         {
             InitializeComponent();
             this.report = report;
@@ -45,7 +34,7 @@ namespace CGTOnboardingTool.UISections
         // Cancel button navigation
         private void BtnReduceCancel_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new Dashboard(ref report));
+            this.NavigationService.Navigate(new DashboardView(ref report));
         }
 
         // Save button functionality
@@ -64,10 +53,10 @@ namespace CGTOnboardingTool.UISections
                 var userInputCost = Convert.ToDecimal(TxtReduceCost.Text);
 
                 // Perform the reduce
-                Tools.Reduce r = new Tools.Reduce(security: userInputSecurity, quantity: userInputQuantity, pps: userInputPrice, cost: userInputCost, date: userInputDate);
+                ViewModels.ReduceViewModel r = new ViewModels.ReduceViewModel(security: userInputSecurity, quantity: userInputQuantity, pps: userInputPrice, cost: userInputCost, date: userInputDate);
                 r.perform(ref report);
 
-                this.NavigationService.Navigate(new Dashboard(ref report));
+                this.NavigationService.Navigate(new DashboardView(ref report));
             }
         }
 

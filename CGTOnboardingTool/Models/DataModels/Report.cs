@@ -1,11 +1,9 @@
-using CGTOnboardingTool.Securities;
-using CGTOnboardingTool.Tools;
-using CGTOnboardingTool.UISections;
+using CGTOnboardingTool.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace CGTOnboardingTool
+namespace CGTOnboardingTool.Models.DataModels
 {
     //Author: Aidan Neil
     public class Report
@@ -15,7 +13,7 @@ namespace CGTOnboardingTool
 
         private int count; // Number of entries in a report
         private List<Security> securities; // All the secuirties that have been referenced within a report
-        private List<CGTFunction> functionsUsed = new List<CGTFunction>();
+        private List<CGTFunctionBaseViewModel> functionsUsed = new List<CGTFunctionBaseViewModel>();
 
         private Dictionary<DateOnly, List<ReportEntry>> dateEntries; // The entries that have happened on a given date
         private Dictionary<Security, List<DateOnly>> securityDates; // The dates where there has been an action on a security
@@ -85,12 +83,12 @@ namespace CGTOnboardingTool
             }
         }
 
-        public CGTFunction[] GetFunctionsUsed()
+        public CGTFunctionBaseViewModel[] GetFunctionsUsed()
         {
             return functionsUsed.ToArray();
         }
 
-        public ReportEntry Add(CGTFunction function, DateOnly date, Security security, decimal price, decimal quantity, decimal associatedCosts, decimal gainLoss, decimal section104)
+        public ReportEntry Add(CGTFunctionBaseViewModel function, DateOnly date, Security security, decimal price, decimal quantity, decimal associatedCosts, decimal gainLoss, decimal section104)
         {
             if (!functionsUsed.Contains(function))
             {
@@ -167,7 +165,7 @@ namespace CGTOnboardingTool
             return newEntry;
         }
 
-        public ReportEntry Add(CGTFunction function, DateOnly date, Security[] securities, decimal[] quantities, decimal[] gainLosses, decimal[] section104s)
+        public ReportEntry Add(CGTFunctionBaseViewModel function, DateOnly date, Security[] securities, decimal[] quantities, decimal[] gainLosses, decimal[] section104s)
         {
             decimal[] holdingsCurrent = new decimal[securities.Length];
             decimal[] holdings = new decimal[securities.Length];
@@ -200,7 +198,7 @@ namespace CGTOnboardingTool
         }
 
 
-        public ReportEntry Add(CGTFunction function, DateOnly date, Security[] securities, decimal[] prices, decimal[] quantities, decimal associatedCost, decimal[] gainLoss, decimal[] section104s)
+        public ReportEntry Add(CGTFunctionBaseViewModel function, DateOnly date, Security[] securities, decimal[] prices, decimal[] quantities, decimal associatedCost, decimal[] gainLoss, decimal[] section104s)
         {
             decimal[] currentHoldings = new decimal[securities.Length];
             decimal[] holdings = new decimal[securities.Length];
@@ -345,7 +343,7 @@ namespace CGTOnboardingTool
             return filteredRows.ToArray();
         }
 
-        public ReportEntry[] FilterByFunction(CGTFunction search)
+        public ReportEntry[] FilterByFunction(CGTFunctionBaseViewModel search)
         {
             List<ReportEntry> filteredRows = new List<ReportEntry>();
             List<ReportEntry> reportRows = new List<ReportEntry>(this.Rows());

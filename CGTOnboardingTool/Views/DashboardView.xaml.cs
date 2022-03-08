@@ -1,24 +1,24 @@
-﻿using CGTOnboardingTool.Securities;
-using CGTOnboardingTool.ReportTools;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
-using CGTOnboardingTool.Tools;
+using CGTOnboardingTool.ViewModels;
+using CGTOnboardingTool.Models.DataModels;
+using CGTOnboardingTool.Models.OutputModels;
 
-namespace CGTOnboardingTool.UISections
+namespace CGTOnboardingTool.Views
 {
     /// <summary>
-    /// Interaction logic for Dashboard.xaml
+    /// Interaction logic for DashboardView.xaml
     /// </summary>
-    public partial class Dashboard : Page
+    public partial class DashboardView : Page
     {
         DateOnly? filterDateFrom;
         DateOnly? filterDateTo;
 
         public Report report;
 
-        public Dashboard(ref Report report)
+        public DashboardView(ref Report report)
         {
             InitializeComponent();
             this.report = report;
@@ -27,7 +27,7 @@ namespace CGTOnboardingTool.UISections
 
 
         // Display report on dashboard 
-        public Dashboard(ref Report report, ref String client, ref String tax)
+        public DashboardView(ref Report report, ref String client, ref String tax)
         {
             InitializeComponent();
 
@@ -157,7 +157,7 @@ namespace CGTOnboardingTool.UISections
             //        }
             //    }
 
-            //    list_row.Add(new Entry { Function = Function, Date = Date, Securities = SecurityCol, Quantity = Quantity, Price = Price, Cost = Cost, Gross = Gross, Gain_loss = Gain_loss, Holdings = Holdings, S104 = S104 });
+            //    list_row.Add(new Entry { Function = Function, Date = Date, Models = SecurityCol, Quantity = Quantity, Price = Price, Cost = Cost, Gross = Gross, Gain_loss = Gain_loss, Holdings = Holdings, S104 = S104 });
 
             //}
             //DashboardReportView.ItemsSource= list_row;
@@ -201,9 +201,9 @@ namespace CGTOnboardingTool.UISections
             //Function
             if (cbFilter.SelectedIndex.ToString() == "2")
             {
-                CGTFunction[] funcitonsUsed = report.GetFunctionsUsed();
+                CGTFunctionBaseViewModel[] funcitonsUsed = report.GetFunctionsUsed();
                 List<DropdownItem> selections = new List<DropdownItem>();
-                foreach (CGTFunction funciton in funcitonsUsed)
+                foreach (CGTFunctionBaseViewModel funciton in funcitonsUsed)
                 {
                     selections.Add(new DropdownItem { Text = funciton.GetType().Name, Value = funciton.GetType() });
                 }
@@ -314,7 +314,7 @@ namespace CGTOnboardingTool.UISections
         private void cbFilterFunction_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
         {
             DropdownItem selected = (DropdownItem)cbFilterFunction.SelectedItem;
-            display(report.FilterByFunction((CGTFunction)selected.Value));
+            display(report.FilterByFunction((CGTFunctionBaseViewModel)selected.Value));
         }
     }
 

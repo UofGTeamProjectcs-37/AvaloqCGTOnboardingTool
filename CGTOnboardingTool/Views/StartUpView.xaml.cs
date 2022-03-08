@@ -1,28 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CGTOnboardingTool.Models.DataModels;
+using System;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
-namespace CGTOnboardingTool.UISections
+namespace CGTOnboardingTool.Views
 {
     /// <summary>
-    /// Interaction logic for StartUp.xaml
+    /// Interaction logic for StartUpView.xaml
     /// </summary>
-    public partial class StartUp : Page
+    public partial class StartUpView : Page
     {
         public Report report;
         public Grid grid;
-        public StartUp(ref Report Report, ref Grid MainWindowGrid)
+        public StartUpView(ref Report Report, ref Grid MainWindowGrid)
         {
             // Initialise report 
             InitializeComponent();
@@ -45,7 +35,7 @@ namespace CGTOnboardingTool.UISections
             String tax = TxtStartUpTax.Text;
 
             grid.Visibility = Visibility.Visible;
-            this.NavigationService.Navigate(new Dashboard(ref report, ref client, ref tax));
+            this.NavigationService.Navigate(new DashboardView(ref report, ref client, ref tax));
         }
 
         // Cancel button functionality

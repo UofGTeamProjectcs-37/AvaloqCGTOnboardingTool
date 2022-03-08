@@ -268,31 +268,28 @@ namespace CGTOnboardingTool
             }
         }
 
-        public List<ReportEntry> FilterSecurity(ref String filter) {
 
+        public ReportEntry[] FilterBySecurity(Security search)
+        {
             List<ReportEntry> filteredRows = new List<ReportEntry>();
             List<ReportEntry> reportRows = new List<ReportEntry>(this.Rows());
 
-            string chosenSecurity = filter; //change to user input from drop down menu
-
-            for (int i=0; i<this.Count();i++)
+            for (int i = 0; i < this.Count(); i++)
             {
-                if (reportRows[i].Security[0].Name == chosenSecurity)
+                foreach (var sec in reportRows[i].Security)
                 {
-                    filteredRows.Append(reportRows[i]);
+                    if (sec.Equals(search))
+                    {
+                        filteredRows.Append(reportRows[i]);
+                    }
                 }
             }
 
-            //get dropdown menu security selection 
-            //from securityEntries put the dropdown menu selection into securityEntries as a key and store those values into filteredSecurity list
-            //display filteredsecuritylist in the report.
-
-
-
-            return filteredRows;
+            return filteredRows.ToArray();
         }
+   
 
-        public List<ReportEntry> FilterDate(DateOnly filterFrom, DateOnly filterTo)
+        public ReportEntry[] FilterByDate(DateOnly filterFrom, DateOnly filterTo)
         {
 
             List<ReportEntry> filteredRows = new List<ReportEntry>();
@@ -310,29 +307,24 @@ namespace CGTOnboardingTool
             }
 
 
-            return filteredRows;
+            return filteredRows.ToArray();
         }
 
-        public List<ReportEntry> FilterFunction(ref String filter)
+        public ReportEntry[] FilterByFunction(CGTFunction search)
         {
-
             List<ReportEntry> filteredRows = new List<ReportEntry>();
             List<ReportEntry> reportRows = new List<ReportEntry>(this.Rows());
 
-            String chosenFunction = filter; //change to user input from drop down menu
-
             for (int i = 0; i < this.Count(); i++)
             {
-                if (reportRows[i].Function.ToString()==chosenFunction)
+                if (reportRows[i].Function.Equals(search))
                 {
                     filteredRows.Append(reportRows[i]);
                 }
             }
 
-
-            return filteredRows;
+            return filteredRows.ToArray();
         }
-
 
     }
 

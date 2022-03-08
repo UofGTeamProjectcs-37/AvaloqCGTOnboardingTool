@@ -15,6 +15,7 @@ namespace CGTOnboardingTool
 
         private int count; // Number of entries in a report
         private List<Security> securities; // All the secuirties that have been referenced within a report
+        private List<CGTFunction> functionsUsed = new List<CGTFunction>();
 
         private Dictionary<Security, List<DateOnly>> securityDates; // The dates where there has been an action on a security
         private Dictionary<Security, List<ReportEntry>> securityEntries; // The cronilogical ordering of entries related to a security
@@ -82,8 +83,18 @@ namespace CGTOnboardingTool
             }
         }
 
+        public CGTFunction[] GetFunctionsUsed()
+        {
+            return functionsUsed.ToArray();
+        }
+
         public ReportEntry Add(CGTFunction function, DateOnly date, Security security, decimal price, decimal quantity, decimal associatedCosts, decimal gainLoss, decimal section104)
         {
+            if (!functionsUsed.Contains(function))
+            {
+                functionsUsed.Add(function);
+            }
+
             // 1. Add security action
             this.AddSecurityActionDate(security, date);
 
@@ -276,11 +287,11 @@ namespace CGTOnboardingTool
 
             for (int i = 0; i < this.Count(); i++)
             {
-                foreach (var sec in reportRows[i].Security)
+                foreach (Security sec in reportRows[i].Security)
                 {
                     if (sec.Equals(search))
                     {
-                        filteredRows.Append(reportRows[i]);
+                        filteredRows.Add(reportRows[i]);
                     }
                 }
             }
@@ -302,7 +313,7 @@ namespace CGTOnboardingTool
             {
                 if ((reportRows[i].Date<endDate) && (reportRows[i].Date>startDate))
                 {
-                    filteredRows.Append(reportRows[i]);
+                    filteredRows.Add(reportRows[i]);
                 }
             }
 
@@ -319,7 +330,7 @@ namespace CGTOnboardingTool
             {
                 if (reportRows[i].Function.Equals(search))
                 {
-                    filteredRows.Append(reportRows[i]);
+                    filteredRows.Add(reportRows[i]);
                 }
             }
 

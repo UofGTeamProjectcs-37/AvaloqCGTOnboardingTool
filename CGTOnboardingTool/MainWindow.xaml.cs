@@ -20,7 +20,7 @@ namespace CGTOnboardingTool
             InitializeComponent();
             Style = (Style)FindResource(typeof(Window));
             report = new Report();
-            mainFrame.Navigate(new UISections.Dashboard(ref report));
+            mainFrame.Navigate(new UISections.StartUp(ref report, ref MainWindowGrid));
         }
 
         private void btnBuild_Click(object sender, RoutedEventArgs e)
@@ -37,6 +37,12 @@ namespace CGTOnboardingTool
         private void btnRebuild_Click(object sender, RoutedEventArgs e)
         {
             mainFrame.Navigate(new UISections.Rebuild(ref report));
+
+        }
+
+        private void btnAddNewSec_Click(object sender, RoutedEventArgs e)
+        {
+            mainFrame.Navigate(new UISections.AddSecurity(ref report));
 
         }
     }

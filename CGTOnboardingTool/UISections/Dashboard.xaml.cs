@@ -38,7 +38,72 @@ namespace CGTOnboardingTool.UISections
             //       MessageBox.Show(row.Security.ToString());
             //   }*/
 
-            //List<Entry> list_row = new List<Entry>();
+            List<Entry> list_row = initReport();
+
+            DashboardReportView.ItemsSource= list_row;
+        }
+
+        // Display report on dashboard 
+        public Dashboard(ref Report report, ref String client, ref String tax)
+        {
+            InitializeComponent();
+
+            LblClientName.Content = client; 
+            LblTaxYear.Content = tax;
+
+            this.report = report;
+
+            List<Entry> list_row = initReport();
+
+            DashboardReportView.ItemsSource = list_row;
+        }
+
+        // Filter rows drop-down menu
+        private void cbFilter_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            hideComboBoxes();
+            // Filter by function
+            if (cbFilter.SelectedIndex.ToString() == "2")
+            {
+                cbFilterFunction.Visibility = Visibility.Visible;
+            }
+            //Filter by Security
+            else if (cbFilter.SelectedIndex.ToString() == "1")
+            {
+                cbFilterSecurity.Visibility = Visibility.Visible;
+            }
+            // Filter by date
+            else if (cbFilter.SelectedIndex.ToString() == "0")
+            {
+                cbFilterDateFrom.Visibility = Visibility.Visible;
+                cbFilterDateTo.Visibility = Visibility.Visible;
+                LblReportFilterDateFrom.Visibility = Visibility.Visible;
+                LblReportFilterDateTo.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void hideComboBoxes()
+        {
+            cbFilterFunction.Visibility = Visibility.Hidden;
+            cbFilterSecurity.Visibility = Visibility.Hidden;
+            cbFilterDateFrom.Visibility = Visibility.Hidden;
+            cbFilterDateTo.Visibility = Visibility.Hidden;
+            LblReportFilterDateFrom.Visibility = Visibility.Hidden;
+            LblReportFilterDateTo.Visibility = Visibility.Hidden;
+        }
+
+        // Save button functionality
+        private void btnSave_Click(object sender, RoutedEventArgs e)
+        {
+            ReportExporter exporter = new ReportExporter(ref report);
+            exporter.ExportToText();
+        }
+
+
+        // Initialise report
+        private List<Entry> initReport()
+        {
+            var rows = report.Rows();
 
             //foreach(var row in rows)
             //{
@@ -226,10 +291,7 @@ namespace CGTOnboardingTool.UISections
             LblReportFilterDateTo.Visibility = Visibility.Hidden;
         }
 
-        private void btnSave_Click(object sender, RoutedEventArgs e)
-        {
-            ReportExporter exporter = new ReportExporter(ref report);
-            exporter.ExportToText();
+            return list_row;
         }
 
         private class DisplayRow

@@ -12,10 +12,6 @@
             <Setter Property="FontFamily"
             Value="Leelawadee UI Semilight" />
         </Style>
-        <Style TargetType="{x:Type Label}">
-            <Setter Property="FontFamily"
-            Value="Leelawadee UI Semilight" />
-        </Style>
         <Style TargetType="{x:Type Label}" x:Key="FunctionParameterLabel">
             <Setter Property="FontFamily" Value="Leelawadee UI Semilight" />
             <Setter Property="Height" Value="41" />
@@ -34,9 +30,15 @@
             <Setter Property="FontSize" Value="20" />
             <Setter Property="Foreground" Value="#5A5A5A" />
         </Style>
+        <Style TargetType="{x:Type Label}" x:Key="IncorrectValidationLabel">
+            <Setter Property="FontFamily" Value="Leelawadee UI Semilight" />
+            <Setter Property="FontSize" Value="10" />
+            <Setter Property="Foreground" Value="Red" />
+        </Style>
 
         <Style TargetType="{x:Type TextBox}" x:Key="FunctionInputBoxes">
             <Setter Property="FontFamily" Value="Leelawadee UI Semilight" />
+            <Setter Property="BorderBrush" Value="Red"/>
             <Setter Property="BorderThickness" Value="0"/>
             <Setter Property="Width" Value="462"/>
             <Setter Property="Height" Value="34"/>
@@ -60,11 +62,27 @@
             <Setter Property="Width" Value="176"/>
             <Setter Property="FontSize" Value="32"/>
 
-            <Style.Resources>
-                <Style TargetType="Border">
-                    <Setter Property="CornerRadius" Value="25" />
-                </Style>
-            </Style.Resources>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="25">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#ffffff"/>
+                    <Setter Property="Opacity" Value="0.5"/>
+                    <Setter Property="Foreground" Value="Black"/>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Background" Value="#5A5A5A"/>
+                    <Setter Property="Foreground" Value="White"/>
+                </Trigger>
+            </Style.Triggers>
         </Style>
 
         <Style TargetType="{x:Type Grid}" x:Key="RoundGrid">
@@ -77,7 +95,7 @@
 
         </Style>
 
-        
+
 
         <Style x:Key="ComboBoxTextBoxStyle" TargetType="{x:Type TextBox}">
             <Setter Property="FontFamily" Value="Leelawadee UI Semilight" />
@@ -121,6 +139,83 @@
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
+        </Style>
+
+        <Style TargetType="{x:Type ListView}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListView">
+                        <Border Name="Border" CornerRadius="15" Background="Transparent">
+
+                            <ScrollViewer Style="{DynamicResource {x:Static GridView.GridViewScrollViewerStyleKey}}">
+                                <ItemsPresenter />
+                            </ScrollViewer>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsGrouping" Value="true">
+                                <Setter Property="ScrollViewer.CanContentScroll" Value="false" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="{x:Type GridViewColumnHeader}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="GridViewColumnHeader">
+                        <Grid>
+                            <Border x:Name="HeaderBorder" Padding="0,0,0,0" Margin="0,0,0,0" CornerRadius="15, 0, 0, 0" Background="#A1A7CB">
+                                <ContentPresenter x:Name="HeaderContent" Margin="0,0,0,0" RecognizesAccessKey="True" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                            </Border>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                
+                <Trigger Property="Role" Value="Padding">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="GridViewColumnHeader">
+                                <Border Name="HeaderBorder" Background="#A1A7CB" CornerRadius="0,15,0,0"/>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="InnerColumns" TargetType="{x:Type GridViewColumnHeader}">
+            <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="GridViewColumnHeader">
+                        <Grid>
+                            <Border x:Name="HeaderBorder" Background="#A1A7CB">
+                                <ContentPresenter x:Name="HeaderContent" Margin="0,0,0,0" RecognizesAccessKey="True" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                        </Border>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+         </Setter>
+        </Style>
+
+        <Style TargetType="{x:Type ListViewItem}">
+            <Setter Property="Foreground" Value="#5A5A5A"/>
+
+
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="true">
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="BorderBrush" Value="#5A5A5A"/>
+                </Trigger>
+                
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="Background" Value="#A1A7CB"/>
+                    <Setter Property="Foreground" Value="#5A5A5A"/>
+                </Trigger>
+            </Style.Triggers>
         </Style>
 
     </Application.Resources>

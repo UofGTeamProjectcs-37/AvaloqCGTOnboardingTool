@@ -5,15 +5,18 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:CGTOnboardingTool.UISections"
       mc:Ignorable="d"
-      Title="Dashboard" Width="1024" Height="705">
+      Title="Dashboard" Width="1024" Height="720">
 
     <Grid Width="1024" Height="705">
 
-        <Grid Style="{DynamicResource RoundGrid}" Height="690" Width="1001.5" Margin="0,8,22,7">
-            <Border Margin="7.5,0,15,0" Background="#C7CADC"/>
+        <Grid Style="{DynamicResource RoundGrid}" Height="690" Width="1001.5">
+            <Border Margin="7.5,0,15,15" Background="#C7CADC"/>
 
             <Grid Style="{DynamicResource RoundGrid}" Height="100" Width="881.5" Margin="60,15,60,513">
                 <Border Background="#ffffff" Opacity="0.5"/>
+
+                <Label x:Name="LblClientName" Height="auto" Width="auto" Style="{DynamicResource FunctionHeaderLabel}" Margin="10,0,542,0" VerticalAlignment="Center" FontSize="50"/>
+                <Label x:Name="LblTaxYear" Height="auto" Width="auto" Style="{DynamicResource FunctionHeaderLabel}" Margin="700,0,10,0" VerticalAlignment="Center"/>
 
             </Grid>
 
@@ -44,31 +47,30 @@
 
             <Grid Style="{DynamicResource RoundGrid}" Height="412.5">
                 <Border Background="#ffffff" Opacity="0.5" Margin="60,78,60,-60"/>
-                <ListView Name="DashboardReportView" Margin="75,78,75,-60">
+                <ListView Name="DashboardReportView" Margin="58,78,58,-60" d:ItemsSource="{d:SampleData ItemCount=5}">
                     <ListView.View>
                         <GridView>
-                            <GridViewColumn Header="Function" Width="auto" DisplayMemberBinding="{Binding Function}"/>
-                            <GridViewColumn Header="Date" Width="auto" DisplayMemberBinding="{Binding Date}"/>
-                            <GridViewColumn Header="Securities" Width="auto" DisplayMemberBinding="{Binding Securities}"/>
-                            <GridViewColumn Header="Quantity" Width="auto" DisplayMemberBinding="{Binding Quantity}"/>
-                            <GridViewColumn Header="Price" Width="auto" DisplayMemberBinding="{Binding Price}"/>
-                            <GridViewColumn Header="Cost" Width="auto" DisplayMemberBinding="{Binding Cost}"/>
-                            <GridViewColumn Header="Gross" Width="auto" DisplayMemberBinding="{Binding Gross}"/>
-                            <GridViewColumn Header="Gains" Width="auto" DisplayMemberBinding="{Binding GainLoss}"/>
-                            <GridViewColumn Header="Holdings" Width="auto" DisplayMemberBinding="{Binding Holdings}"/>
-                            <GridViewColumn Header="S104" Width="auto" DisplayMemberBinding="{Binding S104}"/>
+                            <GridViewColumn Header="  Function" Width="auto" DisplayMemberBinding="{Binding Function}"/>
+                            <GridViewColumn Header="Date" Width="auto" DisplayMemberBinding="{Binding Date}" HeaderContainerStyle="{DynamicResource InnerColumns}"/>
+                            <GridViewColumn Header="Securities" Width="auto" DisplayMemberBinding="{Binding Securities}" HeaderContainerStyle="{DynamicResource InnerColumns}"/>
+                            <GridViewColumn Header="Quantity" Width="auto" DisplayMemberBinding="{Binding Quantity}" HeaderContainerStyle="{DynamicResource InnerColumns}"/>
+                            <GridViewColumn Header="Price" Width="auto" DisplayMemberBinding="{Binding Price}" HeaderContainerStyle="{DynamicResource InnerColumns}"/>
+                            <GridViewColumn Header="Cost" Width="auto" DisplayMemberBinding="{Binding Cost}" HeaderContainerStyle="{DynamicResource InnerColumns}"/>
+                            <GridViewColumn Header="Gross" Width="auto" DisplayMemberBinding="{Binding Gross}" HeaderContainerStyle="{DynamicResource InnerColumns}"/>
+                            <GridViewColumn Header="Gains" Width="auto" DisplayMemberBinding="{Binding Gains}" HeaderContainerStyle="{DynamicResource InnerColumns}"/>
+                            <GridViewColumn Header="Holdings" Width="auto" DisplayMemberBinding="{Binding Holdings}" HeaderContainerStyle="{DynamicResource InnerColumns}"/>
+                            <GridViewColumn Header="S104" Width="auto" DisplayMemberBinding="{Binding S104}" HeaderContainerStyle="{DynamicResource InnerColumns}"/>
                         </GridView>
                     </ListView.View>
                 </ListView>
             </Grid>
-    </Grid>
+        </Grid>
 
-    <Grid Height ="50" Width="881.5" Margin="60,630,82,15">
+        <Grid Height ="50" Width="881.5" Margin="60,630,82,15">
 
             <Button x:Name="btnSave" Content="Save" Margin="0,0,706,0" Style="{DynamicResource RoundButton}" Click="btnSave_Click"/>
             <Button x:Name="btnCancel" Content="Cancel" Margin="706,0,0,0" Style="{DynamicResource RoundButton}"/>
-            <Button x:Name="btnOpen" Content="Open" Margin="220,0,486,0" Style="{DynamicResource RoundButton}"/>
             <Button x:Name="btnExport" Content="Export" Margin="485,0,220,0" Style="{DynamicResource RoundButton}"/>
-    </Grid>
+        </Grid>
     </Grid>
 </Page>

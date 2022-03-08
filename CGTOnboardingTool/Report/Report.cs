@@ -1,4 +1,4 @@
-﻿using CGTOnboardingTool.Securities;
+using CGTOnboardingTool.Securities;
 using CGTOnboardingTool.Tools;
 using CGTOnboardingTool.UISections;
 using System;
@@ -17,8 +17,10 @@ namespace CGTOnboardingTool
         private List<Security> securities; // All the secuirties that have been referenced within a report
         private List<CGTFunction> functionsUsed = new List<CGTFunction>();
 
+        private Dictionary<DateOnly, List<ReportEntry>> dateEntries; // The entries that have happened on a given date
         private Dictionary<Security, List<DateOnly>> securityDates; // The dates where there has been an action on a security
         private Dictionary<Security, List<ReportEntry>> securityEntries; // The cronilogical ordering of entries related to a security
+        
 
         private Dictionary<Security, List<Security>> relatedSecurities; // A list of securities that are related through some CGTFunciton
 
@@ -70,7 +72,7 @@ namespace CGTOnboardingTool
             else
             {
                 var dates = this.securityDates[security];
-                var lastDate = dates[-1];
+                var lastDate = dates.Last();
                 if (date < lastDate)
                 {
                     dates.Add(date);
@@ -122,19 +124,38 @@ namespace CGTOnboardingTool
             var dateIndex = securityActionDates.IndexOf(date);
 
             var securityEntryList = securityEntries[security];
-            if (dateIndex == 0)
+            if (securityEntryList.Count == 0)
             {
                 securityEntryList.Add(newEntry);
+
+                foreach (var s in securities)
+                {
+                    if (s.Equals(security))
+                    {
+                        continue;
+                    }
+                    var sDates = securityDates[s];
+
+
+                }
+
                 entries.AddLast(newEntry);
+            }
+
+            if (dateIndex ==  0)
+            {
+                //
             }
             else
             {
                 var previous = securityEntryList[dateIndex - 1];
                 securityEntryList.Insert(dateIndex, newEntry);
                 var previousNode = entries.Find(previous);
+
                 if (previousNode != null)
                 {
                     entries.AddAfter(previousNode, newEntry);
+                    this.reflectChanges(newEntry);
                 }
                 else
                 {
@@ -173,6 +194,7 @@ namespace CGTOnboardingTool
 
             entriesUnordered.Add(newEntry);
 
+            entries.AddLast(newEntry);
 
             return newEntry;
         }
@@ -206,6 +228,7 @@ namespace CGTOnboardingTool
             
             entriesUnordered.Add(newEntry);
 
+            entries.AddLast(newEntry);
             //
             // TO DO
             // Insert in position
@@ -280,6 +303,7 @@ namespace CGTOnboardingTool
         }
 
 
+
         public ReportEntry[] FilterBySecurity(Security search)
         {
             List<ReportEntry> filteredRows = new List<ReportEntry>();
@@ -335,6 +359,26 @@ namespace CGTOnboardingTool
             }
 
             return filteredRows.ToArray();
+        }
+
+
+        private void reflectChanges(ReportEntry associatedEntry)
+        {
+            foreach (var security in associatedEntry.Security)
+            {
+                var sEntries = securityEntries[security];
+                var index = sEntries.IndexOf(associatedEntry);
+
+                var quantityChange = associatedEntry.Quantity[security];
+                var gainLossChange = associatedEntry.GainLoss[security];
+
+                for (int i = index + 1; i < sEntries.Count; i++)
+                {
+                    sEntries[i].Holdings[security] += quantityChange;
+                    sEntries[i].Section104[security] += gainLossChange;
+                }
+            }
+              
         }
 
     }

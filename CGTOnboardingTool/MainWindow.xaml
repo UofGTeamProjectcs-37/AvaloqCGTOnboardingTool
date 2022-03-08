@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CGTOnboardingTool"
         mc:Ignorable="d"
-        Title="CGT Onboarding Tool" Height="720" Width="1280">
+        Title="CGT Onboarding Tool" Height="735" Width="1280">
 
     <Canvas Width="1280" Height="705" Background="#A1A7CB">
 
@@ -14,16 +14,16 @@
 
 
         <Grid Style="{DynamicResource RoundGrid}" Width="234" Height="584" Margin="15,106,0,0">
-            <Border Background="#C7CADC">
+            <Border Background="#C7CADC"/>
 
-            <StackPanel>
 
-                    <Button x:Name="btnBuild" Content="Build" Click="btnBuild_Click" Style="{DynamicResource RoundButton}"/>
-                    <Button x:Name="btnReduce" Content="Reduce" Click="btnReduce_Click" Style="{DynamicResource RoundButton}"/>
-                    <Button x:Name="btnRebuild" Content="Rebuild" Click="btnRebuild_Click" Style="{DynamicResource RoundButton}"/>
+            <Grid x:Name="MainWindowGrid"  Visibility="Hidden">
+                <Button x:Name="btnBuild" Content="Build" Click="btnBuild_Click" Style="{DynamicResource RoundButton}" Margin="29,29,29,505"/>
+                <Button x:Name="btnReduce" Content="Reduce" Click="btnReduce_Click" Style="{DynamicResource RoundButton}" Margin="29,104,29,430"/>
+                <Button x:Name="btnRebuild" Content="Rebuild" Click="btnRebuild_Click" Style="{DynamicResource RoundButton}" Margin="29,179,29,355"/>
 
-                </StackPanel>
-            </Border>
+                <Button x:Name="btnAddNewSec" Content="Add New Security" Click="btnAddNewSec_Click" Style="{DynamicResource RoundButton}" Margin="29,524,29,10" FontSize="20" />
+            </Grid>
         </Grid>
 
         <Frame x:Name="mainFrame" Content="Frame" NavigationUIVisibility="Hidden" Grid.Column="1" Margin="0,0,0,-401" Height="705" Width="1024" Canvas.Left="256"/>

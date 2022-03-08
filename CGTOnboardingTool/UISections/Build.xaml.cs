@@ -1,8 +1,10 @@
 using CGTOnboardingTool.Securities;
 using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace CGTOnboardingTool.UISections
 {
@@ -13,6 +15,7 @@ namespace CGTOnboardingTool.UISections
     {
         public Report report;
 
+        // Function to split user given date
         private static DateOnly ParseDate(string dateStr)
         {
             var yymmdd = dateStr.Split('/');
@@ -28,6 +31,7 @@ namespace CGTOnboardingTool.UISections
             InitializeComponent();
             this.report = report;
 
+            // Create securities to show in drop-down menu 
             Security gsk = new Security("GlaxoSmithKline", "GSK");
             Security fgp = new Security("FGP Systems", "FGP");
             Security ibe = new Security("Iberdrola", "IBE");
@@ -41,33 +45,109 @@ namespace CGTOnboardingTool.UISections
             securities.Add(tsla);
             securities.Add(aapl);
 
+            // Drop-down menu 
             DropBuildSecurities.ItemsSource = securities;
             DropBuildSecurities.Text = "Select a Security to Build";
         }
 
+        // Cancel button navigation
         private void BtnBuildCancel_Click(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Navigate(new Dashboard(ref report));
         }
 
+        // Save button navigation
         private void BtnBuildComplete_Click(object sender, RoutedEventArgs e)
         {
-            Security userInputSecurity = (Security)DropBuildSecurities.SelectedItem;
-            DateOnly userInputDate = ParseDate(TxtBuildDate.Text);
-            Decimal userInputQuantity = Convert.ToDecimal(TxtBuildQuantity.Text);
-            Decimal userInputPrice = Convert.ToDecimal(TxtBuildPrice.Text);
-            Decimal userInputCost = Convert.ToDecimal(TxtBuildCost.Text);
+            // Returns true if input is not in the correct format
+            bool incorrect = Validate();
 
-            Tools.Build b = new Tools.Build(security: userInputSecurity, quantity: userInputQuantity, pps: userInputPrice, cost: userInputCost, date: userInputDate);
+            if (!incorrect)
+            {
+                // Read in all user input 
+                Security userInputSecurity = (Security)DropBuildSecurities.SelectedItem;
+                DateOnly userInputDate = ParseDate(TxtBuildDate.Text);
+                Decimal userInputQuantity = Convert.ToDecimal(TxtBuildQuantity.Text);
+                Decimal userInputPrice = Convert.ToDecimal(TxtBuildPrice.Text);
+                Decimal userInputCost = Convert.ToDecimal(TxtBuildCost.Text);
 
-            b.perform(ref report);
+                // Perform the build 
+                Tools.Build b = new Tools.Build(security: userInputSecurity, quantity: userInputQuantity, pps: userInputPrice, cost: userInputCost, date: userInputDate);
+                b.perform(ref report);
 
-            this.NavigationService.Navigate(new Dashboard(ref report));
+                this.NavigationService.Navigate(new Dashboard(ref report));
+            }
         }
 
-        private void TxtBuildGross_TextChanged(object sender, TextChangedEventArgs e)
+        // Checks all inputs are in the correct format
+        private bool Validate()
         {
+            // Resets any previous incorrect validations
+            LblBuildComboBoxIncorrect.Visibility = Visibility.Hidden;
+            BuildComboBoxBorder.BorderThickness = new Thickness(0);
+            LblBuildDateIncorrect.Visibility = Visibility.Hidden;
+            TxtBuildDate.BorderThickness = new Thickness(0);
+            LblBuildQuantityIncorrect.Visibility = Visibility.Hidden;
+            TxtBuildQuantity.BorderThickness = new Thickness(0);
+            LblBuildPriceIncorrect.Visibility = Visibility.Hidden;
+            TxtBuildPrice.BorderThickness = new Thickness(0);
+            LblBuildCostIncorrect.Visibility = Visibility.Hidden;
+            TxtBuildCost.BorderThickness = new Thickness(0);
 
+            if ((Security)DropBuildSecurities.SelectedItem == null)
+            {
+                LblBuildComboBoxIncorrect.Visibility = Visibility.Visible;
+                BuildComboBoxBorder.BorderThickness = new Thickness(5);
+                   
+                return true;
+            }
+
+            try
+            {
+                ParseDate(TxtBuildDate.Text);
+            } 
+            catch
+            {
+                LblBuildDateIncorrect.Visibility = Visibility.Visible;
+                TxtBuildDate.BorderThickness = new Thickness(5);
+
+                return true;
+            }
+
+            try
+            {
+                Convert.ToDecimal(TxtBuildQuantity.Text);
+            }
+            catch
+            {
+                LblBuildQuantityIncorrect.Visibility = Visibility.Visible;
+                TxtBuildQuantity.BorderThickness = new Thickness(5);
+                return true;
+            }
+
+            try
+            {
+                Convert.ToDecimal(TxtBuildPrice.Text);
+            }
+            catch
+            {
+                LblBuildPriceIncorrect.Visibility = Visibility.Visible;
+                TxtBuildPrice.BorderThickness = new Thickness(5);
+                return true;
+            }
+
+            try
+            {
+                Convert.ToDecimal(TxtBuildCost.Text);
+            } 
+            catch 
+            {
+                LblBuildCostIncorrect.Visibility = Visibility.Visible;
+                TxtBuildCost.BorderThickness = new Thickness(5);
+                return true;
+            }
+
+            return false;
         }
     }
 }

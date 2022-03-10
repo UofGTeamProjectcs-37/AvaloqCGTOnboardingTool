@@ -16,7 +16,7 @@ namespace CGTOnboardingTool.Models.DataModels
 
         public override string ToString()
         {
-            return String.Format("\"{0}\" - {1}", this.ShortName, this.Name);
+            return String.Format("{0} - {1}", this.ShortName, this.Name);
         }
 
 

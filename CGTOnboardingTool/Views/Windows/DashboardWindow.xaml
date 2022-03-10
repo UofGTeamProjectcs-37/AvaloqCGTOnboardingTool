@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:CGTOnboardingTool.Views.Windows"
         mc:Ignorable="d"
         ResizeMode="CanResize"
-        Title="CGTOnboarding Tool" TitleCharacterCasing="Normal"  Height="735" Width="1280" WindowStartupLocation="CenterScreen">
+        Height="735" Width="1280" WindowStartupLocation="CenterScreen" WindowTitleBrush="#C7CADC">
     
     <Canvas Width="1280" Margin="0,0,0,0" >
 

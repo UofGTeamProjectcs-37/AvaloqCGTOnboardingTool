@@ -24,7 +24,7 @@
                 <Label x:Name="LblReduceSecurity" Content="Security" HorizontalAlignment="Left" Margin="57,122,0,512" Style="{DynamicResource FunctionParameterLabel}"/>
                 <Grid x:Name="ReduceComboBoxGrid" Style="{DynamicResource RoundGrid}">
                     <Border x:Name="ReduceComboBoxBorder" Margin="190,126,350,515" Background="#C7CADC" Width="462" Height="34" BorderBrush="Red" BorderThickness="0"/>
-                    <ComboBox x:Name="DropReduceSecurities" IsEditable ="True" HorizontalAlignment="Left" Margin="190,126,0,515" Width="462" Text="Enter a Security to Reduce" Style="{DynamicResource ComboBoxStyle}"/>
+                    <ComboBox x:Name="DropReduceSecurities" IsEditable ="True" IsTextSearchEnabled="True" HorizontalAlignment="Left" Margin="190,126,0,515" Width="462" Text="Enter a Security to Reduce"/>
                 </Grid>
                 <Label x:Name="LblReduceComboBoxIncorrect" Margin="190,160,350,481" Content="Please Select a Security" Style="{DynamicResource IncorrectValidationLabel}" Visibility="Hidden"/>
 

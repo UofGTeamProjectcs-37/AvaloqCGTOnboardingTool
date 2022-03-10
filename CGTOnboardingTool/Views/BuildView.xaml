@@ -25,7 +25,7 @@
                 <Label x:Name="LblBuildSecurity" Content="Security" HorizontalAlignment="Left" Margin="57,123,0,511" Style="{DynamicResource FunctionParameterLabel}"/>
                 <Grid x:Name="BuildComboBoxGrid" Style="{DynamicResource RoundGrid}">
                     <Border x:Name="BuildComboBoxBorder" Margin="190,128,350,513" Background="#C7CADC" Width="462" Height="34" BorderBrush="Red" BorderThickness="0"/>
-                    <ComboBox x:Name="DropBuildSecurities" IsEditable ="True" HorizontalAlignment="Left" Margin="190,128,0,513" Width="462" Text="Enter a Security to Build" Style="{DynamicResource ComboBoxStyle}"/>
+                    <ComboBox x:Name="DropBuildSecurities" IsEditable ="True" IsTextSearchEnabled="True" HorizontalAlignment="Left" Margin="190,128,0,513" Width="462" Text="Enter a Security to Build"/>
                 </Grid>
                 <Label x:Name="LblBuildComboBoxIncorrect" Margin="190,160,350,481" Content="Please Select a Security" Style="{DynamicResource IncorrectValidationLabel}" Visibility="Hidden"/>
 

@@ -27,7 +27,7 @@
                 <Label x:Name="LblRebuildOldSecurity" Content="Existing Security" HorizontalAlignment="Left" Margin="118,226,0,408" Style="{DynamicResource FunctionParameterLabel}"/>
                 <Grid x:Name="RebuildComboBoxGridOld" Style="{DynamicResource RoundGrid}" Margin="0,0,164,422">
                     <Border x:Name="RebuildComboBoxOldBorder" Background="#C7CADC" Width="462" Height="34" Margin="375,231,0,-12"/>
-                    <ComboBox x:Name="DropRebuildOldSecurity" IsEditable ="True" HorizontalAlignment="Left" Margin="375,231,0,-12" Width="462" Height="34" Text="Enter a Security to Reduce" SelectionChanged="DropRebuildOldSecurity_SelectionChanged" Style="{DynamicResource ComboBoxStyle}"/>
+                    <ComboBox x:Name="DropRebuildOldSecurity" IsEditable ="True" IsTextSearchEnabled="True" HorizontalAlignment="Left" Margin="375,231,0,-12" Width="462" Height="34" Text="Enter a Security to Reduce" SelectionChanged="DropRebuildOldSecurity_SelectionChanged"/>
                 </Grid>
                 <Label x:Name="LblRebuildOldSecurityIncorrect" Margin="375,266,-212,385" Content="Please Select a Security to Reduce" Style="{DynamicResource IncorrectValidationLabel}" Visibility="Hidden"/>
 
@@ -35,7 +35,7 @@
                 <Label x:Name="LblRebuildNewSecurity" Content="New Security" HorizontalAlignment="Left" Margin="133,328,0,306" Style="{DynamicResource FunctionParameterLabel}"/>
                 <Grid x:Name="RebuildComboBoxGridNew" Style="{DynamicResource RoundGrid}" Margin="375,331.5,0,0">
                     <Border x:Name="RebuildComboBoxNewBorder" Background="#C7CADC" Width="462" Height="34" Margin="0,0,164,310"/>
-                    <ComboBox x:Name="DropRebuildNewSecurity" IsEditable ="True" HorizontalAlignment="Left" Margin="0,0,0,310" Width="462" Height="34" Text="Enter a Security to Build" Style="{DynamicResource ComboBoxStyle}"/>
+                    <ComboBox x:Name="DropRebuildNewSecurity" IsEditable ="True" IsTextSearchEnabled="True" HorizontalAlignment="Left" Margin="0,0,0,310" Width="462" Height="34" Text="Enter a Security to Build"/>
                 </Grid>
                 <Label x:Name="LblRebuildNewSecurityIncorrect" Margin="375,366,0,284" Content="Please Select a Security to Build" Style="{DynamicResource IncorrectValidationLabel}" Visibility="Hidden"/>
 

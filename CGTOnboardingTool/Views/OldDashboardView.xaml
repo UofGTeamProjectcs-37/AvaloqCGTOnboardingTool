@@ -1,6 +1,5 @@
-﻿<Page x:Class="CGTOnboardingTool.Views.DashboardView"
+﻿<Page x:Class="CGTOnboardingTool.Views.OldDashboardView"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-      xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
@@ -11,7 +10,6 @@
     <Grid Width="1024" Height="705">
 
         <Grid Style="{DynamicResource RoundGrid}" Height="690" Width="1001.5">
-            <Border Margin="7.5,0,15,15" Background="#C7CADC"/>
 
             <Grid Style="{DynamicResource RoundGrid}" Height="100" Width="881.5" Margin="60,15,60,513">
                 <Border Background="#ffffff" Opacity="0.5"/>
@@ -47,23 +45,10 @@
             </Grid>
 
             <Grid Style="{DynamicResource RoundGrid}" Height="412.5">
-                <Border Background="#ffffff" Opacity="0.5" Margin="60,78,60,-60"/>
-                <ListView Name="DashboardReportView" Margin="58,78,58,-60" d:ItemsSource="{d:SampleData ItemCount=5}">
-                    <ListView.View>
-                        <GridView>
-                            <GridViewColumn Header="  Function" Width="auto" DisplayMemberBinding="{Binding Function}"/>
-                            <GridViewColumn Header="Date" Width="auto" DisplayMemberBinding="{Binding Date}" HeaderContainerStyle="{DynamicResource InnerColumns}"/>
-                            <GridViewColumn Header="Securities" Width="auto" DisplayMemberBinding="{Binding Securities}" HeaderContainerStyle="{DynamicResource InnerColumns}"/>
-                            <GridViewColumn Header="Quantity" Width="auto" DisplayMemberBinding="{Binding Quantity}" HeaderContainerStyle="{DynamicResource InnerColumns}"/>
-                            <GridViewColumn Header="Price" Width="auto" DisplayMemberBinding="{Binding Price}" HeaderContainerStyle="{DynamicResource InnerColumns}"/>
-                            <GridViewColumn Header="Cost" Width="auto" DisplayMemberBinding="{Binding Cost}" HeaderContainerStyle="{DynamicResource InnerColumns}"/>
-                            <GridViewColumn Header="Gross" Width="auto" DisplayMemberBinding="{Binding Gross}" HeaderContainerStyle="{DynamicResource InnerColumns}"/>
-                            <GridViewColumn Header="Gains" Width="auto" DisplayMemberBinding="{Binding Gains}" HeaderContainerStyle="{DynamicResource InnerColumns}"/>
-                            <GridViewColumn Header="Holdings" Width="auto" DisplayMemberBinding="{Binding Holdings}" HeaderContainerStyle="{DynamicResource InnerColumns}"/>
-                            <GridViewColumn Header="S104" Width="auto" DisplayMemberBinding="{Binding S104}" HeaderContainerStyle="{DynamicResource InnerColumns}"/>
-                        </GridView>
-                    </ListView.View>
-                </ListView>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30*"/>
+                    <RowDefinition Height="29*"/>
+                </Grid.RowDefinitions>
             </Grid>
         </Grid>
 

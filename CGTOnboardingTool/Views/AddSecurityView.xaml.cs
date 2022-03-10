@@ -20,7 +20,7 @@ namespace CGTOnboardingTool.Views
         // Cancel button
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new DashboardView(ref report));
+            this.NavigationService.Navigate(new OldDashboardView(ref report));
         }
 
         // Add button functionality

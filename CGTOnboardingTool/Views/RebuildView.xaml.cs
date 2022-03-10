@@ -50,7 +50,7 @@ namespace CGTOnboardingTool.Views
         // Cancel button navigation
         private void BtnRebuildCancel_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new DashboardView(ref report));
+            this.NavigationService.Navigate(new OldDashboardView(ref report));
         }
 
         // Do not let user rebuild same security
@@ -90,7 +90,7 @@ namespace CGTOnboardingTool.Views
                 ViewModels.RebuildViewModel rb = new ViewModels.RebuildViewModel(oldSecurity: userInputOldSecurity, quantityToReduce: userInputOldSecuirtyReduce, newSecurity: userInputNewSecurity, quantityToBuild: userInputNewSecuirtyQuantity, date: userInputDate);
                 rb.perform(ref report);
 
-                this.NavigationService.Navigate(new DashboardView(ref report));
+                this.NavigationService.Navigate(new OldDashboardView(ref report));
             }
         }
 

@@ -15,7 +15,7 @@ namespace CGTOnboardingTool
             InitializeComponent();
             Style = (Style)FindResource(typeof(Window));
             report = new Report();
-            mainFrame.Navigate(new Views.StartUpView(ref report, ref MainWindowGrid));
+            mainFrame.Navigate(new Views.OldStartUpView(ref report, ref MainWindowGrid));
         }
 
         private void btnBuild_Click(object sender, RoutedEventArgs e)

@@ -10,6 +10,15 @@
       Title="ConstructReportView">
 
     <Grid>
-        
+        <TextBox x:Name="TxtConstructClient" Controls:TextBoxHelper.Watermark="Enter the Client Name Here" Margin="152,42,314,356" Background="Blue" Foreground="White"/>
+
+        <ComboBox x:Name="CbTaxYearStart" HorizontalAlignment="Left" Margin="145,142,0,0" VerticalAlignment="Top" Width="120"/>
+        <ComboBox x:Name="CbTaxYearEnd" HorizontalAlignment="Center" Margin="0,142,0,0" VerticalAlignment="Top" Width="120"/>
+
+        <TextBox x:Name="TxtConstructClientManager" Controls:TextBoxHelper.Watermark="Enter the Client Manager Here" Margin="145,198,307,190" Background="Blue" Foreground="White"/>
+
+        <Button x:Name="btnStart" Content="Start" Click="btnStart_Click" Margin="145,273,514,84" Background="green"/>
+        <Button x:Name="btnCancel" Content="Cancel" Click="btnCancel_Click" Margin="445,273,211,84" Background="green"/>
+
     </Grid>
 </Page>

@@ -1,17 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MahApps.Metro.Controls;
+using System;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using CGTOnboardingTool.Views.Windows;
+
 
 namespace CGTOnboardingTool.Views
 {
@@ -20,9 +12,31 @@ namespace CGTOnboardingTool.Views
     /// </summary>
     public partial class ConstructReportView : Page
     {
-        public ConstructReportView()
+        public MetroWindow StartUpWindow;
+        public String ClientName = "";
+        public String ClientManager = "";
+        public ConstructReportView(MetroWindow StartUpWindow)
         {
             InitializeComponent();
+            this.StartUpWindow = StartUpWindow; 
+        }
+
+        private void btnStart_Click(object sender, RoutedEventArgs e)
+        {
+            ClientName = TxtConstructClient.Text.ToString();
+            ClientManager = TxtConstructClientManager.Text.ToString();
+
+            DashboardWindow dashboardWindow = new DashboardWindow();
+            dashboardWindow.Show();
+            
+            //Get Meta Data, Close Window and Open Dashboard
+            StartUpWindow.Close();
+
+        }
+
+        private void btnCancel_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.GoBack();
         }
     }
 }

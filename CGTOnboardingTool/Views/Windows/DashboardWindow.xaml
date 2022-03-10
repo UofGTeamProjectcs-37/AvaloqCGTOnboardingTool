@@ -8,7 +8,26 @@
         mc:Ignorable="d"
         ResizeMode="CanResize"
         Title="CGTOnboarding Tool" TitleCharacterCasing="Normal"  Height="735" Width="1280" WindowStartupLocation="CenterScreen">
-    <Grid>
-        
-    </Grid>
+    
+    <Canvas Width="1280" Margin="0,0,0,0" >
+
+
+        <Label Content="CGT Onboarding Tool" Foreground="#5A5A5A" Height="50" FontSize="25" Canvas.Left="6" Canvas.Top="28"/>
+
+
+        <Grid Width="234" Height="584" Margin="15,106,0,0">
+
+            <Grid x:Name="MainWindowGrid">
+                <Button x:Name="btnBuild" Content="Build" Click="btnBuild_Click" Margin="29,29,29,505"/>
+                <Button x:Name="btnReduce" Content="Reduce" Click="btnReduce_Click" Margin="29,104,29,430"/>
+                <Button x:Name="btnRebuild" Content="Rebuild" Click="btnRebuild_Click" Margin="29,179,29,355"/>
+
+                <Button x:Name="btnAddNewSec" Content="Add New Security" Click="btnAddNewSec_Click" Margin="29,524,29,10" FontSize="20" />
+            </Grid>
+        </Grid>
+
+        <Frame x:Name="mainFrame" Content="Frame" NavigationUIVisibility="Hidden" Height="720" Width="1024" Canvas.Left="256" Canvas.Top="0"/>
+
+    </Canvas>
+    
 </Controls:MetroWindow>

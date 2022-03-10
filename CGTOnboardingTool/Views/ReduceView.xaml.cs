@@ -34,7 +34,7 @@ namespace CGTOnboardingTool.Views
         // Cancel button navigation
         private void BtnReduceCancel_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new OldDashboardView(ref report));
+            this.NavigationService.Navigate(new DashboardView(ref report));
         }
 
         // Save button functionality
@@ -56,7 +56,7 @@ namespace CGTOnboardingTool.Views
                 ViewModels.ReduceViewModel r = new ViewModels.ReduceViewModel(security: userInputSecurity, quantity: userInputQuantity, pps: userInputPrice, cost: userInputCost, date: userInputDate);
                 r.perform(ref report);
 
-                this.NavigationService.Navigate(new OldDashboardView(ref report));
+                this.NavigationService.Navigate(new DashboardView(ref report));
             }
         }
 

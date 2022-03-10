@@ -70,8 +70,6 @@
         <Grid Height ="50" Width="881.5" Margin="60,630,82,15">
 
             <Button x:Name="btnSave" Content="Save" Margin="0,0,706,0" Style="{DynamicResource RoundButton}" Click="btnSave_Click"/>
-            <Button x:Name="btnCancel" Content="Cancel" Margin="706,0,0,0" Style="{DynamicResource RoundButton}"/>
-            <Button x:Name="btnExport" Content="Export" Margin="485,0,220,0" Style="{DynamicResource RoundButton}"/>
         </Grid>
     </Grid>
 </Page>

@@ -5,11 +5,27 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:CGTOnboardingTool.Views"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="StartUpView">
+      d:DesignHeight="434.04" d:DesignWidth="800">
 
-    <Grid Margin="0,156,0,234">
-        <Button x:Name="StartUpNew" Content="New Report" Margin="220,56,196,-56" Click="StartUpNew_Click" Background="Red"/>
-        <Button x:Name="StartUpImport" Content="Import Report" Margin="254,168,230,-168" Background="Red"/>
+    <Grid Height="434.04" Width="800">
+        <Button x:Name="StartUpNew" Content="New Report" Margin="340,156,340,243" Click="StartUpNew_Click"/>
+        <Button x:Name="StartUpImport" Content="Import Report" Margin="340,217,340,182"/>
+
+        <Label Content="Aidan Neil" HorizontalAlignment="Left" Margin="242,371,0,0" VerticalAlignment="Top"/>
+        <Label Content="Andrew Bell" HorizontalAlignment="Left" Margin="307,371,0,0" VerticalAlignment="Top"/>
+        <Label Content="Areeb Khan" HorizontalAlignment="Left" Margin="380,371,0,0" VerticalAlignment="Top"/>
+        <Label Content="Joachim Vanneste " HorizontalAlignment="Left" Margin="451,371,0,0" VerticalAlignment="Top"/>
+
+        <Image Margin="210,10,210,310">
+            <Image.Source>
+                <BitmapImage UriSource="/Resources/Images/Logo.png" />
+            </Image.Source>
+        </Image>
+        <Image Margin="323,310,323,68">
+            <Image.Source>
+                <BitmapImage UriSource="/Resources/Images/University-of-Glasgow.png"></BitmapImage>
+            </Image.Source>
+        </Image>
+
     </Grid>
 </Page>

@@ -6,8 +6,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CGTOnboardingTool.Views.Windows"
         mc:Ignorable="d"
-        Title="CGTOnboarding Tool" TitleCharacterCasing="Normal" Height="450" Width="800" WindowStartupLocation="CenterScreen" WindowTitleBrush="#C7CADC">
+        ResizeMode="NoResize"
+        Height="450" Width="800" WindowStartupLocation="CenterScreen" WindowTitleBrush="#C7CADC" Background="#C7CADC">
     <Grid>
-        <Frame x:Name="StartUpFrame" NavigationUIVisibility="Hidden"/>
+        <Frame x:Name="StartUpFrame" NavigationUIVisibility="Hidden" />
     </Grid>
 </Controls:MetroWindow>

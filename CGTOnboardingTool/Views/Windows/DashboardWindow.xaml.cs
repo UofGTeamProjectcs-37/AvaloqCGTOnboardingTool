@@ -36,7 +36,9 @@ namespace CGTOnboardingTool.Views.Windows
 
         private void btnAddNewSec_Click(object sender, RoutedEventArgs e)
         {
-            mainFrame.Navigate(new AddSecurityView(ref report));
+            //mainFrame.Navigate(new AddSecurityView(ref report));
+            AddSecurityWindow addSecurityWindow = new AddSecurityWindow();
+            addSecurityWindow.Show();
 
         }
     }

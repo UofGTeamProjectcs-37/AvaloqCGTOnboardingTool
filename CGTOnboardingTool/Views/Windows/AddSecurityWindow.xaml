@@ -6,10 +6,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CGTOnboardingTool.Views.Windows"
         mc:Ignorable="d"
-        Title="AddSecurityWindow" Height="450" Width="600" WindowStartupLocation="CenterScreen" WindowTitleBrush="#C7CADC" Background="#C7CADC">
+        Title="AddSecurity" TitleCharacterCasing="Normal" Height="450" Width="600" WindowStartupLocation="CenterScreen" WindowTitleBrush="#C7CADC" Background="#C7CADC">
     <Grid>
-        <TextBox x:Name="TxtAddNewShort" Controls:TextBoxHelper.Watermark="Enter Security ShortHand Here" Style="{DynamicResource FunctionInputBoxes}" HorizontalAlignment="Left" Height="33" TextWrapping="Wrap" VerticalAlignment="Top" Width="265" FontSize="14" VerticalContentAlignment="Center" Margin="186,118,0,0"/>
-        <TextBox x:Name="TxtAddNewName" Controls:TextBoxHelper.Watermark="Enter Security Name Here" Style="{DynamicResource FunctionInputBoxes}" HorizontalAlignment="Left" Height="33" TextWrapping="Wrap" VerticalAlignment="Top" Width="264" FontSize="14" VerticalContentAlignment="Center" Margin="186,184,0,0"/>
+        <TextBox x:Name="TxtAddNewShort" Controls:TextBoxHelper.Watermark="Enter Security ShortHand Here" HorizontalAlignment="Left" Height="33" TextWrapping="Wrap" VerticalAlignment="Top" Width="265" FontSize="14" VerticalContentAlignment="Center" Margin="186,118,0,0"/>
+        <TextBox x:Name="TxtAddNewName" Controls:TextBoxHelper.Watermark="Enter Security Name Here" HorizontalAlignment="Left" Height="33" TextWrapping="Wrap" VerticalAlignment="Top" Width="264" FontSize="14" VerticalContentAlignment="Center" Margin="186,184,0,0"/>
 
         <Button x:Name="btnAddNew" Content="Add New" Style="{DynamicResource RoundButton}" Click="btnAddNew_Click" Margin="82,276,377,105"/>
         <Button x:Name="btnImport" Content="Import" Style="{DynamicResource RoundButton}" Click="btnImport_Click" Margin="379,276,78,105"/>

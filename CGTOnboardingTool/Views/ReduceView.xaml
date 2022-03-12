@@ -26,26 +26,21 @@
                     <Border x:Name="ReduceComboBoxBorder" Margin="190,126,350,515" Background="#C7CADC" Width="462" Height="34" BorderBrush="Red" BorderThickness="0"/>
                     <ComboBox x:Name="DropReduceSecurities" IsEditable ="True" IsTextSearchEnabled="True" HorizontalAlignment="Left" Margin="190,126,0,515" Width="462" Text="Enter a Security to Reduce"/>
                 </Grid>
-                <Label x:Name="LblReduceComboBoxIncorrect" Margin="190,160,350,481" Content="Please Select a Security" Style="{DynamicResource IncorrectValidationLabel}" Visibility="Hidden"/>
 
                 <Label x:Name="LblReduceDate" Content="Date" Margin="72,205,874,429" Style="{DynamicResource FunctionParameterLabel}"/>
-                <TextBox x:Name="TxtReduceDate" Margin="190,209,350,432" Text="Enter The Date Here (yyyy/mm/dd)" Style="{DynamicResource FunctionInputBoxes}"/>
-                <Label x:Name="LblReduceDateIncorrect" Margin="190,243,350,398" Content="Please ensure Date is in the format yyyy/mm/dd" Style="{DynamicResource IncorrectValidationLabel}" Visibility="Hidden"/>
+                <TextBox x:Name="TxtReduceDate" Margin="190,209,350,432" Controls:TextBoxHelper.Watermark="Enter The Date Here (yyyy/mm/dd)"/>
 
                 <Label x:Name="LblReduceQuantity" Content="Quantity" HorizontalAlignment="Left" Margin="55,286,0,348" Style="{DynamicResource FunctionParameterLabel}"/>
-                <TextBox x:Name="TxtReduceQuantity" Margin="190,290,350,351" Text="Enter The Quantity of Shares Here" Style="{DynamicResource FunctionInputBoxes}"/>
-                <Label x:Name="LblReduceQuantityIncorrect" Margin="190,324,350,317" Content="Please ensure Quantity only Contains Integers and/or is in Decimal Format" Style="{DynamicResource IncorrectValidationLabel}" Visibility="Hidden"/>
+                <TextBox x:Name="TxtReduceQuantity" Margin="190,290,350,351" Controls:TextBoxHelper.Watermark="Enter The Quantity of Shares Here"/>
 
                 <Label x:Name="LblReducePrice" Content="Price" HorizontalAlignment="Left" Margin="72,371,0,263" Style="{DynamicResource FunctionParameterLabel}"/>
-                <TextBox x:Name="TxtReducePrice" Margin="190,373,350,268" Text="Enter The Price per Quantity Here" Style="{DynamicResource FunctionInputBoxes}"/>
-                <Label x:Name="LblReducePriceIncorrect" Margin="190,407,350,234" Content="Please ensure Price only Contains Integers and/or is in Decimal Format" Style="{DynamicResource IncorrectValidationLabel}" Visibility="Hidden"/>
+                <TextBox x:Name="TxtReducePrice" Margin="190,373,350,268" Controls:TextBoxHelper.Watermark="Enter The Price per Quantity Here"/>
 
                 <Label x:Name="LblReduceCost" Content="Cost" HorizontalAlignment="Left" Margin="74,452,0,182" Style="{DynamicResource FunctionParameterLabel}"/>
-                <TextBox x:Name="TxtReduceCost" Margin="190,455,350,186" Text="Enter The Allowable Costs Here" Style="{DynamicResource FunctionInputBoxes}"/>
-                <Label x:Name="LblReduceCostIncorrect" Margin="190,489,350,152" Content="Please ensure Cost only Contains Integers and/or is in Decimal Format" Style="{DynamicResource IncorrectValidationLabel}" Visibility="Hidden"/>
+                <TextBox x:Name="TxtReduceCost" Margin="190,455,350,186" Controls:TextBoxHelper.Watermark="Enter The Allowable Costs Here"/>
 
                 <Label x:Name="LblReduceGross" Content="Gross" HorizontalAlignment="Left" Margin="68,534,0,100" Style="{DynamicResource FunctionParameterLabel}"/>
-                <TextBox x:Name="TxtReduceGross" Margin="190,537,350,104" Text="Enter The Gross Here" Style="{DynamicResource FunctionInputBoxes}"/>
+                <TextBox x:Name="TxtReduceGross" Margin="190,537,350,104" Controls:TextBoxHelper.Watermark="Enter The Gross Here"/>
                 
             </Grid>
         </Grid>

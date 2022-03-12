@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
+using MahApps.Metro.Controls;
 
 namespace CGTOnboardingTool.Views
 {
@@ -98,15 +99,10 @@ namespace CGTOnboardingTool.Views
         private bool Validate()
         {
             // Resets any previous incorrect validations
-            LblRebuildDateIncorrect.Visibility = Visibility.Hidden;
             TxtRebuildDate.BorderThickness = new Thickness(0);
-            LblRebuildOldSecurityIncorrect.Visibility = Visibility.Hidden;
             RebuildComboBoxOldBorder.BorderThickness = new Thickness(0);
-            LblRebuildNewSecurityIncorrect.Visibility = Visibility.Hidden;
             RebuildComboBoxNewBorder.BorderThickness = new Thickness(0);
-            LblRebuildOldQuantityReduceIncorrect.Visibility = Visibility.Hidden;
             TxtRebuildOldQuantityReduce.BorderThickness = new Thickness(0);
-            LblRebuildNewQuantityIncorrect.Visibility = Visibility.Hidden;
             TxtRebuildNewQuantity.BorderThickness = new Thickness(0);
 
             try
@@ -115,15 +111,16 @@ namespace CGTOnboardingTool.Views
             }
             catch
             {
-                LblRebuildDateIncorrect.Visibility = Visibility.Visible;
                 TxtRebuildDate.BorderThickness = new Thickness(5);
+                TxtRebuildDate.Text = "";
+                TextBoxHelper.SetWatermark(TxtRebuildDate, "Please ensure Date is in the format (yyyy/mm/dd)");
 
                 return true;
             }
 
             if ((Security)DropRebuildOldSecurity.SelectedItem == null)
             {
-                LblRebuildOldSecurityIncorrect.Visibility = Visibility.Visible;
+                DropRebuildOldSecurity.Text = "Please Select a Security";
                 RebuildComboBoxOldBorder.BorderThickness = new Thickness(5);
 
                 return true;
@@ -131,7 +128,7 @@ namespace CGTOnboardingTool.Views
 
             if ((Security)DropRebuildNewSecurity.SelectedItem == null)
             {
-                LblRebuildNewSecurityIncorrect.Visibility = Visibility.Visible;
+                DropRebuildNewSecurity.Text = "Please Select a Security";
                 RebuildComboBoxNewBorder.BorderThickness = new Thickness(5);
 
                 return true;
@@ -143,8 +140,9 @@ namespace CGTOnboardingTool.Views
             } 
             catch
             {
-                LblRebuildOldQuantityReduceIncorrect.Visibility = Visibility.Visible;   
                 TxtRebuildOldQuantityReduce.BorderThickness = new Thickness(5);
+                TxtRebuildOldQuantityReduce.Text = "";
+                TextBoxHelper.SetWatermark(TxtRebuildOldQuantityReduce, "Please ensure Quantity only Contains Integers and/or is in Decimal Format");
 
                 return true;
             }
@@ -155,8 +153,9 @@ namespace CGTOnboardingTool.Views
             }
             catch
             {
-                LblRebuildNewQuantityIncorrect.Visibility = Visibility.Visible;
                 TxtRebuildNewQuantity.BorderThickness = new Thickness(5);
+                TxtRebuildNewQuantity.Text = "";
+                TextBoxHelper.SetWatermark(TxtRebuildNewQuantity, "Please ensure Quantity only Contains Integers and/or is in Decimal Format");
 
                 return true;
             }

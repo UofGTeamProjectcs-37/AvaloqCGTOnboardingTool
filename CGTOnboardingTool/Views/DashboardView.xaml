@@ -5,71 +5,49 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:CGTOnboardingTool.Views"
+      xmlns:DashboardControls="clr-namespace:CGTOnboardingTool.Views.Controls.DashboardView"
       mc:Ignorable="d"
-      Title="Dashboard" Width="1024" Height="720">
+      d:DesignHeight="672" d:DesignWidth="1001">
 
-    <Grid Width="1024" Height="705">
-
-        <Grid Style="{DynamicResource RoundGrid}" Height="690" Width="1001.5">
-            <Border Margin="7.5,0,15,15" Background="#C7CADC"/>
-
-            <Grid Style="{DynamicResource RoundGrid}" Height="100" Width="881.5" Margin="60,15,60,513">
-                <Border Background="#ffffff" Opacity="0.5"/>
-
-                <Label x:Name="LblClientName" Height="auto" Width="auto" Style="{DynamicResource FunctionHeaderLabel}" Margin="10,0,542,0" VerticalAlignment="Center" FontSize="50"/>
-                <Label x:Name="LblTaxYear" Height="auto" Width="auto" Style="{DynamicResource FunctionHeaderLabel}" Margin="700,0,10,0" VerticalAlignment="Center"/>
-
-            </Grid>
-
-            <Grid Style="{DynamicResource RoundGrid}" Height="30" Width="805" Margin="60,145,136,452">
-                <Border Background="#ffffff" Opacity="0.5"/>
-
-                <Label x:Name="LblReportFilterHeader" Content="Filter by:" Margin="10,-5,480,-5" Style="{DynamicResource ReportFilterLabel}"/>
-
-                <ComboBox x:Name="cbFilter" IsEditable ="False" Width = "252" HorizontalAlignment = "Left" Margin = "100,0,0,0" SelectionChanged="cbFilter_SelectionChanged" Text="Date" Height="30" Style="{DynamicResource ComboBoxStyle}">
-                    <ComboBoxItem Content = "Date"/>
-                    <ComboBoxItem Content = "Security"/>
-                    <ComboBoxItem Content = "Function"/>
-                </ComboBox>
-
-                <ComboBox x:Name="cbFilterFunction" IsEditable = "False" Width = "252" HorizontalAlignment = "Left" Margin = "370,0,0,0" SelectionChanged="cbFilterFunction_SelectionChanged_1"  Visibility="Hidden" Text="--Select Function--" Height="30" Style="{DynamicResource ComboBoxStyle}">
-                </ComboBox>
-
-                <ComboBox x:Name="cbFilterSecurity" IsEditable = "False" Width = "252" HorizontalAlignment = "Left" Margin = "370,0,0,0" SelectionChanged="cbFilterSecurity_SelectionChanged"  Visibility="Hidden" Text="-Select Security-" Height="30" Style="{DynamicResource ComboBoxStyle}">
-                </ComboBox>
-
-                <Label x:Name="LblReportFilterDateFrom" Content="From:" Margin="370,-5,151,-5" Visibility="Visible" Style="{DynamicResource ReportFilterLabel}"/>
-                <ComboBox x:Name="cbFilterDateFrom" IsEditable = "True" Width = "146" HorizontalAlignment = "Left" Margin = "438,0,0,0" SelectionChanged="cbFilterDateFrom_SelectionChanged"  Visibility="Visible" Text="--Start Date--" Height="30" Style="{DynamicResource ComboBoxStyle}">
-                </ComboBox>
-                <Label x:Name="LblReportFilterDateTo" Content="To:" Margin="614,-5,155,-5" Visibility="Visible" Style="{DynamicResource ReportFilterLabel}"/>
-                <ComboBox x:Name="cbFilterDateTo" IsEditable = "True" Width = "146" HorizontalAlignment = "Left" Margin = "658,0,0,0" SelectionChanged="cbFilterDateTo_SelectionChanged"  Visibility="Visible" Text="--End Date--" Height="30" Style="{DynamicResource ComboBoxStyle}">
-                </ComboBox>
-            </Grid>
-
-            <Grid Style="{DynamicResource RoundGrid}" Height="412.5">
-                <Border Background="#ffffff" Opacity="0.5" Margin="60,78,60,-60"/>
-                <ListView Name="DashboardReportView" Margin="58,78,58,-60" d:ItemsSource="{d:SampleData ItemCount=5}">
-                    <ListView.View>
-                        <GridView>
-                            <GridViewColumn Header="  Function" Width="auto" DisplayMemberBinding="{Binding Function}"/>
-                            <GridViewColumn Header="Date" Width="auto" DisplayMemberBinding="{Binding Date}" HeaderContainerStyle="{DynamicResource InnerColumns}"/>
-                            <GridViewColumn Header="Securities" Width="auto" DisplayMemberBinding="{Binding Securities}" HeaderContainerStyle="{DynamicResource InnerColumns}"/>
-                            <GridViewColumn Header="Quantity" Width="auto" DisplayMemberBinding="{Binding Quantity}" HeaderContainerStyle="{DynamicResource InnerColumns}"/>
-                            <GridViewColumn Header="Price" Width="auto" DisplayMemberBinding="{Binding Price}" HeaderContainerStyle="{DynamicResource InnerColumns}"/>
-                            <GridViewColumn Header="Cost" Width="auto" DisplayMemberBinding="{Binding Cost}" HeaderContainerStyle="{DynamicResource InnerColumns}"/>
-                            <GridViewColumn Header="Gross" Width="auto" DisplayMemberBinding="{Binding Gross}" HeaderContainerStyle="{DynamicResource InnerColumns}"/>
-                            <GridViewColumn Header="Gains" Width="auto" DisplayMemberBinding="{Binding Gains}" HeaderContainerStyle="{DynamicResource InnerColumns}"/>
-                            <GridViewColumn Header="Holdings" Width="auto" DisplayMemberBinding="{Binding Holdings}" HeaderContainerStyle="{DynamicResource InnerColumns}"/>
-                            <GridViewColumn Header="S104" Width="auto" DisplayMemberBinding="{Binding S104}" HeaderContainerStyle="{DynamicResource InnerColumns}"/>
-                        </GridView>
-                    </ListView.View>
-                </ListView>
-            </Grid>
+    <Grid>
+        <Grid Background="White" Height="100" VerticalAlignment="Top">
+            <Label x:Name="LblClientName" Height="90" Width="auto" Style="{DynamicResource FunctionHeaderLabel}" Margin="10,0,542,0" VerticalAlignment="Center" FontSize="50"/>
+            <Label x:Name="LblTaxYear" Height="auto" Width="auto" Style="{DynamicResource FunctionHeaderLabel}" Margin="700,0,10,0" VerticalAlignment="Center"/>
         </Grid>
 
-        <Grid Height ="50" Width="881.5" Margin="60,630,82,15">
+        <Grid Style="{DynamicResource RoundGrid}" Margin="0,160,0,90" Background="White">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="33"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
 
-            <Button x:Name="btnSave" Content="Save" Margin="0,0,706,0" Style="{DynamicResource RoundButton}" Click="btnSave_Click"/>
+            <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="10,0,10,0">
+                <Label x:Name="LblReportFilterHeader" Content="Filter By:" Height="33" FontSize="14" Style="{DynamicResource ReportFilterLabel}"/>
+                <ComboBox x:Name="cbFilterType" IsEditable ="False" Height="33" Width="250" HorizontalAlignment="Left" Margin="10,0,0,0" SelectionChanged="cbFilterType_SelectionChanged" SelectedIndex="0">
+                    <ComboBoxItem Content="Date"/>
+                    <ComboBoxItem Content="Security"/>
+                    <ComboBoxItem Content="Function"/>
+                </ComboBox>
+                <DashboardControls:FilterByDate/>
+            </StackPanel>
+
+            <ListView Name="DashboardReportView" Grid.Row="1" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="10,0,10,0">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Function" Width="99" DisplayMemberBinding="{Binding Function}"/>
+                        <GridViewColumn Header="Date" Width="99" DisplayMemberBinding="{Binding Date}" HeaderContainerStyle="{DynamicResource InnerColumns}"/>
+                        <GridViewColumn Header="Security" Width="99" DisplayMemberBinding="{Binding Security}" HeaderContainerStyle="{DynamicResource InnerColumns}"/>
+                        <GridViewColumn Header="Quantity" Width="99" DisplayMemberBinding="{Binding Quantity}" HeaderContainerStyle="{DynamicResource InnerColumns}"/>
+                        <GridViewColumn Header="Price" Width="99" DisplayMemberBinding="{Binding Price}" HeaderContainerStyle="{DynamicResource InnerColumns}"/>
+                        <GridViewColumn Header="Costs" Width="99" DisplayMemberBinding="{Binding Costs}" HeaderContainerStyle="{DynamicResource InnerColumns}"/>
+                        <GridViewColumn Header="Gross" Width="99" DisplayMemberBinding="{Binding Gross}" HeaderContainerStyle="{DynamicResource InnerColumns}"/>
+                        <GridViewColumn Header="Gain / Loss" Width="99" DisplayMemberBinding="{Binding GainLoss}" HeaderContainerStyle="{DynamicResource InnerColumns}"/>
+                        <GridViewColumn Header="Holdings" Width="99" DisplayMemberBinding="{Binding Holdings}" HeaderContainerStyle="{DynamicResource InnerColumns}"/>
+                        <GridViewColumn Header="S104" Width="99" DisplayMemberBinding="{Binding S104}" HeaderContainerStyle="{DynamicResource InnerColumns}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
         </Grid>
+        <Button x:Name="btnSave" Content="Save" Height="50" Width="120" HorizontalAlignment="Left" Style="{DynamicResource RoundButton}" Click="btnSave_Click" Margin="10,612,0,10"/>
     </Grid>
 </Page>

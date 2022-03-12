@@ -22,6 +22,8 @@ namespace CGTOnboardingTool.Views
         {
             InitializeComponent();
             this.report = report;
+            LblClientName.Content = report.GetClientName();
+            LblTaxYear.Content = report.GetYearStart() + " - " + report.GetYearEnd();
             display(report.Rows());
         }
 

@@ -1,4 +1,5 @@
 ﻿<Page x:Class="CGTOnboardingTool.Views.RebuildView"
+      xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -20,33 +21,25 @@
                 <Border Margin="36,96,36,96" Background="#FFFFFF" Opacity="0.5"/>
 
                 <Label x:Name="LblRebuildDate" Content="Date" HorizontalAlignment="Left" Margin="172,123,0,511" Style="{DynamicResource FunctionParameterLabel}"/>
-                <TextBox x:Name="TxtRebuildDate" Text="Enter The Date Here (yyyy/mm/dd)" Margin="375,126,164,515" Style="{DynamicResource FunctionInputBoxes}"/>
-                <Label x:Name="LblRebuildDateIncorrect" Margin="375,165,164,476" Content="Please ensure Date is in the format yyyy/mm/dd" Style="{DynamicResource IncorrectValidationLabel}" Visibility="Hidden"/>
+                <TextBox x:Name="TxtRebuildDate" Margin="375,126,164,515" Controls:TextBoxHelper.Watermark="Enter The Date Here (yyyy/mm/dd)"/>
                 
                 <Label x:Name="LblRebuildOldSecurity" Content="Existing Security" HorizontalAlignment="Left" Margin="118,226,0,408" Style="{DynamicResource FunctionParameterLabel}"/>
                 <Grid x:Name="RebuildComboBoxGridOld" Style="{DynamicResource RoundGrid}" Margin="0,0,164,422">
                     <Border x:Name="RebuildComboBoxOldBorder" Background="#C7CADC" Width="462" Height="34" Margin="375,231,0,-12"/>
-                    <ComboBox x:Name="DropRebuildOldSecurity" IsEditable ="True" HorizontalAlignment="Left" Margin="375,231,0,-12" Width="462" Height="34" Text="Enter a Security to Reduce" SelectionChanged="DropRebuildOldSecurity_SelectionChanged" Style="{DynamicResource ComboBoxStyle}"/>
+                    <ComboBox x:Name="DropRebuildOldSecurity" IsEditable ="True" IsTextSearchEnabled="True" HorizontalAlignment="Left" Margin="375,231,0,-12" Width="462" Height="34" Text="Enter a Security to Reduce" SelectionChanged="DropRebuildOldSecurity_SelectionChanged"/>
                 </Grid>
-                <Label x:Name="LblRebuildOldSecurityIncorrect" Margin="375,266,-212,385" Content="Please Select a Security to Reduce" Style="{DynamicResource IncorrectValidationLabel}" Visibility="Hidden"/>
-
 
                 <Label x:Name="LblRebuildNewSecurity" Content="New Security" HorizontalAlignment="Left" Margin="133,328,0,306" Style="{DynamicResource FunctionParameterLabel}"/>
                 <Grid x:Name="RebuildComboBoxGridNew" Style="{DynamicResource RoundGrid}" Margin="375,331.5,0,0">
                     <Border x:Name="RebuildComboBoxNewBorder" Background="#C7CADC" Width="462" Height="34" Margin="0,0,164,310"/>
-                    <ComboBox x:Name="DropRebuildNewSecurity" IsEditable ="True" HorizontalAlignment="Left" Margin="0,0,0,310" Width="462" Height="34" Text="Enter a Security to Build" Style="{DynamicResource ComboBoxStyle}"/>
+                    <ComboBox x:Name="DropRebuildNewSecurity" IsEditable ="True" IsTextSearchEnabled="True" HorizontalAlignment="Left" Margin="0,0,0,310" Width="462" Height="34" Text="Enter a Security to Build"/>
                 </Grid>
-                <Label x:Name="LblRebuildNewSecurityIncorrect" Margin="375,366,0,284" Content="Please Select a Security to Build" Style="{DynamicResource IncorrectValidationLabel}" Visibility="Hidden"/>
-
 
                 <Label x:Name="LblRebuildOldQuantityReduce" Content="Reduce Existing Security By" HorizontalAlignment="Left" Margin="66,431,0,203" Style="{DynamicResource FunctionParameterLabel}"/>
-                <TextBox x:Name="TxtRebuildOldQuantityReduce" Margin="375,434,164,207" Text="Enter The New Quantity Here" Style="{DynamicResource FunctionInputBoxes}"/>
-                <Label x:Name="LblRebuildOldQuantityReduceIncorrect" Margin="375,469,164,172" Content="Please Ensure Quantity only Contains Integers and/or is in Decimal Format" Style="{DynamicResource IncorrectValidationLabel}" Visibility="Hidden"/>
-
+                <TextBox x:Name="TxtRebuildOldQuantityReduce" Margin="375,434,164,207" Controls:TextBoxHelper.Watermark="Enter The Quantity to Reduce Here"/>
 
                 <Label x:Name="LblRebuildNewQuantity" Content="Build New Security By" HorizontalAlignment="Left" Margin="92,534,0,100" Style="{DynamicResource FunctionParameterLabel}"/>
-                <TextBox x:Name="TxtRebuildNewQuantity" Text="Enter The New Quantity Here" Margin="375,538,164,103" Style="{DynamicResource FunctionInputBoxes}"/>
-                <Label x:Name="LblRebuildNewQuantityIncorrect" Margin="375,572,164,69" Content="Please Ensure Quantity only Contains Integers and/or is in Decimal Format" Style="{DynamicResource IncorrectValidationLabel}" Visibility="Hidden"/>
+                <TextBox x:Name="TxtRebuildNewQuantity" Margin="375,538,164,103" Controls:TextBoxHelper.Watermark="Enter The Quantity to Build Here"/>
 
             </Grid>
         </Grid>

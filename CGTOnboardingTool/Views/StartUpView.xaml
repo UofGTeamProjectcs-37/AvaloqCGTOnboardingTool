@@ -4,30 +4,28 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:CGTOnboardingTool.Views"
-      mc:Ignorable="d"
-      Title="StartUp" Width="1024" Height="720">
+      mc:Ignorable="d" 
+      d:DesignHeight="434.04" d:DesignWidth="800">
 
-    <Grid Width="1024" Height="705">
+    <Grid Height="434.04" Width="800">
+        <Image Margin="210,10,210,310">
+            <Image.Source>
+                <BitmapImage UriSource="/Resources/Images/Logo.png" />
+            </Image.Source>
+        </Image>
         
-        <Grid Style="{DynamicResource RoundGrid}" Height="690" Width="1001.5">
-            <Border Margin="7.5,0,15,15" Background="#C7CADC"/>
-
-            <Grid x:Name="StartButtonsGrid">
-                <Button x:Name="btnStartUpNew" Content="New Report" Style="{DynamicResource RoundButton}" Click="btnStartUpNew_Click" Margin="160,410,666,230"/>
-                <Button x:Name="btnStartUpImport" Content="Import Report" Style="{DynamicResource RoundButton}" Click="btnStartUpNew_Click" Margin="601,410,160,230" Width="auto" />
-            </Grid>
-
-            <Grid x:Name="StartNewGrid" Visibility="Hidden">
-                <Label x:Name="LblStartUpClient" Content="Client Name" Margin="35,213,836,436" Style="{DynamicResource FunctionParameterLabel}"/>
-                <TextBox x:Name="TxtStartUpClient" Margin="190,209,350,432" Text="Enter the Client Name Here" Style="{DynamicResource FunctionInputBoxes}" Background="#FFFFFF" Opacity="0.5"/>
-
-                <Label x:Name="LblStartUpTax" Content="Tax Year" HorizontalAlignment="Left" Margin="55,286,0,348" Style="{DynamicResource FunctionParameterLabel}"/>
-                <TextBox x:Name="TxtStartUpTax" Margin="190,290,350,351" Text="Enter The Tax Year Here" Style="{DynamicResource FunctionInputBoxes}" Background="#FFFFFF" Opacity="0.5"/>
-
-                <Button x:Name="btnStart" Content="Start" Style="{DynamicResource RoundButton}" Click="btnStart_Click" Margin="160,410,666,230"/>
-                <Button x:Name="btnCancel" Content="Cancel" Style="{DynamicResource RoundButton}" Click="btnCancel_Click" Margin="601,410,160,230" Width="auto" />
-            </Grid>
-
-        </Grid>
+        <Button x:Name="StartUpNew" Content="New Report" Margin="340,156,340,243" Click="StartUpNew_Click"/>
+        <Button x:Name="StartUpImport" Content="Import Report" Margin="340,217,340,182"/>
+        
+        <Image Margin="323,310,323,68">
+            <Image.Source>
+                <BitmapImage UriSource="/Resources/Images/University-of-Glasgow.png"></BitmapImage>
+            </Image.Source>
+        </Image>
+        
+        <Label Content="Aidan Neil" HorizontalAlignment="Left" Margin="242,371,0,0" VerticalAlignment="Top"/>
+        <Label Content="Andrew Bell" HorizontalAlignment="Left" Margin="307,371,0,0" VerticalAlignment="Top"/>
+        <Label Content="Areeb Khan" HorizontalAlignment="Left" Margin="380,371,0,0" VerticalAlignment="Top"/>
+        <Label Content="Joachim Vanneste " HorizontalAlignment="Left" Margin="451,371,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Page>

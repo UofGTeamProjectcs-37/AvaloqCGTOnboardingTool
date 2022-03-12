@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
+using MahApps.Metro.Controls;
 
 namespace CGTOnboardingTool.Views
 {
@@ -81,20 +82,15 @@ namespace CGTOnboardingTool.Views
         private bool Validate()
         {
             // Resets any previous incorrect validations
-            LblBuildComboBoxIncorrect.Visibility = Visibility.Hidden;
             BuildComboBoxBorder.BorderThickness = new Thickness(0);
-            LblBuildDateIncorrect.Visibility = Visibility.Hidden;
             TxtBuildDate.BorderThickness = new Thickness(0);
-            LblBuildQuantityIncorrect.Visibility = Visibility.Hidden;
             TxtBuildQuantity.BorderThickness = new Thickness(0);
-            LblBuildPriceIncorrect.Visibility = Visibility.Hidden;
             TxtBuildPrice.BorderThickness = new Thickness(0);
-            LblBuildCostIncorrect.Visibility = Visibility.Hidden;
             TxtBuildCost.BorderThickness = new Thickness(0);
 
             if ((Security)DropBuildSecurities.SelectedItem == null)
             {
-                LblBuildComboBoxIncorrect.Visibility = Visibility.Visible;
+                DropBuildSecurities.Text = "Please Select a Security";
                 BuildComboBoxBorder.BorderThickness = new Thickness(5);
                    
                 return true;
@@ -106,8 +102,9 @@ namespace CGTOnboardingTool.Views
             } 
             catch
             {
-                LblBuildDateIncorrect.Visibility = Visibility.Visible;
                 TxtBuildDate.BorderThickness = new Thickness(5);
+                TxtBuildDate.Text = "";
+                TextBoxHelper.SetWatermark(TxtBuildDate, "Please ensure Date is in the format (yyyy/mm/dd)");
 
                 return true;
             }
@@ -118,8 +115,10 @@ namespace CGTOnboardingTool.Views
             }
             catch
             {
-                LblBuildQuantityIncorrect.Visibility = Visibility.Visible;
                 TxtBuildQuantity.BorderThickness = new Thickness(5);
+                TxtBuildQuantity.Text = "";
+                TextBoxHelper.SetWatermark(TxtBuildQuantity, "Please ensure Quantity only Contains Integers and/or is in Decimal Format");
+
                 return true;
             }
 
@@ -129,8 +128,10 @@ namespace CGTOnboardingTool.Views
             }
             catch
             {
-                LblBuildPriceIncorrect.Visibility = Visibility.Visible;
                 TxtBuildPrice.BorderThickness = new Thickness(5);
+                TxtBuildPrice.Text = "";
+                TextBoxHelper.SetWatermark(TxtBuildPrice, "Please ensure Price only Contains Integers and/or is in Decimal Format");
+
                 return true;
             }
 
@@ -140,8 +141,10 @@ namespace CGTOnboardingTool.Views
             } 
             catch 
             {
-                LblBuildCostIncorrect.Visibility = Visibility.Visible;
                 TxtBuildCost.BorderThickness = new Thickness(5);
+                TxtBuildCost.Text = "";
+                TextBoxHelper.SetWatermark(TxtBuildCost, "Please ensure Cost only Contains Integers and/or is in Decimal Format");
+
                 return true;
             }
 

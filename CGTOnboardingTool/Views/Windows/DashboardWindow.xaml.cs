@@ -3,42 +3,41 @@ using System.Windows;
 
 namespace CGTOnboardingTool.Views.Windows
 {
+    /// <summary>
+    /// Interaction logic for MainWindow.xaml
+    /// </summary>
+    public partial class DashboardWindow
+    {
+        private Report report;
 
-        /// <summary>
-        /// Interaction logic for MainWindow.xaml
-        /// </summary>
-        public partial class DashboardWindow
+        public DashboardWindow(Report report)
         {
-            public Report report;
+            InitializeComponent();
+            this.report = report;
+            mainFrame.Navigate(new DashboardView(ref report));
+        }
 
-            public DashboardWindow()
-            {
-                InitializeComponent();
-                report = new Report();
-                mainFrame.Navigate(new Views.DashboardView(ref report));
-            }
+        private void btnBuild_Click(object sender, RoutedEventArgs e)
+        {
+            mainFrame.Navigate(new BuildView(ref report));
+        }
 
-            private void btnBuild_Click(object sender, RoutedEventArgs e)
-            {
-                mainFrame.Navigate(new Views.BuildView(ref report));
-            }
+        private void btnReduce_Click(object sender, RoutedEventArgs e)
+        {
+            mainFrame.Navigate(new ReduceView(ref report));
 
-            private void btnReduce_Click(object sender, RoutedEventArgs e)
-            {
-                mainFrame.Navigate(new Views.ReduceView(ref report));
+        }
 
-            }
+        private void btnRebuild_Click(object sender, RoutedEventArgs e)
+        {
+            mainFrame.Navigate(new RebuildView(ref report));
 
-            private void btnRebuild_Click(object sender, RoutedEventArgs e)
-            {
-                mainFrame.Navigate(new Views.RebuildView(ref report));
+        }
 
-            }
+        private void btnAddNewSec_Click(object sender, RoutedEventArgs e)
+        {
+            mainFrame.Navigate(new AddSecurityView(ref report));
 
-            private void btnAddNewSec_Click(object sender, RoutedEventArgs e)
-            {
-                mainFrame.Navigate(new Views.AddSecurityView(ref report));
-
-            }
         }
     }
+}

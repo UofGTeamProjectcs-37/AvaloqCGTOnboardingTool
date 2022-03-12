@@ -7,27 +7,51 @@
         xmlns:local="clr-namespace:CGTOnboardingTool.Views.Windows"
         mc:Ignorable="d"
         ResizeMode="CanResize"
-        Height="735" Width="1280" WindowStartupLocation="CenterScreen" WindowTitleBrush="#C7CADC">
-    
-    <Canvas Width="1280" Margin="0,0,0,0" >
+        Height="720" Width="1280" WindowStartupLocation="CenterScreen" WindowTitleBrush="#C7CADC" Background="#C7CADC">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="256"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid Margin="10,5,5,10" Grid.Column="0">
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top" Height="100" Width="241">
+                <Image Width="241" Height="100">
+                    <Image.Source>
+                        <BitmapImage UriSource="/Resources/Images/Logo.png" />
+                    </Image.Source>
+                </Image>
+            </StackPanel>
 
 
-        <Label Content="CGT Onboarding Tool" Foreground="#5A5A5A" Height="50" FontSize="25" Canvas.Left="6" Canvas.Top="28"/>
 
+            <StackPanel Margin="0,180,0,180">
+                <Button x:Name="btnBuild" Click="btnBuild_Click" Height="50">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Build" FontSize="20" />
+                        <!--Image Source="/Image/Icon/..." /-->
+                    </StackPanel>
+                </Button>
 
-        <Grid Width="234" Height="584" Margin="15,106,0,0">
+                <Button x:Name="btnReduce" Click="btnReduce_Click" Height="50">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Reduce" FontSize="20" />
+                        <!--Image Source="/Image/Icon/..." /-->
+                    </StackPanel>
+                </Button>
 
-            <Grid x:Name="MainWindowGrid">
-                <Button x:Name="btnBuild" Content="Build" Click="btnBuild_Click" Margin="29,29,29,505"/>
-                <Button x:Name="btnReduce" Content="Reduce" Click="btnReduce_Click" Margin="29,104,29,430"/>
-                <Button x:Name="btnRebuild" Content="Rebuild" Click="btnRebuild_Click" Margin="29,179,29,355"/>
+                <Button x:Name="btnRebuild" Click="btnRebuild_Click" Height="50">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Rebuild" FontSize="20" />
+                        <!--Image Source="/Image/Icon/..." /-->
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+            <Button x:Name="btnAddNewSec" Content="Add New Security" Click="btnAddNewSec_Click" Height="50" FontSize="16" Margin="0,639,0,0" />
 
-                <Button x:Name="btnAddNewSec" Content="Add New Security" Click="btnAddNewSec_Click" Margin="29,524,29,10" FontSize="20" />
-            </Grid>
         </Grid>
 
-        <Frame x:Name="mainFrame" Content="Frame" NavigationUIVisibility="Hidden" Height="720" Width="1024" Canvas.Left="256" Canvas.Top="0"/>
-
-    </Canvas>
-    
+        <Frame x:Name="mainFrame" NavigationUIVisibility="Hidden" Grid.Column="1" Margin="10,5,10,10" Padding="0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"/>
+        <Grid Grid.Column="1"></Grid>
+    </Grid>
 </Controls:MetroWindow>

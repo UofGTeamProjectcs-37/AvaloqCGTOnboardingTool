@@ -2,35 +2,46 @@ using CGTOnboardingTool.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows.Controls;
 
 namespace CGTOnboardingTool.Models.DataModels
 {
     //Author: Aidan Neil
     public class Report
     {
-        private LinkedList<ReportEntry> entries; // A linked list holding all report entries in cronilogical order
-        private List<ReportEntry> entriesUnordered; // A list of entries in the order that they are entered
+        private ReportHeader reportHeader;
 
-        private int count; // Number of entries in a report
-        private List<Security> securities; // All the secuirties that have been referenced within a report
+        private LinkedList<ReportEntry> entries = new LinkedList<ReportEntry>(); // A linked list holding all report entries in cronilogical order
+        private List<ReportEntry> entriesUnordered = new List<ReportEntry>(); // A list of entries in the order that they are entered
+
+        private int count = 0; // Number of entries in a report
+        private List<Security> securities = new List<Security>(); // All the secuirties that have been referenced within a report
         private List<CGTFunctionBaseViewModel> functionsUsed = new List<CGTFunctionBaseViewModel>();
 
-        private Dictionary<DateOnly, List<ReportEntry>> dateEntries; // The entries that have happened on a given date
-        private Dictionary<Security, List<DateOnly>> securityDates; // The dates where there has been an action on a security
-        private Dictionary<Security, List<ReportEntry>> securityEntries; // The cronilogical ordering of entries related to a security
+        private Dictionary<DateOnly, List<ReportEntry>> dateEntries = new Dictionary<DateOnly, List<ReportEntry>>(); // The entries that have happened on a given date
+        private Dictionary<Security, List<DateOnly>> securityDates = new Dictionary<Security, List<DateOnly>>(); // The dates where there has been an action on a security
+        private Dictionary<Security, List<ReportEntry>> securityEntries = new Dictionary<Security, List<ReportEntry>>(); // The cronilogical ordering of entries related to a security
         
+        private Dictionary<Security, List<Security>> relatedSecurities = new Dictionary<Security, List<Security>>(); // A list of securities that are related through some CGTFunciton
 
-        private Dictionary<Security, List<Security>> relatedSecurities; // A list of securities that are related through some CGTFunciton
-
-        public Report()
+        public Report(ReportHeader header)
         {
-            this.entries = new LinkedList<ReportEntry>();
-            this.entriesUnordered = new List<ReportEntry>();
-            this.count = 0;
-            this.securities = new List<Security>();
-            this.securityDates = new Dictionary<Security, List<DateOnly>>();
-            this.securityEntries = new Dictionary<Security, List<ReportEntry>>();
-            this.relatedSecurities = new Dictionary<Security, List<Security>>();
+            this.reportHeader = header;
+        }
+
+        public string GetClientName()
+        {
+            return reportHeader.ClientName;
+        }
+
+        public string GetYearStart()
+        {
+            return reportHeader.DateStart.ToString();
+        }
+
+        public string GetYearEnd()
+        {
+            return reportHeader.DateEnd.ToString();
         }
 
         public ReportEntry[] Rows()

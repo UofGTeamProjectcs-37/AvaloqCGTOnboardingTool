@@ -6,19 +6,20 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:CGTOnboardingTool.Views"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="ConstructReportView">
+      d:DesignHeight="434.04" d:DesignWidth="800">
 
-    <Grid>
-        <TextBox x:Name="TxtConstructClient" Controls:TextBoxHelper.Watermark="Enter the Client Name Here" Margin="152,42,314,356" Background="Blue" Foreground="White"/>
 
-        <ComboBox x:Name="CbTaxYearStart" HorizontalAlignment="Left" Margin="145,142,0,0" VerticalAlignment="Top" Width="120"/>
-        <ComboBox x:Name="CbTaxYearEnd" HorizontalAlignment="Center" Margin="0,142,0,0" VerticalAlignment="Top" Width="120"/>
+    <Grid Height="434.04" Width="800">
+        <Grid Margin="214,67,162,217">
+            <Label Content="Client Name:" HorizontalAlignment="Left" Margin="0,25,0,0" VerticalAlignment="Top" Height="33" Width="142" FontSize="14" VerticalContentAlignment="Center"/>
+            <TextBox x:Name="txtClientName" Controls:TextBoxHelper.Watermark="Enter Client Name" HorizontalAlignment="Left" Height="33" Margin="158,25,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="265" FontSize="14" VerticalContentAlignment="Center"/>
 
-        <TextBox x:Name="TxtConstructClientManager" Controls:TextBoxHelper.Watermark="Enter the Client Manager Here" Margin="145,198,307,190" Background="Blue" Foreground="White"/>
-
-        <Button x:Name="btnStart" Content="Start" Click="btnStart_Click" Margin="145,273,514,84" Background="green"/>
-        <Button x:Name="btnCancel" Content="Cancel" Click="btnCancel_Click" Margin="445,273,211,84" Background="green"/>
-
+            <Label Content="Tax Period:" HorizontalAlignment="Left" Margin="0,75,0,0" VerticalAlignment="Top" Height="33" Width="142" FontSize="14" VerticalContentAlignment="Center"/>
+            <ComboBox x:Name="dropdownYearEnd" Height="33" Width="120" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14" VerticalContentAlignment="Center" IsEditable="False" Margin="303,76,0,0"/>
+            <Label Content="-" HorizontalAlignment="Left" Margin="278,74,0,0" VerticalAlignment="Top" Height="33" Width="25" FontSize="14" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+            <ComboBox x:Name="dropdownYearStart" Height="33" Width="120" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14" VerticalContentAlignment="Center" IsEditable="False" Margin="158,75,0,0"/>
+        </Grid>
+        <Button x:Name="btnContinue" Content="Continue" Click="btnStart_Click" Margin="497,254,162,144"/>
+        <Button x:Name="btnCancel" Content="Cancel" Click="btnCancel_Click" Margin="214,254,442,144"/>
     </Grid>
 </Page>

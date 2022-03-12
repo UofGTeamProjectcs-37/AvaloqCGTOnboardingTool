@@ -1,4 +1,5 @@
-﻿using MahApps.Metro.Controls;
+﻿using CGTOnboardingTool.ViewModels;
+using MahApps.Metro.Controls;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -9,19 +10,20 @@ namespace CGTOnboardingTool.Views
     /// </summary>
     public partial class StartUpView : Page
     {
-        public MetroWindow StartUpWindow;
-        public Frame StartUpFrame;
+        private MetroWindow startUpWindow;
+        private Frame startUpFrame;
         
         public StartUpView(MetroWindow startUpWindow, Frame startUpFrame)
         {
             InitializeComponent();
-            this.StartUpWindow = startUpWindow;
-            this.StartUpFrame = startUpFrame;
+            this.startUpWindow = startUpWindow;
+            this.startUpFrame = startUpFrame;
         }
 
         private void StartUpNew_Click(object sender, RoutedEventArgs e)
         {
-            StartUpFrame.Navigate(new ConstructReportView(StartUpWindow));
+            ConstructReportViewModel constructReportViewModel = new ConstructReportViewModel();
+            startUpFrame.Navigate(new ConstructReportView(startUpWindow,constructReportViewModel));
         }
     }
 }

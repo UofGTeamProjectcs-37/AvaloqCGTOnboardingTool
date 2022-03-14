@@ -1,4 +1,6 @@
-﻿using CGTOnboardingTool.Models.DataModels;
+﻿using CGTOnboardingTool.Models.AccessModels;
+using CGTOnboardingTool.Models.DataModels;
+using CGTOnboardingTool.ViewModels;
 using System.Windows;
 
 namespace CGTOnboardingTool.Views.Windows
@@ -14,32 +16,35 @@ namespace CGTOnboardingTool.Views.Windows
         {
             InitializeComponent();
             this.report = report;
-            mainFrame.Navigate(new DashboardView(ref report));
+            DashboardViewModel viewModel = new DashboardViewModel(ref report);
+            mainFrame.Navigate(new DashboardView(this, viewModel));
+            SecurityLoader.init();
         }
 
         private void btnBuild_Click(object sender, RoutedEventArgs e)
         {
-            mainFrame.Navigate(new BuildView(ref report));
+            BuildViewModel build = new BuildViewModel(ref report);
+            mainFrame.Navigate(new BuildView(this, build));
         }
 
         private void btnReduce_Click(object sender, RoutedEventArgs e)
         {
-            mainFrame.Navigate(new ReduceView(ref report));
+            ReduceViewModel reduce = new ReduceViewModel(ref report);
+            mainFrame.Navigate(new ReduceView(this, reduce));
 
         }
 
         private void btnRebuild_Click(object sender, RoutedEventArgs e)
         {
-            mainFrame.Navigate(new RebuildView(ref report));
+            RebuildViewModel rebuild = new RebuildViewModel(ref report);
+            mainFrame.Navigate(new RebuildView(this, rebuild));
 
         }
 
         private void btnAddNewSec_Click(object sender, RoutedEventArgs e)
-        {
-            //mainFrame.Navigate(new AddSecurityView(ref report));
+        { 
             AddSecurityWindow addSecurityWindow = new AddSecurityWindow();
             addSecurityWindow.Show();
-
         }
     }
 }

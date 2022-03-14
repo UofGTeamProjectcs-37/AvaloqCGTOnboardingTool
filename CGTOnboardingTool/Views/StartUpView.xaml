@@ -15,7 +15,7 @@
         </Image>
         
         <Button x:Name="StartUpNew" Content="New Report" Margin="340,156,340,243" Click="StartUpNew_Click"/>
-        <Button x:Name="StartUpImport" Content="Import Report" Margin="340,217,340,182"/>
+        <Button x:Name="StartUpImport" Content="Import Report" Margin="340,217,340,182" Click="StartUpImport_Click/>
         
         <Image Margin="323,310,323,68">
             <Image.Source>

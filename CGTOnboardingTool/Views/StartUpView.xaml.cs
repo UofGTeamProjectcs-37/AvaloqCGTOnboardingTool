@@ -25,5 +25,11 @@ namespace CGTOnboardingTool.Views
             ConstructReportViewModel constructReportViewModel = new ConstructReportViewModel();
             startUpFrame.Navigate(new ConstructReportView(startUpWindow,constructReportViewModel));
         }
+
+        private void StartUpImport_Click(object sender, RoutedEventArgs e)
+        {
+            ReportImporter importer = new ReportImporter(ref report);
+            importer.ImportReport();
+        }
     }
 }

@@ -49,6 +49,5 @@
             </ListView>
         </Grid>
         <Button x:Name="btnSave" Content="Save" Height="50" Width="120" HorizontalAlignment="Left" Style="{DynamicResource RoundButton}" Click="btnSave_Click" Margin="10,612,0,10"/>
-        <Button x:Name="btnOpen" Content="Open" Height="50" Width="120" HorizontalAlignment="Left" Style="{DynamicResource RoundButton}" Click="btnOpen_Click" Margin="10,612,0,10"/>
     </Grid>
 </Page>

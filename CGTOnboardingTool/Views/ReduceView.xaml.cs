@@ -1,8 +1,11 @@
 ﻿using CGTOnboardingTool.Models.DataModels;
+using CGTOnboardingTool.ViewModels;
+using MahApps.Metro.Controls;
+using MahApps.Metro.Controls.Dialogs;
 using System;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
-using MahApps.Metro.Controls;
 
 namespace CGTOnboardingTool.Views
 {
@@ -11,54 +14,90 @@ namespace CGTOnboardingTool.Views
     /// </summary>
     public partial class ReduceView : Page
     {
-        public Report report;
+        private MetroWindow window;
+        private ReduceViewModel viewModel;
 
-        public ReduceView(ref Report report)
+        public ReduceView(MetroWindow window, ReduceViewModel viewModel)
         {
             InitializeComponent();
-            this.report = report;
-
-            DropReduceSecurities.ItemsSource = this.report.GetSecurities();
+            this.window = window;
+            this.viewModel = viewModel;
+            initSecurityDropdown();
         }
 
-        // Function to split user given date
-        private static DateOnly ParseDate(string dateStr)
+        private void initSecurityDropdown()
         {
-            var yymmdd = dateStr.Split('/');
-            int year = int.Parse(yymmdd[0]);
-            int month = int.Parse(yymmdd[1]);
-            int day = int.Parse(yymmdd[2]);
+            List<DropDownItem> selections = new List<DropDownItem>();
 
-            return new DateOnly(year, month, day);
+            Security[] securities = viewModel.GetSecurities();
+            if (securities.Length > 0)
+            {
+
+                foreach (Security security in securities)
+                {
+                    DropDownItem dropDownItem = new DropDownItem();
+                    dropDownItem.Text = security.ToString();
+                    dropDownItem.Value = security;
+                    selections.Add(dropDownItem);
+                }
+                DropReduceSecurities.IsEnabled = true;
+                DropReduceSecurities.ItemsSource = selections;
+            }
+
+           
         }
 
         // Cancel button navigation
         private void BtnReduceCancel_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new DashboardView(ref report));
+            while (this.NavigationService.CanGoBack)
+            {
+                this.NavigationService.GoBack();
+            }
         }
 
         // Save button functionality
         private void BtnReduce_Click(object sender, RoutedEventArgs e)
         {
             // Returns true if input is not in the correct format
-            bool incorrect = Validate();
+            bool valid = Validate();
 
-            if (!incorrect)
+            if (!valid)
             {
                 // Read in all user input
-                var userInputSecurity = DropReduceSecurities.SelectedItem as Security;
-                var userInputDate = ParseDate(TxtReduceDate.Text);
-                var userInputQuantity = Convert.ToDecimal(TxtReduceQuantity.Text);
-                var userInputPrice = Convert.ToDecimal(TxtReducePrice.Text);
-                var userInputCost = Convert.ToDecimal(TxtReduceCost.Text);
+                viewModel.security = DropReduceSecurities.SelectedItem as Security;
+                viewModel.date = ParseDate(TxtReduceDate.Text);
+                viewModel.quantity = decimal.Parse(TxtReduceQuantity.Text);
+                viewModel.pps = decimal.Parse(TxtReducePrice.Text);
+                viewModel.cost = decimal.Parse(TxtReduceCost.Text);
 
                 // Perform the reduce
-                ViewModels.ReduceViewModel r = new ViewModels.ReduceViewModel(security: userInputSecurity, quantity: userInputQuantity, pps: userInputPrice, cost: userInputCost, date: userInputDate);
-                r.perform(ref report);
+                int err;
+                string errMessage;
+                viewModel.PerformCGTFunction(out err, out errMessage);
+                // Display error message
+                if (err == 0)
+                {
+                    while (this.NavigationService.CanGoBack)
+                    {
+                        this.NavigationService.GoBack();
+                    }
+                }
 
-                this.NavigationService.Navigate(new DashboardView(ref report));
+                window.ShowMessageAsync("Error: " + (BuildViewModel.CGTBUILD_ERROR)err, errMessage);
             }
+        }
+
+        // Function to split user given date
+        private static DateOnly ParseDate(string dateStr)
+        {
+            var ddmmyyyy = dateStr.Split('/');
+
+            int day = int.Parse(ddmmyyyy[0]);
+            int month = int.Parse(ddmmyyyy[1]);
+            int year = int.Parse(ddmmyyyy[2]);
+
+            return new DateOnly(year, month, day);
         }
 
         // Checks all inputs are in the correct format

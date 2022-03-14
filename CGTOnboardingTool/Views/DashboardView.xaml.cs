@@ -1,10 +1,11 @@
-﻿using System;
+﻿using CGTOnboardingTool.Models.DataModels;
+using CGTOnboardingTool.Models.OutputModels;
+using CGTOnboardingTool.ViewModels;
+using MahApps.Metro.Controls;
+using System;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
-using CGTOnboardingTool.ViewModels;
-using CGTOnboardingTool.Models.DataModels;
-using CGTOnboardingTool.Models.OutputModels;
 
 namespace CGTOnboardingTool.Views
 {
@@ -16,29 +17,15 @@ namespace CGTOnboardingTool.Views
         DateOnly? filterDateFrom;
         DateOnly? filterDateTo;
 
-        public Report report;
+        public MetroWindow window;
+        public DashboardViewModel viewModel;
 
-        public DashboardView(ref Report report)
+        public DashboardView(MetroWindow window, DashboardViewModel viewModel)
         {
             InitializeComponent();
-            this.report = report;
-            LblClientName.Content = report.GetClientName();
-            LblTaxYear.Content = report.GetYearStart() + " - " + report.GetYearEnd();
-            display(report.Rows());
-        }
-
-
-        // Display report on dashboard 
-        public DashboardView(ref Report report, ref String client, ref String tax)
-        {
-            InitializeComponent();
-
-            LblClientName.Content = client;
-            LblTaxYear.Content = tax;
-
-            this.report = report;
-            display(report.Rows());
-
+            LblClientName.Content = viewModel.GetClientName();
+            LblTaxYear.Content = viewModel.GetYearStart() + " - " + viewModel.GetYearEnd();
+            display(viewModel.Rows());
         }
 
         //// Filter rows drop-down menu
@@ -78,8 +65,8 @@ namespace CGTOnboardingTool.Views
         // Save button functionality
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
-            ReportExporter exporter = new ReportExporter(ref report);
-            exporter.ExportToText();
+            Report report = viewModel.GetReport();
+            ReportExporter.ExportToCSV(ref report); ;
         }
 
 

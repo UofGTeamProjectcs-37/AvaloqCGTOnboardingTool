@@ -1,12 +1,12 @@
-﻿using System;
-using System.Windows;
-using System.Windows.Controls;
-using System.Collections.Generic;
+﻿using CGTOnboardingTool.Models.DataModels;
+using CGTOnboardingTool.ViewModels;
+using CGTOnboardingTool.Views.Windows;
 using MahApps.Metro.Controls;
 using MahApps.Metro.Controls.Dialogs;
-using CGTOnboardingTool.Views.Windows;
-using CGTOnboardingTool.ViewModels;
-using CGTOnboardingTool.Models.DataModels;
+using System;
+using System.Collections.Generic;
+using System.Windows;
+using System.Windows.Controls;
 
 namespace CGTOnboardingTool.Views
 {

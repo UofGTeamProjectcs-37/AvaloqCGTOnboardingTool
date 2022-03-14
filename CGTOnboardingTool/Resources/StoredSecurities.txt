@@ -1,0 +1,6 @@
+﻿GSK,Glaxosmithklein
+FGP,FGPSystems
+IBE,Iberdrola
+TSLA,Tesla
+AAPL,Apple
+AVL,Avaloq

@@ -164,7 +164,7 @@ namespace CGTOnboardingTool.Models.DataModels
                 foreach (var k in Price.Keys)
                 {
                     prices.Add(k.ShortName + " : £" + Price[k].ToString());
-                    
+
                 }
                 strPrice += String.Join(",", prices.ToArray());
                 strPrice += "]";
@@ -244,7 +244,7 @@ namespace CGTOnboardingTool.Models.DataModels
                 foreach (var k in GainLoss.Keys)
                 {
                     gainLosses.Add(k.ShortName + " : " + GainLoss[k].ToString());
-                   
+
                 }
                 strGainLoss += String.Join(",", gainLosses.ToArray());
                 strGainLoss += "]";

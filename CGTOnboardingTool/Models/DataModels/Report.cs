@@ -2,7 +2,6 @@ using CGTOnboardingTool.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Windows.Controls;
 
 namespace CGTOnboardingTool.Models.DataModels
 {
@@ -11,17 +10,17 @@ namespace CGTOnboardingTool.Models.DataModels
     {
         private ReportHeader reportHeader;
 
+        private int count = 0; // Number of entries in a report
         private LinkedList<ReportEntry> entries = new LinkedList<ReportEntry>(); // A linked list holding all report entries in cronilogical order
         private List<ReportEntry> entriesUnordered = new List<ReportEntry>(); // A list of entries in the order that they are entered
 
-        private int count = 0; // Number of entries in a report
         private List<Security> securities = new List<Security>(); // All the secuirties that have been referenced within a report
-        private List<CGTFunctionBaseViewModel> functionsUsed = new List<CGTFunctionBaseViewModel>();
 
         private Dictionary<DateOnly, List<ReportEntry>> dateEntries = new Dictionary<DateOnly, List<ReportEntry>>(); // The entries that have happened on a given date
         private Dictionary<Security, List<DateOnly>> securityDates = new Dictionary<Security, List<DateOnly>>(); // The dates where there has been an action on a security
         private Dictionary<Security, List<ReportEntry>> securityEntries = new Dictionary<Security, List<ReportEntry>>(); // The cronilogical ordering of entries related to a security
-        
+
+        private List<CGTFunctionBaseViewModel> functionsUsed = new List<CGTFunctionBaseViewModel>();
         private Dictionary<Security, List<Security>> relatedSecurities = new Dictionary<Security, List<Security>>(); // A list of securities that are related through some CGTFunciton
 
         public Report(ReportHeader header)
@@ -34,14 +33,14 @@ namespace CGTOnboardingTool.Models.DataModels
             return reportHeader.ClientName;
         }
 
-        public string GetYearStart()
+        public int GetYearStart()
         {
-            return reportHeader.DateStart.ToString();
+            return reportHeader.DateStart;
         }
 
-        public string GetYearEnd()
+        public int GetYearEnd()
         {
-            return reportHeader.DateEnd.ToString();
+            return reportHeader.DateEnd;
         }
 
         public ReportEntry[] Rows()
@@ -99,7 +98,18 @@ namespace CGTOnboardingTool.Models.DataModels
             return functionsUsed.ToArray();
         }
 
-        public ReportEntry Add(CGTFunctionBaseViewModel function, DateOnly date, Security security, decimal price, decimal quantity, decimal associatedCosts, decimal gainLoss, decimal section104)
+        public ReportEntry AddUsingQuantityPrice(CGTFunctionBaseViewModel function, DateOnly date, Security security, decimal quantity, decimal price, decimal associatedCosts, decimal gainLoss, decimal holdings, decimal section104)
+        {
+            throw new NotImplementedException();
+
+        }
+
+        public ReportEntry AddUsingGross(CGTFunctionBaseViewModel function, DateOnly date, Security security, decimal quantity, decimal gross, decimal gainLoss, decimal holdings, decimal section104)
+        {
+            throw new NotImplementedException();
+        }
+
+        public ReportEntry Add(CGTFunctionBaseViewModel function, DateOnly date, Security security, decimal price, decimal quantity, decimal associatedCosts, decimal gainLoss, decimal section104, decimal gross)
         {
             if (!functionsUsed.Contains(function))
             {
@@ -151,7 +161,7 @@ namespace CGTOnboardingTool.Models.DataModels
                 entries.AddLast(newEntry);
             }
 
-            if (dateIndex ==  0)
+            if (dateIndex == 0)
             {
                 //
             }
@@ -176,10 +186,10 @@ namespace CGTOnboardingTool.Models.DataModels
             return newEntry;
         }
 
-        public ReportEntry Add(CGTFunctionBaseViewModel function, DateOnly date, Security[] securities, decimal[] quantities, decimal[] gainLosses, decimal[] section104s)
+        public ReportEntry Add(CGTFunctionBaseViewModel function, DateOnly date, Security[] securities, decimal[] quantities, decimal[] gainLosses, decimal[] section104s, decimal[] holdings)
         {
             decimal[] holdingsCurrent = new decimal[securities.Length];
-            decimal[] holdings = new decimal[securities.Length];
+            decimal[] oldholdings = new decimal[securities.Length];
 
             for (int i = 0; i < securities.Length; i++)
             {
@@ -199,7 +209,7 @@ namespace CGTOnboardingTool.Models.DataModels
                 gainLoss: gainLosses,
                 holdings: holdings,
                 section104s: section104s
-                ); 
+                );
 
             entriesUnordered.Add(newEntry);
 
@@ -234,7 +244,7 @@ namespace CGTOnboardingTool.Models.DataModels
                 holdings: holdings,
                 section104s: section104s
                 );
-            
+
             entriesUnordered.Add(newEntry);
 
             entries.AddLast(newEntry);
@@ -312,65 +322,6 @@ namespace CGTOnboardingTool.Models.DataModels
         }
 
 
-
-        public ReportEntry[] FilterBySecurity(Security search)
-        {
-            List<ReportEntry> filteredRows = new List<ReportEntry>();
-            List<ReportEntry> reportRows = new List<ReportEntry>(this.Rows());
-
-            for (int i = 0; i < this.Count(); i++)
-            {
-                foreach (Security sec in reportRows[i].Security)
-                {
-                    if (sec.Equals(search))
-                    {
-                        filteredRows.Add(reportRows[i]);
-                    }
-                }
-            }
-
-            return filteredRows.ToArray();
-        }
-   
-
-        public ReportEntry[] FilterByDate(DateOnly filterFrom, DateOnly filterTo)
-        {
-
-            List<ReportEntry> filteredRows = new List<ReportEntry>();
-            List<ReportEntry> reportRows = new List<ReportEntry>(this.Rows());
-
-            DateOnly startDate = filterFrom; //change to user input from drop down menu
-            DateOnly endDate = filterTo; //change to user input from drop down menu
-
-            for (int i = 0; i < this.Count(); i++)
-            {
-                if ((reportRows[i].Date<endDate) && (reportRows[i].Date>startDate))
-                {
-                    filteredRows.Add(reportRows[i]);
-                }
-            }
-
-
-            return filteredRows.ToArray();
-        }
-
-        public ReportEntry[] FilterByFunction(CGTFunctionBaseViewModel search)
-        {
-            List<ReportEntry> filteredRows = new List<ReportEntry>();
-            List<ReportEntry> reportRows = new List<ReportEntry>(this.Rows());
-
-            for (int i = 0; i < this.Count(); i++)
-            {
-                if (reportRows[i].Function.Equals(search))
-                {
-                    filteredRows.Add(reportRows[i]);
-                }
-            }
-
-            return filteredRows.ToArray();
-        }
-
-
         private void reflectChanges(ReportEntry associatedEntry)
         {
             foreach (var security in associatedEntry.Security)
@@ -387,7 +338,7 @@ namespace CGTOnboardingTool.Models.DataModels
                     sEntries[i].Section104[security] += gainLossChange;
                 }
             }
-              
+
         }
 
     }

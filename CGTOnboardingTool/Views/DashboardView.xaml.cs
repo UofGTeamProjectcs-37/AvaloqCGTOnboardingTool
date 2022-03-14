@@ -75,6 +75,13 @@ namespace CGTOnboardingTool.Views
             //LblReportFilterDateTo.Visibility = Visibility.Hidden;
         }
 
+        // Open button functionality
+        private void btnOpen_Click(object sender, RoutedEventArgs e)
+        {
+            ReportImporter importer = new ReportImporter(ref report);
+            importer.ImportReport();
+        }
+
         // Save button functionality
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {

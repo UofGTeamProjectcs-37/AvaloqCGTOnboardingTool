@@ -1,4 +1,4 @@
-using CGTOnboardingTool.Models;
+using CGTOnboardingTool.Models.AccessModels;
 using CGTOnboardingTool.Models.DataModels;
 using System;
 
@@ -7,122 +7,266 @@ namespace CGTOnboardingTool.ViewModels
     // BuildView BUC which subclasses the CGTFunctionBaseViewModel abstract class
     public class BuildViewModel : CGTFunctionBaseViewModel
     {
-        Security security;
-        decimal quantity;
-        decimal? pps;
-        decimal? cost;
-        decimal? gross;
-        DateOnly date;
+        private Report report;
 
-        // Overloading of BuildView constructors 
-        public BuildViewModel(Security security, decimal quantity, decimal pps, decimal cost, DateOnly date)
+        // Allow NULLS to allow construct before user input has been given
+        public Security? security { get; set; }
+        public DateOnly? date { get; set; }
+        public bool usingGross { get; set; } = false;
+
+        public decimal? quantity { get; set; }
+        public decimal? pps { get; set; }
+        public decimal? cost { get; set; }
+        public decimal? gross { get; set; }
+
+        public enum CGTBUILD_ERROR
         {
-            this.security = security;
-            this.quantity = quantity;
-            this.pps = pps;
-            this.cost = cost;
-            this.date = date;
+            CGTBUILD_FAILED = -1,
+            CGTBUILD_SUCCESS = 0,
+            CGTBUILD_VALID = 1,
+            CGTBUILD_NULL_SECURITY = 2,
+            CGTBUILD_INVALID_SECURITY = 3,
+            CGTBUILD_NULL_DATE = 4,
+            CGTBUILD_INVALID_DATE = 5,
+            CGTBUILD_NULL_QUANTITY = 6,
+            CGTBUILD_INVALID_QUANTITY = 7,
+            CGTBUILD_NULL_PRICE = 8,
+            CGTBUILD_INVALID_PRICE = 9,
+            CGTBUILD_NULL_COSTS = 10,
+            CGTBUILD_INVALID_COSTS = 11,
+            CGTBUILD_NULL_GROSS = 12,
+            CGTBUILD_INVALID_GROSS = 13,
         }
 
-        public BuildViewModel(Security security, decimal quantity, decimal gross, DateOnly date)
+        public BuildViewModel(ref Report report)
         {
-            this.security = security;
-            this.quantity = quantity;
-            this.gross = gross;
-            this.date = date;
+            this.report = report;
         }
 
-        public override ReportEntry perform(ref Report report)
+        public Security[] GetSecurities()
         {
-            // Call the correct perform method depending on information given
-            if (gross != null)
+            return SecurityLoader.GetSecurities();
+        }
+
+        public override ReportEntry? PerformCGTFunction(out int err, out string errMessage)
+        {
+            var validation = this.validate(out err, out errMessage);
+            if (validation == CGTBUILD_ERROR.CGTBUILD_VALID)
             {
-                return this.performUsingGross(ref report);
-            }
-            else if (pps != null && cost != null)
-            {
-                return this.performUsingQuantityPrice(ref report);
+                if (usingGross)
+                {
+                    err = (int)CGTBUILD_ERROR.CGTBUILD_SUCCESS;
+                    errMessage = "";
+                    return this.performUsingGross();
+                }
+                else
+                {
+                    err = (int)CGTBUILD_ERROR.CGTBUILD_SUCCESS;
+                    errMessage = "";
+                    return this.performUsingQuantityPrice();
+                }
             }
             else
             {
-                throw new Exception("Build not allowed. Reconstruct build and specify either a Price & Cost pair, or a Gross");
+                return null;
             }
         }
 
         // If we have gross, pps and a cost 
-        private ReportEntry performUsingQuantityPrice(ref Report report)
+        private ReportEntry performUsingQuantityPrice()
         {
-
-            
+            // Cast to explicits (non nulls)
+            Security security = this.security;
+            DateOnly date = (DateOnly)this.date;
+            decimal quantity = (decimal)this.quantity;
             decimal pps = (decimal)this.pps;
             decimal cost = (decimal)this.cost;
 
-            // Update S104 and calculate Gain/Loss
-            var currentS104 = report.GetSection104(this.security, this.date);
-            var gainLoss = (quantity * pps) + cost;
+            // Update S104, Holdings and calculate Gain/Loss
+            decimal currentS104 = report.GetSection104(security, date);
+            decimal currentHoldings = report.GetHoldings(security, date);
+
+            decimal gainLoss = ((quantity * pps) + cost);
             decimal newS104 = currentS104 + gainLoss;
+            decimal newHoldings = currentHoldings + quantity;
 
             // Add to report 
-            var associatedEntry = report.Add(
+            var associatedEntry = report.AddUsingQuantityPrice(
                 function: this,
-                date: this.date,
-                security: this.security,
+                date: date,
+                security: security,
+                quantity: quantity,
                 price: pps,
-                quantity: this.quantity,
                 associatedCosts: cost,
                 gainLoss: gainLoss,
+                holdings: newHoldings,
                 section104: newS104
                 );
 
             return associatedEntry;
+        }
+
+        private ReportEntry performUsingGross()
+        {
+            // Cast to explicits (non nulls)
+            Security security = this.security;
+            DateOnly date = (DateOnly)this.date;
+            decimal quantity = (decimal)this.quantity;
+            decimal gross = (decimal)this.gross;
+
+            // Update S104, Holdings and calculate Gain/Loss
+            decimal currentS104 = report.GetSection104(security, date);
+            decimal currentHoldings = report.GetHoldings(security, date);
+
+            decimal gainLoss = gross;
+            decimal newS104 = currentS104 + gainLoss;
+            decimal newHoldings = currentHoldings + quantity;
+
+            // Add to report 
+            var associatedEntry = report.AddUsingGross(
+                function: this,
+                date: date,
+                security: security,
+                quantity: quantity,
+                gross: gross,
+                gainLoss: gainLoss,
+                holdings: newHoldings,
+                section104: newS104
+                );
+
+            return associatedEntry;
+        }
+
+        private CGTBUILD_ERROR validate(out int err, out string errMessage)
+        {
+            if (security is null)
+            {
+                err = (int)CGTBUILD_ERROR.CGTBUILD_NULL_SECURITY;
+                errMessage = "Security Not Specified";
+                return CGTBUILD_ERROR.CGTBUILD_NULL_SECURITY;
+            }
+            else if (this.date is null)
+            {
+                err = (int)CGTBUILD_ERROR.CGTBUILD_NULL_DATE;
+                errMessage = "Date Not Specified";
+                return CGTBUILD_ERROR.CGTBUILD_NULL_DATE;
+            }
+
+            // Explicit cast of 
+            DateOnly date = (DateOnly)this.date;
+
+            int yearStart = report.GetYearStart();
+            int yearEnd = report.GetYearEnd();
+
+            int year = date.Year;
+            if (year < yearStart || year > yearEnd)
+            {
+                err = (int)CGTBUILD_ERROR.CGTBUILD_INVALID_DATE;
+                errMessage = "Date does not lie within report period.";
+                return CGTBUILD_ERROR.CGTBUILD_INVALID_DATE;
+            }
+
+            CGTBUILD_ERROR valid;
+            if (usingGross)
+            {
+                valid = validateGross(out err, out errMessage);
+            }
+            else
+            {
+                valid = validateQuantityPrice(out err, out errMessage);
+            }
+
+            return valid;
 
         }
 
-        private ReportEntry performUsingGross(ref Report report)
+        private CGTBUILD_ERROR validateQuantityPrice(out int err, out string errMessage)
         {
+            if (quantity is null)
+            {
+                err = (int)CGTBUILD_ERROR.CGTBUILD_NULL_QUANTITY;
+                errMessage = "Quantity not specified.";
+                return CGTBUILD_ERROR.CGTBUILD_NULL_QUANTITY;
+            }
 
-            throw new NotImplementedException();
+            if (quantity <= 0)
+            {
+                err = (int)CGTBUILD_ERROR.CGTBUILD_INVALID_QUANTITY;
+                errMessage = "Quantity must be greater than 0.";
+                return CGTBUILD_ERROR.CGTBUILD_INVALID_QUANTITY;
+            }
 
-            //decimal gross = (decimal)this.gross;
-            //decimal currentS104 = 0;
-            //decimal currentHoldings = 0;
-            //if (!report.HasSecurity(security))
-            //{
-            //    report.AddSecurityView(security);
-            //}
-            //else
-            //{
-            //    var retrievedS104 = report.GetSection104(security);
-            //    if (retrievedS104 != null)
-            //    {
-            //        currentS104 = (decimal)retrievedS104;
-            //    }
-            //    var retrievedHoldings = report.GetHoldings(security);
-            //    if (retrievedHoldings != null)
-            //    {
-            //        currentHoldings = (decimal)retrievedHoldings;
-            //    }
-            //}
+            if (pps is null)
+            {
+                err = (int)CGTBUILD_ERROR.CGTBUILD_NULL_PRICE;
+                errMessage = "Price not specified.";
+                return CGTBUILD_ERROR.CGTBUILD_NULL_PRICE;
+            }
 
+            if (pps < 0)
+            {
+                err = (int)CGTBUILD_ERROR.CGTBUILD_INVALID_PRICE;
+                errMessage = "Price must be greater than 0.";
+                return CGTBUILD_ERROR.CGTBUILD_INVALID_PRICE;
+            }
 
-            //decimal newS104 = currentS104 + gross;
-            //var newHoldings = currentHoldings + quantity;
+            if (cost is null)
+            {
+                err = (int)CGTBUILD_ERROR.CGTBUILD_NULL_COSTS;
+                errMessage = "Cost not specified.";
+                return CGTBUILD_ERROR.CGTBUILD_NULL_COSTS;
+            }
 
-            //Security[] securityAffected = new Security[1] { security };
-            //Dictionary<Security, decimal> priceAffected = new Dictionary<Security, decimal>();
-            //Dictionary<Security, decimal> quantityAffected = new Dictionary<Security, decimal>();
-            //quantityAffected.Add(security, quantity);
-            //decimal[] costs = new decimal[1];
-            //Dictionary<Security, decimal> s104 = new Dictionary<Security, decimal>();
-            //s104.Add(security, newS104);
+            if (cost < 0)
+            {
+                err = (int)CGTBUILD_ERROR.CGTBUILD_INVALID_COSTS;
+                errMessage = "Cost must be greater than 0.";
+                return CGTBUILD_ERROR.CGTBUILD_INVALID_COSTS;
+            }
 
-            //var associatedEntry = report.Add(this, securityAffected, priceAffected, quantityAffected, costs, s104, date);
+            err = (int)CGTBUILD_ERROR.CGTBUILD_VALID;
+            errMessage = "SUCCESS";
+            return CGTBUILD_ERROR.CGTBUILD_VALID;
+        }
 
-            //report.UpdateHoldings(associatedEntry, security, newHoldings);
-            //report.UpdateSection104(associatedEntry, security, newS104);
+        private CGTBUILD_ERROR validateGross(out int err, out string errMessage)
+        {
+            if (quantity is null)
+            {
+                err = (int)CGTBUILD_ERROR.CGTBUILD_NULL_QUANTITY;
+                errMessage = "Quantity not specified.";
+                return CGTBUILD_ERROR.CGTBUILD_NULL_QUANTITY;
+            }
 
+            if (quantity <= 0)
+            {
+                err = (int)CGTBUILD_ERROR.CGTBUILD_INVALID_QUANTITY;
+                errMessage = "Quantity must be greater than 0.";
+                return CGTBUILD_ERROR.CGTBUILD_INVALID_QUANTITY;
+            }
 
-            //return associatedEntry;
+            if (gross is null)
+            {
+                err = (int)CGTBUILD_ERROR.CGTBUILD_NULL_GROSS;
+                errMessage = "Gross not specified.";
+                return CGTBUILD_ERROR.CGTBUILD_NULL_GROSS;
+            }
+
+            if (gross < 0)
+            {
+                err = (int)CGTBUILD_ERROR.CGTBUILD_INVALID_GROSS;
+                errMessage = "Gross must be greater than 0.";
+                return CGTBUILD_ERROR.CGTBUILD_INVALID_GROSS;
+            }
+
+            err = (int)CGTBUILD_ERROR.CGTBUILD_VALID;
+            errMessage = "SUCCESS";
+            return CGTBUILD_ERROR.CGTBUILD_VALID;
+        }
+
+        public override string ToString()
+        {
+            return "Build";
         }
     }
 }

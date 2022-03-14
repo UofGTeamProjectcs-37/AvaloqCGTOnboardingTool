@@ -15,7 +15,7 @@
             <Label x:Name="LblTaxYear" Height="auto" Width="auto" Style="{DynamicResource FunctionHeaderLabel}" Margin="700,0,10,0" VerticalAlignment="Center"/>
         </Grid>
 
-        <Grid Style="{DynamicResource RoundGrid}" Margin="0,160,0,90" Background="White">
+        <Grid Margin="0,160,0,90" Background="White">
             <Grid.RowDefinitions>
                 <RowDefinition Height="33"/>
                 <RowDefinition Height="*"/>

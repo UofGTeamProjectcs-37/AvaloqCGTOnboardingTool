@@ -66,7 +66,7 @@ namespace CGTOnboardingTool.Views
                 // Read in all user input 
                 Security userInputSecurity = (Security)DropBuildSecurities.SelectedItem;
                 DateOnly userInputDate = ParseDate(TxtBuildDate.Text);
-                Decimal userInputQuantity = Convert.ToDecimal(TxtBuildQuantity.Text);
+                Decimal userInputQuantity = Convert.ToDecimal(TxtBuildQuantity_P_C.Text);
                 Decimal userInputPrice = Convert.ToDecimal(TxtBuildPrice.Text);
                 Decimal userInputCost = Convert.ToDecimal(TxtBuildCost.Text);
 
@@ -82,16 +82,16 @@ namespace CGTOnboardingTool.Views
         private bool Validate()
         {
             // Resets any previous incorrect validations
-            BuildComboBoxBorder.BorderThickness = new Thickness(0);
+            //BuildComboBoxBorder.BorderThickness = new Thickness(0);
             TxtBuildDate.BorderThickness = new Thickness(0);
-            TxtBuildQuantity.BorderThickness = new Thickness(0);
+            //TxtBuildQuantity.BorderThickness = new Thickness(0);
             TxtBuildPrice.BorderThickness = new Thickness(0);
             TxtBuildCost.BorderThickness = new Thickness(0);
 
             if ((Security)DropBuildSecurities.SelectedItem == null)
             {
                 DropBuildSecurities.Text = "Please Select a Security";
-                BuildComboBoxBorder.BorderThickness = new Thickness(5);
+                //BuildComboBoxBorder.BorderThickness = new Thickness(5);
                    
                 return true;
             }
@@ -109,18 +109,18 @@ namespace CGTOnboardingTool.Views
                 return true;
             }
 
-            try
-            {
-                Convert.ToDecimal(TxtBuildQuantity.Text);
-            }
-            catch
-            {
-                TxtBuildQuantity.BorderThickness = new Thickness(5);
-                TxtBuildQuantity.Text = "";
-                TextBoxHelper.SetWatermark(TxtBuildQuantity, "Please ensure Quantity only Contains Integers and/or is in Decimal Format");
+            //try
+            //{
+            //    Convert.ToDecimal(TxtBuildQuantity.Text);
+            //}
+            //catch
+            //{
+            //    TxtBuildQuantity.BorderThickness = new Thickness(5);
+            //    TxtBuildQuantity.Text = "";
+            //    TextBoxHelper.SetWatermark(TxtBuildQuantity, "Please ensure Quantity only Contains Integers and/or is in Decimal Format");
 
-                return true;
-            }
+            //    return true;
+            //}
 
             try
             {

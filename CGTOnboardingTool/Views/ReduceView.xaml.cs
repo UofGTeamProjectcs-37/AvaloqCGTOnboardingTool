@@ -49,7 +49,7 @@ namespace CGTOnboardingTool.Views
                 // Read in all user input
                 var userInputSecurity = DropReduceSecurities.SelectedItem as Security;
                 var userInputDate = ParseDate(TxtReduceDate.Text);
-                var userInputQuantity = Convert.ToDecimal(TxtReduceQuantity.Text);
+                var userInputQuantity = Convert.ToDecimal(TxtReduceQuantity_P_C.Text);
                 var userInputPrice = Convert.ToDecimal(TxtReducePrice.Text);
                 var userInputCost = Convert.ToDecimal(TxtReduceCost.Text);
 
@@ -65,16 +65,16 @@ namespace CGTOnboardingTool.Views
         private bool Validate()
         {
             // Resets any previous incorrect validations
-            ReduceComboBoxBorder.BorderThickness = new Thickness(0);
+            //ReduceComboBoxBorder.BorderThickness = new Thickness(0);
             TxtReduceDate.BorderThickness = new Thickness(0);
-            TxtReduceQuantity.BorderThickness = new Thickness(0);
+            //TxtReduceQuantity.BorderThickness = new Thickness(0);
             TxtReducePrice.BorderThickness = new Thickness(0);
             TxtReduceCost.BorderThickness = new Thickness(0);
 
             if ((Security)DropReduceSecurities.SelectedItem == null)
             {
                 DropReduceSecurities.Text = "Please Select a Security";
-                ReduceComboBoxBorder.BorderThickness = new Thickness(5);
+                //ReduceComboBoxBorder.BorderThickness = new Thickness(5);
 
                 return true;
             }
@@ -92,18 +92,18 @@ namespace CGTOnboardingTool.Views
                 return true;
             }
 
-            try
-            {
-                Convert.ToDecimal(TxtReduceQuantity.Text);
-            }
-            catch
-            {
-                TxtReduceQuantity.BorderThickness = new Thickness(5);
-                TxtReduceQuantity.Text = "";
-                TextBoxHelper.SetWatermark(TxtReduceQuantity, "Please ensure Quantity only Contains Integers and/or is in Decimal Format");
+            //try
+            //{
+            //    Convert.ToDecimal(TxtReduceQuantity.Text);
+            //}
+            //catch
+            //{
+            //    TxtReduceQuantity.BorderThickness = new Thickness(5);
+            //    TxtReduceQuantity.Text = "";
+            //    TextBoxHelper.SetWatermark(TxtReduceQuantity, "Please ensure Quantity only Contains Integers and/or is in Decimal Format");
 
-                return true;
-            }
+            //    return true;
+            //}
 
             try
             {

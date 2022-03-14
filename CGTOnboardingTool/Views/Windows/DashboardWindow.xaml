@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:CGTOnboardingTool.Views.Windows"
         mc:Ignorable="d"
         ResizeMode="CanResize"
-        Height="720" Width="1280" WindowStartupLocation="CenterScreen" WindowTitleBrush="#C7CADC" Background="#C7CADC">
+        Height="720" Width="1280" WindowStartupLocation="CenterScreen" WindowTitleBrush="#C7CADC" Background="#A1A7CB">
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -24,31 +24,33 @@
             </StackPanel>
 
 
+            <Grid Margin="0,180,0,10" Style="{DynamicResource RoundGrid}">
+                <Border Background="#C7CADC"/>
+                <StackPanel>
+                    <Button x:Name="btnBuild" Click="btnBuild_Click" Height="50" Style="{DynamicResource RoundButton}">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Build" FontSize="20" />
+                            <!--Image Source="/Image/Icon/..." /-->
+                        </StackPanel>
+                    </Button>
 
-            <StackPanel Margin="0,180,0,180">
-                <Button x:Name="btnBuild" Click="btnBuild_Click" Height="50">
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="Build" FontSize="20" />
-                        <!--Image Source="/Image/Icon/..." /-->
-                    </StackPanel>
-                </Button>
+                    <Button x:Name="btnReduce" Click="btnReduce_Click" Height="50" Style="{DynamicResource RoundButton}">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Reduce" FontSize="20" />
+                            <!--Image Source="/Image/Icon/..." /-->
+                        </StackPanel>
+                    </Button>
 
-                <Button x:Name="btnReduce" Click="btnReduce_Click" Height="50">
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="Reduce" FontSize="20" />
-                        <!--Image Source="/Image/Icon/..." /-->
-                    </StackPanel>
-                </Button>
+                    <Button x:Name="btnRebuild" Click="btnRebuild_Click" Height="50" Style="{DynamicResource RoundButton}">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Rebuild" FontSize="20" />
+                            <!--Image Source="/Image/Icon/..." /-->
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
 
-                <Button x:Name="btnRebuild" Click="btnRebuild_Click" Height="50">
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="Rebuild" FontSize="20" />
-                        <!--Image Source="/Image/Icon/..." /-->
-                    </StackPanel>
-                </Button>
-            </StackPanel>
-            <Button x:Name="btnAddNewSec" Content="Add New Security" Click="btnAddNewSec_Click" Height="50" FontSize="16" Margin="0,639,0,0" />
-
+                <Button x:Name="btnAddNewSec" Content="Add New Security" Click="btnAddNewSec_Click" Height="50" FontSize="20" Margin="32,413,33,36" Style="{DynamicResource RoundButton}"/>
+            </Grid>
         </Grid>
 
         <Frame x:Name="mainFrame" NavigationUIVisibility="Hidden" Grid.Column="1" Margin="10,5,10,10" Padding="0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"/>

@@ -9,13 +9,16 @@
       mc:Ignorable="d"
       d:DesignHeight="672" d:DesignWidth="1001">
 
-    <Grid>
-        <Grid Background="White" Height="100" VerticalAlignment="Top">
+    <Grid Style="{DynamicResource RoundGrid}">
+        <Border Background="#C7CADC"/>
+
+        <Grid Height="100" VerticalAlignment="Top" Style="{DynamicResource RoundGrid}">
+            <Border Background="#FFFFFF" Opacity="0.5"/>
             <Label x:Name="LblClientName" Height="90" Width="auto" Style="{DynamicResource FunctionHeaderLabel}" Margin="10,0,542,0" VerticalAlignment="Center" FontSize="50"/>
             <Label x:Name="LblTaxYear" Height="auto" Width="auto" Style="{DynamicResource FunctionHeaderLabel}" Margin="700,0,10,0" VerticalAlignment="Center"/>
         </Grid>
 
-        <Grid Margin="0,160,0,90" Background="White">
+        <Grid Margin="0,160,0,90" Background="White" >
             <Grid.RowDefinitions>
                 <RowDefinition Height="33"/>
                 <RowDefinition Height="*"/>
@@ -48,6 +51,6 @@
                 </ListView.View>
             </ListView>
         </Grid>
-        <Button x:Name="btnSave" Content="Save" Height="50" Width="120" HorizontalAlignment="Left" Style="{DynamicResource RoundButton}" Click="btnSave_Click" Margin="10,612,0,10"/>
+        <Button x:Name="btnSave" Content="Save" Height="50" Width="120" HorizontalAlignment="Center" Style="{DynamicResource RoundButton}" Click="btnSave_Click" Margin="0,596,0,26"/>
     </Grid>
 </Page>

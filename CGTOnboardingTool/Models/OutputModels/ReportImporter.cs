@@ -1,5 +1,7 @@
 ﻿using CGTOnboardingTool.Models.DataModels;
 using System.IO;
+using System.Diagnostics;
+
 
 
 namespace CGTOnboardingTool.Models.OutputModels
@@ -16,27 +18,31 @@ namespace CGTOnboardingTool.Models.OutputModels
         // Import a report from txt or csv file
         public void ImportReport() 
         {
-            Stream myStream = null;
-            OpenFileDialog theDialog = new OpenFileDialog();
-            theDialog.Title = "Open Text File";
-            theDialog.Filter = "TXT files|*.txt";
-            theDialog.InitialDirectory = @"C:\";
-            if (theDialog.ShowDialog() == DialogResult.OK)
+            string pathToFile = "";//to save the location of the selected object
+            private void openToolStripMenuItem_Click(object sender, EventArgs e)
             {
-                try
+                OpenFileDialog theDialog = new OpenFileDialog();
+                theDialog.Title = "Open file";
+                theDialog.Filter = "Files |*.txt | *.csv";
+                theDialog.InitialDirectory = @"C:\";
+
+                if (theDialog.ShowDialog() == DialogResult.OK)
                 {
-                    if ((myStream = theDialog.OpenFile()) != null)
+                    MessageBox.Show(theDialog.FileName.ToString());
+                    pathToFile = theDialog.FileName;
+                }
+
+                if (File.Exists(pathToFile))
+                {
+                    string text = "";
+                    using(StreamReader sr = new StreamReader(pathToFile))
                     {
-                        using (myStream)
-                        {
-                        // Insert code to read the stream here.
-                        }
+                        text = sr.ReadToEnd();//all text wil be saved in text enters are also saved
+                        Debug.WriteLine(text);
                     }
-                } catch (Exception ex)
-                {
-                    MessageBox.Show("Error: Could not read file from disk. Error: " + ex.Message);
-                }       
+                }
             }
+
 
 
         }

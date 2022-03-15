@@ -6,6 +6,9 @@ using System;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
+using CGTOnboardingTool.ViewModels;
+using CGTOnboardingTool.Models.DataModels;
+using CGTOnboardingTool.Models.OutputModels;
 
 namespace CGTOnboardingTool.Views
 {
@@ -60,6 +63,13 @@ namespace CGTOnboardingTool.Views
             //cbFilterDateTo.Visibility = Visibility.Hidden;
             //LblReportFilterDateFrom.Visibility = Visibility.Hidden;
             //LblReportFilterDateTo.Visibility = Visibility.Hidden;
+        }
+
+        // Open button functionality
+        private void btnOpen_Click(object sender, RoutedEventArgs e)
+        {
+            ReportLoader importer = new ReportLoader(ref report);
+            importer.ImportReport();
         }
 
         // Save button functionality

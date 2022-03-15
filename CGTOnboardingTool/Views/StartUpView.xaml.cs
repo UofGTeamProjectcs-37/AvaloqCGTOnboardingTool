@@ -14,7 +14,7 @@ namespace CGTOnboardingTool.Views
     {
         private MetroWindow startUpWindow;
         private Frame startUpFrame;
-        
+
         public StartUpView(MetroWindow startUpWindow, Frame startUpFrame)
         {
             InitializeComponent();
@@ -25,7 +25,7 @@ namespace CGTOnboardingTool.Views
         private void StartUpNew_Click(object sender, RoutedEventArgs e)
         {
             ConstructReportViewModel constructReportViewModel = new ConstructReportViewModel();
-            startUpFrame.Navigate(new ConstructReportView(startUpWindow,constructReportViewModel));
+            startUpFrame.Navigate(new ConstructReportView(startUpWindow, constructReportViewModel));
         }
 
         private void StartUpImport_Click(object sender, RoutedEventArgs e)

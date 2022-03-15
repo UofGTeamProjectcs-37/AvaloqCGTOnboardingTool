@@ -8,7 +8,7 @@ namespace CGTOnboardingTool.Models.DataModels
     public class ReportEntry
     {
         public int Id { get; init; }
-        public CGTFunctionBaseViewModel Function { get; init; }
+        public String Function { get; init; }
         public DateOnly Date { get; init; }
         public Security[] Security { get; init; }
         public Dictionary<Security, decimal>? Price { get; init; }
@@ -19,7 +19,8 @@ namespace CGTOnboardingTool.Models.DataModels
         public Dictionary<Security, decimal> Holdings { get; set; }
         public Dictionary<Security, decimal> Section104 { get; set; }
 
-        public ReportEntry(int id, CGTFunctionBaseViewModel function, DateOnly date, Security security, decimal price, decimal quantity, decimal associatedCosts, decimal gainLoss, decimal holdings, decimal section104)
+
+        public ReportEntry(int id, String function, DateOnly date, Security security, decimal quantity, decimal price, decimal associatedCosts, decimal gainLoss, decimal holdings, decimal section104)
         {
             this.Id = id;
             this.Function = function;
@@ -48,7 +49,7 @@ namespace CGTOnboardingTool.Models.DataModels
             };
         }
 
-        public ReportEntry(int id, CGTFunctionBaseViewModel function, DateOnly date, Security security, decimal quantity, decimal gross, decimal gainLoss, decimal holdings, decimal section104)
+        public ReportEntry(int id, String function, DateOnly date, Security security, decimal quantity, decimal gross, decimal gainLoss, decimal holdings, decimal section104)
         {
             this.Id = id;
             this.Function = function;
@@ -74,7 +75,7 @@ namespace CGTOnboardingTool.Models.DataModels
             };
         }
 
-        public ReportEntry(int id, CGTFunctionBaseViewModel function, DateOnly date, Security[] securities, decimal[]? prices, decimal[] quantities, decimal[]? associatedCosts, decimal[] gainLoss, decimal[] holdings, decimal[] section104s)
+        public ReportEntry(int id, String function, DateOnly date, Security[] securities, decimal[]? prices, decimal[] quantities, decimal[]? associatedCosts, decimal[] gainLoss, decimal[] holdings, decimal[] section104s)
         {
             this.Id = id;
             this.Function = function;
@@ -125,7 +126,7 @@ namespace CGTOnboardingTool.Models.DataModels
 
         public String PrintFunction()
         {
-            return Function.GetType().Name;
+            return Function;
         }
 
         public String PrintDate()
@@ -164,7 +165,7 @@ namespace CGTOnboardingTool.Models.DataModels
                 foreach (var k in Price.Keys)
                 {
                     prices.Add(k.ShortName + " : £" + Price[k].ToString());
-                    
+
                 }
                 strPrice += String.Join(",", prices.ToArray());
                 strPrice += "]";
@@ -244,7 +245,7 @@ namespace CGTOnboardingTool.Models.DataModels
                 foreach (var k in GainLoss.Keys)
                 {
                     gainLosses.Add(k.ShortName + " : " + GainLoss[k].ToString());
-                   
+
                 }
                 strGainLoss += String.Join(",", gainLosses.ToArray());
                 strGainLoss += "]";
@@ -292,7 +293,7 @@ namespace CGTOnboardingTool.Models.DataModels
                 List<String> s104s = new List<String>();
                 foreach (var k in Section104.Keys)
                 {
-                    s104s.Add(k.ShortName + " : £" + Section104[k].ToString());
+                    s104s.Add(k.ShortName + " : £" + String.Format("{0:n2}",Section104[k]));
                 }
                 strS104 += String.Join(",", s104s.ToArray());
                 strS104 += "]";
@@ -301,7 +302,7 @@ namespace CGTOnboardingTool.Models.DataModels
             {
                 foreach (var k in Section104.Keys)
                 {
-                    strS104 = "£" + Section104[k].ToString();
+                    strS104 = "£" + String.Format("{0:n2}",Section104[k]);
                 }
             }
             return strS104;

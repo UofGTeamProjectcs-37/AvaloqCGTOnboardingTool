@@ -26,7 +26,7 @@
                 <Label x:Name="LblRebuildOldSecurity" Content="Existing Security" HorizontalAlignment="Left" Margin="118,226,0,408" Style="{DynamicResource FunctionParameterLabel}"/>
                 <Grid x:Name="RebuildComboBoxGridOld" Style="{DynamicResource RoundGrid}" Margin="0,0,164,422">
                     <Border x:Name="RebuildComboBoxOldBorder" Background="#C7CADC" Width="462" Height="34" Margin="375,231,0,-12"/>
-                    <ComboBox x:Name="DropRebuildOldSecurity" IsEditable ="True" IsTextSearchEnabled="True" HorizontalAlignment="Left" Margin="375,231,0,-12" Width="462" Height="34" Text="Enter a Security to Reduce" SelectionChanged="DropRebuildOldSecurity_SelectionChanged"/>
+                    <ComboBox x:Name="DropRebuildOldSecurity" IsEditable ="True" IsTextSearchEnabled="True" HorizontalAlignment="Left" Margin="375,231,0,-12" Width="462" Height="34" Text="Enter a Security to Reduce" />
                 </Grid>
 
                 <Label x:Name="LblRebuildNewSecurity" Content="New Security" HorizontalAlignment="Left" Margin="133,328,0,306" Style="{DynamicResource FunctionParameterLabel}"/>

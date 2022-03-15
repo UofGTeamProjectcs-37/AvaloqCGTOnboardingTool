@@ -1,4 +1,5 @@
-﻿using CGTOnboardingTool.Models.DataModels;
+﻿using CGTOnboardingTool.Models.AccessModels;
+using CGTOnboardingTool.Models.DataModels;
 using CGTOnboardingTool.Models.OutputModels;
 using CGTOnboardingTool.ViewModels;
 using MahApps.Metro.Controls;
@@ -6,9 +7,6 @@ using System;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
-using CGTOnboardingTool.ViewModels;
-using CGTOnboardingTool.Models.DataModels;
-using CGTOnboardingTool.Models.OutputModels;
 
 namespace CGTOnboardingTool.Views
 {
@@ -68,8 +66,16 @@ namespace CGTOnboardingTool.Views
         // Open button functionality
         private void btnOpen_Click(object sender, RoutedEventArgs e)
         {
+            Report report = new Report();
+
             ReportLoader importer = new ReportLoader(ref report);
             importer.ImportReport();
+
+            this.viewModel = new DashboardViewModel(ref report);
+            LblClientName.Content = viewModel.GetClientName();
+            LblTaxYear.Content = viewModel.GetYearStart() + " - " + viewModel.GetYearEnd();
+            display(viewModel.Rows());
+
         }
 
         // Save button functionality

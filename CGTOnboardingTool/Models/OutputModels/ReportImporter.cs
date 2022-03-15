@@ -1,8 +1,11 @@
 ﻿using CGTOnboardingTool.Models.DataModels;
-using System.IO;
+using Microsoft.Win32;
+using System;
+using System.Collections.Generic;
 using System.Diagnostics;
-
-
+using System.IO;
+using System.Text;
+using System.Windows;
 
 namespace CGTOnboardingTool.Models.OutputModels
 {
@@ -19,14 +22,13 @@ namespace CGTOnboardingTool.Models.OutputModels
         public void ImportReport() 
         {
             string pathToFile = "";//to save the location of the selected object
-            private void openToolStripMenuItem_Click(object sender, EventArgs e)
-            {
+            
                 OpenFileDialog theDialog = new OpenFileDialog();
                 theDialog.Title = "Open file";
                 theDialog.Filter = "Files |*.txt | *.csv";
                 theDialog.InitialDirectory = @"C:\";
 
-                if (theDialog.ShowDialog() == DialogResult.OK)
+                if (theDialog.ShowDialog() == true)
                 {
                     MessageBox.Show(theDialog.FileName.ToString());
                     pathToFile = theDialog.FileName;
@@ -41,7 +43,7 @@ namespace CGTOnboardingTool.Models.OutputModels
                         Debug.WriteLine(text);
                     }
                 }
-            }
+            
 
 
 

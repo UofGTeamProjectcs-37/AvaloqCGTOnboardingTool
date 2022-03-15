@@ -1,4 +1,6 @@
-﻿using CGTOnboardingTool.ViewModels;
+﻿using CGTOnboardingTool.Models.AccessModels;
+using CGTOnboardingTool.Models.DataModels;
+using CGTOnboardingTool.ViewModels;
 using MahApps.Metro.Controls;
 using System.Windows;
 using System.Windows.Controls;
@@ -28,7 +30,8 @@ namespace CGTOnboardingTool.Views
 
         private void StartUpImport_Click(object sender, RoutedEventArgs e)
         {
-            ReportImporter importer = new ReportImporter(ref report);
+            Report report = new Report();
+            ReportLoader importer = new ReportLoader(ref report);
             importer.ImportReport();
         }
     }

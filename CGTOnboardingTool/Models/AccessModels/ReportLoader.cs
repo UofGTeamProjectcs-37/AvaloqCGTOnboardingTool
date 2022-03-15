@@ -7,13 +7,13 @@ using System.IO;
 using System.Text;
 using System.Windows;
 
-namespace CGTOnboardingTool.Models.OutputModels
+namespace CGTOnboardingTool.Models.AccessModels
 {
-    public class ReportImporter
+    public class ReportLoader
     {
         public Report report;
 
-        public ReportImporter(ref Report report)
+        public ReportLoader(ref Report report)
         {
             this.report = report;
         }

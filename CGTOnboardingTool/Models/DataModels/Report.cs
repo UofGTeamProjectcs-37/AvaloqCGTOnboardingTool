@@ -24,6 +24,11 @@ namespace CGTOnboardingTool.Models.DataModels
         
         private Dictionary<Security, List<Security>> relatedSecurities = new Dictionary<Security, List<Security>>(); // A list of securities that are related through some CGTFunciton
 
+        public Report()
+        {
+            this.reportHeader = new ReportHeader();
+        }
+
         public Report(ReportHeader header)
         {
             this.reportHeader = header;

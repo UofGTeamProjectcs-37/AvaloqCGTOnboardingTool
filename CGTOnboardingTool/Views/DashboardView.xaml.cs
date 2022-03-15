@@ -5,6 +5,7 @@ using System.Windows.Controls;
 using CGTOnboardingTool.ViewModels;
 using CGTOnboardingTool.Models.DataModels;
 using CGTOnboardingTool.Models.OutputModels;
+using CGTOnboardingTool.Models.AccessModels;
 
 namespace CGTOnboardingTool.Views
 {
@@ -78,7 +79,7 @@ namespace CGTOnboardingTool.Views
         // Open button functionality
         private void btnOpen_Click(object sender, RoutedEventArgs e)
         {
-            ReportImporter importer = new ReportImporter(ref report);
+            ReportLoader importer = new ReportLoader(ref report);
             importer.ImportReport();
         }
 

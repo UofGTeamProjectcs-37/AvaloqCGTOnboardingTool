@@ -1,9 +1,11 @@
 ﻿using CGTOnboardingTool.Models.DataModels;
+using CGTOnboardingTool.ViewModels;
+using MahApps.Metro.Controls;
+using MahApps.Metro.Controls.Dialogs;
 using System;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
-using MahApps.Metro.Controls;
 
 namespace CGTOnboardingTool.Views
 {
@@ -12,29 +14,48 @@ namespace CGTOnboardingTool.Views
     /// </summary>
     public partial class RebuildView : Page
     {
-        public Report report;
-        private List<Security> securities;
+        private MetroWindow window;
+        private RebuildViewModel viewModel;
 
-        public RebuildView(ref Report report)
+        public RebuildView(MetroWindow window, RebuildViewModel viewModel)
         {
             InitializeComponent();
-            this.report = report;
+            this.window = window;
+            this.viewModel = viewModel;
+            initExistingSecuirtyDropdown();
+            initBuildSecurityDropdown();
+        }
 
-            // Create securities to show in drop-down menu 
-            Security gsk = new Security("GlaxoSmithKline", "GSK");
-            Security fgp = new Security("FGP Systems", "FGP");
-            Security ibe = new Security("Iberdrola", "IBE");
-            Security tsla = new Security("Tesla", "TSLA");
-            Security aapl = new Security("Apple", "AAPL");
+        private void initExistingSecuirtyDropdown()
+        {
+            List<DropDownItem> selections = new List<DropDownItem>();
 
-            securities = new List<Security>();
-            securities.Add(gsk);
-            securities.Add(fgp);
-            securities.Add(ibe);
-            securities.Add(tsla);
-            securities.Add(aapl);
+            Security[] securities = viewModel.GetSecuritiesExisting();
+            foreach (Security security in securities)
+            {
+                DropDownItem dropDownItem = new DropDownItem();
+                dropDownItem.Text = security.ToString();
+                dropDownItem.Value = security;
+                selections.Add(dropDownItem);
+            }
 
-            DropRebuildOldSecurity.ItemsSource = this.report.GetSecurities();
+            DropRebuildOldSecurity.ItemsSource = selections;
+        }
+
+        private void initBuildSecurityDropdown()
+        {
+            List<DropDownItem> selections = new List<DropDownItem>();
+
+            Security[] securities = viewModel.GetSecuritiesBuild();
+            foreach (Security security in securities)
+            {
+                DropDownItem dropDownItem = new DropDownItem();
+                dropDownItem.Text = security.ToString();
+                dropDownItem.Value = security;
+                selections.Add(dropDownItem);
+            }
+
+            DropRebuildNewSecurity.ItemsSource = selections;
         }
 
         // Function to split user given date
@@ -51,47 +72,62 @@ namespace CGTOnboardingTool.Views
         // Cancel button navigation
         private void BtnRebuildCancel_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new DashboardView(ref report));
+            Report report = viewModel.GetReport();
+            DashboardViewModel dashViewModel = new DashboardViewModel(ref report);
+            this.NavigationService.Navigate(new DashboardView(window, dashViewModel));
         }
 
         // Do not let user rebuild same security
-        private void DropRebuildOldSecurity_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            DropRebuildNewSecurity.Items.Clear();
+        //private void DropRebuildOldSecurity_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        //{
+        //    DropRebuildNewSecurity.Items.Clear();
 
-            var selected = DropRebuildOldSecurity.SelectedItem;
+        //    var selected = DropRebuildOldSecurity.SelectedItem;
 
-            foreach (var sec in securities)
-            {
-                if (!sec.Equals(selected))
-                {
-                    DropRebuildNewSecurity.Items.Add(sec);
-                }
-            }
-        }
+        //    foreach (var sec in securities)
+        //    {
+        //        if (!sec.Equals(selected))
+        //        {
+        //            DropRebuildNewSecurity.Items.Add(sec);
+        //        }
+        //    }
+        //}
 
         // Save button functionality
         private void BtnRebuild_Click(object sender, RoutedEventArgs e)
         {
             // Returns true if input is not in the correct format
-            bool incorrect = Validate();
+            bool valid = Validate();
 
-            if (!incorrect)
+            if (!valid)
             {
                 // Read in all user input
-                var userInputDate = ParseDate(TxtRebuildDate.Text);
+                viewModel.date = ParseDate(TxtRebuildDate.Text);
 
-                var userInputOldSecurity = DropRebuildOldSecurity.SelectedItem as Security;
-                var userInputNewSecurity = DropRebuildNewSecurity.SelectedItem as Security;
 
-                var userInputOldSecuirtyReduce = Convert.ToDecimal(TxtRebuildOldQuantityReduce.Text);
-                var userInputNewSecuirtyQuantity = Convert.ToDecimal(TxtRebuildNewQuantity.Text);
+                var selectedSecurityOld = DropRebuildOldSecurity.SelectedItem as DropDownItem;
+                viewModel.securityOld = (Security)selectedSecurityOld.Value;
+
+                var selectedSecurityNew = DropRebuildNewSecurity.SelectedItem as DropDownItem;
+                viewModel.securityNew = (Security)selectedSecurityNew.Value;
+
+                viewModel.quantityOldReduce = decimal.Parse(TxtRebuildOldQuantityReduce.Text);
+                viewModel.quantityNewBuild = decimal.Parse(TxtRebuildNewQuantity.Text);
 
                 // Perform the rebuild
-                ViewModels.RebuildViewModel rb = new ViewModels.RebuildViewModel(oldSecurity: userInputOldSecurity, quantityToReduce: userInputOldSecuirtyReduce, newSecurity: userInputNewSecurity, quantityToBuild: userInputNewSecuirtyQuantity, date: userInputDate);
-                rb.perform(ref report);
-
-                this.NavigationService.Navigate(new DashboardView(ref report));
+                int err;
+                string errMessage;
+                viewModel.PerformCGTFunction(out err, out errMessage);
+                if (err == 0)
+                {
+                    Report report = viewModel.GetReport();
+                    DashboardViewModel dashboardViewModel = new DashboardViewModel(ref report);
+                    this.NavigationService.Navigate(new DashboardView(window, dashboardViewModel));
+                }
+                else
+                {
+                    window.ShowMessageAsync("Error: " + (RebuildViewModel.CGTREBUILD_ERROR)err, errMessage);
+                }  
             }
         }
 
@@ -137,7 +173,7 @@ namespace CGTOnboardingTool.Views
             try
             {
                 Convert.ToDecimal(TxtRebuildOldQuantityReduce.Text);
-            } 
+            }
             catch
             {
                 TxtRebuildOldQuantityReduce.BorderThickness = new Thickness(5);

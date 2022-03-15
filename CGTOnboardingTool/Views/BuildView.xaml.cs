@@ -1,9 +1,11 @@
 using CGTOnboardingTool.Models.DataModels;
+using CGTOnboardingTool.ViewModels;
+using MahApps.Metro.Controls;
+using MahApps.Metro.Controls.Dialogs;
 using System;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
-using MahApps.Metro.Controls;
 
 namespace CGTOnboardingTool.Views
 {
@@ -12,71 +14,87 @@ namespace CGTOnboardingTool.Views
     /// </summary>
     public partial class BuildView : Page
     {
-        public Report report;
+        private MetroWindow window;
+        private BuildViewModel viewModel;
+
+        public BuildView(MetroWindow window, BuildViewModel viewModel)
+        {
+            InitializeComponent();
+            this.window = window;
+            this.viewModel = viewModel;
+            initSecurityDropdown();
+        }
+
+        private void initSecurityDropdown()
+        {
+            List<DropDownItem> selections = new List<DropDownItem>();
+
+            Security[] securities = viewModel.GetSecurities();
+            foreach (Security security in securities)
+            {
+                DropDownItem dropDownItem = new DropDownItem();
+                dropDownItem.Text = security.ToString();
+                dropDownItem.Value = security;
+                selections.Add(dropDownItem);
+            }
+
+            DropBuildSecurities.ItemsSource = selections;
+        }
+
+        // Cancel button navigation goes back to frame root page (which should be the dashboard)
+        private void BtnBuildCancel_Click(object sender, RoutedEventArgs e)
+        {
+            Report report = viewModel.GetReport();
+            DashboardViewModel dashViewModel = new DashboardViewModel(ref report);
+            this.NavigationService.Navigate(new DashboardView(window, dashViewModel));
+        }
+
+        //Performs the CGTFunction      
+        private void BtnBuildComplete_Click(object sender, RoutedEventArgs e)
+        {
+            // Returns true if input is not in the correct format
+            bool valid = Validate();
+
+            if (!valid)
+            {
+                // Read in all user input 
+                var selected = DropBuildSecurities.SelectedItem as DropDownItem;
+                viewModel.security = (Security)selected.Value;
+                viewModel.date = ParseDate(TxtBuildDate.Text);
+                viewModel.quantity = decimal.Parse(TxtBuildQuantity.Text);
+                viewModel.pps = decimal.Parse(TxtBuildPrice.Text);
+                viewModel.cost = decimal.Parse(TxtBuildCost.Text);
+
+                // Perform the build 
+                int err;
+                string errMessage;
+                viewModel.PerformCGTFunction(out err, out errMessage);
+                // Display error message
+                if (err == 0)
+                {
+                    Report report = viewModel.GetReport();
+                    DashboardViewModel dashViewModel = new DashboardViewModel(ref report);
+                    this.NavigationService.Navigate(new DashboardView(window, dashViewModel));
+                }
+                else
+                {
+                    window.ShowMessageAsync("Error: " + (BuildViewModel.CGTBUILD_ERROR)err, errMessage);
+                }
+            }
+        }
 
         // Function to split user given date
         private static DateOnly ParseDate(string dateStr)
         {
-            var yymmdd = dateStr.Split('/');
-            int year = int.Parse(yymmdd[0]);
-            int month = int.Parse(yymmdd[1]);
-            int day = int.Parse(yymmdd[2]);
+            var ddmmyyyy = dateStr.Split('/');
+
+            int day = int.Parse(ddmmyyyy[0]);
+            int month = int.Parse(ddmmyyyy[1]);
+            int year = int.Parse(ddmmyyyy[2]);
 
             return new DateOnly(year, month, day);
         }
 
-        public BuildView(ref Report report)
-        {
-            InitializeComponent();
-            this.report = report;
-
-            // Create securities to show in drop-down menu 
-            Security gsk = new Security("GlaxoSmithKline", "GSK");
-            Security fgp = new Security("FGP Systems", "FGP");
-            Security ibe = new Security("Iberdrola", "IBE");
-            Security tsla = new Security("Tesla", "TSLA");
-            Security aapl = new Security("Apple", "AAPL");
-
-            List<Security> securities = new List<Security>();
-            securities.Add(gsk);
-            securities.Add(fgp);
-            securities.Add(ibe);
-            securities.Add(tsla);
-            securities.Add(aapl);
-
-            // Drop-down menu 
-            DropBuildSecurities.ItemsSource = securities;
-            DropBuildSecurities.Text = "Select a Security to BuildView";
-        }
-
-        // Cancel button navigation
-        private void BtnBuildCancel_Click(object sender, RoutedEventArgs e)
-        {
-            this.NavigationService.Navigate(new DashboardView(ref report));
-        }
-
-        // Save button navigation
-        private void BtnBuildComplete_Click(object sender, RoutedEventArgs e)
-        {
-            // Returns true if input is not in the correct format
-            bool incorrect = Validate();
-
-            if (!incorrect)
-            {
-                // Read in all user input 
-                Security userInputSecurity = (Security)DropBuildSecurities.SelectedItem;
-                DateOnly userInputDate = ParseDate(TxtBuildDate.Text);
-                Decimal userInputQuantity = Convert.ToDecimal(TxtBuildQuantity.Text);
-                Decimal userInputPrice = Convert.ToDecimal(TxtBuildPrice.Text);
-                Decimal userInputCost = Convert.ToDecimal(TxtBuildCost.Text);
-
-                // Perform the build 
-                ViewModels.BuildViewModel b = new ViewModels.BuildViewModel(security: userInputSecurity, quantity: userInputQuantity, pps: userInputPrice, cost: userInputCost, date: userInputDate);
-                b.perform(ref report);
-
-                this.NavigationService.Navigate(new DashboardView(ref report));
-            }
-        }
 
         // Checks all inputs are in the correct format
         private bool Validate()
@@ -88,18 +106,18 @@ namespace CGTOnboardingTool.Views
             TxtBuildPrice.BorderThickness = new Thickness(0);
             TxtBuildCost.BorderThickness = new Thickness(0);
 
-            if ((Security)DropBuildSecurities.SelectedItem == null)
+            if (DropBuildSecurities.SelectedItem == null)
             {
                 DropBuildSecurities.Text = "Please Select a Security";
                 BuildComboBoxBorder.BorderThickness = new Thickness(5);
-                   
+
                 return true;
             }
 
             try
             {
                 ParseDate(TxtBuildDate.Text);
-            } 
+            }
             catch
             {
                 TxtBuildDate.BorderThickness = new Thickness(5);
@@ -138,8 +156,8 @@ namespace CGTOnboardingTool.Views
             try
             {
                 Convert.ToDecimal(TxtBuildCost.Text);
-            } 
-            catch 
+            }
+            catch
             {
                 TxtBuildCost.BorderThickness = new Thickness(5);
                 TxtBuildCost.Text = "";
@@ -147,7 +165,6 @@ namespace CGTOnboardingTool.Views
 
                 return true;
             }
-
             return false;
         }
     }

@@ -36,7 +36,7 @@
                     <GridView>
                         <GridViewColumn Header="Function" Width="99" DisplayMemberBinding="{Binding Function}"/>
                         <GridViewColumn Header="Date" Width="99" DisplayMemberBinding="{Binding Date}" HeaderContainerStyle="{DynamicResource InnerColumns}"/>
-                        <GridViewColumn Header="Security" Width="99" DisplayMemberBinding="{Binding Security}" HeaderContainerStyle="{DynamicResource InnerColumns}"/>
+                        <GridViewColumn Header="Security" Width="99" DisplayMemberBinding="{Binding Securities}" HeaderContainerStyle="{DynamicResource InnerColumns}"/>
                         <GridViewColumn Header="Quantity" Width="99" DisplayMemberBinding="{Binding Quantity}" HeaderContainerStyle="{DynamicResource InnerColumns}"/>
                         <GridViewColumn Header="Price" Width="99" DisplayMemberBinding="{Binding Price}" HeaderContainerStyle="{DynamicResource InnerColumns}"/>
                         <GridViewColumn Header="Costs" Width="99" DisplayMemberBinding="{Binding Costs}" HeaderContainerStyle="{DynamicResource InnerColumns}"/>

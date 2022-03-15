@@ -44,16 +44,15 @@ namespace CGTOnboardingTool.Views
                 DropReduceSecurities.ItemsSource = selections;
             }
 
-           
+
         }
 
         // Cancel button navigation
         private void BtnReduceCancel_Click(object sender, RoutedEventArgs e)
         {
-            while (this.NavigationService.CanGoBack)
-            {
-                this.NavigationService.GoBack();
-            }
+            Report report = viewModel.GetReport();
+            DashboardViewModel dashViewModel = new DashboardViewModel(ref report);
+            this.NavigationService.Navigate(new DashboardView(window, dashViewModel));
         }
 
         // Save button functionality
@@ -65,7 +64,8 @@ namespace CGTOnboardingTool.Views
             if (!valid)
             {
                 // Read in all user input
-                viewModel.security = DropReduceSecurities.SelectedItem as Security;
+                var selected = DropReduceSecurities.SelectedItem as DropDownItem;
+                viewModel.security = (Security)selected.Value;
                 viewModel.date = ParseDate(TxtReduceDate.Text);
                 viewModel.quantity = decimal.Parse(TxtReduceQuantity.Text);
                 viewModel.pps = decimal.Parse(TxtReducePrice.Text);
@@ -78,13 +78,15 @@ namespace CGTOnboardingTool.Views
                 // Display error message
                 if (err == 0)
                 {
-                    while (this.NavigationService.CanGoBack)
-                    {
-                        this.NavigationService.GoBack();
-                    }
+                    Report report = viewModel.GetReport();
+                    DashboardViewModel dashboardViewModel = new DashboardViewModel(ref report);
+                    this.NavigationService.Navigate(new DashboardView(window, dashboardViewModel));
+                }
+                else
+                {
+                    window.ShowMessageAsync("Error: " + (BuildViewModel.CGTBUILD_ERROR)err, errMessage);
                 }
 
-                window.ShowMessageAsync("Error: " + (BuildViewModel.CGTBUILD_ERROR)err, errMessage);
             }
         }
 
@@ -110,7 +112,8 @@ namespace CGTOnboardingTool.Views
             TxtReducePrice.BorderThickness = new Thickness(0);
             TxtReduceCost.BorderThickness = new Thickness(0);
 
-            if ((Security)DropReduceSecurities.SelectedItem == null)
+            var selected = DropReduceSecurities.SelectedItem as DropDownItem;
+            if ((Security)selected.Value == null)
             {
                 DropReduceSecurities.Text = "Please Select a Security";
                 ReduceComboBoxBorder.BorderThickness = new Thickness(5);

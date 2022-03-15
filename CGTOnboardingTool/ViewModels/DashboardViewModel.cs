@@ -72,14 +72,14 @@ namespace CGTOnboardingTool.ViewModels
         }
 
         // Author: Areeb Khan
-        public ReportEntry[] FilterByFunction(CGTFunctionBaseViewModel function)
+        public ReportEntry[] FilterByFunction(String function)
         {
             List<ReportEntry> filteredRows = new List<ReportEntry>();
             ReportEntry[] reportRows = report.Rows();
 
             foreach (ReportEntry row in report.Rows())
             {
-                if (row.Function.ToString().Equals(function.ToString()))
+                if (row.Function.Equals(function))
                 {
                     filteredRows.Add(row);
                 }

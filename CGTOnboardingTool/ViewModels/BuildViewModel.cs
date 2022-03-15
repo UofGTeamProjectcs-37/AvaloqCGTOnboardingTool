@@ -43,6 +43,11 @@ namespace CGTOnboardingTool.ViewModels
             this.report = report;
         }
 
+        public Report GetReport()
+        {
+            return this.report;
+        }
+
         public Security[] GetSecurities()
         {
             return SecurityLoader.GetSecurities();
@@ -92,7 +97,7 @@ namespace CGTOnboardingTool.ViewModels
 
             // Add to report 
             var associatedEntry = report.AddUsingQuantityPrice(
-                function: this,
+                function: this.ToString(),
                 date: date,
                 security: security,
                 quantity: quantity,
@@ -124,7 +129,7 @@ namespace CGTOnboardingTool.ViewModels
 
             // Add to report 
             var associatedEntry = report.AddUsingGross(
-                function: this,
+                function: this.ToString(),
                 date: date,
                 security: security,
                 quantity: quantity,

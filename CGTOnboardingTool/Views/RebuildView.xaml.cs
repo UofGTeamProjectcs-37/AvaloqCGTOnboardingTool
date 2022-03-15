@@ -72,10 +72,9 @@ namespace CGTOnboardingTool.Views
         // Cancel button navigation
         private void BtnRebuildCancel_Click(object sender, RoutedEventArgs e)
         {
-            while (this.NavigationService.CanGoBack)
-            {
-                this.NavigationService.GoBack();
-            }
+            Report report = viewModel.GetReport();
+            DashboardViewModel dashViewModel = new DashboardViewModel(ref report);
+            this.NavigationService.Navigate(new DashboardView(window, dashViewModel));
         }
 
         // Do not let user rebuild same security
@@ -105,8 +104,12 @@ namespace CGTOnboardingTool.Views
                 // Read in all user input
                 viewModel.date = ParseDate(TxtRebuildDate.Text);
 
-                viewModel.securityOld = DropRebuildOldSecurity.SelectedItem as Security;
-                viewModel.securityNew = DropRebuildNewSecurity.SelectedItem as Security;
+
+                var selectedSecurityOld = DropRebuildOldSecurity.SelectedItem as DropDownItem;
+                viewModel.securityOld = (Security)selectedSecurityOld.Value;
+
+                var selectedSecurityNew = DropRebuildNewSecurity.SelectedItem as DropDownItem;
+                viewModel.securityNew = (Security)selectedSecurityNew.Value;
 
                 viewModel.quantityOldReduce = decimal.Parse(TxtRebuildOldQuantityReduce.Text);
                 viewModel.quantityNewBuild = decimal.Parse(TxtRebuildNewQuantity.Text);
@@ -117,10 +120,9 @@ namespace CGTOnboardingTool.Views
                 viewModel.PerformCGTFunction(out err, out errMessage);
                 if (err == 0)
                 {
-                    while (this.NavigationService.CanGoBack)
-                    {
-                        this.NavigationService.GoBack();
-                    }
+                    Report report = viewModel.GetReport();
+                    DashboardViewModel dashboardViewModel = new DashboardViewModel(ref report);
+                    this.NavigationService.Navigate(new DashboardView(window, dashboardViewModel));
                 }
                 else
                 {

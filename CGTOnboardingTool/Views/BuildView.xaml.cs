@@ -44,10 +44,9 @@ namespace CGTOnboardingTool.Views
         // Cancel button navigation goes back to frame root page (which should be the dashboard)
         private void BtnBuildCancel_Click(object sender, RoutedEventArgs e)
         {
-            while (this.NavigationService.CanGoBack)
-            {
-                this.NavigationService.GoBack();
-            }
+            Report report = viewModel.GetReport();
+            DashboardViewModel dashViewModel = new DashboardViewModel(ref report);
+            this.NavigationService.Navigate(new DashboardView(window, dashViewModel));
         }
 
         //Performs the CGTFunction      
@@ -59,7 +58,8 @@ namespace CGTOnboardingTool.Views
             if (!valid)
             {
                 // Read in all user input 
-                viewModel.security = (Security)DropBuildSecurities.SelectedItem;
+                var selected = DropBuildSecurities.SelectedItem as DropDownItem;
+                viewModel.security = (Security)selected.Value;
                 viewModel.date = ParseDate(TxtBuildDate.Text);
                 viewModel.quantity = decimal.Parse(TxtBuildQuantity.Text);
                 viewModel.pps = decimal.Parse(TxtBuildPrice.Text);
@@ -72,12 +72,14 @@ namespace CGTOnboardingTool.Views
                 // Display error message
                 if (err == 0)
                 {
-                    while (this.NavigationService.CanGoBack)
-                    {
-                        this.NavigationService.GoBack();
-                    }
+                    Report report = viewModel.GetReport();
+                    DashboardViewModel dashViewModel = new DashboardViewModel(ref report);
+                    this.NavigationService.Navigate(new DashboardView(window, dashViewModel));
                 }
-                window.ShowMessageAsync("Error: " + (BuildViewModel.CGTBUILD_ERROR)err, errMessage);
+                else
+                {
+                    window.ShowMessageAsync("Error: " + (BuildViewModel.CGTBUILD_ERROR)err, errMessage);
+                }
             }
         }
 

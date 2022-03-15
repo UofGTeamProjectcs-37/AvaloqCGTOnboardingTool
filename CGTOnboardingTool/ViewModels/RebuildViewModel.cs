@@ -37,6 +37,21 @@ namespace CGTOnboardingTool.ViewModels
             this.report = report;
         }
 
+        public Report GetReport()
+        {
+            return this.report;
+        }
+
+        public Security[] GetSecuritiesExisting()
+        {
+            return report.GetSecurities();
+        }
+
+        public Security[] GetSecuritiesBuild()
+        {
+            return SecurityLoader.GetSecurities();
+        }
+
         public override ReportEntry? PerformCGTFunction(out int err, out string errMessage)
         {
             var validation = this.validate(out err, out errMessage);
@@ -70,7 +85,7 @@ namespace CGTOnboardingTool.ViewModels
 
                 // Add to report
                 var associatedEntry = report.Add(
-                    function: this,
+                    function: this.ToString(),
                     date: date,
                     securities: new Security[] { securityOld, securityNew },
                     quantities: new decimal[] { (-1 * quantityOldReduce), quantityNewBuild },
@@ -88,16 +103,6 @@ namespace CGTOnboardingTool.ViewModels
                 
                 return null;
             }
-        }
-
-        public Security[] GetSecuritiesExisting()
-        {
-            return report.GetSecurities();
-        }
-
-        public Security[] GetSecuritiesBuild()
-        { 
-            return SecurityLoader.GetSecurities();
         }
 
         private CGTREBUILD_ERROR validate(out int err, out string errMessage)

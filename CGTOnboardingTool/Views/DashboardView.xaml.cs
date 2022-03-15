@@ -178,7 +178,7 @@ namespace CGTOnboardingTool.Views
 
                 string strS104 = row.PrintSection104();
 
-                displayRows.Add(new DisplayRow { Function = strFunction, Date = strDate, Securities = strSecurity, Quantity = strQuantity, Price = strPrice, Cost = strCosts, Gross = strGross, GainLoss = strGainLoss, Holdings = strHoldings, S104 = strS104 });
+                displayRows.Add(new DisplayRow { Function = strFunction, Date = strDate, Securities = strSecurity, Quantity = strQuantity, Price = strPrice, Costs = strCosts, Gross = strGross, GainLoss = strGainLoss, Holdings = strHoldings, S104 = strS104 });
             }
             DashboardReportView.ItemsSource = displayRows;
         }
@@ -256,7 +256,7 @@ namespace CGTOnboardingTool.Views
             public string Securities { get; set; }
             public string Quantity { get; set; }
             public string Price { get; set; }
-            public string Cost { get; set; }
+            public string Costs { get; set; }
             public string Gross { get; set; }
             public string GainLoss { get; set; }
             public string Holdings { get; set; }

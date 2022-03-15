@@ -40,6 +40,11 @@ namespace CGTOnboardingTool.ViewModels
             this.report = report;
         }
 
+        public Report GetReport()
+        {
+            return this.report;
+        }
+
         public Security[] GetSecurities()
         {
             return report.GetSecurities();
@@ -60,7 +65,7 @@ namespace CGTOnboardingTool.ViewModels
                 {
                     err = (int)CGTREDUCE_ERROR.CGTREDUCE_SUCCESS;
                     errMessage = "";
-                    return this.performUsingQuantityPrice();
+                    return this.performUsingQuantityPrice(out err, out errMessage);
                 }
             }
             else
@@ -69,7 +74,7 @@ namespace CGTOnboardingTool.ViewModels
             }
         }
 
-        private ReportEntry performUsingQuantityPrice()
+        private ReportEntry? performUsingQuantityPrice(out int err, out string errMessage)
         {
             // Cast to explicits (non nulls)
             Security security = this.security;
@@ -82,6 +87,13 @@ namespace CGTOnboardingTool.ViewModels
             var S104Current = report.GetSection104(security, date);
             var holdingsCurrent = report.GetHoldings(security, date);
 
+            if (holdingsCurrent == 0)
+            {
+                err = (int)CGTREDUCE_ERROR.CGTREDUCE_INVALID_SECURITY;
+                errMessage = "Invalid Security: No holdings to reduce at date " + date.ToString();
+                return null;
+            }
+
             // Calculate new holdings and the reduction 
             var reductionRatio = quantity / holdingsCurrent;
 
@@ -92,7 +104,7 @@ namespace CGTOnboardingTool.ViewModels
 
             // Add to report
             var associatedEntry = report.AddUsingQuantityPrice(
-              function: this,
+              function: this.ToString(),
               date: date,
               security: security,
               quantity: -1 * quantity,
@@ -103,6 +115,8 @@ namespace CGTOnboardingTool.ViewModels
               section104: S104Updated
               );
 
+            err = 0;
+            errMessage = "SUCCESS";
             return associatedEntry;
         }
 
@@ -129,7 +143,7 @@ namespace CGTOnboardingTool.ViewModels
 
             // Add to report 
             var associatedEntry = report.AddUsingGross(
-                function: this,
+                function: this.ToString(),
                 date: date,
                 security: security,
                 quantity: -1 * quantity,

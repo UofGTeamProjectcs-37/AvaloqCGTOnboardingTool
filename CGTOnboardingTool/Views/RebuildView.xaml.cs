@@ -149,7 +149,7 @@ namespace CGTOnboardingTool.Views
             {
                 TxtRebuildDate.BorderThickness = new Thickness(5);
                 TxtRebuildDate.Text = "";
-                TextBoxHelper.SetWatermark(TxtRebuildDate, "Please ensure Date is in the format (yyyy/mm/dd)");
+                TextBoxHelper.SetWatermark(TxtRebuildDate, "Please ensure Date is in the format (dd/mm/yyyy)");
 
                 return true;
             }

@@ -129,7 +129,7 @@ namespace CGTOnboardingTool.Views
             {
                 TxtReduceDate.BorderThickness = new Thickness(5);
                 TxtReduceDate.Text = "";
-                TextBoxHelper.SetWatermark(TxtReduceDate, "Please ensure Date is in the format (yyyy/mm/dd)");
+                TextBoxHelper.SetWatermark(TxtReduceDate, "Please ensure Date is in the format (dd/mm/yyyy)");
 
                 return true;
             }

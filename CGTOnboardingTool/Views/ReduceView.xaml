@@ -28,7 +28,7 @@
                 </Grid>
 
                 <Label x:Name="LblReduceDate" Content="Date" Margin="72,205,874,429" Style="{DynamicResource FunctionParameterLabel}"/>
-                <TextBox x:Name="TxtReduceDate" Margin="190,209,350,432" Controls:TextBoxHelper.Watermark="Enter The Date Here (yyyy/mm/dd)"/>
+                <TextBox x:Name="TxtReduceDate" Margin="190,209,350,432" Controls:TextBoxHelper.Watermark="Enter The Date Here (dd/mm/yyyy)"/>
 
                 <Label x:Name="LblReduceQuantity" Content="Quantity" HorizontalAlignment="Left" Margin="55,286,0,348" Style="{DynamicResource FunctionParameterLabel}"/>
                 <TextBox x:Name="TxtReduceQuantity" Margin="190,290,350,351" Controls:TextBoxHelper.Watermark="Enter The Quantity of Shares Here"/>

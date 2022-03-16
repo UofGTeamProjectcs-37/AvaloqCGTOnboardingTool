@@ -21,7 +21,7 @@
                 <Border Margin="36,96,36,96" Background="#FFFFFF" Opacity="0.5"/>
 
                 <Label x:Name="LblRebuildDate" Content="Date" HorizontalAlignment="Left" Margin="172,123,0,511" Style="{DynamicResource FunctionParameterLabel}"/>
-                <TextBox x:Name="TxtRebuildDate" Margin="375,126,164,515" Controls:TextBoxHelper.Watermark="Enter The Date Here (yyyy/mm/dd)"/>
+                <TextBox x:Name="TxtRebuildDate" Margin="375,126,164,515" Controls:TextBoxHelper.Watermark="Enter The Date Here (dd/mm/yyyy)"/>
                 
                 <Label x:Name="LblRebuildOldSecurity" Content="Existing Security" HorizontalAlignment="Left" Margin="118,226,0,408" Style="{DynamicResource FunctionParameterLabel}"/>
                 <Grid x:Name="RebuildComboBoxGridOld" Style="{DynamicResource RoundGrid}" Margin="0,0,164,422">

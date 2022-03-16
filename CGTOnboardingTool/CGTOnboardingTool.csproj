@@ -8,6 +8,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="DataAccess\**" />
+    <EmbeddedResource Remove="DataAccess\**" />
+    <None Remove="DataAccess\**" />
+    <Page Remove="DataAccess\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Resources\Images\Logo.png" />
     <None Remove="Resources\Images\University-of-Glasgow.png" />
     <None Remove="Resources\StoredSecurities.txt" />
@@ -27,10 +34,6 @@
     <EmbeddedResource Include="Resources\StoredSecurities.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="DataAccess\" />
   </ItemGroup>
 
 </Project>

@@ -26,7 +26,7 @@
 
 
                 <Label x:Name="LblBuildDate" Content="Date" Margin="103,194,842,439" Style="{DynamicResource FunctionParameterLabel}"/>
-                <TextBox x:Name="TxtBuildDate" Margin="190,187,350,432" Controls:TextBoxHelper.Watermark="Enter The Date Here (yyyy/mm/dd)" Height="34" VerticalAlignment="Center" VerticalContentAlignment="Center"/>
+                <TextBox x:Name="TxtBuildDate" Margin="190,187,350,432" Controls:TextBoxHelper.Watermark="Enter The Date Here (dd/mm/yyyy)" Height="34" VerticalAlignment="Center" VerticalContentAlignment="Center"/>
 
                 <Grid Margin="59,250,580,399">
                     <Border Background="#FFFFFF" Opacity="0.5" CornerRadius="15,15,0,0"/>

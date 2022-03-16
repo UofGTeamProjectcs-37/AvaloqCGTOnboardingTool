@@ -15,33 +15,53 @@
 
             <Label x:Name="LblReduceHeader" Content="Reduce" Margin="843,10,36,0" Style="{DynamicResource FunctionHeaderLabel}"/>
 
-            <Button x:Name="BtnReduce" Content="Reduce" Click="BtnReduce_Click" Margin="187,617,638,8" Style="{DynamicResource RoundButton}"/>
-            <Button x:Name="BtnReduceCancel" Content="Cancel" Click="BtnReduceCancel_Click" Margin="697,617,128,8" Style="{DynamicResource RoundButton}"/>
+            <Button x:Name="BtnReduce" Content="Reduce" Click="BtnReduce_Click" Margin="192,599,634,26" Style="{DynamicResource RoundButton}"/>
+            <Button x:Name="BtnReduceCancel" Content="Cancel" Click="BtnReduceCancel_Click" Margin="697,599,128,26" Style="{DynamicResource RoundButton}"/>
 
             <Grid x:Name="ReduceGridInterior"  Style="{DynamicResource RoundGrid}">
                 <Border Margin="36,96,36,96" Background="#FFFFFF" Opacity="0.5"/>
 
-                <Label x:Name="LblReduceSecurity" Content="Security" HorizontalAlignment="Left" Margin="57,122,0,512" Style="{DynamicResource FunctionParameterLabel}"/>
-                <Grid x:Name="ReduceComboBoxGrid" Style="{DynamicResource RoundGrid}">
-                    <Border x:Name="ReduceComboBoxBorder" Margin="190,126,350,515" Background="#C7CADC" Width="462" Height="34" BorderBrush="Red" BorderThickness="0"/>
-                    <ComboBox x:Name="DropReduceSecurities" IsEditable ="True" IsTextSearchEnabled="True" HorizontalAlignment="Left" Margin="190,126,0,515" Width="462" Text="Enter a Security to Reduce"/>
+                <Label x:Name="LblReduceSecurity" Content="Security" HorizontalAlignment="Left" Margin="89,121,0,513" Style="{DynamicResource FunctionParameterLabel}"/>
+                <ComboBox x:Name="DropReduceSecurities" IsEditable ="True" IsTextSearchEnabled="True" HorizontalAlignment="Left" Margin="190,124.5,0,517" Width="462" Text="Enter a Security to Build"/>
+
+                <Label x:Name="LblReduceDate" Content="Date" Margin="103,194,842,439" Style="{DynamicResource FunctionParameterLabel}"/>
+                <TextBox x:Name="TxtReduceDate" Margin="190,187,350,432" Controls:TextBoxHelper.Watermark="Enter The Date Here (yyyy/mm/dd)" Height="34" VerticalAlignment="Center" VerticalContentAlignment="Center"/>
+
+                <Grid Margin="59,250,580,399">
+                    <Border Background="#FFFFFF" Opacity="0.5" CornerRadius="15,15,0,0"/>
                 </Grid>
 
-                <Label x:Name="LblReduceDate" Content="Date" Margin="72,205,874,429" Style="{DynamicResource FunctionParameterLabel}"/>
-                <TextBox x:Name="TxtReduceDate" Margin="190,209,350,432" Controls:TextBoxHelper.Watermark="Enter The Date Here (yyyy/mm/dd)"/>
+                <Controls:MetroTabControl HorizontalAlignment="Center" Height="306" Margin="0,251,0,0" VerticalAlignment="Top" Width="883" Background="Transparent">
+                    <TabItem x:Name="UsingPriceCost" Header="Using Quantity/Price/Cost" Background="Transparent" Width="auto" Height="auto" Controls:HeaderedControlHelper.HeaderFontSize="16">
+                        <Grid>
+                            <Border Background="#FFFFFF" Opacity="0.5" CornerRadius="0,15,15,15"/>
 
-                <Label x:Name="LblReduceQuantity" Content="Quantity" HorizontalAlignment="Left" Margin="55,286,0,348" Style="{DynamicResource FunctionParameterLabel}"/>
-                <TextBox x:Name="TxtReduceQuantity" Margin="190,290,350,351" Controls:TextBoxHelper.Watermark="Enter The Quantity of Shares Here"/>
+                            <Label x:Name="LblReduceQuantity_P_C" Content="Quantity" HorizontalAlignment="Left" Margin="26,48,0,0" VerticalAlignment="Top" Style="{DynamicResource FunctionParameterLabel}"/>
+                            <TextBox x:Name="TxtReduceQuantity_P_C" Controls:TextBoxHelper.Watermark="Enter The Quantity of Shares Here" Height="34" Width="461.5" Margin="128,52,293,194" VerticalAlignment="Center" VerticalContentAlignment="Center"/>
 
-                <Label x:Name="LblReducePrice" Content="Price" HorizontalAlignment="Left" Margin="72,371,0,263" Style="{DynamicResource FunctionParameterLabel}"/>
-                <TextBox x:Name="TxtReducePrice" Margin="190,373,350,268" Controls:TextBoxHelper.Watermark="Enter The Price per Quantity Here"/>
+                            <Label x:Name="LblReduceCost" Content="Cost" HorizontalAlignment="Left" Margin="45,198,0,0" VerticalAlignment="Top" Style="{DynamicResource FunctionParameterLabel}"/>
+                            <TextBox x:Name="TxtReduceCost" Controls:TextBoxHelper.Watermark="Enter The Price per Quantity Here" Height="34" Width="461.5" Margin="128,123,293,124" VerticalAlignment="Center" VerticalContentAlignment="Center"/>
+                            
+                            <Label x:Name="LblReducePrice" Content="Price" HorizontalAlignment="Left" Margin="43,0,0,0" VerticalAlignment="Center" Style="{DynamicResource FunctionParameterLabel}"/>
+                            <TextBox x:Name="TxtReducePrice" Controls:TextBoxHelper.Watermark="Enter The Allowable Costs Here" Height="34" Width="461.5" Margin="128,201,293,46" VerticalAlignment="Center" VerticalContentAlignment="Center"/>
 
-                <Label x:Name="LblReduceCost" Content="Cost" HorizontalAlignment="Left" Margin="74,452,0,182" Style="{DynamicResource FunctionParameterLabel}"/>
-                <TextBox x:Name="TxtReduceCost" Margin="190,455,350,186" Controls:TextBoxHelper.Watermark="Enter The Allowable Costs Here"/>
+                        </Grid>
+                    </TabItem>
+                    <TabItem x:Name="UsingGross" Header="Using Quantity/Gross" Background="Transparent" Width="auto" Height="auto" Controls:HeaderedControlHelper.HeaderFontSize="16">
+                        <Grid>
+                            <Border Background="#FFFFFF" Opacity="0.5" CornerRadius="0,15,15,15"/>
 
-                <Label x:Name="LblReduceGross" Content="Gross" HorizontalAlignment="Left" Margin="68,534,0,100" Style="{DynamicResource FunctionParameterLabel}"/>
-                <TextBox x:Name="TxtReduceGross" Margin="190,537,350,104" Controls:TextBoxHelper.Watermark="Enter The Gross Here"/>
-                
+                            <Label x:Name="LblReduceQuantity_G" Content="Quantity" HorizontalAlignment="Left" Margin="26,67,0,0" VerticalAlignment="Top" Style="{DynamicResource FunctionParameterLabel}"/>
+                            <TextBox x:Name="TxtReduceQuantity_G" Controls:TextBoxHelper.Watermark="Enter The Quantity of Shares Here" Height="34" Width="461.5" Margin="128,70,293,176" VerticalAlignment="Center" VerticalContentAlignment="Center"/>
+
+                            <Label x:Name="LblReduceGross" Content="Gross" HorizontalAlignment="Left" Margin="40,172,0,0" VerticalAlignment="Top" Style="{DynamicResource FunctionParameterLabel}"/>
+                            <TextBox x:Name="TxtReduceGross" Controls:TextBoxHelper.Watermark="Enter The Gross Here" Margin="128,175,293,70" Height="34" Width="461.5" VerticalAlignment="Center" VerticalContentAlignment="Center"/>
+
+                        </Grid>
+
+                    </TabItem>
+                </Controls:MetroTabControl>
+
             </Grid>
         </Grid>
     </Grid>

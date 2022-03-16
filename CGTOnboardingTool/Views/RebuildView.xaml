@@ -14,32 +14,26 @@
             <Border Margin="7.5,0,15,0" Background="#C7CADC"/>
             <Label x:Name="LblRebuildHeader" Content="Rebuild" Margin="842,10,36,0" Style="{DynamicResource FunctionHeaderLabel}"/>
 
-            <Button x:Name="BtnRebuild" Content="Rebuild" Click="BtnRebuild_Click" Margin="187,617,638,8" Style="{DynamicResource RoundButton}"/>
-            <Button x:Name="BtnRebuildCancel" Content="Cancel" Click="BtnRebuildCancel_Click" Margin="697,617,128,8" Style="{DynamicResource RoundButton}"/>
+            <Button x:Name="BtnRebuild" Content="Rebuild" Click="BtnRebuild_Click" Margin="192,599,634,26" Style="{DynamicResource RoundButton}"/>
+            <Button x:Name="BtnRebuildCancel" Content="Cancel" Click="BtnRebuildCancel_Click" Margin="697,599,128,26" Style="{DynamicResource RoundButton}"/>
 
             <Grid x:Name="BuildGridInterior"  Style="{DynamicResource RoundGrid}">
                 <Border Margin="36,96,36,96" Background="#FFFFFF" Opacity="0.5"/>
 
-                <Label x:Name="LblRebuildDate" Content="Date" HorizontalAlignment="Left" Margin="172,123,0,511" Style="{DynamicResource FunctionParameterLabel}"/>
-                <TextBox x:Name="TxtRebuildDate" Margin="375,126,164,515" Controls:TextBoxHelper.Watermark="Enter The Date Here (yyyy/mm/dd)"/>
-                
-                <Label x:Name="LblRebuildOldSecurity" Content="Existing Security" HorizontalAlignment="Left" Margin="118,226,0,408" Style="{DynamicResource FunctionParameterLabel}"/>
-                <Grid x:Name="RebuildComboBoxGridOld" Style="{DynamicResource RoundGrid}" Margin="0,0,164,422">
-                    <Border x:Name="RebuildComboBoxOldBorder" Background="#C7CADC" Width="462" Height="34" Margin="375,231,0,-12"/>
-                    <ComboBox x:Name="DropRebuildOldSecurity" IsEditable ="True" IsTextSearchEnabled="True" HorizontalAlignment="Left" Margin="375,231,0,-12" Width="462" Height="34" Text="Enter a Security to Reduce" />
-                </Grid>
+                <Label x:Name="LblRebuildDate" Content="Date" HorizontalAlignment="Left" Margin="172,140,0,493" Style="{DynamicResource FunctionParameterLabel}"/>
+                <TextBox x:Name="TxtRebuildDate" Margin="375,148,164,501" Controls:TextBoxHelper.Watermark="Enter The Date Here (yyyy/mm/dd)" VerticalAlignment="Center" VerticalContentAlignment="Center"/>
 
-                <Label x:Name="LblRebuildNewSecurity" Content="New Security" HorizontalAlignment="Left" Margin="133,328,0,306" Style="{DynamicResource FunctionParameterLabel}"/>
-                <Grid x:Name="RebuildComboBoxGridNew" Style="{DynamicResource RoundGrid}" Margin="375,331.5,0,0">
-                    <Border x:Name="RebuildComboBoxNewBorder" Background="#C7CADC" Width="462" Height="34" Margin="0,0,164,310"/>
-                    <ComboBox x:Name="DropRebuildNewSecurity" IsEditable ="True" IsTextSearchEnabled="True" HorizontalAlignment="Left" Margin="0,0,0,310" Width="462" Height="34" Text="Enter a Security to Build"/>
-                </Grid>
+                <Label x:Name="LblRebuildOldSecurity" Content="Existing Security" HorizontalAlignment="Left" Margin="119,230,0,403" Style="{DynamicResource FunctionParameterLabel}"/>
+                <ComboBox x:Name="DropRebuildOldSecurity" IsEditable ="True" IsTextSearchEnabled="True" HorizontalAlignment="Left" Margin="375,234,0,407" Width="462" Height="34" Text="Enter a Security to Reduce"/>
 
-                <Label x:Name="LblRebuildOldQuantityReduce" Content="Reduce Existing Security By" HorizontalAlignment="Left" Margin="66,431,0,203" Style="{DynamicResource FunctionParameterLabel}"/>
-                <TextBox x:Name="TxtRebuildOldQuantityReduce" Margin="375,434,164,207" Controls:TextBoxHelper.Watermark="Enter The Quantity to Reduce Here"/>
+                <Label x:Name="LblRebuildNewSecurity" Content="New Security" HorizontalAlignment="Left" Margin="133,322,0,312" Style="{DynamicResource FunctionParameterLabel}"/>
+                <ComboBox x:Name="DropRebuildNewSecurity" IsEditable ="True" IsTextSearchEnabled="True" HorizontalAlignment="Left" Margin="375,320,0,309" Width="462" Height="34" Text="Enter a Security to Build"/>
 
-                <Label x:Name="LblRebuildNewQuantity" Content="Build New Security By" HorizontalAlignment="Left" Margin="92,534,0,100" Style="{DynamicResource FunctionParameterLabel}"/>
-                <TextBox x:Name="TxtRebuildNewQuantity" Margin="375,538,164,103" Controls:TextBoxHelper.Watermark="Enter The Quantity to Build Here"/>
+                <Label x:Name="LblRebuildOldQuantityReduce" Content="Reduce Existing Security By" HorizontalAlignment="Left" Margin="66,416,0,217" Style="{DynamicResource FunctionParameterLabel}"/>
+                <TextBox x:Name="TxtRebuildOldQuantityReduce" Margin="375,406,164,207" Controls:TextBoxHelper.Watermark="Enter The Quantity to Reduce Here" Height="34" VerticalAlignment="Center" VerticalContentAlignment="Center"/>
+
+                <Label x:Name="LblRebuildNewQuantity" Content="Build New Security By" HorizontalAlignment="Left" Margin="93,512,0,123" Style="{DynamicResource FunctionParameterLabel}"/>
+                <TextBox x:Name="TxtRebuildNewQuantity" Margin="375,492,164,103" Controls:TextBoxHelper.Watermark="Enter The Quantity to Build Here" Height="34" VerticalAlignment="Center" VerticalContentAlignment="Center"/>
 
             </Grid>
         </Grid>

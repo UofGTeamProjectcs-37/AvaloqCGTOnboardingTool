@@ -1,4 +1,6 @@
-﻿using CGTOnboardingTool.ViewModels;
+﻿using CGTOnboardingTool.Models.AccessModels;
+using CGTOnboardingTool.Models.DataModels;
+using CGTOnboardingTool.ViewModels;
 using MahApps.Metro.Controls;
 using System.Windows;
 using System.Windows.Controls;
@@ -12,7 +14,7 @@ namespace CGTOnboardingTool.Views
     {
         private MetroWindow startUpWindow;
         private Frame startUpFrame;
-        
+
         public StartUpView(MetroWindow startUpWindow, Frame startUpFrame)
         {
             InitializeComponent();
@@ -23,7 +25,14 @@ namespace CGTOnboardingTool.Views
         private void StartUpNew_Click(object sender, RoutedEventArgs e)
         {
             ConstructReportViewModel constructReportViewModel = new ConstructReportViewModel();
-            startUpFrame.Navigate(new ConstructReportView(startUpWindow,constructReportViewModel));
+            startUpFrame.Navigate(new ConstructReportView(startUpWindow, constructReportViewModel));
+        }
+
+        private void StartUpImport_Click(object sender, RoutedEventArgs e)
+        {
+            Report report = new Report();
+            ReportLoader importer = new ReportLoader(ref report);
+            importer.ImportReport();
         }
     }
 }

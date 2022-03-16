@@ -5,13 +5,8 @@ namespace CGTOnboardingTool.ViewModels
     // Abstract function for BUC's to subclass 
     public abstract class CGTFunctionBaseViewModel
     {
-        public abstract ReportEntry perform(ref Report report);
+        public abstract ReportEntry? PerformCGTFunction(out int err, out string errMesage);
 
-        public override string ToString()
-        {
-            // Return name of BUC 
-            string[] function = base.ToString().Split('.');
-            return function[2];
-        }
+        public abstract override string ToString();
     }
 }

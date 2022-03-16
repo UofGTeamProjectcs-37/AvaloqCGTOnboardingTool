@@ -1,5 +1,4 @@
 ﻿using CGTOnboardingTool.Models.DataModels;
-using System;
 
 namespace CGTOnboardingTool.ViewModels
 {

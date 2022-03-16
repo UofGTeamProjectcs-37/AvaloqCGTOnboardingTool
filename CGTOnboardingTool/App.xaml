@@ -12,8 +12,67 @@
                 <!-- Theme setting -->
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Themes/Light.Blue.xaml" />
             </ResourceDictionary.MergedDictionaries>
+
+            <Style TargetType="{x:Type Grid}" x:Key="RoundGrid">
+
+                <Style.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="15" />
+                    </Style>
+                </Style.Resources>
+            </Style>
+
+            <Style TargetType="{x:Type Button}" x:Key="RoundButton">
+                <Setter Property="FontFamily" Value="Leelawadee UI Semilight" />
+                <Setter Property="BorderBrush" Value="Transparent"/>
+                <Setter Property="Background" Value="Transparent"/>
+                <Setter Property="Foreground" Value="#5A5A5A"/>
+                <Setter Property="Height" Value="50"/>
+                <Setter Property="Width" Value="176"/>
+                <Setter Property="FontSize" Value="32"/>
+
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border Background="{TemplateBinding Background}" CornerRadius="25">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="Background" Value="#ffffff"/>
+                        <Setter Property="Opacity" Value="0.5"/>
+                        <Setter Property="Foreground" Value="Black"/>
+                    </Trigger>
+                    <Trigger Property="IsPressed" Value="True">
+                        <Setter Property="Background" Value="#5A5A5A"/>
+                        <Setter Property="Foreground" Value="White"/>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+
+            <Style TargetType="{x:Type Label}" x:Key="FunctionHeaderLabel">
+                <Setter Property="FontFamily" Value="Leelawadee UI Semilight" />
+                <Setter Property="Height" Value="86" />
+                <Setter Property="FontSize" Value="36" />
+                <Setter Property="VerticalAlignment" Value="Top"/>
+                <Setter Property="Foreground" Value="#5A5A5A" />
+            </Style>
+
+            <Style TargetType="{x:Type Label}" x:Key="FunctionParameterLabel">
+                <Setter Property="FontFamily" Value="Leelawadee UI Semilight" />
+                <Setter Property="Height" Value="auto" />
+                <Setter Property="FontSize" Value="22" />
+                <Setter Property="Foreground" Value="#5A5A5A" />
+            </Style>
+
         </ResourceDictionary>
 
+
+        
 
         <!--<Style TargetType="{x:Type Window}">
             <Setter Property="FontFamily"

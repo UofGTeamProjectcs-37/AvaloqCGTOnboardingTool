@@ -15,32 +15,53 @@
 
             <Label x:Name="LblBuildHeader" Content="Build" Margin="879,10,36,0" Style="{DynamicResource FunctionHeaderLabel}"/>
 
-            <Button x:Name="BtnBuildComplete" Content="Build" Click="BtnBuildComplete_Click" Margin="187,617,638,8" Style="{DynamicResource RoundButton}"/>
-            <Button x:Name="BtnBuildCancel" Content="Cancel" Margin="697,617,128,8" Click="BtnBuildCancel_Click" Style="{DynamicResource RoundButton}"/>
+            <Button x:Name="BtnBuildComplete" Content="Build" Click="BtnBuildComplete_Click" Margin="192,599,634,26" Style="{DynamicResource RoundButton}"/>
+            <Button x:Name="BtnBuildCancel" Content="Cancel" Margin="697,599,128,26" Click="BtnBuildCancel_Click" Style="{DynamicResource RoundButton}"/>
 
             <Grid x:Name="BuildGridInterior" Style="{DynamicResource RoundGrid}">
                 <Border Margin="36,96,36,96" Background="#FFFFFF" Opacity="0.5"/>
 
-                <Label x:Name="LblBuildSecurity" Content="Security" HorizontalAlignment="Left" Margin="57,123,0,511" Style="{DynamicResource FunctionParameterLabel}"/>
-                <Grid x:Name="BuildComboBoxGrid" Style="{DynamicResource RoundGrid}">
-                    <Border x:Name="BuildComboBoxBorder" Margin="190,128,350,513" Background="#C7CADC" Width="462" Height="34" BorderBrush="Red" BorderThickness="0"/>
-                    <ComboBox x:Name="DropBuildSecurities" IsEditable ="True" IsTextSearchEnabled="True" HorizontalAlignment="Left" Margin="190,128,0,513" Width="462" Text="Enter a Security to Build"/>
+                <Label x:Name="LblBuildSecurity" Content="Security" HorizontalAlignment="Left" Margin="89,121,0,513" Style="{DynamicResource FunctionParameterLabel}"/>
+                <ComboBox x:Name="DropBuildSecurities" IsEditable ="True" IsTextSearchEnabled="True" HorizontalAlignment="Left" Margin="190,124.5,0,517" Width="462" Text="Enter a Security to Build"/>
+
+
+                <Label x:Name="LblBuildDate" Content="Date" Margin="103,194,842,439" Style="{DynamicResource FunctionParameterLabel}"/>
+                <TextBox x:Name="TxtBuildDate" Margin="190,187,350,432" Controls:TextBoxHelper.Watermark="Enter The Date Here (dd/mm/yyyy)" Height="34" VerticalAlignment="Center" VerticalContentAlignment="Center"/>
+
+                <Grid Margin="59,250,580,399">
+                    <Border Background="#FFFFFF" Opacity="0.5" CornerRadius="15,15,0,0"/>
                 </Grid>
 
-                <Label x:Name="LblBuildDate" Content="Date" Margin="72,205,874,429" Style="{DynamicResource FunctionParameterLabel}"/>
-                <TextBox x:Name="TxtBuildDate" Margin="190,209,350,432" Controls:TextBoxHelper.Watermark="Enter The Date Here (yyyy/mm/dd)"/>
+                <Controls:MetroTabControl HorizontalAlignment="Center" Height="306" Margin="0,251,0,0" VerticalAlignment="Top" Width="883" Background="Transparent">
+                    <TabItem x:Name="UsingPriceCost" Header="Using Quantity/Price/Cost" Background="Transparent" Width="auto" Height="auto" Controls:HeaderedControlHelper.HeaderFontSize="16">
+                        <Grid>
+                            <Border Background="#FFFFFF" Opacity="0.5" CornerRadius="0,15,15,15"/>
 
-                <Label x:Name="LblBuildQuantity" Content="Quantity" HorizontalAlignment="Left" Margin="55,286,0,348" Style="{DynamicResource FunctionParameterLabel}"/>
-                <TextBox x:Name="TxtBuildQuantity" Margin="190,290,350,351" Controls:TextBoxHelper.Watermark="Enter The Quantity of Shares Here"/>
+                            <Label x:Name="LblBuildQuantity_P_C" Content="Quantity" HorizontalAlignment="Left" Margin="26,48,0,0" VerticalAlignment="Top" Style="{DynamicResource FunctionParameterLabel}"/>
+                            <TextBox x:Name="TxtBuildQuantity_P_C" Controls:TextBoxHelper.Watermark="Enter The Quantity of Shares Here" Height="34" Width="461.5" Margin="128,52,293,194" VerticalAlignment="Center" VerticalContentAlignment="Center"/>
 
-                <Label x:Name="LblBuildPrice" Content="Price" HorizontalAlignment="Left" Margin="72,369,0,265" Style="{DynamicResource FunctionParameterLabel}"/>
-                <TextBox x:Name="TxtBuildPrice" Margin="190,373,350,268" Controls:TextBoxHelper.Watermark="Enter The Price per Quantity Here"/>
+                            <Label x:Name="LblBuildPrice" Content="Price" HorizontalAlignment="Left" Margin="43,0,0,0" VerticalAlignment="Center" Style="{DynamicResource FunctionParameterLabel}"/>
+                            <TextBox x:Name="TxtBuildPrice" Controls:TextBoxHelper.Watermark="Enter The Price per Quantity Here" Height="34" Width="461.5" Margin="128,123,293,124" VerticalAlignment="Center" VerticalContentAlignment="Center"/>
+                            
+                            <Label x:Name="LblBuildCost" Content="Cost" HorizontalAlignment="Left" Margin="45,198,0,0" VerticalAlignment="Top" Style="{DynamicResource FunctionParameterLabel}"/>
+                            <TextBox x:Name="TxtBuildCost" Controls:TextBoxHelper.Watermark="Enter The Allowable Costs Here" Height="34" Width="461.5" Margin="128,201,293,46" VerticalAlignment="Center" VerticalContentAlignment="Center"/>
+                            
+                        </Grid>
+                    </TabItem>
+                    <TabItem x:Name="UsingGross" Header="Using Quantity/Gross" Background="Transparent" Width="auto" Height="auto" Controls:HeaderedControlHelper.HeaderFontSize="16">
+                        <Grid>
+                            <Border Background="#FFFFFF" Opacity="0.5" CornerRadius="0,15,15,15"/>
 
-                <Label x:Name="LblBuildCost" Content="Cost" HorizontalAlignment="Left" Margin="74,452,0,182" Style="{DynamicResource FunctionParameterLabel}"/>
-                <TextBox x:Name="TxtBuildCost" Margin="190,455,350,186" Controls:TextBoxHelper.Watermark="Enter The Allowable Costs Here"/>
+                            <Label x:Name="LblBuildQuantity_G" Content="Quantity" HorizontalAlignment="Left" Margin="26,67,0,0" VerticalAlignment="Top" Style="{DynamicResource FunctionParameterLabel}"/>
+                            <TextBox x:Name="TxtBuildQuantity_G" Controls:TextBoxHelper.Watermark="Enter The Quantity of Shares Here" Height="34" Width="461.5" Margin="128,70,293,176" VerticalAlignment="Center" VerticalContentAlignment="Center"/>
 
-                <Label x:Name="LblBuildGross" Content="Gross" HorizontalAlignment="Left" Margin="68,534,0,100" Style="{DynamicResource FunctionParameterLabel}"/>
-                <TextBox x:Name="TxtBuildGross" Margin="190,537,350,104" Controls:TextBoxHelper.Watermark="Enter The Gross Here"/>
+                            <Label x:Name="LblBuildGross" Content="Gross" HorizontalAlignment="Left" Margin="40,172,0,0" VerticalAlignment="Top" Style="{DynamicResource FunctionParameterLabel}"/>
+                            <TextBox x:Name="TxtBuildGross" Controls:TextBoxHelper.Watermark="Enter The Gross Here" Margin="128,175,293,70" Height="34" Width="461.5" VerticalAlignment="Center" VerticalContentAlignment="Center"/>
+
+                        </Grid>
+
+                    </TabItem>
+                </Controls:MetroTabControl>
             </Grid>
         </Grid>
     </Grid>

@@ -136,8 +136,6 @@ namespace CGTOnboardingTool.Views
         {
             // Resets any previous incorrect validations
             TxtRebuildDate.BorderThickness = new Thickness(0);
-            RebuildComboBoxOldBorder.BorderThickness = new Thickness(0);
-            RebuildComboBoxNewBorder.BorderThickness = new Thickness(0);
             TxtRebuildOldQuantityReduce.BorderThickness = new Thickness(0);
             TxtRebuildNewQuantity.BorderThickness = new Thickness(0);
 
@@ -149,7 +147,7 @@ namespace CGTOnboardingTool.Views
             {
                 TxtRebuildDate.BorderThickness = new Thickness(5);
                 TxtRebuildDate.Text = "";
-                TextBoxHelper.SetWatermark(TxtRebuildDate, "Please ensure Date is in the format (yyyy/mm/dd)");
+                TextBoxHelper.SetWatermark(TxtRebuildDate, "Please ensure Date is in the format (dd/mm/yyyy)");
 
                 return true;
             }
@@ -157,7 +155,6 @@ namespace CGTOnboardingTool.Views
             if ((Security)DropRebuildOldSecurity.SelectedItem == null)
             {
                 DropRebuildOldSecurity.Text = "Please Select a Security";
-                RebuildComboBoxOldBorder.BorderThickness = new Thickness(5);
 
                 return true;
             }
@@ -165,7 +162,6 @@ namespace CGTOnboardingTool.Views
             if ((Security)DropRebuildNewSecurity.SelectedItem == null)
             {
                 DropRebuildNewSecurity.Text = "Please Select a Security";
-                RebuildComboBoxNewBorder.BorderThickness = new Thickness(5);
 
                 return true;
             }

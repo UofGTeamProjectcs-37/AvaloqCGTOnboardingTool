@@ -1,0 +1,18 @@
+﻿<Controls:MetroWindow x:Class="CGTOnboardingTool.Views.Windows.AddSecurityWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CGTOnboardingTool.Views.Windows"
+        mc:Ignorable="d"
+        Title="AddSecurity" TitleCharacterCasing="Normal" Height="450" Width="600" WindowStartupLocation="CenterScreen" WindowTitleBrush="#C7CADC" Background="#C7CADC">
+    <Grid>
+        <TextBox x:Name="TxtAddNewShort" Controls:TextBoxHelper.Watermark="Enter Security ShortHand Here" HorizontalAlignment="Left" Height="33" TextWrapping="Wrap" VerticalAlignment="Top" Width="265" FontSize="14" VerticalContentAlignment="Center" Margin="186,118,0,0"/>
+        <TextBox x:Name="TxtAddNewName" Controls:TextBoxHelper.Watermark="Enter Security Name Here" HorizontalAlignment="Left" Height="33" TextWrapping="Wrap" VerticalAlignment="Top" Width="264" FontSize="14" VerticalContentAlignment="Center" Margin="186,184,0,0"/>
+
+        <Button x:Name="btnAddNew" Content="Add New" Style="{DynamicResource RoundButton}" Click="btnAddNew_Click" Margin="82,276,377,105"/>
+        <Button x:Name="btnImport" Content="Import" Style="{DynamicResource RoundButton}" Click="btnImport_Click" Margin="379,276,78,105"/>
+        <Button x:Name="btnCancel" Content="Cancel" Style="{DynamicResource RoundButton}" Click="btnCancel_Click" Margin="280,357,158,24"/>
+    </Grid>
+</Controls:MetroWindow>

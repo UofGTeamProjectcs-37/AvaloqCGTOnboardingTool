@@ -1,6 +1,5 @@
 ﻿using CGTOnboardingTool.Models.DataModels;
 using Microsoft.Win32;
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
@@ -9,15 +8,9 @@ namespace CGTOnboardingTool.Models.OutputModels
 {
     public class ReportExporter
     {
-        public Report report;
-
-        public ReportExporter(ref Report report)
-        {
-            this.report = report;
-        }
-
+        // Author: Joachim Vanneste
         // Export the report rows to txt or csv file
-        public void ExportToText()
+        public static void ExportToCSV(ref Report report)
         {
             // List of current rows in the report
             List<ReportEntry> t = new List<ReportEntry>(report.Rows());
@@ -32,8 +25,6 @@ namespace CGTOnboardingTool.Models.OutputModels
             saveFile.FilterIndex = 2;
             saveFile.RestoreDirectory = true;
             UnicodeEncoding uniEncoding = new UnicodeEncoding();
-
-           
 
             if (saveFile.ShowDialog() == true)
             {
@@ -57,8 +48,6 @@ namespace CGTOnboardingTool.Models.OutputModels
                     myStream.Close();
                 }
             }
-
-            
         }
     }
 }

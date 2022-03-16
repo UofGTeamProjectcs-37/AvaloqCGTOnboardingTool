@@ -7,4 +7,30 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="Resources\Images\Logo.png" />
+    <None Remove="Resources\Images\University-of-Glasgow.png" />
+    <None Remove="Resources\StoredSecurities.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MahApps.Metro" Version="2.4.9" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Images\Logo.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\University-of-Glasgow.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <EmbeddedResource Include="Resources\StoredSecurities.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="DataAccess\" />
+  </ItemGroup>
+
 </Project>

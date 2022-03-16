@@ -8,29 +8,44 @@ namespace CGTOnboardingTool.Models.DataModels
     //Author: Aidan Neil
     public class Report
     {
-        private LinkedList<ReportEntry> entries; // A linked list holding all report entries in cronilogical order
-        private List<ReportEntry> entriesUnordered; // A list of entries in the order that they are entered
+        private ReportHeader reportHeader;
 
-        private int count; // Number of entries in a report
-        private List<Security> securities; // All the secuirties that have been referenced within a report
-        private List<CGTFunctionBaseViewModel> functionsUsed = new List<CGTFunctionBaseViewModel>();
+        private int count = 0; // Number of entries in a report
+        private LinkedList<ReportEntry> entries = new LinkedList<ReportEntry>(); // A linked list holding all report entries in cronilogical order
+        private List<ReportEntry> entriesUnordered = new List<ReportEntry>(); // A list of entries in the order that they are entered
 
-        private Dictionary<DateOnly, List<ReportEntry>> dateEntries; // The entries that have happened on a given date
-        private Dictionary<Security, List<DateOnly>> securityDates; // The dates where there has been an action on a security
-        private Dictionary<Security, List<ReportEntry>> securityEntries; // The cronilogical ordering of entries related to a security
-        
+        private List<Security> securities = new List<Security>(); // All the secuirties that have been referenced within a report
 
-        private Dictionary<Security, List<Security>> relatedSecurities; // A list of securities that are related through some CGTFunciton
+        private Dictionary<DateOnly, List<ReportEntry>> dateEntries = new Dictionary<DateOnly, List<ReportEntry>>(); // The entries that have happened on a given date
+        private Dictionary<Security, List<DateOnly>> securityDates = new Dictionary<Security, List<DateOnly>>(); // The dates where there has been an action on a security
+        private Dictionary<Security, List<ReportEntry>> securityEntries = new Dictionary<Security, List<ReportEntry>>(); // The cronilogical ordering of entries related to a security
+
+        private List<String> functionsUsed = new List<String>();
+        private Dictionary<Security, List<Security>> relatedSecurities = new Dictionary<Security, List<Security>>(); // A list of securities that are related through some CGTFunciton
 
         public Report()
         {
-            this.entries = new LinkedList<ReportEntry>();
-            this.entriesUnordered = new List<ReportEntry>();
-            this.count = 0;
-            this.securities = new List<Security>();
-            this.securityDates = new Dictionary<Security, List<DateOnly>>();
-            this.securityEntries = new Dictionary<Security, List<ReportEntry>>();
-            this.relatedSecurities = new Dictionary<Security, List<Security>>();
+            this.reportHeader = new ReportHeader();
+        }
+
+        public Report(ReportHeader header)
+        {
+            this.reportHeader = header;
+        }
+
+        public string GetClientName()
+        {
+            return reportHeader.ClientName;
+        }
+
+        public int GetYearStart()
+        {
+            return reportHeader.DateStart;
+        }
+
+        public int GetYearEnd()
+        {
+            return reportHeader.DateEnd;
         }
 
         public ReportEntry[] Rows()
@@ -57,13 +72,15 @@ namespace CGTOnboardingTool.Models.DataModels
         //
         // Given a security, adds it to the overall report alongside the date of the action.
         // Appends to securities and adds to securityDates[s] in sorted order.
-        private void AddSecurityActionDate(Security security, DateOnly date)
+        private void addSecurityActionDate(Security security, DateOnly date)
         {
             if (!this.HasSecurity(security))
             {
                 this.securities.Add(security);
+
                 List<DateOnly> dateList = new List<DateOnly> { date };
                 this.securityDates.Add(security, dateList);
+
                 List<ReportEntry> entryList = new List<ReportEntry>();
                 this.securityEntries.Add(security, entryList);
             }
@@ -83,12 +100,112 @@ namespace CGTOnboardingTool.Models.DataModels
             }
         }
 
-        public CGTFunctionBaseViewModel[] GetFunctionsUsed()
+        public String[] GetFunctionsUsed()
         {
             return functionsUsed.ToArray();
         }
 
-        public ReportEntry Add(CGTFunctionBaseViewModel function, DateOnly date, Security security, decimal price, decimal quantity, decimal associatedCosts, decimal gainLoss, decimal section104)
+        private void addFunction(String function)
+        {
+            if (!functionsUsed.Contains(function))
+            {
+                functionsUsed.Add(function);
+            }
+        }
+
+
+        public ReportEntry AddUsingQuantityPrice(String function, DateOnly date, Security security, decimal quantity, decimal price, decimal associatedCosts, decimal gainLoss, decimal holdings, decimal section104)
+        {
+            this.addFunction(function);
+
+            this.addSecurityActionDate(security, date);
+
+            var newEntry = new ReportEntry(
+                id: count++,
+                function: function,
+                date: date,
+                security: security,
+                quantity: quantity,
+                price: price,
+                associatedCosts: associatedCosts,
+                gainLoss: gainLoss,
+                holdings: holdings,
+                section104: section104
+                ); 
+
+            securityEntries[security].Add(newEntry);
+            entries.AddLast(newEntry);
+
+            return newEntry;
+        }
+
+        public ReportEntry AddUsingGross(String function, DateOnly date, Security security, decimal quantity, decimal gross, decimal gainLoss, decimal holdings, decimal section104)
+        {
+            this.addFunction(function);
+
+            this.addSecurityActionDate(security, date);
+
+            var newEntry = new ReportEntry(
+                id: count++,
+                function: function,
+                date: date,
+                security: security,
+                quantity: quantity,
+                gross: gross,
+                gainLoss: gainLoss,
+                holdings: holdings,
+                section104: section104
+                );
+
+            securityEntries[security].Add(newEntry);
+            entries.AddLast(newEntry);
+
+
+            return newEntry;
+        }
+
+        public ReportEntry AddUsingQuantityPrice(String function, DateOnly date, Security[] securities, decimal[] quantities, decimal[] prices, decimal[] costs, decimal[] gainLoss, decimal[] holdings, decimal[] section104)
+        {
+            addFunction(function);
+
+            throw new NotImplementedException();
+        }
+
+        public ReportEntry AddUsingGross(String function, DateOnly date, Security[] securities, decimal[] quantities, decimal[] grosses, decimal[] gainLosses, decimal[] holdings, decimal[] section104s)
+        {
+            throw new NotImplementedException();
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        public ReportEntry Add(String function, DateOnly date, Security security, decimal price, decimal quantity, decimal associatedCosts, decimal gainLoss, decimal section104, decimal gross)
         {
             if (!functionsUsed.Contains(function))
             {
@@ -96,7 +213,7 @@ namespace CGTOnboardingTool.Models.DataModels
             }
 
             // 1. Add security action
-            this.AddSecurityActionDate(security, date);
+            this.addSecurityActionDate(security, date);
 
             // 2. Calculate what the updated holdings will be
             var holdings = this.GetHoldings(security, date) + quantity;
@@ -140,7 +257,7 @@ namespace CGTOnboardingTool.Models.DataModels
                 entries.AddLast(newEntry);
             }
 
-            if (dateIndex ==  0)
+            if (dateIndex == 0)
             {
                 //
             }
@@ -165,14 +282,14 @@ namespace CGTOnboardingTool.Models.DataModels
             return newEntry;
         }
 
-        public ReportEntry Add(CGTFunctionBaseViewModel function, DateOnly date, Security[] securities, decimal[] quantities, decimal[] gainLosses, decimal[] section104s)
+        public ReportEntry Add(String function, DateOnly date, Security[] securities, decimal[] quantities, decimal[] gainLosses, decimal[] section104s, decimal[] holdings)
         {
             decimal[] holdingsCurrent = new decimal[securities.Length];
-            decimal[] holdings = new decimal[securities.Length];
+            decimal[] oldholdings = new decimal[securities.Length];
 
             for (int i = 0; i < securities.Length; i++)
             {
-                this.AddSecurityActionDate(security: securities[i], date: date);
+                this.addSecurityActionDate(security: securities[i], date: date);
                 holdingsCurrent[i] = this.GetHoldings(security: securities[i], date: date);
                 holdings[i] = holdingsCurrent[i] + quantities[i];
             }
@@ -188,7 +305,7 @@ namespace CGTOnboardingTool.Models.DataModels
                 gainLoss: gainLosses,
                 holdings: holdings,
                 section104s: section104s
-                ); 
+                );
 
             entriesUnordered.Add(newEntry);
 
@@ -198,14 +315,14 @@ namespace CGTOnboardingTool.Models.DataModels
         }
 
 
-        public ReportEntry Add(CGTFunctionBaseViewModel function, DateOnly date, Security[] securities, decimal[] prices, decimal[] quantities, decimal associatedCost, decimal[] gainLoss, decimal[] section104s)
+        public ReportEntry Add(String function, DateOnly date, Security[] securities, decimal[] prices, decimal[] quantities, decimal associatedCost, decimal[] gainLoss, decimal[] section104s)
         {
             decimal[] currentHoldings = new decimal[securities.Length];
             decimal[] holdings = new decimal[securities.Length];
 
             for (int i = 0; i < securities.Length; i++)
             {
-                this.AddSecurityActionDate(security: securities[i], date: date);
+                this.addSecurityActionDate(security: securities[i], date: date);
                 currentHoldings[i] = this.GetHoldings(security: securities[i], date: date);
                 holdings[i] = currentHoldings[i] + quantities[i];
             }
@@ -223,7 +340,7 @@ namespace CGTOnboardingTool.Models.DataModels
                 holdings: holdings,
                 section104s: section104s
                 );
-            
+
             entriesUnordered.Add(newEntry);
 
             entries.AddLast(newEntry);
@@ -237,28 +354,34 @@ namespace CGTOnboardingTool.Models.DataModels
 
 
 
+
+
+
+
+
         public decimal GetSection104(Security security, DateOnly date)
         {
-            // 1. Get last action date index
+            // 1. Check if the security is not on report - if yes, value is 0
             if (!this.HasSecurity(security))
             {
                 return 0;
             }
+
+            // 2. Get all tge dates related to the security
             var securityActionDates = this.securityDates[security];
+
+            // Last date with index
             var index = securityActionDates.Count - 1;
-            var dateCounter = securityActionDates[index];
-            while (dateCounter >= date && index > -1)
+            var lastDate = securityActionDates[index];
+
+            while (lastDate > date && index > 0)
             {
-                index = index - 1;
-                if (index >= 0)
-                {
-                    dateCounter = securityActionDates[index];
-                }
+                index --;
+                lastDate = securityActionDates[index];
             }
 
-            // 2. Return the S104 at that date using the fetched index
-            if (index == -1)
-            {
+            // If index is 0 and the dates are not equal, then date searching is less than all what is on report and so 0 
+            if (index == 0 && date < lastDate){
                 return 0;
             }
             else
@@ -271,24 +394,27 @@ namespace CGTOnboardingTool.Models.DataModels
 
         public decimal GetHoldings(Security security, DateOnly date)
         {
-            // 1. Get last action date index
+            // 1. Check if the security is not on report - if yes, value is 0
             if (!this.HasSecurity(security))
             {
                 return 0;
             }
+
+            // 2. Get all tge dates related to the security
             var securityActionDates = this.securityDates[security];
+
+            // Last date with index
             var index = securityActionDates.Count - 1;
-            var dateCounter = securityActionDates[index];
-            while (index > -1 && dateCounter >= date)
+            var lastDate = securityActionDates[index];
+
+            while (lastDate > date && index > 0)
             {
-                index = index - 1;
-                if (index >= 0)
-                {
-                    dateCounter = securityActionDates[index];
-                }
+                index--;
+                lastDate = securityActionDates[index];
             }
-            // 2. Return the S104 at that date using the fetched index
-            if (index == -1)
+
+            // If index is 0 and the dates are not equal, then date searching is less than all what is on report and so 0 
+            if (index == 0 && date < lastDate)
             {
                 return 0;
             }
@@ -299,66 +425,6 @@ namespace CGTOnboardingTool.Models.DataModels
                 return entry.Holdings[security];
             }
         }
-
-
-
-        public ReportEntry[] FilterBySecurity(Security search)
-        {
-            List<ReportEntry> filteredRows = new List<ReportEntry>();
-            List<ReportEntry> reportRows = new List<ReportEntry>(this.Rows());
-
-            for (int i = 0; i < this.Count(); i++)
-            {
-                foreach (Security sec in reportRows[i].Security)
-                {
-                    if (sec.Equals(search))
-                    {
-                        filteredRows.Add(reportRows[i]);
-                    }
-                }
-            }
-
-            return filteredRows.ToArray();
-        }
-   
-
-        public ReportEntry[] FilterByDate(DateOnly filterFrom, DateOnly filterTo)
-        {
-
-            List<ReportEntry> filteredRows = new List<ReportEntry>();
-            List<ReportEntry> reportRows = new List<ReportEntry>(this.Rows());
-
-            DateOnly startDate = filterFrom; //change to user input from drop down menu
-            DateOnly endDate = filterTo; //change to user input from drop down menu
-
-            for (int i = 0; i < this.Count(); i++)
-            {
-                if ((reportRows[i].Date<endDate) && (reportRows[i].Date>startDate))
-                {
-                    filteredRows.Add(reportRows[i]);
-                }
-            }
-
-
-            return filteredRows.ToArray();
-        }
-
-        public ReportEntry[] FilterByFunction(CGTFunctionBaseViewModel search)
-        {
-            List<ReportEntry> filteredRows = new List<ReportEntry>();
-            List<ReportEntry> reportRows = new List<ReportEntry>(this.Rows());
-
-            for (int i = 0; i < this.Count(); i++)
-            {
-                if (reportRows[i].Function.Equals(search))
-                {
-                    filteredRows.Add(reportRows[i]);
-                }
-            }
-
-            return filteredRows.ToArray();
-        }
-
 
         private void reflectChanges(ReportEntry associatedEntry)
         {
@@ -376,7 +442,7 @@ namespace CGTOnboardingTool.Models.DataModels
                     sEntries[i].Section104[security] += gainLossChange;
                 }
             }
-              
+
         }
 
     }

@@ -4,19 +4,18 @@ namespace CGTOnboardingTool.Models.DataModels
 {
     public class Security
     {
-        public String Name { get; init; }
         public String ShortName { get; init; }
-        
-        
-        public Security(string Name, String ShortName)
+        public String Name { get; init; }
+
+        public Security(string shortName, String name)
         {
-            this.Name = Name;
-            this.ShortName = ShortName;
+            this.ShortName = shortName;
+            this.Name = name;
         }
 
         public override string ToString()
         {
-            return String.Format("\"{0}\" - {1}", this.ShortName, this.Name);
+            return String.Format("{0} - {1}", this.ShortName, this.Name);
         }
 
 

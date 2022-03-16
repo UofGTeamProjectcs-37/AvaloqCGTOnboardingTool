@@ -118,5 +118,67 @@ namespace UnitTests
         }
 
 
+        [TestMethod]
+        public void rebuildCaclulatesCorrectS104() {
+
+            int err;
+            String errMessage;
+
+            DateOnly date1 = new DateOnly(2021, 9, 12);
+            DateOnly date2 = new DateOnly(2021, 2, 17);
+
+            Security security1 = new Security("GSK", "GlaxoSmithKline");
+            Security security2 = new Security("FGP", "FGP Systems");
+
+            decimal quantity1 = 11;
+            decimal quantity2 = 3;
+
+            decimal pps1 = 1500;
+            decimal pps2 = 500;
+
+            decimal cost1 = 800.23M;
+            decimal cost2 = 26.40M;
+
+
+            ReportHeader header = new ReportHeader();
+            header.ClientName = "John Doe";
+            header.DateStart = 2021;
+            header.DateEnd = 2022;
+            Report report = new Report(header);
+            ReportEntry[] rows = report.Rows();
+
+            BuildViewModel buildGSK = new BuildViewModel(ref report);
+            buildGSK.security = security1;
+            buildGSK.quantity = quantity1;
+            buildGSK.pps = pps1;
+            buildGSK.cost = cost1;
+            buildGSK.date = date1;
+
+
+            BuildViewModel buildFGP = new BuildViewModel(ref report);
+            buildFGP.security = security2;
+            buildFGP.quantity = quantity2;
+            buildFGP.pps = pps2;
+            buildFGP.cost = cost2;
+            buildFGP.date = date2;
+
+
+            buildGSK.PerformCGTFunction(out err, out errMessage);
+            buildFGP.PerformCGTFunction(out err, out errMessage);
+
+
+            RebuildViewModel rebuildGSKFGP = new RebuildViewModel(ref report);
+
+            rebuildGSKFGP.PerformCGTFunction(out err, out errMessage);
+            Debug.WriteLine(report.Count());
+            decimal rebuildS104 = rows[2].Section104[security1];
+
+
+            Assert.AreEqual(18826.63, rebuildS104, "Rebuild S104 incorrect");
+
+
+
+
+        }
     }
 }

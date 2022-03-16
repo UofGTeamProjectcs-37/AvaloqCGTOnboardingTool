@@ -52,21 +52,71 @@ namespace UnitTests
             build_with_gross.PerformCGTFunction(out err, out errMessage);
 
             ReportEntry[] rows = report.Rows();
-            Debug.WriteLine(report.Count());
+    
 
             decimal build_with_pps_S104 = rows[0].Section104[security];
-            Debug.WriteLine(build_with_pps_S104);
             decimal build_with_gross_S104 = rows[1].Section104[security];
-            Debug.WriteLine(build_with_gross_S104);
             decimal assertS104numberpps = 16373.80M;
             decimal asserts104numbergross = 17300.23M;
 
             Assert.AreEqual(assertS104numberpps, build_with_pps_S104, "Build with PPS S104 incorrect");
             Assert.AreEqual(asserts104numbergross , (build_with_gross_S104 + build_with_pps_S104), "Build with gross S104 incorrect");
 
-
-
-
         }
+
+        [TestMethod]
+
+        public void reduceCalcsCorrectS104() {
+            DateOnly date1 = new DateOnly(2021, 6, 26);
+            DateOnly date2 = new DateOnly(2021, 10, 12);
+
+            Security security = new Security("GSK", "GlaxoSmithKline");
+
+            decimal quantity1 = 1000;
+            decimal quantity2 = 1000;
+
+            decimal pps1 = 16.35M;
+            decimal pps2 = 23.82M;
+
+            decimal cost1 = 23.82M;
+            decimal cost2 = 42.50M;
+
+            int err;
+            String errMessage;
+
+            ReportHeader header = new ReportHeader();
+            header.ClientName = "John Doe";
+            header.DateStart = 2021;
+            header.DateEnd = 2022;
+            Report report = new Report(header);
+
+            BuildViewModel buildwithpps = new BuildViewModel(ref report);
+            buildwithpps.security = security;
+            buildwithpps.quantity = quantity1;
+            buildwithpps.pps = pps1;
+            buildwithpps.cost = cost1;
+            buildwithpps.date = date1;
+
+
+            ReduceViewModel reduce = new ReduceViewModel(ref report);
+            reduce.security = security;
+            reduce.quantity = quantity2;
+            reduce.pps = pps2; 
+            reduce.cost = cost2;
+            reduce.date = date2;
+
+            buildwithpps.PerformCGTFunction(out err, out errMessage);
+
+            reduce.PerformCGTFunction(out err, out errMessage);
+
+            ReportEntry[] rows = report.Rows();
+            decimal builds104 = rows[0].Section104[security];
+            decimal reduces104 = rows[1].Section104[security];
+            Debug.WriteLine(builds104);
+            Debug.WriteLine(reduces104);
+            Assert.AreEqual(0, reduces104, "Reduce s104 incorrect");
+        }
+
+
     }
 }

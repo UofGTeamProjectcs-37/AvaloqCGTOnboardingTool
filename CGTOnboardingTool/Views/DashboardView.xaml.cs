@@ -24,6 +24,7 @@ namespace CGTOnboardingTool.Views
         public DashboardView(MetroWindow window, DashboardViewModel viewModel)
         {
             InitializeComponent();
+            this.viewModel = viewModel;
             LblClientName.Content = viewModel.GetClientName();
             LblTaxYear.Content = viewModel.GetYearStart() + " - " + viewModel.GetYearEnd();
             display(viewModel.Rows());
@@ -81,8 +82,8 @@ namespace CGTOnboardingTool.Views
         // Save button functionality
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
-            Report report = DashboardViewModel.GetReport();
-            ReportExporter.ExportToCSV(ref report); ;
+            Report r = viewModel.GetReport();
+            ReportExporter.ExportToCSV(ref r); ;
         }
 
 

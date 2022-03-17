@@ -81,7 +81,7 @@ namespace CGTOnboardingTool.Views
         // Save button functionality
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
-            Report report = viewModel.GetReport();
+            Report report = DashboardViewModel.GetReport();
             ReportExporter.ExportToCSV(ref report); ;
         }
 

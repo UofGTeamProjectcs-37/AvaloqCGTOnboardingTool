@@ -25,7 +25,7 @@ namespace CGTOnboardingTool.Models.AccessModels
             
                 OpenFileDialog theDialog = new OpenFileDialog();
                 theDialog.Title = "Open file";
-                theDialog.Filter = "Files |*.txt | *.csv";
+                theDialog.Filter = "Files | *.txt";
                 theDialog.InitialDirectory = @"C:\";
 
                 if (theDialog.ShowDialog() == true)
@@ -37,11 +37,17 @@ namespace CGTOnboardingTool.Models.AccessModels
                 if (File.Exists(pathToFile))
                 {
                     string text = "";
-                    using(StreamReader sr = new StreamReader(pathToFile))
-                    {
-                        text = sr.ReadToEnd();//all text wil be saved in text enters are also saved
-                        Debug.WriteLine(text);
-                    }
+                    int counter = 0;  
+  
+                    // Read the file and display it line by line.  
+                    foreach (string line in System.IO.File.ReadLines(pathToFile))
+                    {  
+                        Debug.WriteLine(line);  
+                        counter++;  
+                    }  
+                      
+                    System.Console.WriteLine("There were {0} lines.", counter);  
+            
                 }
             
 
@@ -51,3 +57,6 @@ namespace CGTOnboardingTool.Models.AccessModels
 
     }
 }
+
+
+

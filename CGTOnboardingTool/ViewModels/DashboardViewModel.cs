@@ -33,7 +33,7 @@ namespace CGTOnboardingTool.ViewModels
             return report.GetClientName();
         }
 
-        // Author: Areeb Khan
+
         public ReportEntry[] FilterByDate(DateOnly dateFrom, DateOnly dateTo)
         {
             ReportEntry[] reportRows = report.Rows();
@@ -52,7 +52,7 @@ namespace CGTOnboardingTool.ViewModels
             return filteredRows.ToArray();
         }
 
-        // Author: Areeb Khan
+
         public ReportEntry[] FilterBySecuirty(Security security)
         {
             List<ReportEntry> filteredRows = new List<ReportEntry>();
@@ -71,7 +71,7 @@ namespace CGTOnboardingTool.ViewModels
             return filteredRows.ToArray();
         }
 
-        // Author: Areeb Khan
+
         public ReportEntry[] FilterByFunction(String function)
         {
             List<ReportEntry> filteredRows = new List<ReportEntry>();

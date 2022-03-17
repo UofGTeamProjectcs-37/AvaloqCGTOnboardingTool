@@ -69,6 +69,7 @@ namespace CGTOnboardingTool.Views
         {
             Report report = new Report();
 
+
             ReportLoader importer = new ReportLoader(ref report);
             importer.ImportReport();
 

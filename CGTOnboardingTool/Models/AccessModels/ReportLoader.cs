@@ -64,20 +64,14 @@ namespace CGTOnboardingTool.Models.AccessModels
                         DateOnly date = ParseDateInput.DashSeparated(lineArray[1]);
 
                         Security security = new Security(lineArray[1], lineArray[2]);
-                        Debug.WriteLine(security);
                         decimal quantity = Convert.ToDecimal(lineArray[3]); 
-                        Debug.WriteLine(quantity);
                         decimal price = Convert.ToDecimal(lineArray[4]);
-                        Debug.WriteLine(price);
                         decimal cost = Convert.ToDecimal(lineArray[5]);
-                        Debug.WriteLine(cost);
                         decimal gainLoss = Convert.ToDecimal(lineArray[6]);
-                        Debug.WriteLine(gainLoss);
                         decimal holdings = Convert.ToDecimal(lineArray[7]);
-                        Debug.WriteLine(holdings);
                         decimal s104 = Convert.ToDecimal(lineArray[8]);
-                        Debug.WriteLine(s104);
                         ReportEntry entry = new ReportEntry(0, function, date, security, quantity, price, cost, gainLoss, holdings, s104);
+                        Debug.WriteLine(entry);
                     }
                     h++;
                 }

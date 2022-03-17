@@ -26,12 +26,10 @@
 
             <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="10,0,10,0">
                 <Label x:Name="LblReportFilterHeader" Content="Filter By:" Height="33" FontSize="14" Style="{DynamicResource ReportFilterLabel}"/>
-                <ComboBox x:Name="cbFilterType" IsEditable ="False" Height="33" Width="250" HorizontalAlignment="Left" Margin="10,0,0,0" SelectionChanged="cbFilterType_SelectionChanged" SelectedIndex="0">
-                    <ComboBoxItem Content="Date"/>
-                    <ComboBoxItem Content="Security"/>
-                    <ComboBoxItem Content="Function"/>
-                </ComboBox>
-                <DashboardControls:FilterByDate/>
+                <ComboBox x:Name="cbFilterType" IsEditable ="False" Height="33" Width="250" HorizontalAlignment="Left" Margin="10,0,0,0" SelectionChanged="cbFilterType_SelectionChanged"  SelectedIndex="0"/>
+                <StackPanel x:Name="FilterInputContainer">
+
+                </StackPanel>
             </StackPanel>
 
             <ListView Name="DashboardReportView" Grid.Row="1" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="10,0,10,0">

@@ -12,10 +12,24 @@ namespace CGTOnboardingTool.ViewModels
         {
             this.report = report;
         }
+        public Report GetReport()
+        {
+            return this.report;
+        }
 
         public ReportEntry[] Rows()
         {
             return report.Rows();
+        }
+
+        public Security[] GetSecuritiesExisting()
+        {
+            return report.GetSecurities();
+        }
+
+        public String[] GetFunctionsOnReport()
+        {
+            return report.GetFunctionsUsed();
         }
 
         public string GetYearEnd()
@@ -85,11 +99,6 @@ namespace CGTOnboardingTool.ViewModels
                 }
             }
             return filteredRows.ToArray();
-        }
-
-        public Report GetReport()
-        {
-            return this.report;
         }
     }
 }

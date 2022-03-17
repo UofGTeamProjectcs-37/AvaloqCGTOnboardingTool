@@ -1,5 +1,6 @@
 using CGTOnboardingTool.Models.DataModels;
 using CGTOnboardingTool.ViewModels;
+using CGTOnboardingTool.Helpers;
 using MahApps.Metro.Controls;
 using MahApps.Metro.Controls.Dialogs;
 using System;
@@ -60,7 +61,7 @@ namespace CGTOnboardingTool.Views
                 // Read in all user input 
                 var selected = DropBuildSecurities.SelectedItem as DropDownItem;
                 viewModel.security = (Security)selected.Value;
-                viewModel.date = ParseDate(TxtBuildDate.Text);
+                viewModel.date = ParseDateInput.DashSeparated(TxtBuildDate.Text);
                 viewModel.quantity = decimal.Parse(TxtBuildQuantity_P_C.Text);
                 viewModel.pps = decimal.Parse(TxtBuildPrice.Text);
                 viewModel.cost = decimal.Parse(TxtBuildCost.Text);
@@ -83,17 +84,8 @@ namespace CGTOnboardingTool.Views
             }
         }
 
-        // Function to split user given date
-        private static DateOnly ParseDate(string dateStr)
-        {
-            var ddmmyyyy = dateStr.Split('/');
 
-            int day = int.Parse(ddmmyyyy[0]);
-            int month = int.Parse(ddmmyyyy[1]);
-            int year = int.Parse(ddmmyyyy[2]);
 
-            return new DateOnly(year, month, day);
-        }
 
 
         // Checks all inputs are in the correct format
@@ -116,7 +108,7 @@ namespace CGTOnboardingTool.Views
 
             try
             {
-                ParseDate(TxtBuildDate.Text);
+                ParseDateInput.DashSeparated(TxtBuildDate.Text);
             }
             catch
             {

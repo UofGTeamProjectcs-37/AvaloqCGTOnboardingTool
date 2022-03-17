@@ -1,17 +1,18 @@
 ﻿using CGTOnboardingTool.Models.DataModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 
 namespace CGTOnboardingTool.Models.OutputModels
 {
+    // Author: Andrew Bell
     public class SecurityExporter
     {
         public static bool AppendToCSV(string filepath, Security security)
         {
-            return false;
+            using (StreamWriter sw = File.AppendText(filepath))
+            {
+                sw.Write("\n" + security.ShortName + "," + security.Name);
+            }
+            return true;
         }
         public static bool Export(string filepath, Security[] securities)
         {

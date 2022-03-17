@@ -8,11 +8,12 @@
         mc:Ignorable="d"
         Title="AddSecurity" TitleCharacterCasing="Normal" Height="450" Width="600" WindowStartupLocation="CenterScreen" WindowTitleBrush="#C7CADC" Background="#C7CADC">
     <Grid>
-        <TextBox x:Name="TxtAddNewShort" Controls:TextBoxHelper.Watermark="Enter Security ShortHand Here" HorizontalAlignment="Center" Height="33" TextWrapping="Wrap" VerticalAlignment="Top" Width="264" FontSize="14" VerticalContentAlignment="Center" Margin="0,55,0,0"/>
-        <TextBox x:Name="TxtAddNewName" Controls:TextBoxHelper.Watermark="Enter Security Name Here" HorizontalAlignment="Center" Height="33" TextWrapping="Wrap" VerticalAlignment="Top" Width="264" FontSize="14" VerticalContentAlignment="Center" Margin="0,110,0,0"/>
+        <TextBox x:Name="TxtAddNewShort" Controls:TextBoxHelper.Watermark="Enter Security ShortHand Here" HorizontalAlignment="Center" Height="34" TextWrapping="Wrap" VerticalAlignment="Top" Width="264" FontSize="14" VerticalContentAlignment="Center" Margin="0,55,0,0"/>
+        <TextBox x:Name="TxtAddNewName" Controls:TextBoxHelper.Watermark="Enter Security Name Here" HorizontalAlignment="Center" Height="34" TextWrapping="Wrap" VerticalAlignment="Top" Width="264" FontSize="14" VerticalContentAlignment="Center" Margin="0,110,0,0"/>
+        <TextBlock x:Name="TxtBlCompletionMessage" Text="success" Height="auto" Width="auto" Margin="135,364,135,31" FontSize="16"/>
 
         <Button x:Name="btnAddNew" Content="Add New" Style="{DynamicResource RoundButton}" Click="btnAddNew_Click" Height="auto" FontSize="22" Margin="212,179,212,205"/>
-        <Button x:Name="btnImport" Content="Import" Style="{DynamicResource RoundButton}" Click="btnImport_Click" Height="auto" FontSize="22" Margin="212,289,212,95"/>
-        <Button x:Name="btnCancel" Content="Cancel" Style="{DynamicResource RoundButton}" Click="btnCancel_Click" Height="auto" FontSize="22" Margin="212,344,212,40"/>
+        <Button x:Name="btnImport" Content="Import" Style="{DynamicResource RoundButton}" Click="btnImport_Click" Height="auto" FontSize="22" Margin="212,234,212,150"/>
+        <Button x:Name="btnCancel" Content="Cancel" Style="{DynamicResource RoundButton}" Click="btnCancel_Click" Height="auto" FontSize="22" Margin="212,289,212,95"/>
     </Grid>
 </Controls:MetroWindow>

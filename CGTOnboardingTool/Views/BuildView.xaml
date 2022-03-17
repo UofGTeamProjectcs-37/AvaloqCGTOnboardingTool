@@ -11,7 +11,7 @@
 
     <Grid Width="1024" Height="705">
         <Grid x:Name="BuildGrid" Style="{DynamicResource RoundGrid}" Height="675" Width="1001.5">
-            <Border Margin="7.5,0,15,0" Background="#C7CADC"/>
+            <Border Margin="7.5,0,15,0" Background="#FFFFFF" Opacity="0.5"/>
 
             <Label x:Name="LblBuildHeader" Content="Build" Margin="879,10,36,0" Style="{DynamicResource FunctionHeaderLabel}"/>
 

@@ -1,4 +1,5 @@
 ﻿using CGTOnboardingTool.Models.DataModels;
+using System;
 using System.Collections.Generic;
 using System.Windows.Controls;
 
@@ -32,6 +33,12 @@ namespace CGTOnboardingTool.Views.Controls.DashboardView
 
             cbFilterSecurity.ItemsSource = selections;
 
+        }
+
+        public Security? GetSecurity()
+        {
+            var selected = cbFilterSecurity.SelectedItem as DropDownItem;
+            return selected.Value as Security;
         }
     }
 }

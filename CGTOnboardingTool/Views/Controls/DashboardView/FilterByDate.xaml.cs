@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿using System;
+using System.Windows.Controls;
 
 namespace CGTOnboardingTool.Views.Controls.DashboardView
 {
@@ -11,5 +12,16 @@ namespace CGTOnboardingTool.Views.Controls.DashboardView
         {
             InitializeComponent();
         }
+
+        public DateOnly? GetDateFrom()
+        {
+            throw new NotImplementedException();
+        }
+
+        public DateOnly? GetDateTo()
+        {
+            throw new NotImplementedException();
+        }
+
     }
 }

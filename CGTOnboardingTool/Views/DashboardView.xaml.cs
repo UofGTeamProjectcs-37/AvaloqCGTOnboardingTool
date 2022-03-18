@@ -16,11 +16,11 @@ namespace CGTOnboardingTool.Views
     /// </summary>
     public partial class DashboardView : Page
     {
-        DateOnly? filterDateFrom;
-        DateOnly? filterDateTo;
 
         public MetroWindow window;
         public DashboardViewModel viewModel;
+
+        private UIElement filterControl;
 
         private string[] filters = new string[] {
             "Date",
@@ -102,20 +102,66 @@ namespace CGTOnboardingTool.Views
                 //Date
                 if (selected == 0)
                 {
+                    filterControl = new FilterByDate();
                     FilterInputContainer.Children.Clear();
-                    FilterInputContainer.Children.Add(new FilterByDate());
+                    FilterInputContainer.Children.Add(filterControl);
                 }
                 //Security
                 else if (selected == 1)
                 {
+                    filterControl = new FilterBySecurity(this.viewModel.GetSecuritiesExisting());
                     FilterInputContainer.Children.Clear();
-                    FilterInputContainer.Children.Add(new FilterBySecurity(this.viewModel.GetSecuritiesExisting()));
+                    FilterInputContainer.Children.Add(filterControl);
                 }
                 //Function
                 else if (selected == 2)
                 {
+                    filterControl = new FilterByFunction(this.viewModel.GetFunctionsOnReport());
                     FilterInputContainer.Children.Clear();
-                    FilterInputContainer.Children.Add(new FilterByFunction(this.viewModel.GetFunctionsOnReport()));
+                    FilterInputContainer.Children.Add(filterControl);
+                }
+            }
+        }
+        private void BtnFilter_Click(object sender, RoutedEventArgs e)
+        {
+            var selected = cbFilterType.SelectedIndex;
+
+            //Date
+            if (selected == 0)
+            {
+                FilterByDate filter = this.filterControl as FilterByDate;
+
+                DateOnly? dateFrom = filter.GetDateFrom();
+                DateOnly? dateTo = filter.GetDateTo();
+
+                if (dateFrom != null && dateTo != null)
+                {
+                    display(viewModel.FilterByDate((DateOnly)dateFrom, (DateOnly)dateTo));
+                }
+
+            }
+            //Security
+            else if (selected == 1)
+            {
+                FilterBySecurity filter = this.filterControl as FilterBySecurity;
+
+                Security? selected = filter.GetSecurity();
+
+                if (selected != null)
+                {
+                    display(viewModel.FilterBySecuirty(selected));
+                }
+            }
+            //Function
+            else if (selected == 2)
+            {
+                FilterByFunction filter = this.filterControl as FilterByFunction;
+
+                String? selected = filter.GetFunction();
+
+                if (selected != null)
+                {
+                    display(viewModel.FilterByFunction(selected));
                 }
             }
         }
@@ -133,5 +179,7 @@ namespace CGTOnboardingTool.Views
             public string Holdings { get; set; }
             public string S104 { get; set; }
         }
+
+        
     }
 }

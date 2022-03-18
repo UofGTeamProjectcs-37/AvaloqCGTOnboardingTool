@@ -34,5 +34,11 @@ namespace CGTOnboardingTool.Views.Controls.DashboardView
             cbFilterFunction.ItemsSource = selections;
 
         }
+
+        public string? GetFunction()
+        {
+            var selected = cbFilterFunction.SelectedItem as DropDownItem;
+            return selected.Value.ToString();
+        }
     }
 }

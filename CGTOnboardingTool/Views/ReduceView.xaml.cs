@@ -67,9 +67,19 @@ namespace CGTOnboardingTool.Views
                 var selected = DropReduceSecurities.SelectedItem as DropDownItem;
                 viewModel.security = (Security)selected.Value;
                 viewModel.date = ParseDate(TxtReduceDate.Text);
-                viewModel.quantity = decimal.Parse(TxtReduceQuantity_P_C.Text);
-                viewModel.pps = decimal.Parse(TxtReducePrice.Text);
-                viewModel.cost = decimal.Parse(TxtReduceCost.Text);
+
+                if (UsingGross.IsSelected)
+                {
+                    viewModel.quantity = decimal.Parse(TxtReduceQuantity_G.Text);
+                    viewModel.gross = decimal.Parse(TxtReduceGross.Text);
+                    viewModel.usingGross = true;
+                }
+                else
+                {
+                    viewModel.quantity = decimal.Parse(TxtReduceQuantity_P_C.Text);
+                    viewModel.pps = decimal.Parse(TxtReducePrice.Text);
+                    viewModel.cost = decimal.Parse(TxtReduceCost.Text);
+                }
 
                 // Perform the reduce
                 int err;
@@ -134,46 +144,78 @@ namespace CGTOnboardingTool.Views
                 return true;
             }
 
-            //try
-            //{
-            //    Convert.ToDecimal(TxtReduceQuantity.Text);
-            //}
-            //catch
-            //{
-            //    TxtReduceQuantity.BorderThickness = new Thickness(5);
-            //    TxtReduceQuantity.Text = "";
-            //    TextBoxHelper.SetWatermark(TxtReduceQuantity, "Please ensure Quantity only Contains Integers and/or is in Decimal Format");
-
-            //    return true;
-            //}
-
-            try
+            if (UsingGross.IsSelected)
             {
-                Convert.ToDecimal(TxtReducePrice.Text);
+                try
+                {
+                    Convert.ToDecimal(TxtReduceQuantity_G.Text);
+                }
+                catch
+                {
+                    TxtReduceQuantity_G.BorderThickness = new Thickness(5);
+                    TxtReduceQuantity_G.Text = "";
+                    TextBoxHelper.SetWatermark(TxtReduceQuantity_G, "Please ensure Quantity only Contains Integers and/or is in Decimal Format");
+
+                    return true;
+                }
+
+                try
+                {
+                    Convert.ToDecimal(TxtReduceGross.Text);
+                }
+                catch
+                {
+                    TxtReduceGross.BorderThickness = new Thickness(5);
+                    TxtReduceGross.Text = "";
+                    TextBoxHelper.SetWatermark(TxtReduceGross, "Please ensure Gross only Contains Integers and/or is in Decimal Format");
+
+                    return true;
+                }
+                return false;
             }
-            catch
+            else
             {
-                TxtReducePrice.BorderThickness = new Thickness(5);
-                TxtReducePrice.Text = "";
-                TextBoxHelper.SetWatermark(TxtReducePrice, "Please ensure Price only Contains Integers and/or is in Decimal Format");
 
-                return true;
+                try
+                {
+                    Convert.ToDecimal(TxtReduceQuantity_P_C.Text);
+                }
+                catch
+                {
+                    TxtReduceQuantity_P_C.BorderThickness = new Thickness(5);
+                    TxtReduceQuantity_P_C.Text = "";
+                    TextBoxHelper.SetWatermark(TxtReduceQuantity_P_C, "Please ensure Quantity only Contains Integers and/or is in Decimal Format");
+
+                    return true;
+                }
+
+                try
+                {
+                    Convert.ToDecimal(TxtReducePrice.Text);
+                }
+                catch
+                {
+                    TxtReducePrice.BorderThickness = new Thickness(5);
+                    TxtReducePrice.Text = "";
+                    TextBoxHelper.SetWatermark(TxtReducePrice, "Please ensure Price only Contains Integers and/or is in Decimal Format");
+
+                    return true;
+                }
+
+                try
+                {
+                    Convert.ToDecimal(TxtReduceCost.Text);
+                }
+                catch
+                {
+                    TxtReduceCost.BorderThickness = new Thickness(5);
+                    TxtReduceCost.Text = "";
+                    TextBoxHelper.SetWatermark(TxtReduceCost, "Please ensure Cost only Contains Integers and/or is in Decimal Format");
+
+                    return true;
+                }
+                return false;
             }
-
-            try
-            {
-                Convert.ToDecimal(TxtReduceCost.Text);
-            }
-            catch
-            {
-                TxtReduceCost.BorderThickness = new Thickness(5);
-                TxtReduceCost.Text = "";
-                TextBoxHelper.SetWatermark(TxtReduceCost, "Please ensure Cost only Contains Integers and/or is in Decimal Format");
-
-                return true;
-            }
-
-            return false;
         }
     }
 }

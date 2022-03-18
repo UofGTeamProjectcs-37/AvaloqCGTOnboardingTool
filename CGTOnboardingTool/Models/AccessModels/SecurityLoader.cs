@@ -16,9 +16,9 @@ namespace CGTOnboardingTool.Models.AccessModels
             LoadSecurities(StoredPath);
         }
 
-        public static int init()
+        public static void init()
         {
-            return Count();
+            return;
         }
 
         public static int Count()

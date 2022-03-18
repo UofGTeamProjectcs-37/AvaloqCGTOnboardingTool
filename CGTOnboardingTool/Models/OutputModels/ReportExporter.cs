@@ -26,24 +26,49 @@ namespace CGTOnboardingTool.Models.OutputModels
             saveFile.RestoreDirectory = true;
             UnicodeEncoding uniEncoding = new UnicodeEncoding();
 
+            ReportHeader header = report.reportHeader;
+
+
             if (saveFile.ShowDialog() == true)
             {
                 if ((myStream = saveFile.OpenFile()) != null)
                 {
+                    string[] headerDetails = { header.ClientName, "\n" + header.DateStart.ToString(), header.DateEnd.ToString() };
+                    // Join together the report row
+                    char[] headerRow = string.Join(", ", headerDetails).ToCharArray();
+                    // Use stream to write the row as bytes 
+                    myStream.Write(uniEncoding.GetBytes(headerRow));
+                    
                     for (int i = 0; i < report.Count(); i++)
                     {
-
-                        string[] _currentRow = { t[i].Id.ToString(), t[i].Function.ToString(),
-                            t[i].Date.ToString(), t[i].Security[0].Name,t[i].Quantity[t[i].Security[0]].ToString(),
+                        if (t[i].Function == "Build" || t[i].Function == "Reduce")
+                        {
+                            string[] _currentRow = {"\n" + t[i].Function.ToString(),
+                            t[i].Date.ToString(), t[i].Security[0].ShortName.ToString(), t[i].Security[0].Name.ToString().ToString() ,t[i].Quantity[t[i].Security[0]].ToString(),
                             t[i].Price[t[i].Security[0]].ToString(), t[i].AssociatedCosts[0].ToString(),
                             t[i].GainLoss[t[i].Security[0]].ToString(), t[i].Holdings[t[i].Security[0]].ToString(),
-                            t[i].Section104[t[i].Security[0]].ToString(), "\n"};
+                            t[i].Section104[t[i].Security[0]].ToString()};
 
-                        // Join together the report row
-                        char[] row = string.Join(", ", _currentRow).ToCharArray();
+                            // Join together the report row
+                            char[] row = string.Join(", ", _currentRow).ToCharArray();
 
-                        // Use stream to write the row as bytes 
-                        myStream.Write(uniEncoding.GetBytes(row));
+                            // Use stream to write the row as bytes 
+                            myStream.Write(uniEncoding.GetBytes(row));
+                        }
+                        else // the report entry is a rebuild
+                        {
+                            //add old and new securities
+                            string[] _currentRow = {"\nRebuild", t[i].Date.ToString(), t[i].Security[0].ShortName.ToString(), t[i].Security[0].Name.ToString().ToString() ,t[i].Quantity[t[i].Security[0]].ToString(),
+                            t[i].Price[t[i].Security[0]].ToString(), t[i].AssociatedCosts[0].ToString(),
+                            t[i].GainLoss[t[i].Security[0]].ToString(), t[i].Holdings[t[i].Security[0]].ToString(),
+                            t[i].Section104[t[i].Security[0]].ToString()};
+
+                            // Join together the report row
+                            char[] row = string.Join(", ", _currentRow).ToCharArray();
+
+                            // Use stream to write the row as bytes 
+                            myStream.Write(uniEncoding.GetBytes(row));
+                        }
                     }
                     myStream.Close();
                 }

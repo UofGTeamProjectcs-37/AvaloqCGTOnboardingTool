@@ -7,7 +7,7 @@ namespace CGTOnboardingTool.Models.DataModels
     //Author: Aidan Neil
     public class Report
     {
-        private ReportHeader reportHeader;
+        public ReportHeader reportHeader;
 
         private int count = 0; // Number of entries in a report
         private LinkedList<ReportEntry> entries = new LinkedList<ReportEntry>(); // A linked list holding all report entries in cronilogical order
@@ -430,7 +430,7 @@ namespace CGTOnboardingTool.Models.DataModels
                 lastDate = securityActionDates[index];
             }
 
-            // If index is 0 and the dates are not equal, then date searching is less than all what is on report and so 0 
+            // If index is 0 and the dates are not equal, then date searching is less than all what is on report and so 0
             if (index == 0 && date < lastDate)
             {
                 return 0;

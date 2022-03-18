@@ -51,6 +51,10 @@ namespace CGTOnboardingTool.ViewModels
         {
             return SecurityLoader.GetSecurities();
         }
+        public decimal GetHoldings(Security security, DateOnly date)
+        {
+            return report.GetHoldings(security, date);
+        }
 
         public override ReportEntry? PerformCGTFunction(out int err, out string errMessage)
         {

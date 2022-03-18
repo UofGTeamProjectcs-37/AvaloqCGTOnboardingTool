@@ -217,5 +217,57 @@ namespace CGTOnboardingTool.Views
                 return false;
             }
         }
+        private void cbReduceSecurity_Changed(object sender, SelectionChangedEventArgs e)
+        {
+            var selected = DropReduceSecurities.SelectedItem as DropDownItem;
+
+            DateOnly? date;
+            try
+            {
+                date = Helpers.ParseDateInput.DashSeparated(TxtReduceDate.Text);
+            }
+            catch
+            {
+                return;
+            }
+            
+            var qty = viewModel.GetHoldings((Security)selected.Value, (DateOnly)date);
+            if (UsingGross.IsSelected)
+            {
+                LblReduceHoldings_G.Content = "/" + qty.ToString();
+            } 
+            else 
+            {
+                LblReduceHoldings_P_C.Content = "/" + qty.ToString();
+            }
+        }
+
+        private void TxtReduceDate_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            var selected = DropReduceSecurities.SelectedItem as DropDownItem;
+            if (selected == null || selected.Value == null)
+            {
+                return;
+            }
+            DateOnly? date;
+            try
+            {
+                date = Helpers.ParseDateInput.DashSeparated(TxtReduceDate.Text);
+            }
+            catch
+            {
+                return;
+            }
+
+            var qty = viewModel.GetHoldings((Security)selected.Value, (DateOnly)date);
+            if (UsingGross.IsSelected)
+            {
+                LblReduceHoldings_G.Content = "/" + qty.ToString();
+            }
+            else
+            {
+                LblReduceHoldings_P_C.Content = "/" + qty.ToString();
+            }
+        }
     }
 }

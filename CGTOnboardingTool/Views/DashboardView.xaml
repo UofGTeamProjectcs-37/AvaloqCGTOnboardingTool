@@ -26,7 +26,7 @@
                 <Label x:Name="LblReportFilterHeader" Content="Filter By:" Height="33" FontSize="16" Style="{DynamicResource ReportFilterLabel}"/>
                 <ComboBox x:Name="cbFilterType" IsEditable ="False" Height="30" Width="250" Margin="10,0,0,0" SelectionChanged="cbFilterType_SelectionChanged"  SelectedIndex="0"/>
                 <StackPanel x:Name="FilterInputContainer" VerticalAlignment="Center"/>
-                <Button x:Name="BtnFilter" Content="Filter" Height="30" Width="45" FontSize="16" Style="{DynamicResource RoundButton}"/>
+                <Button x:Name="BtnFilter" Content="Filter" Height="30" Width="45" FontSize="16" Style="{DynamicResource RoundButton}" Click="BtnFilter_Click"/>
             </StackPanel>
 
             <ListView Name="DashboardReportView"  d:ItemsSource="{d:SampleData ItemCount=5}" Margin="15,51,15,15" Width="971" Height="356">

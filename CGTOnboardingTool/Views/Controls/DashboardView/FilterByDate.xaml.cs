@@ -13,13 +13,16 @@ namespace CGTOnboardingTool.Views.Controls.DashboardView
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Tries to get start date from string
+        /// </summary>
         public DateOnly? GetDateFrom()
         {
             DateOnly? date;
             try
             {
                 date = Helpers.ParseDateInput.DashSeparated(txtDateFrom.Text);
-            } 
+            }
             catch
             {
                 date = null;
@@ -28,6 +31,9 @@ namespace CGTOnboardingTool.Views.Controls.DashboardView
             return date;
         }
 
+        /// <summary>
+        /// Tries to get end date from string
+        /// </summary>
         public DateOnly? GetDateTo()
         {
             DateOnly? date;

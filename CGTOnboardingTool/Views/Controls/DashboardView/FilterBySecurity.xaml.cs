@@ -18,6 +18,9 @@ namespace CGTOnboardingTool.Views.Controls.DashboardView
             initExistingSecuirtyDropdown();
         }
 
+        /// <summary>
+        /// Show availible securities in drop down 
+        /// </summary>
         private void initExistingSecuirtyDropdown()
         {
 

@@ -18,9 +18,11 @@ namespace CGTOnboardingTool.Views.Controls.DashboardView
             initExistingSecuirtyDropdown();
 
         }
+        /// <summary>
+        /// Show functions in drop down
+        /// </summary>
         private void initExistingSecuirtyDropdown()
         {
-
             List<DropDownItem> selections = new List<DropDownItem>();
 
             foreach (String function in functions)

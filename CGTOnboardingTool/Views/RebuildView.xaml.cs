@@ -196,5 +196,43 @@ namespace CGTOnboardingTool.Views
 
             return false;
         }
+        private void cbReduceSecurity_Changed(object sender, SelectionChangedEventArgs e)
+        {
+            var selected = DropRebuildOldSecurity.SelectedItem as DropDownItem;
+
+            DateOnly? date;
+            try
+            {
+                date = Helpers.ParseDateInput.DashSeparated(TxtRebuildDate.Text);
+            }
+            catch
+            {
+                return;
+            }
+
+            var qty = viewModel.GetHoldings((Security)selected.Value, (DateOnly)date);
+            LblRebuildHoldings.Content = "/" + qty.ToString();
+        }
+
+        private void TxtReduceDate_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            var selected = DropRebuildOldSecurity.SelectedItem as DropDownItem;
+            if (selected == null || selected.Value == null)
+            {
+                return;
+            }
+            DateOnly? date;
+            try
+            {
+                date = Helpers.ParseDateInput.DashSeparated(TxtRebuildDate.Text);
+            }
+            catch
+            {
+                return;
+            }
+
+            var qty = viewModel.GetHoldings((Security)selected.Value, (DateOnly)date);            LblRebuildHoldings.Content = "/" + qty.ToString();
+            LblRebuildHoldings.Content = "/" + qty.ToString();
+        }
     }
 }

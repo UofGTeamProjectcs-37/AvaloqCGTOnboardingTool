@@ -62,7 +62,7 @@ namespace CGTOnboardingTool.Views
 
                 var selected = DropBuildSecurities.SelectedItem as DropDownItem;
                 viewModel.security = (Security)selected.Value;
-                viewModel.date = ParseDate(TxtBuildDate.Text);
+                viewModel.date = Helpers.ParseDateInput.DashSeparated(TxtBuildDate.Text);
 
                 if (UsingGross.IsSelected)
                 {

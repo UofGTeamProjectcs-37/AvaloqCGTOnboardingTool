@@ -50,6 +50,11 @@ namespace CGTOnboardingTool.ViewModels
             return report.GetSecurities();
         }
 
+        public decimal GetHoldings(Security security, DateOnly date)
+        {
+            return report.GetHoldings(security, date);
+        }
+
         public override ReportEntry? PerformCGTFunction(out int err, out string errMessage)
         {
             var validation = this.validate(out err, out errMessage);

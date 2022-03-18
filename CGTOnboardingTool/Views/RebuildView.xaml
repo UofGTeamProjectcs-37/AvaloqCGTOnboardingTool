@@ -31,6 +31,7 @@
 
                 <Label x:Name="LblRebuildOldQuantityReduce" Content="Reduce Existing Security By" HorizontalAlignment="Left" Margin="66,416,0,217" Style="{DynamicResource FunctionParameterLabel}"/>
                 <TextBox x:Name="TxtRebuildOldQuantityReduce" Margin="375,406,164,207" Controls:TextBoxHelper.Watermark="Enter The Quantity to Reduce Here" Height="34" VerticalAlignment="Center" VerticalContentAlignment="Center"/>
+                <Label x:Name="LblRebuildHoldings" Content="/50" Height="34" Width="auto" Margin="837,420,-62,221" Style="{DynamicResource FunctionParameterLabel}" VerticalContentAlignment="Center"/>
 
                 <Label x:Name="LblRebuildNewQuantity" Content="Build New Security By" HorizontalAlignment="Left" Margin="93,512,0,123" Style="{DynamicResource FunctionParameterLabel}"/>
                 <TextBox x:Name="TxtRebuildNewQuantity" Margin="375,492,164,103" Controls:TextBoxHelper.Watermark="Enter The Quantity to Build Here" Height="34" VerticalAlignment="Center" VerticalContentAlignment="Center"/>

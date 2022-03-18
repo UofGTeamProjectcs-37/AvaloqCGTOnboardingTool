@@ -15,12 +15,32 @@ namespace CGTOnboardingTool.Views.Controls.DashboardView
 
         public DateOnly? GetDateFrom()
         {
-            throw new NotImplementedException();
+            DateOnly? date;
+            try
+            {
+                date = Helpers.ParseDateInput.DashSeparated(txtDateFrom.Text);
+            } 
+            catch
+            {
+                date = null;
+            }
+
+            return date;
         }
 
         public DateOnly? GetDateTo()
         {
-            throw new NotImplementedException();
+            DateOnly? date;
+            try
+            {
+                date = Helpers.ParseDateInput.DashSeparated(txtDateTo.Text);
+            }
+            catch
+            {
+                date = null;
+            }
+
+            return date;
         }
 
     }

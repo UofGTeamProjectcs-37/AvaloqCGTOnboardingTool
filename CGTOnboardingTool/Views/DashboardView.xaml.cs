@@ -130,7 +130,7 @@ namespace CGTOnboardingTool.Views
             //Date
             if (selected == 0)
             {
-                FilterByDate filter = this.filterControl as FilterByDate;
+                FilterByDate filter = filterControl as FilterByDate;
 
                 DateOnly? dateFrom = filter.GetDateFrom();
                 DateOnly? dateTo = filter.GetDateTo();
@@ -139,30 +139,34 @@ namespace CGTOnboardingTool.Views
                 {
                     display(viewModel.FilterByDate((DateOnly)dateFrom, (DateOnly)dateTo));
                 }
+                else
+                {
+                    display(viewModel.Rows());
+                }
 
             }
             //Security
             else if (selected == 1)
             {
-                FilterBySecurity filter = this.filterControl as FilterBySecurity;
+                FilterBySecurity filter = filterControl as FilterBySecurity;
 
-                Security? selected = filter.GetSecurity();
+                Security? security = filter.GetSecurity();
 
-                if (selected != null)
+                if (security != null)
                 {
-                    display(viewModel.FilterBySecuirty(selected));
+                    display(viewModel.FilterBySecuirty(security));
                 }
             }
             //Function
             else if (selected == 2)
             {
-                FilterByFunction filter = this.filterControl as FilterByFunction;
+                FilterByFunction filter = filterControl as FilterByFunction;
 
-                String? selected = filter.GetFunction();
+                String? function = filter.GetFunction();
 
-                if (selected != null)
+                if (function != null)
                 {
-                    display(viewModel.FilterByFunction(selected));
+                    display(viewModel.FilterByFunction(function));
                 }
             }
         }

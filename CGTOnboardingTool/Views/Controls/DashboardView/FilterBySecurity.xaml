@@ -8,6 +8,6 @@
              mc:Ignorable="d" 
              d:DesignHeight="33" d:DesignWidth="530">
     <StackPanel Orientation="Horizontal">
-        <ComboBox x:Name="cbFilterSecurity" IsTextSearchEnabled="True" Height="33" Width="250" HorizontalAlignment="Left" Text="Select Security" Style="{DynamicResource ComboBoxStyle}"/>
+        <ComboBox x:Name="cbFilterSecurity" IsTextSearchEnabled="True" Height="30" Width="250" HorizontalAlignment="Left" Text="Select Security" Style="{DynamicResource ComboBoxStyle}"/>
     </StackPanel>
 </UserControl>

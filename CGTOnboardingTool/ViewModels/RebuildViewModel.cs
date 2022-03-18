@@ -84,13 +84,16 @@ namespace CGTOnboardingTool.ViewModels
 
 
                 // Add to report
-                var associatedEntry = report.Add(
+                var associatedEntry = report.AddEffectingMultipleSecurities(
                     function: this.ToString(),
                     date: date,
                     securities: new Security[] { securityOld, securityNew },
                     quantities: new decimal[] { (-1 * quantityOldReduce), quantityNewBuild },
+                    prices: null,
+                    costs: null,
+                    grosses: null,
                     gainLosses: new decimal[] { (-1 * gainLossOldSecurity), gainLossNewSecurity },
-                    holdings: new decimal[] {holdingsOldSecurityCurrent, holdingsNewSecurityCurrent },
+                    holdings: new decimal[] {holdingsOldSecurityUpdated, holdingsNewSecurityUpdated },
                     section104s: new decimal[] { S104OldSecurityUpdated, S104NewSecurityUpdated }
                     );
 

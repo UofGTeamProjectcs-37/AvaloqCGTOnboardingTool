@@ -36,7 +36,6 @@ namespace CGTOnboardingTool.Models.OutputModels
                     string[] headerDetails = { header.ClientName, "\n" + header.DateStart.ToString(), header.DateEnd.ToString() };
                     // Join together the report row
                     char[] headerRow = string.Join(", ", headerDetails).ToCharArray();
-
                     // Use stream to write the row as bytes 
                     myStream.Write(uniEncoding.GetBytes(headerRow));
                     
@@ -56,11 +55,19 @@ namespace CGTOnboardingTool.Models.OutputModels
                             // Use stream to write the row as bytes 
                             myStream.Write(uniEncoding.GetBytes(row));
                         }
-                        else
+                        else // the report entry is a rebuild
                         {
-                            //
+                            //add old and new securities
+                            string[] _currentRow = {"\nRebuild", t[i].Date.ToString(), t[i].Security[0].ShortName.ToString(), t[i].Security[0].Name.ToString().ToString() ,t[i].Quantity[t[i].Security[0]].ToString(),
+                            t[i].Price[t[i].Security[0]].ToString(), t[i].AssociatedCosts[0].ToString(),
+                            t[i].GainLoss[t[i].Security[0]].ToString(), t[i].Holdings[t[i].Security[0]].ToString(),
+                            t[i].Section104[t[i].Security[0]].ToString()};
 
+                            // Join together the report row
+                            char[] row = string.Join(", ", _currentRow).ToCharArray();
 
+                            // Use stream to write the row as bytes 
+                            myStream.Write(uniEncoding.GetBytes(row));
                         }
                     }
                     myStream.Close();

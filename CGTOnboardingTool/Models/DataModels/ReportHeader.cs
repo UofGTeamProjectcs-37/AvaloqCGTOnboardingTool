@@ -13,6 +13,12 @@
             DateEnd = 0;
         }
 
+        /// <summary>
+        /// Report header constructor
+        /// </summary>
+        /// <param name="clientName"></param>
+        /// <param name="dateStart"></param>
+        /// <param name="dateEnd"></param>
         public ReportHeader(string clientName, int dateStart, int dateEnd)
         {
             ClientName = clientName;

@@ -8,6 +8,10 @@ namespace CGTOnboardingTool.Helpers
 {
     internal class ParseDateInput
     {
+        /// <summary>
+        /// A helper function which parses string to DateOnly
+        /// </summary>
+        /// <param name="dateStr"></param>
         public static DateOnly DashSeparated(string dateStr) {
             var ddmmyyyy = dateStr.Split('/');
 

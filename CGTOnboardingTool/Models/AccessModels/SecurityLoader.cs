@@ -26,7 +26,10 @@ namespace CGTOnboardingTool.Models.AccessModels
             return securities.Count;
         }
 
-        // Load securities from a given file
+        /// <summary>
+        /// Load and create securites from a given file
+        /// </summary>
+        /// <param name="filepath"></param>
         public static bool LoadSecurities(string filepath)
         {
             List<Security> loadedSecurities = new List<Security>();
@@ -56,7 +59,10 @@ namespace CGTOnboardingTool.Models.AccessModels
             return success;
         }
 
-        // Adds a security
+        /// <summary>
+        /// Add a given security
+        /// </summary>
+        /// <param name="sec"></param>
         public static bool AddSecurity(Security sec)
         {
             if (securities.Contains(sec))

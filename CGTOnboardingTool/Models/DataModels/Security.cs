@@ -7,6 +7,11 @@ namespace CGTOnboardingTool.Models.DataModels
         public String ShortName { get; init; }
         public String Name { get; init; }
 
+        /// <summary>
+        /// Security constructor
+        /// </summary>
+        /// <param name="shortName"></param>
+        /// <param name="name"></param>
         public Security(string shortName, String name)
         {
             this.ShortName = shortName;

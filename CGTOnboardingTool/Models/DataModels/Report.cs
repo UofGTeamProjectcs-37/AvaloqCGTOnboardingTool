@@ -72,10 +72,13 @@ namespace CGTOnboardingTool.Models.DataModels
             return this.securities.ToArray();
         }
 
-        // AddSecurityAction
-        //
-        // Given a security, adds it to the overall report alongside the date of the action.
-        // Appends to securities and adds to securityDates[s] in sorted order.
+
+        /// <summary>
+        /// Given a security, adds it to the overall report alongside the date of the action.
+        /// Appends to securities and adds to securityDates[s] in sorted order.
+        /// </summary>
+        /// <param name="security"></param>
+        /// <param name="date"></param>
         private void addSecurityActionDate(Security security, DateOnly date)
         {
             if (!this.HasSecurity(security))
@@ -112,6 +115,18 @@ namespace CGTOnboardingTool.Models.DataModels
             }
         }
 
+        /// <summary>
+        /// Create new report entry (using price per share)
+        /// </summary>
+        /// <param name="function"></param>
+        /// <param name="date"></param>
+        /// <param name="security"></param>
+        /// <param name="quantity"></param>
+        /// <param name="price"></param>
+        /// <param name="associatedCosts"></param>
+        /// <param name="gainLoss"></param>
+        /// <param name="holdings"></param>
+        /// <param name="section104"></param>
         public ReportEntry AddUsingQuantityPrice(String function, DateOnly date, Security security, decimal quantity, decimal price, decimal associatedCosts, decimal gainLoss, decimal holdings, decimal section104)
         {
             this.addFunction(function);
@@ -137,6 +152,17 @@ namespace CGTOnboardingTool.Models.DataModels
             return newEntry;
         }
 
+        /// <summary>
+        /// Create new report entry (using gross)
+        /// </summary>
+        /// <param name="function"></param>
+        /// <param name="date"></param>
+        /// <param name="security"></param>
+        /// <param name="quantity"></param>
+        /// <param name="gross"></param>
+        /// <param name="gainLoss"></param>
+        /// <param name="holdings"></param>
+        /// <param name="section104"></param>
         public ReportEntry AddUsingGross(String function, DateOnly date, Security security, decimal quantity, decimal gross, decimal gainLoss, decimal holdings, decimal section104)
         {
             this.addFunction(function);
@@ -337,7 +363,7 @@ namespace CGTOnboardingTool.Models.DataModels
         //    decimal[] holdings = new decimal[securities.Length];
 
         //    for (int i = 0; i < securities.Length; i++)
-        //    { 
+        //    {
         //        currentHoldings[i] = this.GetHoldings(security: securities[i], date: date);
         //        holdings[i] = currentHoldings[i] + quantities[i];
         //        this.addSecurityActionDate(security: securities[i], date: date);
@@ -396,7 +422,7 @@ namespace CGTOnboardingTool.Models.DataModels
                 lastDate = securityActionDates[index];
             }
 
-            // If index is 0 and the dates are not equal, then date searching is less than all what is on report and so 0 
+            // If index is 0 and the dates are not equal, then date searching is less than all what is on report and so 0
             if (index == 0 && date < lastDate)
             {
                 return 0;

@@ -6,6 +6,11 @@ namespace CGTOnboardingTool.Models.OutputModels
     // Author: Andrew Bell
     public class SecurityExporter
     {
+        /// <summary>
+        /// Write a given security to a csv file 
+        /// </summary>
+        /// <param name="filepath"></param>
+        /// <param name="security"></param>
         public static bool AppendToCSV(string filepath, Security security)
         {
             using (StreamWriter sw = File.AppendText(filepath))

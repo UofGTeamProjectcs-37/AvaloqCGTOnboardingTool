@@ -20,8 +20,11 @@ namespace CGTOnboardingTool.Models.AccessModels
             this.report = report;
         }
 
-        // Import a report from txt or csv file
 
+        /// <summary>
+        /// Import a selected txt or csv file and create a report header
+        /// and report with corresponding entries
+        /// </summary>
         public void ImportReport()
         {
             string pathToFile = ""; //to save the location of the selected object

@@ -9,14 +9,19 @@ namespace CGTOnboardingTool.Models.OutputModels
     public class ReportExporter
     {
         // Author: Joachim Vanneste
-        // Export the report rows to txt or csv file
+
+        /// <summary>
+        /// Export the report to csv
+        /// Report header added before entries
+        /// </summary>
+        /// <param name="report"></param>
         public static void ExportToCSV(ref Report report)
         {
             // List of current rows in the report
             List<ReportEntry> t = new List<ReportEntry>(report.Rows());
 
             Stream myStream;
-            // Display windows file dialog, returns path 
+            // Display windows file dialog, returns path
             SaveFileDialog saveFile = new SaveFileDialog();
 
             saveFile.Filter = "txt files (*.txt) | *.*";
@@ -36,9 +41,9 @@ namespace CGTOnboardingTool.Models.OutputModels
                     string[] headerDetails = { header.ClientName, "\n" + header.DateStart.ToString(), header.DateEnd.ToString() };
                     // Join together the report row
                     char[] headerRow = string.Join(", ", headerDetails).ToCharArray();
-                    // Use stream to write the row as bytes 
+                    // Use stream to write the row as bytes
                     myStream.Write(uniEncoding.GetBytes(headerRow));
-                    
+
                     for (int i = 0; i < report.Count(); i++)
                     {
                         if (t[i].Function == "Build" || t[i].Function == "Reduce")
@@ -52,7 +57,7 @@ namespace CGTOnboardingTool.Models.OutputModels
                             // Join together the report row
                             char[] row = string.Join(", ", _currentRow).ToCharArray();
 
-                            // Use stream to write the row as bytes 
+                            // Use stream to write the row as bytes
                             myStream.Write(uniEncoding.GetBytes(row));
                         }
                         else // the report entry is a rebuild
@@ -66,7 +71,7 @@ namespace CGTOnboardingTool.Models.OutputModels
                             // Join together the report row
                             char[] row = string.Join(", ", _currentRow).ToCharArray();
 
-                            // Use stream to write the row as bytes 
+                            // Use stream to write the row as bytes
                             myStream.Write(uniEncoding.GetBytes(row));
                         }
                     }

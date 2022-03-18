@@ -45,6 +45,7 @@ namespace CGTOnboardingTool.Models.AccessModels
 
                 BuildViewModel viewModel = new BuildViewModel(ref report);
                 int h = 0;
+                int index = 0;
                 // Read the file and display it line by line.
                 foreach (string line in System.IO.File.ReadLines(pathToFile))
                 {
@@ -63,7 +64,7 @@ namespace CGTOnboardingTool.Models.AccessModels
                         Security security = new Security(lineArray[1], lineArray[2]);
 
                         if (!securities.Contains(security)) {
-                          securities.Add(security)
+                          securities.Add(security);
                         }
                         decimal quantity = Convert.ToDecimal(lineArray[3]);
                         decimal price = Convert.ToDecimal(lineArray[4]);
@@ -72,8 +73,8 @@ namespace CGTOnboardingTool.Models.AccessModels
                         decimal holdings = Convert.ToDecimal(lineArray[7]);
                         decimal s104 = Convert.ToDecimal(lineArray[8]);
 
-                        ReportEntry entry = new ReportEntry(0, function, date, security, quantity, price, cost, gainLoss, holdings, s104);
-
+                        ReportEntry entry = new ReportEntry(index, function, date, security, quantity, price, cost, gainLoss, holdings, s104);
+                        index++;
                     }
 
                 }

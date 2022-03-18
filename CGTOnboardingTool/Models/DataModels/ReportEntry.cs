@@ -189,7 +189,6 @@ namespace CGTOnboardingTool.Models.DataModels
                 this.Section104.Add(securities[i], section104s[i]);
             }
         }
-
         public String PrintFunction()
         {
             return Function;

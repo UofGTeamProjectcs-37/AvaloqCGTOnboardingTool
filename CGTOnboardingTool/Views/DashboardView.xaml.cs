@@ -44,6 +44,7 @@ namespace CGTOnboardingTool.Views
         {
             Report report = new Report();
 
+
             ReportLoader importer = new ReportLoader(ref report);
             importer.ImportReport();
 
@@ -57,8 +58,8 @@ namespace CGTOnboardingTool.Views
         // Save button functionality
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
-            Report report = viewModel.GetReport();
-            ReportExporter.ExportToCSV(ref report); ;
+            Report r = viewModel.GetReport();
+            ReportExporter.ExportToCSV(ref r); ;
         }
 
         private void display(ReportEntry[] rows)

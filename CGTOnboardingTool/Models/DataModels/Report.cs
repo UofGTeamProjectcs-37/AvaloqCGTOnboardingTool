@@ -1,4 +1,3 @@
-using CGTOnboardingTool.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,6 +32,11 @@ namespace CGTOnboardingTool.Models.DataModels
             this.reportHeader = header;
         }
 
+        public ReportEntry[] Rows()
+        {
+            return entries.ToArray();
+        }
+
         public string GetClientName()
         {
             return reportHeader.ClientName;
@@ -48,14 +52,14 @@ namespace CGTOnboardingTool.Models.DataModels
             return reportHeader.DateEnd;
         }
 
-        public ReportEntry[] Rows()
-        {
-            return entries.ToArray();
-        }
-
         public int Count()
         {
             return count;
+        }
+
+        public String[] GetFunctionsUsed()
+        {
+            return functionsUsed.ToArray();
         }
 
         public bool HasSecurity(Security security)
@@ -100,11 +104,6 @@ namespace CGTOnboardingTool.Models.DataModels
             }
         }
 
-        public String[] GetFunctionsUsed()
-        {
-            return functionsUsed.ToArray();
-        }
-
         private void addFunction(String function)
         {
             if (!functionsUsed.Contains(function))
@@ -112,7 +111,6 @@ namespace CGTOnboardingTool.Models.DataModels
                 functionsUsed.Add(function);
             }
         }
-
 
         public ReportEntry AddUsingQuantityPrice(String function, DateOnly date, Security security, decimal quantity, decimal price, decimal associatedCosts, decimal gainLoss, decimal holdings, decimal section104)
         {
@@ -162,18 +160,6 @@ namespace CGTOnboardingTool.Models.DataModels
 
 
             return newEntry;
-        }
-
-        public ReportEntry AddUsingQuantityPrice(String function, DateOnly date, Security[] securities, decimal[] quantities, decimal[] prices, decimal[] costs, decimal[] gainLoss, decimal[] holdings, decimal[] section104)
-        {
-            addFunction(function);
-
-            throw new NotImplementedException();
-        }
-
-        public ReportEntry AddUsingGross(String function, DateOnly date, Security[] securities, decimal[] quantities, decimal[] grosses, decimal[] gainLosses, decimal[] holdings, decimal[] section104s)
-        {
-            throw new NotImplementedException();
         }
 
         public ReportEntry AddEffectingMultipleSecurities(String function, DateOnly date, Security[] securities, decimal[] quantities, decimal[]? prices, decimal[]? costs, decimal[]? grosses, decimal[] gainLosses, decimal[] holdings, decimal[] section104s)

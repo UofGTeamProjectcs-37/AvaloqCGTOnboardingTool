@@ -43,7 +43,7 @@ namespace CGTOnboardingTool.Models.AccessModels
                         if (!loadedSecurities.Contains(sec))
                         {
                             loadedSecurities.Add(sec);
-                        }       
+                        }
                     }
                 }
             }

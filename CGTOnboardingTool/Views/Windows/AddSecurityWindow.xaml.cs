@@ -1,7 +1,7 @@
-﻿using System.Windows;
-using System.Windows.Media;
-using CGTOnboardingTool.ViewModels;
+﻿using CGTOnboardingTool.ViewModels;
 using MahApps.Metro.Controls.Dialogs;
+using System.Windows;
+using System.Windows.Media;
 
 namespace CGTOnboardingTool.Views.Windows
 {

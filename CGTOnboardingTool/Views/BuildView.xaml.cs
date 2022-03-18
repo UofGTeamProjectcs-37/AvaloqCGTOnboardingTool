@@ -116,7 +116,7 @@ namespace CGTOnboardingTool.Views
             //TxtBuildQuantity.BorderThickness = new Thickness(0);
             TxtBuildPrice.BorderThickness = new Thickness(0);
             TxtBuildCost.BorderThickness = new Thickness(0);
-            
+
             if (DropBuildSecurities.SelectedItem == null)
             {
                 DropBuildSecurities.Text = "Please Select a Security";

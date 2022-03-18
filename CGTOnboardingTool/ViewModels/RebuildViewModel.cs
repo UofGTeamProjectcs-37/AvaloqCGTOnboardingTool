@@ -8,7 +8,7 @@ namespace CGTOnboardingTool.ViewModels
     public class RebuildViewModel : CGTFunctionBaseViewModel
     {
         private Report report;
-        
+
         public DateOnly? date { get; set; }
         public Security? securityOld { get; set; }
         public Security? securityNew { get; set; }
@@ -75,10 +75,10 @@ namespace CGTOnboardingTool.ViewModels
                 // Calculate new S104 and Gain/Loss
                 decimal S104OldSecurityUpdated = (1 - reductionRatio) * S104OldSecurityCurrent;
                 decimal S104NewSecurityUpdated = S104NewSecurityCurrent + (reductionRatio * S104OldSecurityCurrent);
-                
+
                 decimal gainLossOldSecurity = S104OldSecurityCurrent - S104OldSecurityUpdated;
                 decimal gainLossNewSecurity = S104NewSecurityUpdated - S104NewSecurityCurrent;
-               
+
                 decimal holdingsOldSecurityUpdated = holdingsOldSecurityCurrent - quantityOldReduce;
                 decimal holdingsNewSecurityUpdated = holdingsNewSecurityCurrent + quantityNewBuild;
 
@@ -93,7 +93,7 @@ namespace CGTOnboardingTool.ViewModels
                     costs: null,
                     grosses: null,
                     gainLosses: new decimal[] { (-1 * gainLossOldSecurity), gainLossNewSecurity },
-                    holdings: new decimal[] {holdingsOldSecurityUpdated, holdingsNewSecurityUpdated },
+                    holdings: new decimal[] { holdingsOldSecurityUpdated, holdingsNewSecurityUpdated },
                     section104s: new decimal[] { S104OldSecurityUpdated, S104NewSecurityUpdated }
                     );
 
@@ -103,7 +103,7 @@ namespace CGTOnboardingTool.ViewModels
             }
             else
             {
-                
+
                 return null;
             }
         }
@@ -128,7 +128,7 @@ namespace CGTOnboardingTool.ViewModels
                 errMessage = "Date Not Specified";
                 return CGTREBUILD_ERROR.CGTREBUILD_NULL_DATE;
             }
-            
+
             if (quantityOldReduce is null)
             {
                 err = (int)CGTREBUILD_ERROR.CGTREBUILD_NULL_QUANTITY_OLD;

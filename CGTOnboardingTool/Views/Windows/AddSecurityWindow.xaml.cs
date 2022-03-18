@@ -33,21 +33,12 @@ namespace CGTOnboardingTool.Views.Windows
             {
                 //Error message here
                 this.ShowMessageAsync("Unsuccessful", "Could not add security. Check input");
-                TxtBlCompletionMessage.Foreground = new SolidColorBrush(Colors.Red);
             }
             else
             {
                 //Success message here
                 this.ShowMessageAsync("Add Security Success", "Successfully added security");
-                TxtAddNewName.Text = "";
-                TxtAddNewShort.Text = "";
-                TxtBlCompletionMessage.Foreground = new SolidColorBrush(Colors.Green);
             }
-        }
-
-        private void btnImport_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }

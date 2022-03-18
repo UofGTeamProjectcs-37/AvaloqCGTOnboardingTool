@@ -14,8 +14,8 @@
             </Image.Source>
         </Image>
         
-        <Button x:Name="StartUpNew" Content="New Report" Margin="340,156,340,243" Click="StartUpNew_Click"/>
-        <Button x:Name="StartUpImport" Content="Import Report" Margin="340,217,340,182" Click="StartUpImport_Click"/>
+        <Button x:Name="StartUpNew" Content="New Report" Margin="312,156,312,228" Click="StartUpNew_Click"/>
+        <Button x:Name="StartUpImport" Content="Import Report" Margin="298,217,298,167" Width="auto" Click="StartUpImport_Click"/>
         
         <Image Margin="323,310,323,68">
             <Image.Source>
@@ -23,9 +23,9 @@
             </Image.Source>
         </Image>
         
-        <Label Content="Aidan Neil" HorizontalAlignment="Left" Margin="242,371,0,0" VerticalAlignment="Top"/>
-        <Label Content="Andrew Bell" HorizontalAlignment="Left" Margin="307,371,0,0" VerticalAlignment="Top"/>
-        <Label Content="Areeb Khan" HorizontalAlignment="Left" Margin="380,371,0,0" VerticalAlignment="Top"/>
-        <Label Content="Joachim Vanneste " HorizontalAlignment="Left" Margin="451,371,0,0" VerticalAlignment="Top"/>
+        <Label Content="Aidan Neil" HorizontalAlignment="Left" Margin="242,371,0,0" VerticalAlignment="Top" Height="26" Width="65" FontSize="12" Style="{DynamicResource FunctionParameterLabel}"/>
+        <Label Content="Andrew Bell" HorizontalAlignment="Left" Margin="307,371,0,0" VerticalAlignment="Top" Height="26" Width="73" FontSize="12" Style="{DynamicResource FunctionParameterLabel}"/>
+        <Label Content="Areeb Khan" HorizontalAlignment="Left" Margin="380,371,0,0" VerticalAlignment="Top" Height="26" Width="72" FontSize="12" Style="{DynamicResource FunctionParameterLabel}"/>
+        <Label Content="Joachim Vanneste " HorizontalAlignment="Left" Margin="451,371,0,0" VerticalAlignment="Top" Height="26" Width="108" FontSize="12" Style="{DynamicResource FunctionParameterLabel}"/>
     </Grid>
 </Page>

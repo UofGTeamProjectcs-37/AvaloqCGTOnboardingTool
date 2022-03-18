@@ -9,7 +9,7 @@ namespace CGTOnboardingTool.Models.AccessModels
     public class SecurityLoader
     {
         public static string StoredPath { get; private set; } = String.Format("{0}Resources\\StoredSecurities.txt", System.AppDomain.CurrentDomain.BaseDirectory);
-        private static List<Security> securities = new List<Security>();
+        public static List<Security> securities = new List<Security>();
 
         static SecurityLoader()
         {
@@ -43,7 +43,7 @@ namespace CGTOnboardingTool.Models.AccessModels
                         if (!loadedSecurities.Contains(sec))
                         {
                             loadedSecurities.Add(sec);
-                        }       
+                        }
                     }
                 }
             }

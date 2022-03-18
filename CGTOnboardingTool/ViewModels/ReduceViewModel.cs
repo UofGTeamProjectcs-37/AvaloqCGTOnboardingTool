@@ -55,6 +55,11 @@ namespace CGTOnboardingTool.ViewModels
             return report.GetHoldings(security, date);
         }
 
+        /// <summary>
+        /// Calls correct Reduce function
+        /// </summary>
+        /// <param name="err"></param>
+        /// <param name="errMessage"></param>
         public override ReportEntry? PerformCGTFunction(out int err, out string errMessage)
         {
             var validation = this.validate(out err, out errMessage);
@@ -99,7 +104,7 @@ namespace CGTOnboardingTool.ViewModels
                 return null;
             }
 
-            // Calculate new holdings and the reduction 
+            // Calculate new holdings and the reduction
             var reductionRatio = quantity / holdingsCurrent;
 
             // Calculate new S104 and Gain/Loss
@@ -137,7 +142,7 @@ namespace CGTOnboardingTool.ViewModels
             var S104Current = report.GetSection104(security, date);
             var holdingsCurrent = report.GetHoldings(security, date);
 
-            // Calculate new holdings and the reduction 
+            // Calculate new holdings and the reduction
             var reductionRatio = quantity / holdingsCurrent;
 
             // Calculate new S104 and Gain/Loss
@@ -146,7 +151,7 @@ namespace CGTOnboardingTool.ViewModels
             decimal gainLoss = S104Current - S104Updated;
 
 
-            // Add to report 
+            // Add to report
             var associatedEntry = report.AddUsingGross(
                 function: this.ToString(),
                 date: date,
@@ -176,7 +181,7 @@ namespace CGTOnboardingTool.ViewModels
                 return CGTREDUCE_ERROR.CGTREDUCE_NULL_DATE;
             }
 
-            // Explicit cast of 
+            // Explicit cast of
             DateOnly date = (DateOnly)this.date;
 
             int yearStart = report.GetYearStart();

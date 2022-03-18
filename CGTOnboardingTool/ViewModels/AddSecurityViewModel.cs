@@ -8,6 +8,9 @@ namespace CGTOnboardingTool.ViewModels
         public string ShortName { get; set; }
         public string Name { get; set; }
 
+        /// <summary>
+        /// Add security to list of securites for the current report
+        /// </summary>
         public bool AddSecurity()
         {
             bool valid = Validate();

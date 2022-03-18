@@ -53,6 +53,11 @@ namespace CGTOnboardingTool.ViewModels
             return SecurityLoader.GetSecurities();
         }
 
+        /// <summary>
+        /// Calls correct Build function
+        /// </summary>
+        /// <param name="err"></param>
+        /// <param name="errMessage"></param>
         public override ReportEntry? PerformCGTFunction(out int err, out string errMessage)
         {
             var validation = this.validate(out err, out errMessage);
@@ -77,7 +82,10 @@ namespace CGTOnboardingTool.ViewModels
             }
         }
 
-        // If we have gross, pps and a cost 
+        // If we have gross, pps and a cost
+        /// <summary>
+        /// Add new report entry (using price per share)
+        /// </summary>
         private ReportEntry performUsingQuantityPrice()
         {
             // Cast to explicits (non nulls)
@@ -95,7 +103,7 @@ namespace CGTOnboardingTool.ViewModels
             decimal newS104 = currentS104 + gainLoss;
             decimal newHoldings = currentHoldings + quantity;
 
-            // Add to report 
+            // Add to report
             var associatedEntry = report.AddUsingQuantityPrice(
                 function: this.ToString(),
                 date: date,
@@ -111,6 +119,9 @@ namespace CGTOnboardingTool.ViewModels
             return associatedEntry;
         }
 
+        /// <summary>
+        /// Add new report entry (using gross)
+        /// </summary>
         private ReportEntry performUsingGross()
         {
             // Cast to explicits (non nulls)
@@ -127,7 +138,7 @@ namespace CGTOnboardingTool.ViewModels
             decimal newS104 = currentS104 + gainLoss;
             decimal newHoldings = currentHoldings + quantity;
 
-            // Add to report 
+            // Add to report
             var associatedEntry = report.AddUsingGross(
                 function: this.ToString(),
                 date: date,
@@ -157,7 +168,7 @@ namespace CGTOnboardingTool.ViewModels
                 return CGTBUILD_ERROR.CGTBUILD_NULL_DATE;
             }
 
-            // Explicit cast of 
+            // Explicit cast of
             DateOnly date = (DateOnly)this.date;
 
             int yearStart = report.GetYearStart();

@@ -56,6 +56,11 @@ namespace CGTOnboardingTool.ViewModels
             return report.GetHoldings(security, date);
         }
 
+        /// <summary>
+        /// Calls correct Rebuild function
+        /// </summary>
+        /// <param name="err"></param>
+        /// <param name="errMessage"></param>
         public override ReportEntry? PerformCGTFunction(out int err, out string errMessage)
         {
             var validation = this.validate(out err, out errMessage);

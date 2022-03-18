@@ -47,7 +47,11 @@ namespace CGTOnboardingTool.ViewModels
             return report.GetClientName();
         }
 
-
+        /// <summary>
+        /// Filters report by date
+        /// </summary>
+        /// <param name="dateFrom"></param>
+        /// <param name="dateTo"></param>
         public ReportEntry[] FilterByDate(DateOnly dateFrom, DateOnly dateTo)
         {
             ReportEntry[] reportRows = report.Rows();
@@ -66,7 +70,10 @@ namespace CGTOnboardingTool.ViewModels
             return filteredRows.ToArray();
         }
 
-
+        /// <summary>
+        /// Filters report by security
+        /// </summary>
+        /// <param name="security"></param>
         public ReportEntry[] FilterBySecuirty(Security security)
         {
             List<ReportEntry> filteredRows = new List<ReportEntry>();
@@ -85,7 +92,10 @@ namespace CGTOnboardingTool.ViewModels
             return filteredRows.ToArray();
         }
 
-
+        /// <summary>
+        /// Filters report by function
+        /// </summary>
+        /// <param name="function"></param>
         public ReportEntry[] FilterByFunction(String function)
         {
             List<ReportEntry> filteredRows = new List<ReportEntry>();

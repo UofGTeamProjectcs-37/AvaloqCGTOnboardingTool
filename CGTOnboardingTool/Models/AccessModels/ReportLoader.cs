@@ -17,6 +17,7 @@ namespace CGTOnboardingTool.Models.AccessModels
     {
         public Report report;
         public static List<Security> securities = new List<Security>();
+        public ConstructReportViewModel viewModel = new ConstructReportViewModel();
 
         public ReportLoader(ref Report report)
         {
@@ -42,8 +43,6 @@ namespace CGTOnboardingTool.Models.AccessModels
 
             if (File.Exists(pathToFile))
             {
-
-                BuildViewModel viewModel = new BuildViewModel(ref report);
                 int h = 0;
                 int index = 0;
                 // Read the file and display it line by line.
@@ -55,8 +54,8 @@ namespace CGTOnboardingTool.Models.AccessModels
                         String accountHolderName = lineArray[0];
                         h++;
                     } else if (h == 1) {
-                        string startDate = lineArray[0];
-                        string endDate = lineArray[1];
+                        int dateStart = Convert.ToInt32(lineArray[0]);
+                        int dateEnd = Convert.ToInt32(lineArray[1]);
                         h++;
                     } else {
                         string function = lineArray[0];
@@ -78,6 +77,9 @@ namespace CGTOnboardingTool.Models.AccessModels
                     }
 
                 }
+
+                  ReportHeader header = new ReportHeader(accountHolderName, dateStart, dateEnd);
+                  Report report = new Report(header);
 
 
 

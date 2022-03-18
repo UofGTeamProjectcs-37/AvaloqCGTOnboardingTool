@@ -131,7 +131,7 @@ namespace CGTOnboardingTool.Models.DataModels
                 gainLoss: gainLoss,
                 holdings: holdings,
                 section104: section104
-                ); 
+                );
 
             securityEntries[security].Add(newEntry);
             entries.AddLast(newEntry);
@@ -175,33 +175,6 @@ namespace CGTOnboardingTool.Models.DataModels
         {
             throw new NotImplementedException();
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -380,7 +353,7 @@ namespace CGTOnboardingTool.Models.DataModels
                 lastDate = securityActionDates[index];
             }
 
-            // If index is 0 and the dates are not equal, then date searching is less than all what is on report and so 0 
+            // If index is 0 and the dates are not equal, then date searching is less than all what is on report and so 0
             if (index == 0 && date < lastDate){
                 return 0;
             }
@@ -413,7 +386,7 @@ namespace CGTOnboardingTool.Models.DataModels
                 lastDate = securityActionDates[index];
             }
 
-            // If index is 0 and the dates are not equal, then date searching is less than all what is on report and so 0 
+            // If index is 0 and the dates are not equal, then date searching is less than all what is on report and so 0
             if (index == 0 && date < lastDate)
             {
                 return 0;

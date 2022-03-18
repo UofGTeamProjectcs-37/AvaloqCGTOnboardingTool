@@ -17,7 +17,6 @@ namespace CGTOnboardingTool.Views.Windows
             InitializeComponent();
             this.viewModel = viewModel;
         }
-
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
             this.Close();

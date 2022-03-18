@@ -76,15 +76,9 @@ namespace CGTOnboardingTool.Models.AccessModels
                     }
 
                 }
-
                   //ReportHeader header = new ReportHeader(accountHolderName, dateStart, dateEnd);
                  // Report report = new Report(header);
-
-
-
-
             }
-
         }
     }
 }

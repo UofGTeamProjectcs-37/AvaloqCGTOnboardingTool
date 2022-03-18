@@ -16,7 +16,6 @@ namespace CGTOnboardingTool.Views.Controls.DashboardView
             InitializeComponent();
             this.functions = functions;
             initExistingSecuirtyDropdown();
-
         }
         /// <summary>
         /// Show functions in drop down
@@ -32,11 +31,8 @@ namespace CGTOnboardingTool.Views.Controls.DashboardView
                 dropDownItem.Value = function;
                 selections.Add(dropDownItem);
             }
-
             cbFilterFunction.ItemsSource = selections;
-
         }
-
         public string? GetFunction()
         {
             var selected = cbFilterFunction.SelectedItem as DropDownItem;

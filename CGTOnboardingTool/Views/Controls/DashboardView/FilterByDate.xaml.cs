@@ -27,7 +27,6 @@ namespace CGTOnboardingTool.Views.Controls.DashboardView
             {
                 date = null;
             }
-
             return date;
         }
 
@@ -45,9 +44,7 @@ namespace CGTOnboardingTool.Views.Controls.DashboardView
             {
                 date = null;
             }
-
             return date;
         }
-
     }
 }

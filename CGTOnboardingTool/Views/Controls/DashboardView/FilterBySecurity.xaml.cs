@@ -33,11 +33,8 @@ namespace CGTOnboardingTool.Views.Controls.DashboardView
                 dropDownItem.Value = security;
                 selections.Add(dropDownItem);
             }
-
             cbFilterSecurity.ItemsSource = selections;
-
         }
-
         public Security? GetSecurity()
         {
             var selected = cbFilterSecurity.SelectedItem as DropDownItem;

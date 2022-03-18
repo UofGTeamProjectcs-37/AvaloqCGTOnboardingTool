@@ -205,7 +205,5 @@ namespace CGTOnboardingTool.Views
             public string Holdings { get; set; }
             public string S104 { get; set; }
         }
-
-
     }
 }

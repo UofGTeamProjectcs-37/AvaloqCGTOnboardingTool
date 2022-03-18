@@ -8,7 +8,6 @@ namespace CGTOnboardingTool.ViewModels
     public class RebuildViewModel : CGTFunctionBaseViewModel
     {
         private Report report;
-
         public DateOnly? date { get; set; }
         public Security? securityOld { get; set; }
         public Security? securityNew { get; set; }
@@ -90,7 +89,6 @@ namespace CGTOnboardingTool.ViewModels
 
                 decimal holdingsOldSecurityUpdated = holdingsOldSecurityCurrent - quantityOldReduce;
                 decimal holdingsNewSecurityUpdated = holdingsNewSecurityCurrent + quantityNewBuild;
-
 
                 // Add to report
                 var associatedEntry = report.AddEffectingMultipleSecurities(

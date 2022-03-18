@@ -6,11 +6,9 @@ namespace CGTOnboardingTool.ViewModels
     public class ReduceViewModel : CGTFunctionBaseViewModel
     {
         private Report report;
-
         public Security? security { get; set; }
         public DateOnly? date { get; set; }
         public bool usingGross { get; set; } = false;
-
         public decimal? quantity { get; set; }
         public decimal? pps { get; set; }
         public decimal? cost { get; set; }
@@ -34,22 +32,18 @@ namespace CGTOnboardingTool.ViewModels
             CGTREDUCE_NULL_GROSS = 12,
             CGTREDUCE_INVALID_GROSS = 13,
         }
-
         public ReduceViewModel(ref Report report)
         {
             this.report = report;
         }
-
         public Report GetReport()
         {
             return this.report;
         }
-
         public Security[] GetSecurities()
         {
             return report.GetSecurities();
         }
-
         public decimal GetHoldings(Security security, DateOnly date)
         {
             return report.GetHoldings(security, date);
@@ -149,7 +143,6 @@ namespace CGTOnboardingTool.ViewModels
             decimal S104Updated = (1 - reductionRatio) * S104Current;
             decimal holdingsUpdated = holdingsCurrent - quantity;
             decimal gainLoss = S104Current - S104Updated;
-
 
             // Add to report
             var associatedEntry = report.AddUsingGross(
@@ -256,7 +249,6 @@ namespace CGTOnboardingTool.ViewModels
             errMessage = "SUCCESS";
             return CGTREDUCE_ERROR.CGTREDUCE_VALID;
         }
-
         private CGTREDUCE_ERROR validateGross(out int err, out string errMessage)
         {
             if (quantity is null)

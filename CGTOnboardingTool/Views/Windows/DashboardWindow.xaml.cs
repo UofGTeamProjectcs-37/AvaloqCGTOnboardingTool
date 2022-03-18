@@ -11,7 +11,6 @@ namespace CGTOnboardingTool.Views.Windows
     public partial class DashboardWindow
     {
         private Report report;
-
         public DashboardWindow(Report report)
         {
             InitializeComponent();
@@ -40,7 +39,6 @@ namespace CGTOnboardingTool.Views.Windows
             mainFrame.Navigate(new RebuildView(this, rebuild));
 
         }
-
         private void btnAddNewSec_Click(object sender, RoutedEventArgs e)
         {
             AddSecurityViewModel viewModel = new();

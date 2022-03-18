@@ -7,7 +7,6 @@ namespace CGTOnboardingTool.ViewModels
     public class DashboardViewModel
     {
         private Report report;
-
         public DashboardViewModel(ref Report report)
         {
             this.report = report;

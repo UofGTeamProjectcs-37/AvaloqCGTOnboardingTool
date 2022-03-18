@@ -19,9 +19,5 @@ namespace CGTOnboardingTool.Models.OutputModels
             }
             return true;
         }
-        public static bool Export(string filepath, Security[] securities)
-        {
-            return false;
-        }
     }
 }

@@ -80,22 +80,6 @@ namespace CGTOnboardingTool.Views
             this.NavigationService.Navigate(new DashboardView(window, dashViewModel));
         }
 
-        // Do not let user rebuild same security
-        //private void DropRebuildOldSecurity_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        //{
-        //    DropRebuildNewSecurity.Items.Clear();
-
-        //    var selected = DropRebuildOldSecurity.SelectedItem;
-
-        //    foreach (var sec in securities)
-        //    {
-        //        if (!sec.Equals(selected))
-        //        {
-        //            DropRebuildNewSecurity.Items.Add(sec);
-        //        }
-        //    }
-        //}
-
         /// <summary>
         /// Save button functionality
         /// </summary>
@@ -137,7 +121,6 @@ namespace CGTOnboardingTool.Views
                 }
             }
         }
-
 
         /// <summary>
         /// Checks all inputs are in the correct format

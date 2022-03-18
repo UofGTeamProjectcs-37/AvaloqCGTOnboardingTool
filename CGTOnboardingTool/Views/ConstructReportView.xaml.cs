@@ -101,7 +101,6 @@ namespace CGTOnboardingTool.Views
                 startUpWindow.ShowMessageAsync("Error: UNKNOWN_ERROR", "Unknown error");
             }
         }
-
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
             this.NavigationService.GoBack();

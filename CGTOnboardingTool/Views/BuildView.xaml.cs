@@ -99,8 +99,6 @@ namespace CGTOnboardingTool.Views
             }
         }
 
-
-
         /// <summary>
         /// Checks all inputs are in the correct format
         /// </summary>

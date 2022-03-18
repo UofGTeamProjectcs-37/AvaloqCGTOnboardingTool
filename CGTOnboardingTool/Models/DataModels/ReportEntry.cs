@@ -73,9 +73,6 @@ namespace CGTOnboardingTool.Models.DataModels
                 this.Section104.Add(securities[i], section104s[i]);
             }
         }
-
-
-
         public ReportEntry(int id, String function, DateOnly date, Security security, decimal quantity, decimal price, decimal associatedCosts, decimal gainLoss, decimal holdings, decimal section104)
         {
             this.Id = id;

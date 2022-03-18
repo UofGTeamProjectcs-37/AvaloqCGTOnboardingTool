@@ -1,6 +1,6 @@
-﻿using System;
+﻿using CGTOnboardingTool.Models.DataModels;
+using System;
 using System.Collections.Generic;
-using CGTOnboardingTool.Models.DataModels;
 
 namespace CGTOnboardingTool.ViewModels
 {

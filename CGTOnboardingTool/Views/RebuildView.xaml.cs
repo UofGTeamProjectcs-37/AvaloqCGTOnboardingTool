@@ -127,7 +127,7 @@ namespace CGTOnboardingTool.Views
                 else
                 {
                     window.ShowMessageAsync("Error: " + (RebuildViewModel.CGTREBUILD_ERROR)err, errMessage);
-                }  
+                }
             }
         }
 
@@ -153,7 +153,7 @@ namespace CGTOnboardingTool.Views
 
             var selected = DropRebuildOldSecurity.SelectedItem as DropDownItem;
 
-            if ((Security) selected.Value == null)
+            if ((Security)selected.Value == null)
             {
                 DropRebuildOldSecurity.Text = "Please Select a Security";
 
@@ -161,7 +161,7 @@ namespace CGTOnboardingTool.Views
             }
 
             selected = DropRebuildNewSecurity.SelectedItem as DropDownItem;
-            if ((Security)selected.Value== null)
+            if ((Security)selected.Value == null)
             {
                 DropRebuildNewSecurity.Text = "Please Select a Security";
 

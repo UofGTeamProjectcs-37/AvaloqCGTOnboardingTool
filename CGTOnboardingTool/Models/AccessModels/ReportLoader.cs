@@ -4,11 +4,8 @@ using CGTOnboardingTool.Views;
 using CGTOnboardingTool.ViewModels;
 using CGTOnboardingTool.Helpers;
 using Microsoft.Win32;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Text;
 using System.Windows;
 
 namespace CGTOnboardingTool.Models.AccessModels

@@ -10,6 +10,9 @@ namespace UnitTests
     public class TestSuite
     {
         [TestBuild]
+        /// <summary>
+        /// Test Build calculates correct S104 (using pps and gross)
+        /// </summary>
         public void buildCalcsCorrectS104()
         {
             DateOnly date1 = new DateOnly(2021,6,26);
@@ -68,6 +71,9 @@ namespace UnitTests
 
 
         [TestReduce]
+        /// <summary>
+        /// Test Reduce calculates correct S104
+        /// </summary>
         public void reduceCalcsCorrectS104() {
             DateOnly date1 = new DateOnly(2021, 6, 26);
             DateOnly date2 = new DateOnly(2021, 10, 12);
@@ -121,8 +127,10 @@ namespace UnitTests
         }
 
         [TestRebuild]
+        /// <summary>
+        /// Test Rebuild calculates correct S104
+        /// </summary>
         public void rebuildCaclulatesCorrectS104() {
-
             int err;
             String errMessage;
 

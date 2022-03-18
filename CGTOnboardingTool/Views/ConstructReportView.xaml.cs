@@ -26,6 +26,9 @@ namespace CGTOnboardingTool.Views
             initYearSelectors();
         }
 
+        /// <summary>
+        /// Initialise drop down year selectors for the construct report page
+        /// </summary>
         private void initYearSelectors()
         {
             var currentYear = DateTime.Now.Year;
@@ -55,6 +58,11 @@ namespace CGTOnboardingTool.Views
         }
 
 
+        /// <summary>
+        /// Creates blank report with a header
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnStart_Click(object sender, RoutedEventArgs e)
         {
             viewModel.SetClientName(txtClientName.Text);

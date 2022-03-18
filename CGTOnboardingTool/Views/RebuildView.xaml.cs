@@ -26,6 +26,9 @@ namespace CGTOnboardingTool.Views
             initBuildSecurityDropdown();
         }
 
+        /// <summary>
+        /// Show availible securities in drop down
+        /// </summary>
         private void initExistingSecuirtyDropdown()
         {
             List<DropDownItem> selections = new List<DropDownItem>();
@@ -93,7 +96,11 @@ namespace CGTOnboardingTool.Views
         //    }
         //}
 
-        // Save button functionality
+        /// <summary>
+        /// Save button functionality
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnRebuild_Click(object sender, RoutedEventArgs e)
         {
             // Returns true if input is not in the correct format
@@ -131,7 +138,10 @@ namespace CGTOnboardingTool.Views
             }
         }
 
-        // Checks all inputs are in the correct format
+
+        /// <summary>
+        /// Checks all inputs are in the correct format
+        /// </summary>
         private bool Validate()
         {
             // Resets any previous incorrect validations

@@ -39,12 +39,14 @@ namespace CGTOnboardingTool.Views
             display(viewModel.Rows());
         }
 
-        // Open button functionality
+        /// <summary>
+        /// Open button functionality
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnOpen_Click(object sender, RoutedEventArgs e)
         {
             Report report = new Report();
-
-
             ReportLoader importer = new ReportLoader(ref report);
             importer.ImportReport();
 
@@ -55,13 +57,21 @@ namespace CGTOnboardingTool.Views
 
         }
 
-        // Save button functionality
+        /// <summary>
+        /// Save button functionality
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
             Report r = viewModel.GetReport();
             ReportExporter.ExportToCSV(ref r); ;
         }
 
+        /// <summary>
+        /// Display each report row on dashboard
+        /// </summary>
+        /// <param name="rows"></param>
         private void display(ReportEntry[] rows)
         {
             List<DisplayRow> displayRows = new List<DisplayRow>();
@@ -93,6 +103,11 @@ namespace CGTOnboardingTool.Views
             DashboardReportView.ItemsSource = displayRows;
         }
 
+        /// <summary>
+        /// Logic for filter drop down
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cbFilterType_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             int children = FilterInputContainer.Children.Count;
@@ -123,6 +138,12 @@ namespace CGTOnboardingTool.Views
                 }
             }
         }
+
+        /// <summary>
+        /// Logic for filtering report
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnFilter_Click(object sender, RoutedEventArgs e)
         {
             var selected = cbFilterType.SelectedIndex;
@@ -185,6 +206,6 @@ namespace CGTOnboardingTool.Views
             public string S104 { get; set; }
         }
 
-        
+
     }
 }

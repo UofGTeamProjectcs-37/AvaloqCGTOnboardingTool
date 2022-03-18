@@ -22,12 +22,22 @@ namespace CGTOnboardingTool.Views
             this.startUpFrame = startUpFrame;
         }
 
+        /// <summary>
+        /// New Report button functionality
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void StartUpNew_Click(object sender, RoutedEventArgs e)
         {
             ConstructReportViewModel constructReportViewModel = new ConstructReportViewModel();
             startUpFrame.Navigate(new ConstructReportView(startUpWindow, constructReportViewModel));
         }
 
+        /// <summary>
+        /// Import Report button functionality
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void StartUpImport_Click(object sender, RoutedEventArgs e)
         {
             Report report = new Report();

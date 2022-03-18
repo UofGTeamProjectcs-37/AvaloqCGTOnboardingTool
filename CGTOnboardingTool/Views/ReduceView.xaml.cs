@@ -55,7 +55,11 @@ namespace CGTOnboardingTool.Views
             this.NavigationService.Navigate(new DashboardView(window, dashViewModel));
         }
 
-        // Save button functionality
+        /// <summary>
+        /// Save button functionality
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnReduce_Click(object sender, RoutedEventArgs e)
         {
             // Returns true if input is not in the correct format
@@ -112,7 +116,9 @@ namespace CGTOnboardingTool.Views
             return new DateOnly(year, month, day);
         }
 
-        // Checks all inputs are in the correct format
+        /// <summary>
+        /// Checks all inputs are in the correct format
+        /// </summary>
         private bool Validate()
         {
             // Resets any previous incorrect validations
@@ -230,13 +236,13 @@ namespace CGTOnboardingTool.Views
             {
                 return;
             }
-            
+
             var qty = viewModel.GetHoldings((Security)selected.Value, (DateOnly)date);
             if (UsingGross.IsSelected)
             {
                 LblReduceHoldings_G.Content = "/" + qty.ToString();
-            } 
-            else 
+            }
+            else
             {
                 LblReduceHoldings_P_C.Content = "/" + qty.ToString();
             }

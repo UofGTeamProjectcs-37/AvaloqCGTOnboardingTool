@@ -50,7 +50,11 @@ namespace CGTOnboardingTool.Views
             this.NavigationService.Navigate(new DashboardView(window, dashViewModel));
         }
 
-        //Performs the CGTFunction      
+        /// <summary>
+        /// Peforms the Build function
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnBuildComplete_Click(object sender, RoutedEventArgs e)
         {
             // Returns true if input is not in the correct format
@@ -58,7 +62,7 @@ namespace CGTOnboardingTool.Views
 
             if (!valid)
             {
-                // Read in all user input 
+                // Read in all user input
 
                 var selected = DropBuildSecurities.SelectedItem as DropDownItem;
                 viewModel.security = (Security)selected.Value;
@@ -77,7 +81,7 @@ namespace CGTOnboardingTool.Views
                     viewModel.cost = decimal.Parse(TxtBuildCost.Text);
                 }
 
-                // Perform the build 
+                // Perform the build
                 int err;
                 string errMessage;
                 viewModel.PerformCGTFunction(out err, out errMessage);
@@ -97,9 +101,9 @@ namespace CGTOnboardingTool.Views
 
 
 
-
-
-        // Checks all inputs are in the correct format
+        /// <summary>
+        /// Checks all inputs are in the correct format
+        /// </summary>
         private bool Validate()
         {
             // Resets any previous incorrect validations

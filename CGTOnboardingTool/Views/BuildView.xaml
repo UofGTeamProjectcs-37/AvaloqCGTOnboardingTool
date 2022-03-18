@@ -6,16 +6,16 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:CGTOnboardingTool.Views"
       mc:Ignorable="d" 
-      d:DesignHeight="720" d:DesignWidth="1024"
+      d:DesignHeight="672" d:DesignWidth="1001"
       Title="Build">
 
-    <Grid Width="1024" Height="705">
+    <Grid>
         <Grid x:Name="BuildGrid" Style="{DynamicResource RoundGrid}" Height="675" Width="1001.5">
-            <Border Margin="7.5,0,15,0" Background="#FFFFFF" Opacity="0.5" BorderBrush="#C7CADC" BorderThickness="2"/>
+            <Border Background="#FFFFFF" Opacity="0.5" BorderBrush="#C7CADC" BorderThickness="2"/>
 
-            <Label x:Name="LblBuildHeader" Content="Build" Margin="879,10,36,0" Style="{DynamicResource FunctionHeaderLabel}"/>
+            <Label x:Name="LblBuildHeader" Content="Build" Margin="36,10,880,0" Style="{DynamicResource FunctionHeaderLabel}"/>
 
-            <Button x:Name="BtnBuildComplete" Content="Build" Click="BtnBuildComplete_Click" Margin="192,599,634,26" Style="{DynamicResource RoundButton}"/>
+            <Button x:Name="BtnBuildComplete" Content="Complete" Click="BtnBuildComplete_Click" Margin="192,599,634,26" Style="{DynamicResource RoundButton}"/>
             <Button x:Name="BtnBuildCancel" Content="Cancel" Margin="697,599,128,26" Click="BtnBuildCancel_Click" Style="{DynamicResource RoundButton}"/>
 
             <Grid x:Name="BuildGridInterior" Style="{DynamicResource RoundGrid}">
@@ -33,7 +33,7 @@
                 </Grid>
 
                 <Controls:MetroTabControl HorizontalAlignment="Center" Height="306" Margin="0,251,0,0" VerticalAlignment="Top" Width="883" Background="Transparent">
-                    <TabItem x:Name="UsingPriceCost" Header="Using Quantity/Price/Cost" Background="Transparent" Width="auto" Height="auto" Controls:HeaderedControlHelper.HeaderFontSize="16">
+                    <TabItem x:Name="UsingPriceCost" Header="Using Quantity/Price/Cost" Background="Transparent" Width="auto" Height="auto" Controls:HeaderedControlHelper.HeaderFontSize="16" Margin="0,0,0,-2">
                         <Grid>
                             <Border Background="#FFFFFF" Opacity="0.5" CornerRadius="0,15,15,15" BorderBrush="#C7CADC" BorderThickness="2"/>
 
@@ -48,7 +48,7 @@
                             
                         </Grid>
                     </TabItem>
-                    <TabItem x:Name="UsingGross" Header="Using Quantity/Gross" Background="Transparent" Width="auto" Height="auto" Controls:HeaderedControlHelper.HeaderFontSize="16">
+                    <TabItem x:Name="UsingGross" Header="Using Quantity/Gross" Background="Transparent" Width="auto" Height="auto" Controls:HeaderedControlHelper.HeaderFontSize="16" Margin="0,0,0,-2">
                         <Grid>
                             <Border Background="#FFFFFF" Opacity="0.5" CornerRadius="0,15,15,15" BorderBrush="#C7CADC" BorderThickness="2"/>
 

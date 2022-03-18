@@ -196,7 +196,7 @@ namespace CGTOnboardingTool.Views
 
             return false;
         }
-        private void cbReduceSecurity_Changed(object sender, SelectionChangedEventArgs e)
+        private void DropRebuildOldSecurity_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var selected = DropRebuildOldSecurity.SelectedItem as DropDownItem;
 
@@ -214,7 +214,7 @@ namespace CGTOnboardingTool.Views
             LblRebuildHoldings.Content = "/" + qty.ToString();
         }
 
-        private void TxtReduceDate_TextChanged(object sender, TextChangedEventArgs e)
+        private void TxtRebuildDate_TextChanged(object sender, TextChangedEventArgs e)
         {
             var selected = DropRebuildOldSecurity.SelectedItem as DropDownItem;
             if (selected == null || selected.Value == null)

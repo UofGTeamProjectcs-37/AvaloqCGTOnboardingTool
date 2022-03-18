@@ -1,12 +1,11 @@
 ﻿using CGTOnboardingTool.Models.DataModels;
-using CGTOnboardingTool.Models.OutputModels;
-using CGTOnboardingTool.Views;
 using CGTOnboardingTool.ViewModels;
 using CGTOnboardingTool.Helpers;
 using Microsoft.Win32;
-using System.Diagnostics;
+using System;
 using System.IO;
 using System.Windows;
+using System.Collections.Generic;
 
 namespace CGTOnboardingTool.Models.AccessModels
 {

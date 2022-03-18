@@ -58,12 +58,23 @@ namespace CGTOnboardingTool.Views
             if (!valid)
             {
                 // Read in all user input 
+
                 var selected = DropBuildSecurities.SelectedItem as DropDownItem;
                 viewModel.security = (Security)selected.Value;
                 viewModel.date = ParseDate(TxtBuildDate.Text);
-                viewModel.quantity = decimal.Parse(TxtBuildQuantity_P_C.Text);
-                viewModel.pps = decimal.Parse(TxtBuildPrice.Text);
-                viewModel.cost = decimal.Parse(TxtBuildCost.Text);
+
+                if (UsingGross.IsSelected)
+                {
+                    viewModel.quantity = decimal.Parse(TxtBuildQuantity_G.Text);
+                    viewModel.gross = decimal.Parse(TxtBuildGross.Text);
+                    viewModel.usingGross = true;
+                }
+                else
+                {
+                    viewModel.quantity = decimal.Parse(TxtBuildQuantity_P_C.Text);
+                    viewModel.pps = decimal.Parse(TxtBuildPrice.Text);
+                    viewModel.cost = decimal.Parse(TxtBuildCost.Text);
+                }
 
                 // Perform the build 
                 int err;
@@ -105,12 +116,11 @@ namespace CGTOnboardingTool.Views
             //TxtBuildQuantity.BorderThickness = new Thickness(0);
             TxtBuildPrice.BorderThickness = new Thickness(0);
             TxtBuildCost.BorderThickness = new Thickness(0);
-
+            
             if (DropBuildSecurities.SelectedItem == null)
             {
                 DropBuildSecurities.Text = "Please Select a Security";
-                //BuildComboBoxBorder.BorderThickness = new Thickness(5);
-                   
+
                 return true;
             }
 
@@ -127,45 +137,78 @@ namespace CGTOnboardingTool.Views
                 return true;
             }
 
-            //try
-            //{
-            //    Convert.ToDecimal(TxtBuildQuantity.Text);
-            //}
-            //catch
-            //{
-            //    TxtBuildQuantity.BorderThickness = new Thickness(5);
-            //    TxtBuildQuantity.Text = "";
-            //    TextBoxHelper.SetWatermark(TxtBuildQuantity, "Please ensure Quantity only Contains Integers and/or is in Decimal Format");
-
-            //    return true;
-            //}
-
-            try
+            if (UsingGross.IsSelected)
             {
-                Convert.ToDecimal(TxtBuildPrice.Text);
-            }
-            catch
-            {
-                TxtBuildPrice.BorderThickness = new Thickness(5);
-                TxtBuildPrice.Text = "";
-                TextBoxHelper.SetWatermark(TxtBuildPrice, "Please ensure Price only Contains Integers and/or is in Decimal Format");
+                try
+                {
+                    Convert.ToDecimal(TxtBuildQuantity_G.Text);
+                }
+                catch
+                {
+                    TxtBuildQuantity_G.BorderThickness = new Thickness(5);
+                    TxtBuildQuantity_G.Text = "";
+                    TextBoxHelper.SetWatermark(TxtBuildQuantity_G, "Please ensure Quantity only Contains Integers and/or is in Decimal Format");
 
-                return true;
-            }
+                    return true;
+                }
 
-            try
-            {
-                Convert.ToDecimal(TxtBuildCost.Text);
-            }
-            catch
-            {
-                TxtBuildCost.BorderThickness = new Thickness(5);
-                TxtBuildCost.Text = "";
-                TextBoxHelper.SetWatermark(TxtBuildCost, "Please ensure Cost only Contains Integers and/or is in Decimal Format");
+                try
+                {
+                    Convert.ToDecimal(TxtBuildGross.Text);
+                }
+                catch
+                {
+                    TxtBuildGross.BorderThickness = new Thickness(5);
+                    TxtBuildGross.Text = "";
+                    TextBoxHelper.SetWatermark(TxtBuildGross, "Please ensure Gross only Contains Integers and/or is in Decimal Format");
 
-                return true;
+                    return true;
+                }
+                return false;
             }
-            return false;
+            else
+            {
+
+                try
+                {
+                    Convert.ToDecimal(TxtBuildQuantity_P_C.Text);
+                }
+                catch
+                {
+                    TxtBuildQuantity_P_C.BorderThickness = new Thickness(5);
+                    TxtBuildQuantity_P_C.Text = "";
+                    TextBoxHelper.SetWatermark(TxtBuildQuantity_P_C, "Please ensure Quantity only Contains Integers and/or is in Decimal Format");
+
+                    return true;
+                }
+
+                try
+                {
+                    Convert.ToDecimal(TxtBuildPrice.Text);
+                }
+                catch
+                {
+                    TxtBuildPrice.BorderThickness = new Thickness(5);
+                    TxtBuildPrice.Text = "";
+                    TextBoxHelper.SetWatermark(TxtBuildPrice, "Please ensure Price only Contains Integers and/or is in Decimal Format");
+
+                    return true;
+                }
+
+                try
+                {
+                    Convert.ToDecimal(TxtBuildCost.Text);
+                }
+                catch
+                {
+                    TxtBuildCost.BorderThickness = new Thickness(5);
+                    TxtBuildCost.Text = "";
+                    TextBoxHelper.SetWatermark(TxtBuildCost, "Please ensure Cost only Contains Integers and/or is in Decimal Format");
+
+                    return true;
+                }
+                return false;
+            }
         }
     }
 }

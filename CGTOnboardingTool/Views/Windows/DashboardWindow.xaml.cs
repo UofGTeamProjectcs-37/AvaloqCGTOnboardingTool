@@ -42,8 +42,9 @@ namespace CGTOnboardingTool.Views.Windows
         }
 
         private void btnAddNewSec_Click(object sender, RoutedEventArgs e)
-        { 
-            AddSecurityWindow addSecurityWindow = new AddSecurityWindow();
+        {
+            AddSecurityViewModel viewModel = new();
+            AddSecurityWindow addSecurityWindow = new AddSecurityWindow(viewModel);
             addSecurityWindow.Show();
         }
     }

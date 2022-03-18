@@ -131,7 +131,7 @@ namespace CGTOnboardingTool.Models.DataModels
                 gainLoss: gainLoss,
                 holdings: holdings,
                 section104: section104
-                ); 
+                );
 
             securityEntries[security].Add(newEntry);
             entries.AddLast(newEntry);
@@ -176,122 +176,13 @@ namespace CGTOnboardingTool.Models.DataModels
             throw new NotImplementedException();
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        public ReportEntry Add(String function, DateOnly date, Security security, decimal price, decimal quantity, decimal associatedCosts, decimal gainLoss, decimal section104, decimal gross)
+        public ReportEntry AddEffectingMultipleSecurities(String function, DateOnly date, Security[] securities, decimal[] quantities, decimal[]? prices, decimal[]? costs, decimal[]? grosses, decimal[] gainLosses, decimal[] holdings, decimal[] section104s)
         {
-            if (!functionsUsed.Contains(function))
+            this.addFunction(function);
+
+            foreach (Security security in securities)
             {
-                functionsUsed.Add(function);
-            }
-
-            // 1. Add security action
-            this.addSecurityActionDate(security, date);
-
-            // 2. Calculate what the updated holdings will be
-            var holdings = this.GetHoldings(security, date) + quantity;
-
-            // 3. Construct Entry
-            var newEntry = new ReportEntry(
-                id: count++,
-                function: function,
-                date: date,
-                security: security,
-                price: price,
-                quantity: quantity,
-                associatedCosts: associatedCosts,
-                gainLoss: gainLoss,
-                holdings: holdings,
-                section104: section104
-                );
-
-            // 4. Insert entry in correct place
-            entriesUnordered.Add(newEntry);
-
-            var securityActionDates = securityDates[security];
-            var dateIndex = securityActionDates.IndexOf(date);
-
-            var securityEntryList = securityEntries[security];
-            if (securityEntryList.Count == 0)
-            {
-                securityEntryList.Add(newEntry);
-
-                foreach (var s in securities)
-                {
-                    if (s.Equals(security))
-                    {
-                        continue;
-                    }
-                    var sDates = securityDates[s];
-
-
-                }
-
-                entries.AddLast(newEntry);
-            }
-
-            if (dateIndex == 0)
-            {
-                //
-            }
-            else
-            {
-                var previous = securityEntryList[dateIndex - 1];
-                securityEntryList.Insert(dateIndex, newEntry);
-                var previousNode = entries.Find(previous);
-
-                if (previousNode != null)
-                {
-                    entries.AddAfter(previousNode, newEntry);
-                    this.reflectChanges(newEntry);
-                }
-                else
-                {
-                    entries.AddLast(newEntry);
-                }
-            }
-
-            // 5. Return the entry
-            return newEntry;
-        }
-
-        public ReportEntry Add(String function, DateOnly date, Security[] securities, decimal[] quantities, decimal[] gainLosses, decimal[] section104s, decimal[] holdings)
-        {
-            decimal[] holdingsCurrent = new decimal[securities.Length];
-            decimal[] oldholdings = new decimal[securities.Length];
-
-            for (int i = 0; i < securities.Length; i++)
-            {
-                this.addSecurityActionDate(security: securities[i], date: date);
-                holdingsCurrent[i] = this.GetHoldings(security: securities[i], date: date);
-                holdings[i] = holdingsCurrent[i] + quantities[i];
+                this.addSecurityActionDate(security, date);
             }
 
             var newEntry = new ReportEntry(
@@ -299,58 +190,197 @@ namespace CGTOnboardingTool.Models.DataModels
                 function: function,
                 date: date,
                 securities: securities,
-                prices: null,
                 quantities: quantities,
-                associatedCosts: null,
-                gainLoss: gainLosses,
-                holdings: holdings,
-                section104s: section104s
-                );
-
-            entriesUnordered.Add(newEntry);
-
-            entries.AddLast(newEntry);
-
-            return newEntry;
-        }
-
-
-        public ReportEntry Add(String function, DateOnly date, Security[] securities, decimal[] prices, decimal[] quantities, decimal associatedCost, decimal[] gainLoss, decimal[] section104s)
-        {
-            decimal[] currentHoldings = new decimal[securities.Length];
-            decimal[] holdings = new decimal[securities.Length];
-
-            for (int i = 0; i < securities.Length; i++)
-            {
-                this.addSecurityActionDate(security: securities[i], date: date);
-                currentHoldings[i] = this.GetHoldings(security: securities[i], date: date);
-                holdings[i] = currentHoldings[i] + quantities[i];
-            }
-
-            var associatedCostArr = new decimal[] { associatedCost };
-            var newEntry = new ReportEntry(
-                id: count++,
-                function: function,
-                date: date,
-                securities: securities,
                 prices: prices,
-                quantities: quantities,
-                associatedCosts: new decimal[] { associatedCost },
-                gainLoss: gainLoss,
+                associatedCosts: costs,
+                grosses: grosses,
+                gainLosses: gainLosses,
                 holdings: holdings,
-                section104s: section104s
-                );
+                section104s: section104s);
 
-            entriesUnordered.Add(newEntry);
+            foreach (Security security in securities)
+            {
+                securityEntries[security].Add(newEntry);
+            }
 
             entries.AddLast(newEntry);
-            //
-            // TO DO
-            // Insert in position
-            //
-
             return newEntry;
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        //public ReportEntry Add(String function, DateOnly date, Security security, decimal price, decimal quantity, decimal associatedCosts, decimal gainLoss, decimal section104, decimal gross)
+        //{
+        //    if (!functionsUsed.Contains(function))
+        //    {
+        //        functionsUsed.Add(function);
+        //    }
+
+        //    // 1. Add security action
+        //    this.addSecurityActionDate(security, date);
+
+        //    // 2. Calculate what the updated holdings will be
+        //    var holdings = this.GetHoldings(security, date) + quantity;
+
+        //    // 3. Construct Entry
+        //    var newEntry = new ReportEntry(
+        //        id: count++,
+        //        function: function,
+        //        date: date,
+        //        security: security,
+        //        price: price,
+        //        quantity: quantity,
+        //        associatedCosts: associatedCosts,
+        //        gainLoss: gainLoss,
+        //        holdings: holdings,
+        //        section104: section104
+        //        );
+
+        //    // 4. Insert entry in correct place
+        //    entriesUnordered.Add(newEntry);
+
+        //    var securityActionDates = securityDates[security];
+        //    var dateIndex = securityActionDates.IndexOf(date);
+
+        //    var securityEntryList = securityEntries[security];
+        //    if (securityEntryList.Count == 0)
+        //    {
+        //        securityEntryList.Add(newEntry);
+
+        //        foreach (var s in securities)
+        //        {
+        //            if (s.Equals(security))
+        //            {
+        //                continue;
+        //            }
+        //            var sDates = securityDates[s];
+
+
+        //        }
+
+        //        entries.AddLast(newEntry);
+        //    }
+
+        //    if (dateIndex == 0)
+        //    {
+        //        //
+        //    }
+        //    else
+        //    {
+        //        var previous = securityEntryList[dateIndex - 1];
+        //        securityEntryList.Insert(dateIndex, newEntry);
+        //        var previousNode = entries.Find(previous);
+
+        //        if (previousNode != null)
+        //        {
+        //            entries.AddAfter(previousNode, newEntry);
+        //            this.reflectChanges(newEntry);
+        //        }
+        //        else
+        //        {
+        //            entries.AddLast(newEntry);
+        //        }
+        //    }
+
+        //    // 5. Return the entry
+        //    return newEntry;
+        //}
+
+        //public ReportEntry Add(String function, DateOnly date, Security[] securities, decimal[] quantities, decimal[] gainLosses, decimal[] section104s, decimal[] holdings)
+        //{
+        //    decimal[] holdingsCurrent = new decimal[securities.Length];
+        //    decimal[] oldholdings = new decimal[securities.Length];
+
+        //    for (int i = 0; i < securities.Length; i++)
+        //    {
+        //        this.addSecurityActionDate(security: securities[i], date: date);
+        //        holdingsCurrent[i] = this.GetHoldings(security: securities[i], date: date);
+        //        holdings[i] = holdingsCurrent[i] + quantities[i];
+        //    }
+
+        //    var newEntry = new ReportEntry(
+        //        id: count++,
+        //        function: function,
+        //        date: date,
+        //        securities: securities,
+        //        prices: null,
+        //        quantities: quantities,
+        //        associatedCosts: null,
+        //        gainLoss: gainLosses,
+        //        holdings: holdings,
+        //        section104s: section104s
+        //        );
+
+        //    entriesUnordered.Add(newEntry);
+
+        //    entries.AddLast(newEntry);
+
+        //    return newEntry;
+        //}
+
+
+        //public ReportEntry Add(String function, DateOnly date, Security[] securities, decimal[] prices, decimal[] quantities, decimal associatedCost, decimal[] gainLoss, decimal[] section104s)
+        //{
+        //    decimal[] currentHoldings = new decimal[securities.Length];
+        //    decimal[] holdings = new decimal[securities.Length];
+
+        //    for (int i = 0; i < securities.Length; i++)
+        //    { 
+        //        currentHoldings[i] = this.GetHoldings(security: securities[i], date: date);
+        //        holdings[i] = currentHoldings[i] + quantities[i];
+        //        this.addSecurityActionDate(security: securities[i], date: date);
+        //    }
+
+        //    var associatedCostArr = new decimal[] { associatedCost };
+        //    var newEntry = new ReportEntry(
+        //        id: count++,
+        //        function: function,
+        //        date: date,
+        //        securities: securities,
+        //        prices: prices,
+        //        quantities: quantities,
+        //        associatedCosts: new decimal[] { associatedCost },
+        //        gainLoss: gainLoss,
+        //        holdings: holdings,
+        //        section104s: section104s
+        //        );
+
+        //    entriesUnordered.Add(newEntry);
+
+        //    entries.AddLast(newEntry);
+        //    //
+        //    // TO DO
+        //    // Insert in position
+        //    //
+
+        //    return newEntry;
+        //}
 
 
 
@@ -376,12 +406,13 @@ namespace CGTOnboardingTool.Models.DataModels
 
             while (lastDate > date && index > 0)
             {
-                index --;
+                index--;
                 lastDate = securityActionDates[index];
             }
 
             // If index is 0 and the dates are not equal, then date searching is less than all what is on report and so 0 
-            if (index == 0 && date < lastDate){
+            if (index == 0 && date < lastDate)
+            {
                 return 0;
             }
             else

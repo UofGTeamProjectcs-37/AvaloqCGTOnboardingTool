@@ -61,10 +61,10 @@ namespace CGTOnboardingTool.Views
         // Function to split user given date
         private static DateOnly ParseDate(string dateStr)
         {
-            var yymmdd = dateStr.Split('/');
-            int year = int.Parse(yymmdd[0]);
-            int month = int.Parse(yymmdd[1]);
-            int day = int.Parse(yymmdd[2]);
+            var ddmmyyyy = dateStr.Split('/');
+            int year = int.Parse(ddmmyyyy[2]);
+            int month = int.Parse(ddmmyyyy[1]);
+            int day = int.Parse(ddmmyyyy[0]);
 
             return new DateOnly(year, month, day);
         }
@@ -145,21 +145,23 @@ namespace CGTOnboardingTool.Views
             }
             catch
             {
-                TxtRebuildDate.BorderThickness = new Thickness(5);
                 TxtRebuildDate.Text = "";
                 TextBoxHelper.SetWatermark(TxtRebuildDate, "Please ensure Date is in the format (dd/mm/yyyy)");
 
                 return true;
             }
 
-            if ((Security)DropRebuildOldSecurity.SelectedItem == null)
+            var selected = DropRebuildOldSecurity.SelectedItem as DropDownItem;
+
+            if ((Security) selected.Value == null)
             {
                 DropRebuildOldSecurity.Text = "Please Select a Security";
 
                 return true;
             }
 
-            if ((Security)DropRebuildNewSecurity.SelectedItem == null)
+            selected = DropRebuildNewSecurity.SelectedItem as DropDownItem;
+            if ((Security)selected.Value== null)
             {
                 DropRebuildNewSecurity.Text = "Please Select a Security";
 

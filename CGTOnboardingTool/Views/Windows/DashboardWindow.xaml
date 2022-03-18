@@ -6,8 +6,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CGTOnboardingTool.Views.Windows"
         mc:Ignorable="d"
-        ResizeMode="CanResize"
-        Height="720" Width="1280" WindowStartupLocation="CenterScreen" WindowTitleBrush="#C7CADC" Background="#A1A7CB">
+        ResizeMode="NoResize"
+        Height="720" Width="1280" WindowStartupLocation="CenterScreen" WindowTitleBrush="#A1A7CB" Background="#A1A7CB">
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -24,32 +24,29 @@
             </StackPanel>
 
 
-            <Grid Margin="0,180,0,10" Style="{DynamicResource RoundGrid}">
-                <Border Background="#C7CADC"/>
+            <Grid Margin="0,180,0,0" Style="{DynamicResource RoundGrid}">
+                <Border Background="#FFFFFF" Opacity="0.5" BorderBrush="#C7CADC" BorderThickness="2"/>
                 <StackPanel>
                     <Button x:Name="btnBuild" Click="btnBuild_Click" Height="50" Style="{DynamicResource RoundButton}">
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="Build" FontSize="20" />
-                            <!--Image Source="/Image/Icon/..." /-->
                         </StackPanel>
                     </Button>
 
                     <Button x:Name="btnReduce" Click="btnReduce_Click" Height="50" Style="{DynamicResource RoundButton}">
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="Reduce" FontSize="20" />
-                            <!--Image Source="/Image/Icon/..." /-->
                         </StackPanel>
                     </Button>
 
                     <Button x:Name="btnRebuild" Click="btnRebuild_Click" Height="50" Style="{DynamicResource RoundButton}">
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="Rebuild" FontSize="20" />
-                            <!--Image Source="/Image/Icon/..." /-->
                         </StackPanel>
                     </Button>
                 </StackPanel>
 
-                <Button x:Name="btnAddNewSec" Content="Add New Security" Click="btnAddNewSec_Click" Height="50" FontSize="20" Margin="32,413,33,36" Style="{DynamicResource RoundButton}"/>
+                <Button x:Name="btnAddNewSec" Content="Add New Security" Click="btnAddNewSec_Click" Height="50" FontSize="20" Margin="32,399,33,50" Style="{DynamicResource RoundButton}"/>
             </Grid>
         </Grid>
 

@@ -11,15 +11,15 @@
 
     <Grid Height="434.04" Width="800">
         <Grid Margin="214,67,162,217">
-            <Label Content="Client Name:" HorizontalAlignment="Left" Margin="0,25,0,0" VerticalAlignment="Top" Height="33" Width="142" FontSize="14" VerticalContentAlignment="Center"/>
+            <Label Content="Client Name:" HorizontalAlignment="Left" Margin="0,25,0,0" VerticalAlignment="Top" Height="33" Width="142" FontSize="14" VerticalContentAlignment="Center" Style="{DynamicResource FunctionParameterLabel}"/>
             <TextBox x:Name="txtClientName" Controls:TextBoxHelper.Watermark="Enter Client Name" HorizontalAlignment="Left" Height="33" Margin="158,25,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="265" FontSize="14" VerticalContentAlignment="Center"/>
 
-            <Label Content="Tax Period:" HorizontalAlignment="Left" Margin="0,75,0,0" VerticalAlignment="Top" Height="33" Width="142" FontSize="14" VerticalContentAlignment="Center"/>
+            <Label Content="Tax Period:" HorizontalAlignment="Left" Margin="0,75,0,0" VerticalAlignment="Top" Height="33" Width="142" FontSize="14" VerticalContentAlignment="Center" Style="{DynamicResource FunctionParameterLabel}"/>
             <ComboBox x:Name="dropdownYearEnd" Height="33" Width="120" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14" VerticalContentAlignment="Center" IsEditable="False" Margin="303,76,0,0"/>
-            <Label Content="-" HorizontalAlignment="Left" Margin="278,74,0,0" VerticalAlignment="Top" Height="33" Width="25" FontSize="14" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+            <Label Content="-" HorizontalAlignment="Left" Margin="278,74,0,0" VerticalAlignment="Top" Height="33" Width="25" FontSize="14" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{DynamicResource FunctionParameterLabel}"/>
             <ComboBox x:Name="dropdownYearStart" Height="33" Width="120" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14" VerticalContentAlignment="Center" IsEditable="False" Margin="158,75,0,0"/>
         </Grid>
-        <Button x:Name="btnContinue" Content="Continue" Click="btnStart_Click" Margin="497,254,162,144"/>
-        <Button x:Name="btnCancel" Content="Cancel" Click="btnCancel_Click" Margin="214,254,442,144"/>
+        <Button x:Name="btnContinue" Content="Continue" Click="btnStart_Click" Margin="214,254,410,130"/>
+        <Button x:Name="btnCancel" Content="Cancel" Click="btnCancel_Click" Margin="497,254,127,130"/>
     </Grid>
 </Page>

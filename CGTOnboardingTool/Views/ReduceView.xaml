@@ -6,20 +6,20 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:CGTOnboardingTool.Views"
       mc:Ignorable="d" 
-      d:DesignHeight="720" d:DesignWidth="1024"
+      d:DesignHeight="672" d:DesignWidth="1001"
       Title="Reduce">
 
-    <Grid Width="1024" Height="705">
+    <Grid>
         <Grid x:Name="ReduceGrid" Style="{DynamicResource RoundGrid}" Height="675" Width="1001.5">
-            <Border Margin="7.5,0,15,0" Background="#C7CADC"/>
+            <Border Background="#FFFFFF" Opacity="0.5" BorderBrush="#C7CADC" BorderThickness="2"/>
 
-            <Label x:Name="LblReduceHeader" Content="Reduce" Margin="843,10,36,0" Style="{DynamicResource FunctionHeaderLabel}"/>
+            <Label x:Name="LblReduceHeader" Content="Reduce" Margin="36,10,786,0" Style="{DynamicResource FunctionHeaderLabel}"/>
 
-            <Button x:Name="BtnReduce" Content="Reduce" Click="BtnReduce_Click" Margin="192,599,634,26" Style="{DynamicResource RoundButton}"/>
+            <Button x:Name="BtnReduce" Content="Complete" Click="BtnReduce_Click" Margin="192,599,634,26" Style="{DynamicResource RoundButton}"/>
             <Button x:Name="BtnReduceCancel" Content="Cancel" Click="BtnReduceCancel_Click" Margin="697,599,128,26" Style="{DynamicResource RoundButton}"/>
 
             <Grid x:Name="ReduceGridInterior"  Style="{DynamicResource RoundGrid}">
-                <Border Margin="36,96,36,96" Background="#FFFFFF" Opacity="0.5"/>
+                <Border Margin="36,96,36,96" Background="#FFFFFF" Opacity="0.5" BorderBrush="#C7CADC" BorderThickness="2"/>
 
                 <Label x:Name="LblReduceSecurity" Content="Security" HorizontalAlignment="Left" Margin="89,121,0,513" Style="{DynamicResource FunctionParameterLabel}"/>
                 <ComboBox x:Name="DropReduceSecurities" IsEditable ="True" IsTextSearchEnabled="True" HorizontalAlignment="Left" Margin="190,124.5,0,517" Width="462" Text="Enter a Security to Build" SelectionChanged="cbReduceSecurity_Changed"/>
@@ -28,13 +28,13 @@
                 <TextBox x:Name="TxtReduceDate" Margin="190,187,350,432" Controls:TextBoxHelper.Watermark="Enter The Date Here (dd/mm/yyyy)" Height="34" VerticalAlignment="Center" VerticalContentAlignment="Center" TextChanged="TxtReduceDate_TextChanged"/>
 
                 <Grid Margin="59,250,580,399">
-                    <Border Background="#FFFFFF" Opacity="0.5" CornerRadius="15,15,0,0"/>
+                    <Border Background="#FFFFFF" Opacity="0.5" BorderBrush="#C7CADC" BorderThickness="2" CornerRadius="15,15,0,0"/>
                 </Grid>
 
                 <Controls:MetroTabControl HorizontalAlignment="Center" Height="306" Margin="0,251,0,0" VerticalAlignment="Top" Width="883" Background="Transparent">
                     <TabItem x:Name="UsingPriceCost" Header="Using Quantity/Price/Cost" Background="Transparent" Width="auto" Height="auto" Controls:HeaderedControlHelper.HeaderFontSize="16">
                         <Grid>
-                            <Border Background="#FFFFFF" Opacity="0.5" CornerRadius="0,15,15,15"/>
+                            <Border Background="#FFFFFF" Opacity="0.5" BorderBrush="#C7CADC" BorderThickness="2" CornerRadius="0,15,15,15"/>
 
                             <Label x:Name="LblReduceQuantity_P_C" Content="Quantity" HorizontalAlignment="Left" Margin="26,48,0,0" Style="{DynamicResource FunctionParameterLabel}" VerticalAlignment="Top"/>
                             <TextBox x:Name="TxtReduceQuantity_P_C" Controls:TextBoxHelper.Watermark="Enter The Quantity of Shares Here" Height="34" Width="461.5" Margin="128,52,293,194" VerticalAlignment="Center" VerticalContentAlignment="Center"/>
@@ -50,7 +50,7 @@
                     </TabItem>
                     <TabItem x:Name="UsingGross" Header="Using Quantity/Gross" Background="Transparent" Width="auto" Height="auto" Controls:HeaderedControlHelper.HeaderFontSize="16">
                         <Grid>
-                            <Border Background="#FFFFFF" Opacity="0.5" CornerRadius="0,15,15,15"/>
+                            <Border Background="#FFFFFF" Opacity="0.5" BorderBrush="#C7CADC" BorderThickness="2" CornerRadius="0,15,15,15"/>
 
                             <Label x:Name="LblReduceQuantity_G" Content="Quantity" HorizontalAlignment="Left" Margin="26,67,0,0" VerticalAlignment="Top" Style="{DynamicResource FunctionParameterLabel}"/>
                             <TextBox x:Name="TxtReduceQuantity_G" Controls:TextBoxHelper.Watermark="Enter The Quantity of Shares Here" Height="34" Width="461.5" Margin="128,70,293,176" VerticalAlignment="Center" VerticalContentAlignment="Center"/>

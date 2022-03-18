@@ -6,19 +6,19 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:CGTOnboardingTool.Views"
       mc:Ignorable="d" 
-      d:DesignHeight="720" d:DesignWidth="1024"
+      d:DesignHeight="672" d:DesignWidth="1001"
       Title="Rebuild">
 
-    <Grid Width="1024" Height="705">
+    <Grid>
         <Grid x:Name="RebuildGrid" Style="{DynamicResource RoundGrid}" Height="675" Width="1001.5">
-            <Border Margin="7.5,0,15,0" Background="#C7CADC"/>
-            <Label x:Name="LblRebuildHeader" Content="Rebuild" Margin="842,10,36,0" Style="{DynamicResource FunctionHeaderLabel}"/>
+            <Border Background="#FFFFFF" Opacity="0.5" BorderBrush="#C7CADC" BorderThickness="2"/>
+            <Label x:Name="LblRebuildHeader" Content="Rebuild" Margin="36,10,838,0" Style="{DynamicResource FunctionHeaderLabel}"/>
 
-            <Button x:Name="BtnRebuild" Content="Rebuild" Click="BtnRebuild_Click" Margin="192,599,634,26" Style="{DynamicResource RoundButton}"/>
+            <Button x:Name="BtnRebuild" Content="Complete" Click="BtnRebuild_Click" Margin="192,599,634,26" Style="{DynamicResource RoundButton}"/>
             <Button x:Name="BtnRebuildCancel" Content="Cancel" Click="BtnRebuildCancel_Click" Margin="697,599,128,26" Style="{DynamicResource RoundButton}"/>
 
             <Grid x:Name="BuildGridInterior"  Style="{DynamicResource RoundGrid}">
-                <Border Margin="36,96,36,96" Background="#FFFFFF" Opacity="0.5"/>
+                <Border Margin="36,96,36,96" Background="#FFFFFF" Opacity="0.5" BorderBrush="#C7CADC" BorderThickness="2"/>
 
                 <Label x:Name="LblRebuildDate" Content="Date" HorizontalAlignment="Left" Margin="172,140,0,493" Style="{DynamicResource FunctionParameterLabel}"/>
                 <TextBox x:Name="TxtRebuildDate" Margin="375,148,164,501" Controls:TextBoxHelper.Watermark="Enter The Date Here (dd/mm/yyyy)" VerticalAlignment="Center" VerticalContentAlignment="Center" TextChanged="TxtRebuildDate_TextChanged"/>

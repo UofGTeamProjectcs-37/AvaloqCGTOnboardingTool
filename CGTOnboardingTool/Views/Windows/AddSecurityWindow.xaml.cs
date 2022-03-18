@@ -23,6 +23,11 @@ namespace CGTOnboardingTool.Views.Windows
             this.Close();
         }
 
+        /// <summary>
+        /// Logic to add a new security
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnAddNew_Click(object sender, RoutedEventArgs e)
         {
             viewModel.ShortName = TxtAddNewShort.Text.ToString();

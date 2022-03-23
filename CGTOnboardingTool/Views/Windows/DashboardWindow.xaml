@@ -9,7 +9,9 @@
         ResizeMode="NoResize"
         Height="720" Width="1280" WindowStartupLocation="CenterScreen" WindowTitleBrush="#A1A7CB" Background="#A1A7CB">
 
-    <Grid>
+	<!--Author: Andrew Bell-->
+
+	<Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="256"/>
             <ColumnDefinition Width="*"/>

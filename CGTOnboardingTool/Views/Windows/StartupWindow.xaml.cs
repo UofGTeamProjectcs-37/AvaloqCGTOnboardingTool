@@ -1,5 +1,7 @@
 ﻿namespace CGTOnboardingTool.Views.Windows
 {
+    //Author: Aidan Neil
+
     /// <summary>
     /// Interaction logic for StartupWindow.xaml
     /// </summary>

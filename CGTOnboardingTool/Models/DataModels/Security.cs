@@ -2,6 +2,8 @@
 
 namespace CGTOnboardingTool.Models.DataModels
 {
+    //Author: Aidan Neil
+
     public class Security
     {
         public String ShortName { get; init; }

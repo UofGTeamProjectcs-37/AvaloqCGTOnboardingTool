@@ -10,6 +10,8 @@ using System.Windows.Controls;
 
 namespace CGTOnboardingTool.Views
 {
+    //Author: Aidan Neil
+
     /// <summary>
     /// Interaction logic for BuildView.xaml
     /// </summary>

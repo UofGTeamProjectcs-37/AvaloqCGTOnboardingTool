@@ -5,6 +5,8 @@ using System.Windows.Media;
 
 namespace CGTOnboardingTool.Views.Windows
 {
+    //Author: Aidan Neil
+
     /// <summary>
     /// Interaction logic for AddSecurityWindow.xaml
     /// </summary>

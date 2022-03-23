@@ -7,7 +7,10 @@
              xmlns:local="clr-namespace:CGTOnboardingTool.Views.Controls.DashboardView"
              mc:Ignorable="d" 
              d:DesignHeight="33" d:DesignWidth="530">
-    <StackPanel Orientation="Horizontal">
+
+	<!--Author: Aidan Neil-->
+
+	<StackPanel Orientation="Horizontal">
         <TextBox x:Name="txtDateFrom" Controls:TextBoxHelper.Watermark="From: dd/mm/yyyy" HorizontalAlignment="Left" Height="30" TextWrapping="Wrap" VerticalAlignment="Top" Width="265" FontSize="14" VerticalContentAlignment="Center"/>
         <TextBox x:Name="txtDateTo" Controls:TextBoxHelper.Watermark="To: dd/mm/yyyy" HorizontalAlignment="Left" Height="30" TextWrapping="Wrap" VerticalAlignment="Top" Width="265" FontSize="14" VerticalContentAlignment="Center"/>
     </StackPanel>

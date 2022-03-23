@@ -2,6 +2,7 @@
 {
     public class ReportHeader
     {
+
         public string ClientName { get; set; }
         public int DateStart { get; set; }
         public int DateEnd { get; set; }

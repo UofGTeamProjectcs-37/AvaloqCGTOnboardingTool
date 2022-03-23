@@ -4,6 +4,8 @@ using System.Collections.Generic;
 
 namespace CGTOnboardingTool.ViewModels
 {
+    //Author: Aidan Neil
+
     public class DashboardViewModel
     {
         private Report report;

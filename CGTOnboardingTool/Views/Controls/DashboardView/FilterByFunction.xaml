@@ -8,6 +8,8 @@
              mc:Ignorable="d" 
              d:DesignHeight="33" d:DesignWidth="530">
 
+	<!--Author: Aidan Neil-->
+
     <StackPanel Orientation="Horizontal">
         <ComboBox x:Name="cbFilterFunction" IsTextSearchEnabled="True" Height="30" Width="250" HorizontalAlignment="Left" Text="Select Function"/>
     </StackPanel>

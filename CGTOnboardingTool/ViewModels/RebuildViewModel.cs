@@ -4,6 +4,8 @@ using System;
 
 namespace CGTOnboardingTool.ViewModels
 {
+    //Author: Aidan Neil
+
     // RebuildView BUC which subclasses the CGTFunctionBaseViewModel abstract class
     public class RebuildViewModel : CGTFunctionBaseViewModel
     {

@@ -5,6 +5,8 @@ using System.Windows;
 
 namespace CGTOnboardingTool.Views.Windows
 {
+    //Author: Aidan Neil
+
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>

@@ -2,6 +2,7 @@
 
 namespace CGTOnboardingTool.ViewModels
 {
+    //Author: Aidan Neil
     // Abstract function for BUC's to subclass 
     public abstract class CGTFunctionBaseViewModel
     {

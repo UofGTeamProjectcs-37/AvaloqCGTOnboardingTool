@@ -2,6 +2,8 @@
 
 namespace CGTOnboardingTool.ViewModels
 {
+    //Author: Aidan Neil
+
     public class ConstructReportViewModel
     {
         private Report? Report;

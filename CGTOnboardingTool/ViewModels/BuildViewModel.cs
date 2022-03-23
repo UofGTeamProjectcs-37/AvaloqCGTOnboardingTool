@@ -4,6 +4,8 @@ using System;
 
 namespace CGTOnboardingTool.ViewModels
 {
+    //Author: Aidan Neil
+
     // BuildView BUC which subclasses the CGTFunctionBaseViewModel abstract class
     public class BuildViewModel : CGTFunctionBaseViewModel
     {

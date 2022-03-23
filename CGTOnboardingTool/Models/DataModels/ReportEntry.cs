@@ -88,7 +88,7 @@ namespace CGTOnboardingTool.Models.DataModels
                 { security, quantity },
             };
             this.AssociatedCosts = new decimal[] { associatedCosts };
-            this.Gross = new Dictionary<Security, decimal>();
+            this.Gross = null;
             this.GainLoss = new Dictionary<Security, decimal>{
                 { security, gainLoss }
             };

@@ -9,6 +9,8 @@
       d:DesignHeight="672" d:DesignWidth="1001"
       Title="Reduce">
 
+	<!--Author: Andrew Bell-->
+
     <Grid>
         <Grid x:Name="ReduceGrid" Style="{DynamicResource RoundGrid}" Height="675" Width="1001.5">
             <Border Background="#FFFFFF" Opacity="0.5" BorderBrush="#C7CADC" BorderThickness="2"/>

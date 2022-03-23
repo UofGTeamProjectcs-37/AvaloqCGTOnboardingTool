@@ -3,6 +3,8 @@ using System;
 
 namespace CGTOnboardingTool.ViewModels
 {
+    //Author: Aidan Neil
+
     public class ReduceViewModel : CGTFunctionBaseViewModel
     {
         private Report report;

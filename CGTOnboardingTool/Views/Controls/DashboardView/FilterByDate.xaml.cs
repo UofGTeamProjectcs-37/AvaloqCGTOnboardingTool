@@ -3,6 +3,8 @@ using System.Windows.Controls;
 
 namespace CGTOnboardingTool.Views.Controls.DashboardView
 {
+    //Author: Aidan Neil
+
     /// <summary>
     /// Interaction logic for FilterByDate.xaml
     /// </summary>

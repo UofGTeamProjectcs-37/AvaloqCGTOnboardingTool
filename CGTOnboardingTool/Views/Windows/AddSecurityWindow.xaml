@@ -7,7 +7,10 @@
         xmlns:local="clr-namespace:CGTOnboardingTool.Views.Windows"
         mc:Ignorable="d"
         Title="AddSecurity" TitleCharacterCasing="Normal" Height="350" Width="500" WindowStartupLocation="CenterScreen" WindowTitleBrush="#C7CADC" Background="#C7CADC">
-    <Grid>
+
+	<!--Author: Andrew Bell-->
+	
+	<Grid>
         <TextBox x:Name="TxtAddNewShort" Controls:TextBoxHelper.Watermark="Enter Security ShortHand Here" HorizontalAlignment="Center" Height="34" TextWrapping="Wrap" VerticalAlignment="Top" Width="264" FontSize="14" VerticalContentAlignment="Center" Margin="0,70,0,0"/>
         <TextBox x:Name="TxtAddNewName" Controls:TextBoxHelper.Watermark="Enter Security Name Here" HorizontalAlignment="Center" Height="34" TextWrapping="Wrap" VerticalAlignment="Top" Width="264" FontSize="14" VerticalContentAlignment="Center" Margin="0,135,0,0"/>
 

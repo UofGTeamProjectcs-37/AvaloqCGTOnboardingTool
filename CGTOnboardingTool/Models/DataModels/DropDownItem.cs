@@ -1,5 +1,7 @@
 ﻿namespace CGTOnboardingTool.Models.DataModels
 {
+    //Author: Aidan Neil
+
     public class DropDownItem
     {
         public string Text { get; set; }

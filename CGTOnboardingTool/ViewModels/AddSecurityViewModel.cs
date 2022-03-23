@@ -3,6 +3,8 @@ using CGTOnboardingTool.Models.DataModels;
 
 namespace CGTOnboardingTool.ViewModels
 {
+    //Author: Aidan Neil
+
     public class AddSecurityViewModel
     {
         public string ShortName { get; set; }

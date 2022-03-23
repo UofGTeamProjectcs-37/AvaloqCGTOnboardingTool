@@ -9,6 +9,8 @@
       mc:Ignorable="d"
       d:DesignHeight="672" d:DesignWidth="1001">
 
+	<!--Author: Andrew Bell-->
+
     <Grid Style="{DynamicResource RoundGrid}">
         <Border Background="#FFFFFF" Opacity="0.5" BorderBrush="#C7CADC" BorderThickness="2"/>
 

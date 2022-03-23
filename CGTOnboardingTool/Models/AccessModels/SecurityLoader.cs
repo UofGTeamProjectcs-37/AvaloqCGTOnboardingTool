@@ -6,6 +6,8 @@ using System.IO;
 
 namespace CGTOnboardingTool.Models.AccessModels
 {
+    //Author: Aidan Neil
+
     public class SecurityLoader
     {
         public static string StoredPath { get; private set; } = String.Format("{0}Resources\\StoredSecurities.txt", System.AppDomain.CurrentDomain.BaseDirectory);
